@@ -2,7 +2,7 @@
 /**************************************************************************
 *CONNECTION DETAILS
 ***************************************************************************/
-$dbname="rental";
+$dbname="zapcel";
 $dbuser="postgres";
 $dbpass="postgres";
 $dbhost="localhost";
