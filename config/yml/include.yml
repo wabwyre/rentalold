@@ -10,10 +10,7 @@ basic:
    - src/reports_library.php
 
 post:
-   - src/staff_module/staff_processor.php
-   - src/agents_module/agents_processor.php
    - src/masterfile_module/masterfile_processor.php
-   - src/crm_module/crm_processor.php
    - src/users_module/user_processor.php
    - src/users_module/role_processor.php
    - src/system_manager/view_processor.php
@@ -24,11 +21,6 @@ post:
    - src/system_manager/manage_menu_processor.php
    - src/RMC_module/RMC_processor.php
    - src/payment_agent_module/payment_agent_processor.php
-   - src/device_module/device_processor.php
    - src/broadcast_module/broadcast_processor.php
    - src/support_module/support_processor.php
-   - src/loan_repayment_module/loan_processor.php
-   - src/gpay_wallet/wallet_processor.php
-   - src/airtime_module/airtime_processor.php
-   - src/crm_module/policy_processor.php
    - src/system_manager/maintenance_processor.php

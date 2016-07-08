@@ -1,4 +1,7 @@
 <?php
+    include_once('src/models/Masterfile.php');
+    $mf = new Masterfile();
+
     set_layout("wizard-layout.php", array(
       'pageSubTitle' => 'Add Masterfile',
       'pageSubTitleText' => '',
@@ -21,10 +24,9 @@
    </div>
    <div class="widget-body form">
       <?php
-        if(isset($_SESSION['done-deal'])){
-          echo $_SESSION['done-deal'];
-          unset($_SESSION['done-deal']);
-        }
+        $mf->splash('mf');
+        // display all encountered errors
+        (isset($_SESSION['mf_warnings'])) ? $mf->displayWarnings('mf_warnings') : '';
       ?>
 
       <div class="alert alert-error hide">

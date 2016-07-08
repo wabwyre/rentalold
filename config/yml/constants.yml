@@ -370,3 +370,9 @@ basic:
    add_setting: add_setting
    edit_setting: edit_setting
    delete_setting: delete_setting
+
+   #### Masterfile Processor
+   Tenant: tenant
+   Landlord: land_lord
+   Contractor: contractor
+   Property_Manager: property_manager
