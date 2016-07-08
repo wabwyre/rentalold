@@ -1,7 +1,7 @@
 <?php set_layout("base.php"); set_css(array("assets/css/pages/login.css")); ?>
 	<!-- BEGIN LOGO -->
 	<div id="logo" class="center">
-		<h4 style="color:white;">RENTAL COLLECTION</h4>
+		<h4 style="color:white;">RENTAL</h4>
 	</div>
 	<!-- END LOGO -->
  

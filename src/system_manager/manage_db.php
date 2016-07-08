@@ -1,4 +1,4 @@
-<?php
+<?
 set_title('Maintenance');
 set_layout("dt-layout.php", array(
 	'pageSubTitle' => 'Maintenance',
@@ -39,7 +39,7 @@ set_css(array(
                       </ul>
                       <div class="tab-content">
                          <div class="tab-pane <?=$tab1; ?>" id="tab_2_1">
-                              <?php include "db_controls.php"; ?>
+                              <? include "db_controls.php"; ?>
                          </div>
 
                       </div>

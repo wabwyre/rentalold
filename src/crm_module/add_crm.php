@@ -77,12 +77,12 @@ set_js(array(
 
                <div class="tab-pane <?=(isset($_SESSION['tab1'])) ? 'active' : ''; ?>" id="tab1">
                   <h3 class="form-section">Provide personal details</h3>
-                  <? include "personal_details.php"; ?>
+                  <?php include "personal_details.php"; ?>
                </div>
 
                <div class="tab-pane <?=(isset($_SESSION['tab2'])) ? 'active' : ''; ?>" id="tab2">
                   <h3 class="form-section">Provide address details</h3>
-                  <? include "address_details.php"; ?>
+                  <?php include "address_details.php"; ?>
                </div>
 
                <!-- <div class="tab-pane" id="tab3">

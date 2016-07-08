@@ -1,298 +1,18 @@
 <?php
 	include_once('src/models/LoanRepayments.php');
-        
+	/**
+	* 
+	*/
 	class Masterfile extends LoanRepayments
 	{
-            public function addMasterfile(){
-                extract($_POST);
-                $target_path = '';
-                $allowedExts = array("gif", "jpeg", "jpg", "png");
-                $temp = explode(".", $_FILES["profile-pic"]["name"]);
-                $extension = end($temp);
+		public function addCustomer($cu, $ag, $mc, $target_path, $mf_id){
+			extract($_POST);
 
-                if ((($_FILES["profile-pic"]["type"] == "image/gif")
-                    || ($_FILES["profile-pic"]["type"] == "image/jpeg")
-                    || ($_FILES["profile-pic"]["type"] == "image/jpg")
-                    || ($_FILES["profile-pic"]["type"] == "image/pjpeg")
-                    || ($_FILES["profile-pic"]["type"] == "image/x-png")
-                    || ($_FILES["profile-pic"]["type"] == "image/png"))
-                    && ($_FILES["profile-pic"]["size"] < 5000000)
-                    && in_array($extension, $allowedExts)) {
-                    if ($_FILES["profile-pic"]["error"] > 0) {
-                      "Return Code: " . $_FILES["profile-pic"]["error"] . "<br>";
-                    } else {
-                        if (file_exists("profile/" . $_FILES["profile-pic"]["name"])) {
-                            $_FILES["profile-pic"]["name"] . " already exists. ";
-                        } else {
-                            $target_path = "crm_images/".$_FILES["profile-pic"]["name"];
-                            move_uploaded_file($_FILES["profile-pic"]["tmp_name"], $target_path);
-                        }
-                    }
-                } else {
-                    "Invalid file";
-                }
+			$mobile_pin = 1234;
 
-                if(empty($surname) || empty($national_id_number) || empty($email) || empty($b_role) || empty($regdate_stamp)){
+			$password = sha1(123456);
 
-                    $_SESSION['done-deal']='<div class="alert alert-warning">
-                        <button class="close" data-dismiss="alert">&times;</button>
-                        <strong>Warning!</strong> Please ensure you fill in the fields marked with an asteric(*);
-                    </div>';
-                    $_SESSION['tab1'] = 'active';
-
-                }elseif(empty($county) || empty($town) || empty($phone_number) || empty($postal_address) ||empty($address_type_id)){
-
-                    $_SESSION['done-deal']='<div class="alert alert-warning">
-                        <button class="close" data-dismiss="alert">&times;</button>
-                        <strong>Warning!</strong> Please ensure you fill in the fields marked with an asteric(*);
-                    </div>';
-                    $_SESSION['tab2'] = 'active';
-
-                }else{
-                    if($b_role == 'staff'){
-                        //add to masterfile
-                        $mf_id = $masterfile->addToMasterfile($target_path);
-                        if(!empty($mf_id)){
-                            if($masterfile->addAddress($mf_id)){
-                                $user_id = $staff->addLoginAccount($mf_id);
-                                if(!empty($user_id)){
-                                    $_SESSION['done-deal']='<div class="alert alert-success">
-                                        <button class="close" data-dismiss="alert">&times;</button>
-                                        <strong>Success!</strong> You successfully added a new Staff.
-                                    </div>';
-                                    App::redirectTo('?num=722');
-                                }
-                            }else{
-                                // var_dump(get_last_error());exit;
-                            }
-                        }
-                    }elseif($b_role == 'client'){
-                        // var_dump('Client...');exit;
-                        //add to masterfile
-                        $mf_id = $masterfile->addToMasterfile($target_path);
-                        if(!empty($mf_id)){
-                            if($masterfile->addAddress($mf_id)){
-                                //insert customer file
-                                if ($masterfile->addCustomerFile($mf_id)) {
-                                $_SESSION['done-deal']='<div class="alert alert-success">
-                                    <button class="close" data-dismiss="alert">&times;</button>
-                                    <strong>Success!</strong> You successfully added a new Client.
-                                </div>';
-                                App::redirectTo('?num=722');
-                                }
-                            }else{
-                                // var_dump(get_last_error());exit;
-                            }
-                        }
-                    }elseif($b_role == 'client group'){
-                        // var_dump('Client...');exit;
-                        //add to masterfile
-                        $mf_id = $masterfile->addToMasterfile($target_path);            
-                        if(!empty($mf_id)){
-                            if($masterfile->addAddress($mf_id)){
-                                $_SESSION['done-deal']='<div class="alert alert-success">
-                                    <button class="close" data-dismiss="alert">&times;</button>
-                                    <strong>Success!</strong> You successfully added a new Client Group.
-                                </div>';
-                                App::redirectTo('?num=722');
-                            }else{
-                                // var_dump(get_last_error());exit;
-                            }
-                        }
-                    }
-                }
-            }
-            
-            public function addToMasterfile($target_path){
-                extract($_POST);
-                // disabling an input field do the folliwing to avoid undefined variable
-                $customer_type_id = (isset($customer_type_id) && !empty($customer_type_id)) ? $customer_type_id : 'NULL';
-                $gender = (isset($gender) && !empty($gender)) ? $gender : 'NULL';
-                $target_path = (isset($images_path) && !empty($images_path)) ? $images_path : 'NULL';
-                // var_dump($_POST);exit;
-                if(!checkForExistingEntry('masterfile', 'id_passport', $national_id_number)){
-                        if(!checkForExistingEntry('masterfile', 'email', $email)){
-                                $query = "INSERT INTO public.masterfile(surname, 
-                                            firstname, 
-                                            middlename,
-                                            email, 
-                                            id_passport, 
-                                            time_stamp, 
-                                            gender, 
-                                            images_path,
-                                            b_role, 
-                                            customer_type_id,
-                                            regdate_stamp)
-                        VALUES ('".sanitizeVariable($surname)."', 
-                                '".sanitizeVariable($firstname)."', 
-                                '".sanitizeVariable($middlename)."', 
-                                '".sanitizeVariable($email)."', 
-                                '".sanitizeVariable($national_id_number)."', 
-                                '".time()."', 
-                                '".sanitizeVariable($gender)."',
-                                '".sanitizeVariable($target_path)."', 
-                                '".sanitizeVariable($b_role)."', 
-                                ".sanitizeVariable($customer_type_id).",
-                                '".sanitizeVariable($regdate_stamp)."') RETURNING mf_id";
-                        // var_dump($query); exit;
-                                if($result = run_query($query)){
-                                        $rows = get_row_data($result);
-                                        return $rows['mf_id'];
-                                }else{
-                                        var_dump($query.pg_last_error());exit;
-                                }
-                        }else{
-                                $_SESSION['done-deal']='<div class="alert alert-warning">
-                                        <button class="close" data-dismiss="alert">&times;</button>
-                                        <strong>Warning!</strong> The Following ('.$email.') already exists.
-                                </div>';
-                                // App::redirectTo('?num=803');
-                        }
-                }else{
-                        $_SESSION['done-deal']='<div class="alert alert-warning">
-                                <button class="close" data-dismiss="alert">&times;</button>
-                                <strong>Warning!</strong> The Following ('.$national_id_number.') already exists.
-                        </div>';
-                        // App::redirectTo('?num=803');
-                }
-        }
-
-        public function addAddress($mf_id){
-            extract($_POST);
-            $query = "INSERT INTO address(phone, 
-                    postal_address, 
-                    town, 
-                    mf_id, 
-                    address_type_id, 
-                    county, 
-                    ward, 
-                    street, 
-                    building,
-                    postal_code, 
-                    house_no)
-            VALUES ('".sanitizeVariable($phone_number)."', 
-            '".sanitizeVariable($postal_address)."', 
-            '".sanitizeVariable($town)."', 
-            '".sanitizeVariable($mf_id)."', 
-            '".sanitizeVariable($address_type_id)."', 
-            '".sanitizeVariable($county)."', 
-            '".sanitizeVariable($ward)."', 
-            '".sanitizeVariable($street)."', 
-            '".sanitizeVariable($building)."',
-            '".sanitizeVariable($postal_code)."',
-            '".sanitizeVariable($house)."')";
-            // var_dump($query); exit;
-            if (run_query($query)) {
-                    return true;
-            }else{
-                    return false;
-            }    		
-        }
-        
-        public function editMasterfile(){
-            extract($_POST);
-        // var_dump($_POST);exit;
-        if(!onEditcheckForExistingEntry('masterfile', 'id_passport', $id_passport, 'mf_id', $mf_id)){
-        //image validation
-        $allowedExts = array("gif", "jpeg", "jpg", "png");
-        $temp = explode(".", $_FILES["images_path"]["name"]);
-        $extension = end($temp);
-
-        $target_path = "";
-        if($_FILES['images_path']['name'] != ''){
-            if ((($_FILES["images_path"]["type"] == "image/gif")
-           || ($_FILES["images_path"]["type"] == "image/jpeg")
-           || ($_FILES["images_path"]["type"] == "image/jpg")
-           || ($_FILES["images_path"]["type"] == "image/pjpeg")
-           || ($_FILES["images_path"]["type"] == "image/x-png")
-           || ($_FILES["images_path"]["type"] == "image/png"))
-           && ($_FILES["images_path"]["size"] < 5000000)
-           && in_array($extension, $allowedExts)) {
-           if ($_FILES["images_path"]["error"] > 0) {
-              "Return Code: " . $_FILES["images_path"]["error"] . "<br>";
-           } else {
-                "Upload: " . $_FILES["images_path"]["name"] . "<br>";
-                "Type: " . $_FILES["images_path"]["type"] . "<br>";
-                "Size: " . ($_FILES["images_path"]["size"] / 1024) . " kB<br>";
-                "Temp file: " . $_FILES["images_path"]["tmp_name"] . "<br>";
-
-                $target_path = "crm_images/".$_FILES["images_path"]["name"];
-                move_uploaded_file($_FILES["images_path"]["tmp_name"], $target_path);
-                }
-            } else {
-                $_SESSION['done-deal']='<div class="alert alert-warning">
-                    <button class="close" data-dismiss="alert">&times;</button>
-                    <strong>Warning!</strong> The image file is Invalid!
-                </div>';
-           }
-        }
-
-        if(empty($id_passport) || empty($regdate_stamp) || empty($b_role) && empty($mf_id)){          
-            $_SESSION['done-deal'] = '<div class="alert alert-warning">
-                <button class="close" data-dismiss="alert">&times;</button>
-                <strong>Warning!</strong> Some Mandatory fields(*) have not yet  been filled!
-            </div>';
-        }else{
-            $customer_type_id = (isset($customer_type_id)) ? $customer_type_id : 'NULL';
-            if(!empty($_FILES['images_path']['name'])){
-                $upate_image = "images_path = '".sanitizeVariable($target_path)."',";
-            }else{
-                $upate_image = '';
-            }
-            if(isset($company_name)){ 
-                if(!empty($company_name)){
-                    $update_company = "company_name = ".sanitizeVariable($company_name).","; 
-                }else{
-                    $update_company = "company_name = NULL,";
-                }
-            }else{
-                $update_company = "company_name = NULL,";
-            }
-            $gender = (isset($gender)) ? $gender : '';
-
-            //update the masterfile
-            $query="UPDATE masterfile SET
-            firstname='".sanitizeVariable($firstname)."',
-            middlename = '".sanitizeVariable($middlename)."', 
-            surname = '".sanitizeVariable($surname)."',
-            id_passport = '".sanitizeVariable($id_passport)."',
-            gender = '".sanitizeVariable($gender)."',
-            b_role = '".sanitizeVariable($b_role)."',
-            regdate_stamp = '".sanitizeVariable($regdate_stamp)."',
-            email = '".sanitizeVariable($email)."',
-            $upate_image
-            $update_company
-            customer_type_id = ".sanitizeVariable($customer_type_id)."
-            WHERE mf_id = ".sanitizeVariable($mf_id)."";
-
-            // var_dump($query);exit;
-            $data=run_query($query);            
-            if ($data){ 
-                // var_dump($masterfile->editBussrole($_POST['mf_id']));exit;
-                if ($masterfile->editBussrole($_POST['mf_id'])) {
-                    $_SESSION['done-deal']='<div class="alert alert-success">
-                        <button class="close" data-dismiss="alert">&times;</button>
-                        <strong>Success!</strong> CRM details have been successfully updated.
-                    </div>';
-                }
-            }
-        }
-    }else{
-        $_SESSION['done-deal'] = '<div class="alert alert-warning">
-            <button class="close" data-dismiss="alert">&times;</button>
-            <strong>Warning!</strong> The Id No. ('.$_POST["id_passport"].') already exists.
-        </div>';
-    }
-        }
-
-        public function addCustomer($cu, $ag, $mc, $target_path, $mf_id){
-		extract($_POST);
-
-                    $mobile_pin = 1234;
-
-                    $password = sha1(123456);
-
-                    $regdate_stamp = time();
+			$regdate_stamp = time();
 
 		    $register_user="INSERT INTO ".DATABASE.".customers(surname,start_date,active,customer_type_id,
 		    firstname,username,password,middlename,regdate_stamp,national_id_number,
@@ -497,6 +217,96 @@
 			return run_query($query);
 		}
 
+		public function addToMasterfile($target_path){
+			extract($_POST);
+			// disabling an input field do the folliwing to avoid undefined variable
+			$customer_type_id = (isset($customer_type_id) && !empty($customer_type_id)) ? $customer_type_id : 'NULL'; 
+			$company_name = (isset($company_name) && !empty($company_name)) ? $company_name : 'NULL';
+			$gender = (isset($gender) && !empty($gender)) ? $gender : 'NULL';
+			$target_path = (isset($images_path) && !empty($images_path)) ? $images_path : 'NULL';
+			// var_dump($_POST);exit;
+			if(!checkForExistingEntry('masterfile', 'id_passport', $national_id_number)){
+				if(!checkForExistingEntry('masterfile', 'email', $email)){
+					$query = "INSERT INTO public.masterfile(surname, 
+					            firstname, 
+					            middlename,
+					            email, 
+					            id_passport, 
+					            time_stamp, 
+					            gender, 
+					            images_path,
+					            company_name,
+					            b_role, 
+					            customer_type_id,
+					            regdate_stamp)
+	    			VALUES ('".sanitizeVariable($surname)."', 
+			    		'".sanitizeVariable($firstname)."', 
+			    		'".sanitizeVariable($middlename)."', 
+			    		'".sanitizeVariable($email)."', 
+			    		'".sanitizeVariable($national_id_number)."', 
+		    			'".time()."', 
+		    			'".sanitizeVariable($gender)."',
+		    			'".sanitizeVariable($target_path)."',
+		    			".sanitizeVariable($company_name).", 
+		    			'".sanitizeVariable($b_role)."', 
+		    			".sanitizeVariable($customer_type_id).",
+		    			'".sanitizeVariable($regdate_stamp)."') RETURNING mf_id";
+	    			// var_dump($query); exit;
+					if($result = run_query($query)){
+						$rows = get_row_data($result);
+						return $rows['mf_id'];
+					}else{
+						var_dump($query.pg_last_error());exit;
+					}
+				}else{
+					$_SESSION['done-deal']='<div class="alert alert-warning">
+						<button class="close" data-dismiss="alert">&times;</button>
+						<strong>Warning!</strong> The Following ('.$email.') already exists.
+					</div>';
+					// App::redirectTo('?num=803');
+				}
+			}else{
+				$_SESSION['done-deal']='<div class="alert alert-warning">
+					<button class="close" data-dismiss="alert">&times;</button>
+					<strong>Warning!</strong> The Following ('.$national_id_number.') already exists.
+				</div>';
+				// App::redirectTo('?num=803');
+			}
+		}
+
+		public function addAddress($mf_id){
+			extract($_POST);
+			$query = "INSERT INTO address(phone, 
+					            postal_address, 
+					            town, 
+					            mf_id, 
+					            address_type_id, 
+					            county, 
+					            ward, 
+					            street, 
+					            building,
+					            postal_code, 
+					            house_no)
+    		VALUES ('".sanitizeVariable($phone_number)."', 
+    		'".sanitizeVariable($postal_address)."', 
+    		'".sanitizeVariable($town)."', 
+    		'".sanitizeVariable($mf_id)."', 
+    		'".sanitizeVariable($address_type_id)."', 
+    		'".sanitizeVariable($county)."', 
+    		'".sanitizeVariable($ward)."', 
+    		'".sanitizeVariable($street)."', 
+    		'".sanitizeVariable($building)."',
+    		'".sanitizeVariable($postal_code)."',
+    		'".sanitizeVariable($house)."')";
+    		// var_dump($query); exit;
+    		if (run_query($query)) {
+    			return true;
+    		}else{
+    			return false;
+    		}
+    		
+		}
+
 		public function addCustomerFile($mf_id){
 			extract($_POST);
 			$query = "INSERT INTO customer_file(mf_id, 
@@ -592,6 +402,36 @@
 				return false;
 			}
 		}
+
+		public function addAddressType(){
+			extract($_POST);
+		   if(!checkForExistingEntry('address_types', 'address_type_name', $address_type_name)){
+	            $distinctQuery = "INSERT INTO address_types(address_type_name, status) 
+	                    VALUES('".$address_type_name."','".$status."')";
+	            $result = run_query($distinctQuery);
+
+	            if (!$result) {
+	                $errormessage = '<div class="alert alert-error">
+	                                    <button class="close" data-dismiss="alert">×</button>
+	                                    <strong>Error!</strong> Entry not added.
+	                                </div>'; 
+	                $_SESSION['done-add'] = $errormessage;
+	              }else{
+	              $_SESSION['done-add'] = '<div class="alert alert-success">
+	                        <button class="close" data-dismiss="alert">×</button>
+	                        <strong>Success!</strong> Entry added successfully.
+	                    </div>';
+	                }
+	        } 
+	          else{
+	             $errormessage = '<div class="alert alert-warning">
+	                                     <button class="close" data-dismiss="alert">×</button>
+	                                     <strong>Warning!</strong> The Address Type Name('.$address_type_name.') already exists. Try another!
+	                                 </div>'; 
+	                 $_SESSION['done-add'] = $errormessage;
+	        }
+		}
+
 
 		// public function editAddressType(){
 		// 	extract($post);

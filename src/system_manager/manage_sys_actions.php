@@ -15,7 +15,7 @@
                                                  
                    <tbody>
 
- <?php
+ <?
  $distinctQuery = "SELECT a.*, v.* FROM sys_actions a
    LEFT JOIN sys_views v ON a.sys_view_id = v.sys_view_id
    ";
@@ -51,7 +51,7 @@
 		    <td><?=$action_status; ?></td>
 			<td><a id="edit_link" href="index.php?num=ed_action&id=<?=$sys_action_id; ?>" class="btn btn-mini"><i class="icon-edit"></i> Edit</a></td>
 		  </tr>
-		 <?php
+		 <?
  	}
 	?>
   </tbody>

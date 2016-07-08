@@ -1,39 +1,40 @@
 <table id="table1" class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Bill#</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Type</th>
-            <th>Interval</th>
-            <th>Amt. Type</th>
-            <th>Rev. Channel</th>
-            <th>Service</th>
-            <th>Code</th>
-            <th>Due Time</th>
-            <th>Amount</th>
-            <th>Model</th>
-            <th>Edit</th>
-        </tr>
-    </thead>                                                 
-    <tbody>
+					         <thead>
+					          <tr>
+					           <th>Bill#</th>
+					           <th>Name</th>
+                               <th>Description</th>
+                               <th>Category</th>
+					           <th>Type</th>
+					           <th>Interval</th>
+                               <th>Amt. Type</th>
+                               <th>Rev. Channel</th>
+                               <th>Service</th>
+                               <th>Code</th>
+					           <th>Due Time</th>
+                               <th>Amount</th>
+                               <th>Model</th>
+                               <th>Edit</th>
+					          </tr>
+					         </thead>
+                                                 
+                   <tbody>
 
-        <?php
-          $distinctQuery = "SELECT s.*, r.*,gt.* FROM revenue_service_bill s 
-          LEFT JOIN revenue_channel r ON r.revenue_channel_id = s.revenue_channel_id
-          LEFT JOIN gtel_device_model gt ON gt.device_model_id = s.product_id
-          Order by revenue_bill_id DESC";
-          // var_dump($distinctQuery);exit;
+ <?
+   $distinctQuery = "SELECT s.*, r.*,gt.* FROM revenue_service_bill s 
+   LEFT JOIN revenue_channel r ON r.revenue_channel_id = s.revenue_channel_id
+   LEFT JOIN gtel_device_model gt ON gt.device_model_id = s.product_id
+   Order by revenue_bill_id DESC";
+   // var_dump($distinctQuery);exit;
+              
+   $resultId = run_query($distinctQuery);
+   $total_rows = get_num_rows($resultId);
 
-          $resultId = run_query($distinctQuery);
-          $total_rows = get_num_rows($resultId);
 
-
-            $con = 1;
-            $total = 0;
-            while($row = get_row_data($resultId))
-            {
+	$con = 1;
+	$total = 0;
+	while($row = get_row_data($resultId))
+	{
 		$revenue_bill_id =($row['revenue_bill_id']);
 		$bill_name = $row['bill_name'];
 		$bill_description =($row['bill_description']);
@@ -48,25 +49,27 @@
 		$interval = $row['bill_interval'];
 		$service = getBillServiceOption($row['service_channel_id']);
 		$product_id = $row['model'];
-	?>
-                <tr>
-                    <td><?=$revenue_bill_id; ?></td>
-                    <td><?=$bill_name; ?></td>
-                    <td><?=$bill_description; ?></td>
-                    <td><?=$bill_category; ?></td>
-                    <td><?=$bill_type; ?></td>
-                    <td><?=$interval; ?></td>
-                    <td><?=$amount_type; ?></td>
-                    <td><?=$revenue_channel_name; ?></td>
-                    <td><?=$service; ?></td>
-                    <td><?=$bill_code; ?></td>
-                    <td><?=$bill_due_time; ?></td>
-                    <td><?=$amount; ?></td>
-                    <td><?=$product_id; ?></td>
-                    <td><a id="edit_link" class="btn btn-mini" href="index.php?num=643&edit_id=<?=$revenue_bill_id; ?>">
+		 ?>
+		  <tr>
+		   <td><?=$revenue_bill_id; ?></td>
+           <td><?=$bill_name; ?></td>
+           <td><?=$bill_description; ?></td>
+           <td><?=$bill_category; ?></td>
+           <td><?=$bill_type; ?></td>
+           <td><?=$interval; ?></td>
+           <td><?=$amount_type; ?></td>
+           <td><?=$revenue_channel_name; ?></td>
+           <td><?=$service; ?></td>
+           <td><?=$bill_code; ?></td>
+           <td><?=$bill_due_time; ?></td>
+           <td><?=$amount; ?></td>
+           <td><?=$product_id; ?></td>
+           <td><a id="edit_link" class="btn btn-mini" href="index.php?num=643&edit_id=<?=$revenue_bill_id; ?>">
                    <i class="icon-edit"></i> Edit</a></td>
-		</tr>
-	<?php } ?>
+		  </tr>
+		 <?
+ 	}
+	?>
   </tbody>
 </table>
 <div class="clearfix"></div>

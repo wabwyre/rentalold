@@ -1,4 +1,4 @@
-<?php
+<?
 set_layout("dt-layout.php", array(
   'pageSubTitle' => 'Search for a Bill',
   'pageSubTitleText' => 'Over the counter bills',
@@ -78,12 +78,12 @@ if(isset($_SESSION['done-add'])){
 </form>
 </fieldset>
 
-<?php
-    if(isset($_POST['details'])){
-      $_POST['details'] == "GO"
-    ?>
+<?
+if(isset($_POST['details'])){
+  $_POST['details'] == "GO"
+?>
 <fieldset><legend class="table_fields">BILLS</legend>
-    <?php
+    <?
   $service_account_type = $_POST['service_account_type']; 
   $serviceaccount = trim($_POST['service_account']);
 
@@ -117,7 +117,7 @@ if(isset($_SESSION['done-add'])){
  </thead>
  <tbody>
 
- <?php
+ <?
 	$con = 1;
 	$total = 0;
 	while($row = get_row_data($resultId))

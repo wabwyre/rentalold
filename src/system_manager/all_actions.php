@@ -1,4 +1,4 @@
-<?php
+<?
 set_title('Manage System Action');
 set_layout("dt-layout.php", array(
     'pageSubTitle' => 'Manage System Action',
@@ -35,11 +35,11 @@ set_layout("dt-layout.php", array(
                       </ul>
                       <div class="tab-content">
                          <div class="tab-pane active" id="tab_2_1">
-                              <?php include "add_sys_actions.php"; ?>
+                              <? include "add_sys_actions.php"; ?>
                          </div>
 
                         <div class="tab-pane" id="tab_2_2">
-                             <?php include "manage_sys_actions.php"; ?>
+                             <? include "manage_sys_actions.php"; ?>
                         </div>
 
                       </div>

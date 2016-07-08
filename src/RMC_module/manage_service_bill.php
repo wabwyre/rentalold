@@ -35,11 +35,11 @@ $Rev = new RevenueManager;
                   </ul>
                   <div class="tab-content">
                      <div class="tab-pane" id="tab_1_1">
-                          <?php include "add_service_bill.php"; ?>
+                          <? include "add_service_bill.php"; ?>
                      </div>
 
                     <div class="tab-pane active" id="tab_1_2">
-                         <?php include "services_bills.php"; ?>
+                         <? include "services_bills.php"; ?>
                     </div>
 
                   </div>

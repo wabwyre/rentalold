@@ -1,4 +1,4 @@
- <?php
+ <?
 set_layout("dt-layout.php", array(
 	'pageSubTitle' => 'M-pesa Request',
 	'pageSubTitleText' => '',
@@ -30,7 +30,7 @@ set_layout("dt-layout.php", array(
       </thead>
       <tbody>
 
-       <?php
+       <?
          $query = "SELECT * FROM ".DATABASE.".mpesa_request ";
          $result = run_query($query);
          $total_rows = get_num_rows($result);
