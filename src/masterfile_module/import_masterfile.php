@@ -117,7 +117,7 @@ set_css(array(
         </tr>
       </thead>
       <tbody>
-        <?
+        <?php
           $distinctQuery = "SELECT muh.*, CONCAT(m.surname,' ',m.firstname,' ',m.middlename) AS full_name FROM masterfile_upload_history muh 
           LEFT JOIN masterfile m ON m.mf_id = muh.uploader_mf_id";
           $resultId = run_query($distinctQuery);
@@ -130,7 +130,7 @@ set_css(array(
          <td><?=$row['error_report']; ?></td>
          <td><?=$row['full_name']; ?></td>                                
         </tr>
-        <? } ?>
+        <?php } ?>
       </tbody>
     </table>
     <div class="clearfix"></div>

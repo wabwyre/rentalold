@@ -154,4 +154,4 @@
 		</div>
 	</div>
 </form>
-<?php set_js(array('src/js/manage_broadcast.js')); ?>
+<? set_js(array('src/js/manage_broadcast.js')); ?>

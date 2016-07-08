@@ -1,17 +1,17 @@
 <?php
-set_layout("wizard-layout.php", array(
-  'pageSubTitle' => 'Add Masterfile',
-  'pageSubTitleText' => '',
-  'pageBreadcrumbs' => array (
-    array ( 'url'=>'index.php', 'text'=>'Home' ),
-    array ( 'text'=>'Add masterfile' )
-  ),
-   'pageWidgetTitle'=>'Add Masterfile Record'
-));
-set_js(array(
-  'src/js/submit_wizard_form.js',
-  'src/js/add.crm.customer.js'
-)); 
+    set_layout("wizard-layout.php", array(
+      'pageSubTitle' => 'Add Masterfile',
+      'pageSubTitleText' => '',
+      'pageBreadcrumbs' => array (
+        array ( 'url'=>'index.php', 'text'=>'Home' ),
+        array ( 'text'=>'Add masterfile' )
+      ),
+       'pageWidgetTitle'=>'Add Masterfile Record'
+    ));
+    set_js(array(
+      'src/js/submit_wizard_form.js',
+      'src/js/add.crm.customer.js'
+    )); 
 ?>
 <div class="widget box blue" id="form_wizard_1">
    <div class="widget-title">
@@ -61,12 +61,6 @@ set_js(array(
                         <span class="desc"><i class="icon-ok"></i> Address Details</span>   
                         </a>
                      </li>
-                      <!--  <li class="span3">
-                          <a href="#tab3" data-toggle="tab" class="step">
-                          <span class="number">3</span>
-                          <span class="desc"><i class="icon-ok"></i> Login Details</span>   
-                          </a>
-                       </li> -->
                   </ul>
                </div>
             </div>
@@ -88,12 +82,12 @@ set_js(array(
 
             <div class="form-actions clearfix">
                 <input type="hidden" name="action" value="add_masterfile"/>
-               <a href="javascript:;" class="btn button-previous">
-               <i class="icon-angle-left"></i> Back 
-               </a>
-               <a href="javascript:;" class="btn btn-primary blue button-next">
-               Continue <i class="icon-angle-right"></i>
-               </a>
+                <a href="javascript:;" class="btn button-previous">
+                    <i class="icon-angle-left"></i> Back 
+                </a>
+                <a href="javascript:;" class="btn btn-primary blue button-next">
+                     Continue <i class="icon-angle-right"></i>
+                </a>
                <button id="submit_wizard_contents" class="btn btn-success button-submit">
                Submit <i class="icon-ok"></i>
                </button>

@@ -199,7 +199,9 @@ dashboard: src/dashboard_module/dashboard.php
 723: src/masterfile_module/search_masterfile.php
 724: src/masterfile_module/masterfile_profile.php
 725: src/crm_module/add_msp_masterfile.php
-726: src/crm_module/deleted_masterfile.php
+726: src/masterfile_module/deleted_masterfile.php
+727: src/masterfile_module/manage_address.php
+728: src/masterfile_module/edit_address_type.php
 import_mf: src/masterfile_module/import_masterfile.php
 import_companies: src/masterfile_module/import_client_groups.php
 
@@ -225,8 +227,6 @@ import_companies: src/masterfile_module/import_client_groups.php
 823: src/crm_module/add_new_policy.php
 824: src/crm_module/assoc_profile.php
 826: src/crm_module/all_clients.php
-827: src/crm_module/manage_address.php
-828: src/crm_module/edit_address_type.php
 829: src/crm_module/insurance_policy.php
 830: src/crm_module/insurance_claim.php
 832: src/crm_module/customer_acc_info.php

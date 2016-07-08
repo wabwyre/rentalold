@@ -1,19 +1,19 @@
 <?php
-set_layout("dt-layout.php", array(
-  'pageSubTitle' => 'Manage Address Types',
-  'pageSubTitleText' => '',
-  'pageBreadcrumbs' => array (
-    array ( 'url'=>'index.php', 'text'=>'Home' ),
-    array ( 'text'=>'Masterfile' ),
-    array ( 'text'=>'Manage Address' )
-  )
-));
+    set_layout("dt-layout.php", array(
+      'pageSubTitle' => 'Manage Address Types',
+      'pageSubTitleText' => '',
+      'pageBreadcrumbs' => array (
+        array ( 'url'=>'index.php', 'text'=>'Home' ),
+        array ( 'text'=>'Masterfile' ),
+        array ( 'text'=>'Manage Address' )
+      )
+    ));
 
 
-if(isset($_SESSION['done-add'])){
-    echo $_SESSION['done-add'];
-    unset($_SESSION['done-add']);
-}
+    if(isset($_SESSION['done-add'])){
+        echo $_SESSION['done-add'];
+        unset($_SESSION['done-add']);
+    }
 ?>
 
                        <!-- BEGIN INLINE TABS PORTLET-->

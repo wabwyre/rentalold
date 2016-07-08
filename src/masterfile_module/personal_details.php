@@ -5,9 +5,9 @@
             <div class="controls">
               <select name="b_role" class="span12" id="b_role">
                   <option value="">--Choose Business Role--</option>
-                  <option value="staff" <?php if(isset($_POST['b_role']) && $_POST['b_role'] == 'staff') echo 'selected'; ?>>Staff</option>
                   <option value="client" <?php if(isset($_POST['b_role']) && $_POST['b_role'] == 'client') echo 'selected'; ?>>Client</option>
-                  <option value="client group" <?php if(isset($_POST['b_role']) && $_POST['b_role'] == 'agent') echo 'selected'; ?>>Agent</option>
+                  <option value="tenant" <?php if(isset($_POST['b_role']) && $_POST['b_role'] == 'tenant') echo 'selected'; ?>>Tenant</option>
+                  <option value="agent" <?php if(isset($_POST['b_role']) && $_POST['b_role'] == 'agent') echo 'selected'; ?>>Agent</option>
               </select>
             </div>
         </div>
@@ -38,24 +38,24 @@
     </div>
 </div>
 	
-    <div class="row-fluid">
-        <div class="span6">
-            <div class="control-group">
-                <label for="firstname" class="control-label">First Name</label>
-                <div class="controls">
-                        <input type="text" name="firstname" class="span12" id="firstname" value="<?=(isset($_POST['firstname'])) ? $_POST['firstname'] : ''; ?>" placeholder="First Name"/>
-                </div>
+<div class="row-fluid">
+    <div class="span6">
+        <div class="control-group">
+            <label for="firstname" class="control-label">First Name</label>
+            <div class="controls">
+                    <input type="text" name="firstname" class="span12" id="firstname" value="<?=(isset($_POST['firstname'])) ? $_POST['firstname'] : ''; ?>" placeholder="First Name"/>
             </div>
         </div>
-        <div class="span6">
-            <div class="control-group">
-                <label class="control-label" for="id_pass" id="id_pass">ID # or Passport<span>*</span></label>
-                <div class="controls">
-                        <input type="text" name="national_id_number" value="<?=(isset($_POST['national_id_number'])) ? $_POST['national_id_number'] : ''; ?>" class="span12" />
-                </div>
-            </div>
-        </div>			
     </div>
+    <div class="span6">
+        <div class="control-group">
+            <label class="control-label" for="id_pass" id="id_pass">ID # or Passport<span>*</span></label>
+            <div class="controls">
+                    <input type="text" name="national_id_number" value="<?=(isset($_POST['national_id_number'])) ? $_POST['national_id_number'] : ''; ?>" class="span12" />
+            </div>
+        </div>
+    </div>			
+</div>
 		
 <div class="row-fluid">
     <div class="span6">
@@ -87,13 +87,31 @@
             <div class="controls">
                     <input type="email" name="email" class="span12" value="<?=(isset($_POST['email'])) ? $_POST['email'] : ''; ?>" placeholder="email" />
             </div>
+        </div>        
+    </div>
+    <div class="span6">
+        <div class="control-group">
+            <label class="control-label" for="company_name">Company Name</label>
+            <div class="controls">
+                <select name="company_name" id="company_name" class="span12">
+                    <option value="">--Choose Company Name--</option>
+                    <?php
+                        $query = "SELECT * FROM masterfile  
+                        where b_role = 'agent'";
+                        $result = run_query($query);
+                        while ($rows = get_row_data($result)) {
+                    ?>
+                    <option value="<?=$rows['mf_id']; ?>" <?php if(isset($_POST['company_name']) && $rows['mf_id'] == $_POST['company_name']) { echo 'selected'; } ?>><?=$rows['surname']; ?></option>
+                    <?php } ?>
+                </select> 
+            </div>
         </div>
     </div>
 </div>
 
 <div class="row-fluid">
     <div class="span6">
-		<label for="user_role" class="control-label">User Role</label>
+	<label for="user_role" class="control-label">User Role</label>
         <div class="controls">
             <select name="user_role" id="user_role" class="span12">
                 <option value="">--Choose User Role--</option>
