@@ -141,39 +141,55 @@
     </div>
 
     <div class="row-fluid">
-      <div class="span6">
-          <div class="control-group">
-              <label for="amount" class="control-label">Amount:</label>
-              <div class="controls">
-                <input class="span12" type="number" id="amount" name="amount"  required>
-              </div>
+       <div class="span6">
+        <div class="control-group">
+          <label for="plot_id" class="control-label">Plot:</label>
+          <div class="controls">  
+            <select name="plot_id"  id="plot" class="span12" required>
+              <option value="">--Choose Plot--</option>
+              <?php
+               $query = "SELECT * FROM plots";
+                    $result = run_query($query);
+                    while($row = get_row_data($result)){
+                      $plot_id = $row['plot_id'];
+                      $plot_name = $row['plot_name'];
+
+                      echo "<option value=\"$plot_id\">$plot_name</option>";
+                    }
+              ?>
+            </select>
           </div>
+        </div>
       </div>
 
       <div class="span6">
         <div class="control-group">
-          <label for="product_id" class="control-label">Product#:</label>
+          <label for="product_id" class="control-label">House:</label>
           <div class="controls">  
-            <select name="product_id" class="span12" required>
-              <option value="">--Choose Model--</option>
-              <?php
-                $query = "SELECT gt.*, sb.* FROM gtel_device_model gt
-                LEFT JOIN revenue_service_bill sb ON sb.product_id = gt.device_model_id";
-                $result = run_query($query);
-                while ($rows = get_row_data($result)) {
-                   if(!$data = $Rev->checkIfDeviceisAttached($rows['device_model_id'])){
-                 //if(!checkForExistingEntry('revenue_service_bill', 'product_id', $rows['product_id'])){
-              ?>
-                <option value="<?=$rows['device_model_id']; ?>"><?=$rows['model']; ?></option>
-              <?php }}?>
-            </select>
+               <select name="product_id" id="house" class="span12"  required>
+                 
+                </select>
           </div>
         </div>
       </div>
   </div>
 
+  <div class="row-fluid">
+      <div class="span6">
+          <div class="control-group">
+              <label for="amount" class="control-label">Amount:</label>
+              <div class="controls">
+                <input class="span12" type="number" id="amount" name="amount" min="1"  required>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
 <input class="span12" type="hidden" name="action" id="action" value="addservicebill" class="packinput">
     <div class="form-actions">
-        <?php viewActions($_GET['num'], $_SESSION['role_id']); ?>
+       <!--  <?php //viewActions($_GET['num'], $_SESSION['role_id']); ?> -->
+        <input type="submit" name="button" class="btn btn-primary"  id="button" value="Submit" />
+        <input type="reset" name="button" id="button" value="Reset" />
     </div>
 </form>         

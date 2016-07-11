@@ -50,3 +50,4 @@ $Rev = new RevenueManager;
       </div>
     </div>
  <!--END TABS-->
+ <? set_js(array('src/js/filter_house.js')); ?>
