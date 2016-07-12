@@ -43,7 +43,7 @@
 			<div class="details">
 				<div class="title">Active Insurance</div>
 				<div class="numbers">
-					<?php echo $period->countActiveInsuranceRecords('gtel_insurance','TRUE'); ?>
+					<!-- <?//php echo $period->countActiveInsuranceRecords('gtel_insurance','TRUE'); ?> -->
 				</div>
 				<div class="progress progress-warning">
 					<div class="bar" style="width: 0%"></div>

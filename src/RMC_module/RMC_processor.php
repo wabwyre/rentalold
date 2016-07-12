@@ -756,16 +756,16 @@ switch($_POST['action'])
      $processed = 1;
   break;
 
-  case addservicebill:
+ case addservicebill:
                 logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
                 extract($_POST);
                   //var_dump($_POST);exit;
                 if(!checkForExistingEntry('revenue_service_bill', 'bill_code',  $bill_code)){
                   if(!checkForExistingEntry('revenue_service_bill', 'bill_name',  $bill_name)){
                 $addservicebill="INSERT INTO revenue_service_bill
-                     (bill_name,bill_description,bill_category,bill_type,amount_type,bill_code,bill_due_time,amount,revenue_channel_id,bill_interval,service_channel_id, product_id)
+                     (bill_name,bill_description,bill_category,bill_type,amount_type,bill_code,bill_due_time,amount,revenue_channel_id,bill_interval,service_channel_id, product_id,plot_id)
                              VALUES('".$bill_name."','".$bill_description."','".$bill_category."','".$bill_type."',
-                              '".$amount_type."','".$bill_code."','".$bill_due_time."','".$amount."','".$revenue_channel_id."', '".$interval."', '".$service_option."', '".$product_id."')";
+                              '".$amount_type."','".$bill_code."','".$bill_due_time."','".$amount."','".$revenue_channel_id."', '".$interval."', '".$service_option."', '".$product_id."','".$plot_id."')";
                  // var_dump($addservicebill);exit;
                 $result = run_query($addservicebill);
 
@@ -815,7 +815,8 @@ switch($_POST['action'])
                                      bill_due_time='".$bill_due_time."',
                                      service_channel_id = '".$service_option."',
                                      bill_interval = '".$interval."',
-                                     product_id = '".$product_id."'
+                                     product_id = '".$product_id."',
+                                     plot_id= '".$plot_id."'
                                      WHERE revenue_bill_id=$revenue_bill_id";
                                      
               //echo $editservicebill;

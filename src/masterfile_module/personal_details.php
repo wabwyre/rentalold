@@ -5,9 +5,10 @@
             <div class="controls">
               <select name="b_role" class="span12" id="b_role">
                   <option value="">--Choose Business Role--</option>
-                  <option value="client" <?php if(isset($_POST['b_role']) && $_POST['b_role'] == 'client') echo 'selected'; ?>>Client</option>
                   <option value="tenant" <?php if(isset($_POST['b_role']) && $_POST['b_role'] == 'tenant') echo 'selected'; ?>>Tenant</option>
-                  <option value="agent" <?php if(isset($_POST['b_role']) && $_POST['b_role'] == 'agent') echo 'selected'; ?>>Agent</option>
+                  <option value="land_lord" <?php if(isset($_POST['b_role']) && $_POST['b_role'] == 'land-lord') echo 'selected'; ?>>Land Lord</option>
+                  <option value="contractor" <?php if(isset($_POST['b_role']) && $_POST['b_role'] == 'contractor') echo 'selected'; ?>>Contractor</option>
+                  <option value="property_manager" <?php if(isset($_POST['b_role']) && $_POST['b_role'] == 'property-manager') echo 'selected'; ?>>Property Manager</option>
               </select>
             </div>
         </div>
@@ -49,9 +50,9 @@
     </div>
     <div class="span6">
         <div class="control-group">
-            <label class="control-label" for="id_pass" id="id_pass">ID # or Passport<span>*</span></label>
+            <label class="control-label" for="id_passport" id="id_pass">ID # or Passport<span>*</span></label>
             <div class="controls">
-                    <input type="text" name="national_id_number" value="<?=(isset($_POST['national_id_number'])) ? $_POST['national_id_number'] : ''; ?>" class="span12" />
+                <input type="text" name="id_passport" value="<?=(isset($_POST['id_passport'])) ? $_POST['id_passport'] : ''; ?>" class="span12" />
             </div>
         </div>
     </div>			
@@ -91,18 +92,18 @@
     </div>
     <div class="span6">
         <div class="control-group">
-            <label class="control-label" for="company_name">Company Name</label>
+            <label class="control-label" for="house">House:</label>
             <div class="controls">
-                <select name="company_name" id="company_name" class="span12">
-                    <option value="">--Choose Company Name--</option>
+                <select name="house" id="house" class="span12 live_search">
+                    <option value="">--Choose House--</option>
                     <?php
-                        $query = "SELECT * FROM masterfile  
-                        where b_role = 'agent'";
-                        $result = run_query($query);
-                        while ($rows = get_row_data($result)) {
+                        $houses = $mf->getAllHouses();
+                        if(count($houses)){
+                            foreach ($houses as $house){
                     ?>
-                    <option value="<?=$rows['mf_id']; ?>" <?php if(isset($_POST['company_name']) && $rows['mf_id'] == $_POST['company_name']) { echo 'selected'; } ?>><?=$rows['surname']; ?></option>
-                    <?php } ?>
+                    <option value="<?php echo $house['house_id']; ?>">
+                        <?php echo $house['house_number'].' ('.$house['plot_name'].')'; ?></option>
+                    <?php }} ?>
                 </select> 
             </div>
         </div>

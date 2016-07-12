@@ -63,23 +63,15 @@
       </div>
       <div class="span6">
         <div class="control-group">
-          <label for="house" class="control-label">House No:</label>
-          <div class="controls">
-              <input type="text" name="house" class="span12" value="<?=(isset($_POST['house'])) ? $_POST['house'] : ''; ?>" >
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row-fluid">
-      <div class="span6">
-        <div class="control-group">
           <label for="phone_number" class="control-label">Phone Number:<span>*</span></label>
           <div class="controls">
             <input type="number" name="phone_number" class="span12" value="<?=(isset($_POST['phone_number'])) ? $_POST['phone_number'] : ''; ?>" />
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="row-fluid">
       <div class="span6">
         <div class="control-group">
           <label for="postal_address" class="control-label">P.O Box:<span>*</span></label>
@@ -88,9 +80,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="row-fluid">
       <div class="span6">
         <div class="control-group">
           <label for="postal_code" class="control-label">Postal code:<span>*</span></label>
@@ -99,6 +88,10 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="row-fluid">
+
       <div class="span6">
         <div class="control-group">
           <label for="address_type_id" class="control-label">Address Type:<span>*</span></label>
