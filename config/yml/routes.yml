@@ -308,6 +308,28 @@ view_ticket: src/support_module/view_ticket.php
 
 ####: Referrals
 all_referrals: src/refarrals_module/all_refarrals.php
-
-
 inactive_cust: src/crm_module/inactive_accounts.php
+
+#### Plot module
+3000: src/prop_module/plots.php
+3001: src/prop_module/add_property.php
+edit_plot: src/prop_module/edit_plot.php
+view_prop: src/prop_module/view_property.php
+del_plot: src/prop_module/delete_plot.php
+
+#### House Module
+all_houses: src/house_module/houses.php
+add_house: src/house_module/add_house.php
+edit_house: src/house_module/edit_house.php
+del_house: src/house_module/delete_house.php
+view_house: src/house_module/view_house.php
+in_plot: src/house_module/houses_in_plot.php
+
+#### Reports
+6000: src/payment_reports/house_payments.php
+6001: src/payment_reports/tenant_payments.php
+6002: src/payment_reports/plot_payments.php
+6003: src/payment_reports/paybill_payments.php
+6004: src/payment_reports/landlord_payments.php
+6005: src/payment_reports/landlord_houses.php
+

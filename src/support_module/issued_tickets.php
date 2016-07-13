@@ -3,19 +3,19 @@ include_once('src/models/SupportTickets.php');
 $Support = new SupportTickets;
 
 set_layout("dt-layout.php", array(
-	'pageSubTitle' => 'Issued Support Tickets',
+	'pageSubTitle' => 'Issued Maintenance Tickets',
 	'pageSubTitleText' => '',
 	'pageBreadcrumbs' => array (
 		array ( 'url'=>'index.php', 'text'=>'Home' ),
-		array ( 'text'=>'Support Tickets' ),
-		array ( 'text'=>'My Issued Support Tickets' )
+		array ( 'text'=>'Maintenance Tickets' ),
+		array ( 'text'=>'My Issued Maintenance Tickets' )
 	)
 	
 ));
 
 ?>
 <div class="widget">
-	<div class="widget-title"><h4><i class="icon-reorder"></i> All My Issued Support Tickets</h4></div>
+	<div class="widget-title"><h4><i class="icon-reorder"></i> All My Issued Maintenance Tickets</h4></div>
 	<div class="widget-body form">
 		<?php
 			if(isset($_SESSION['support'])){
@@ -67,7 +67,7 @@ set_layout("dt-layout.php", array(
 	<div id="respond" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel1"><i class="icon-comments"></i> Respond To Support Tickets</h3>
+			<h3 id="myModalLabel1"><i class="icon-comments"></i> Respond To Maintenance Tickets</h3>
 		</div>
 		<div class="modal-body">
 			<div class="row-fluid">
