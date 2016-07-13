@@ -163,7 +163,7 @@ dashboard: src/dashboard_module/dashboard.php
 629: src/RMC_module/imfis_head.php
 630: src/RMC_module/add_head_imfis.php
 631: src/RMC_module/edit_head_imfis.php
-632: src/RMC_module/imfis_subcode.php
+632: src/RMC_module/imfis_subcode.phpmasterfile_profile
 633: src/RMC_module/add_sub_imfis.php
 634: src/RMC_module/edit_sub_imfis.php
 635: src/RMC_module/all_attached_ifmis.php
@@ -202,6 +202,7 @@ dashboard: src/dashboard_module/dashboard.php
 726: src/masterfile_module/deleted_masterfile.php
 727: src/masterfile_module/manage_address.php
 728: src/masterfile_module/edit_address_type.php
+729: src/masterfile_module/all_masterfile.php
 import_mf: src/masterfile_module/import_masterfile.php
 import_companies: src/masterfile_module/import_client_groups.php
 

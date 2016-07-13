@@ -13,7 +13,7 @@
     ));
     set_js(array(
       'src/js/submit_wizard_form.js',
-      'src/js/add.crm.customer.js'
+      'src/js/add_masterfile.js'
     )); 
 ?>
 <div class="widget box blue" id="form_wizard_1">
@@ -30,20 +30,20 @@
       ?>
 
       <div class="alert alert-error hide">
-          <button class="close" data-dismiss="alert">×</button>
+          <button class="close" data-dismiss="alert">&times;</button>
           You have some form errors. Please check below.
         </div>
         <div class="alert alert-success hide">
-          <button class="close" data-dismiss="alert">×</button>
+          <button class="close" data-dismiss="alert">&times;</button>
           Your form validation is successful!
       </div>
       <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">        
         <div class="alert alert-error hide">
-          <button class="close" data-dismiss="alert">×</button>
+          <button class="close" data-dismiss="alert">&times;</button>
           You have some form errors. Please check below.
         </div>
         <div class="alert alert-success hide">
-          <button class="close" data-dismiss="alert">×</button>
+          <button class="close" data-dismiss="alert">&times;</button>
           Your form validation is successful!
         </div>
 

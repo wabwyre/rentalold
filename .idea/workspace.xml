@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fb328f81-8f07-4502-8fdb-6a91e6c7ea05" name="Default" comment="" />
+    <list default="true" id="fb328f81-8f07-4502-8fdb-6a91e6c7ea05" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/masterfile_module/manage_addresses.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/masterfile_module/masterfile_profile.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/masterfile_module/masterfile_profile_info.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/js/filter_house.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/js/masterfile.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/yml/routes.yml" afterPath="$PROJECT_DIR$/config/yml/routes.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/connection/config.php" afterPath="$PROJECT_DIR$/src/connection/config.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/add.crm.customer.js" afterPath="$PROJECT_DIR$/src/js/add.crm.customer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/masterfile_module/add_address_type.php" afterPath="$PROJECT_DIR$/src/masterfile_module/add_address_type.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/masterfile_module/add_masterfile.php" afterPath="$PROJECT_DIR$/src/masterfile_module/add_masterfile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/masterfile_module/edit_masterfile.php" afterPath="$PROJECT_DIR$/src/masterfile_module/edit_masterfile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/masterfile_module/personal_details.php" afterPath="$PROJECT_DIR$/src/masterfile_module/personal_details.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/House.php" afterPath="$PROJECT_DIR$/src/models/House.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Masterfile.php" afterPath="$PROJECT_DIR$/src/models/Masterfile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/payment_agent_module/edit_service_bill.php" afterPath="$PROJECT_DIR$/src/payment_agent_module/edit_service_bill.php" />
+    </list>
     <ignored path="rental.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -21,69 +38,126 @@
     <favorites_list name="rental" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Masterfile.php" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="routes.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/yml/routes.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="199" column="35" selection-start-line="199" selection-start-column="35" selection-end-line="199" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Masterfile.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/Masterfile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="32" column="34" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="34" />
+            <state relative-caret-position="281">
+              <caret line="348" column="41" selection-start-line="348" selection-start-column="41" selection-end-line="348" selection-end-column="41" />
               <folding>
-                <element signature="n#addTenant#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#addContractor#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#addLandlord#0;n#Masterfile#0;n#!!top" expanded="false" />
+                <element signature="e#3566#5415#0#PHP" expanded="false" />
                 <element signature="n#findMasterFileByRoleName#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#getCustomerAddresses#0;n#Masterfile#0;n#!!top" expanded="false" />
                 <element signature="n#checkForExistingRevenueChannelName#0;n#Masterfile#0;n#!!top" expanded="false" />
                 <element signature="n#addAddressType#0;n#Masterfile#0;n#!!top" expanded="false" />
                 <element signature="n#editAddress#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#deleteAddress#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <marker date="1467997396278" expanded="true" signature="13508:13748" ph="SELECT * FRO... masterfile" />
-                <marker date="1467997396278" expanded="true" signature="13871:14147" ph="SELECT a.*, address" />
-                <marker date="1467997396278" expanded="true" signature="14274:14377" ph="SELECT * FRO... revenue_channel" />
-                <marker date="1467997396278" expanded="true" signature="14704:14825" ph="INSERT INTO address_types... " />
-                <marker date="1467997396278" expanded="true" signature="14972:15181" ph="..." />
-                <marker date="1467997396278" expanded="true" signature="15336:15520" ph="..." />
-                <marker date="1467997396278" expanded="true" signature="15635:15907" ph="..." />
-                <marker date="1467997396278" expanded="true" signature="16159:16707" ph="UPDATE addre... " />
-                <marker date="1467997396278" expanded="true" signature="16888:17099" ph="..." />
-                <marker date="1467997396278" expanded="true" signature="17256:17442" ph="..." />
-                <marker date="1467997396278" expanded="true" signature="17557:17824" ph="..." />
-                <marker date="1467997396278" expanded="true" signature="17951:18015" ph="DELETE FROM " />
-                <marker date="1467997396278" expanded="true" signature="18128:18268" ph="..." />
+                <marker date="1468355636920" expanded="true" signature="14344:14584" ph="SELECT * FRO... masterfile" />
+                <marker date="1468355636920" expanded="true" signature="14707:14983" ph="SELECT a.*, address" />
+                <marker date="1468355636920" expanded="true" signature="15110:15213" ph="SELECT * FRO... revenue_channel" />
+                <marker date="1468355636920" expanded="true" signature="15540:15661" ph="INSERT INTO address_types... " />
+                <marker date="1468355636920" expanded="true" signature="15808:16017" ph="..." />
+                <marker date="1468355636920" expanded="true" signature="16172:16356" ph="..." />
+                <marker date="1468355636920" expanded="true" signature="16471:16743" ph="..." />
+                <marker date="1468355636920" expanded="true" signature="16995:17543" ph="UPDATE addre... " />
+                <marker date="1468355636920" expanded="true" signature="17724:17935" ph="..." />
+                <marker date="1468355636920" expanded="true" signature="18092:18278" ph="..." />
+                <marker date="1468355636920" expanded="true" signature="18393:18660" ph="..." />
+                <marker date="1468355636920" expanded="true" signature="18787:18851" ph="DELETE FROM " />
+                <marker date="1468355636920" expanded="true" signature="18964:19104" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="constants.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/yml/constants.yml">
+      <file leaf-file-name="edit_masterfile.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/masterfile_module/edit_masterfile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="375" column="22" selection-start-line="375" selection-start-column="22" selection-end-line="375" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Library.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/Library.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="149" column="55" selection-start-line="149" selection-start-column="55" selection-end-line="149" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Database.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/Database.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
+            <state relative-caret-position="-733">
+              <caret line="78" column="2" selection-start-line="78" selection-start-column="2" selection-end-line="78" selection-end-column="2" />
               <folding>
-                <marker date="1467996830180" expanded="true" signature="722:786" ph="INSERT INTO ${$table}... " />
-                <marker date="1467996830180" expanded="true" signature="1244:1281" ph="UPDATE ${$ta... " />
-                <marker date="1467996830180" expanded="true" signature="1561:1584" ph="DELETE FROM " />
+                <marker date="1468395950397" expanded="true" signature="108:331" ph="SELECT m.*, masterfile" />
+                <marker date="1468395950397" expanded="true" signature="1007:1019" ph="..." />
+                <marker date="1468395950397" expanded="true" signature="6752:6806" ph="SELECT * FRO... masterfile" />
+                <marker date="1468395950397" expanded="true" signature="8739:8786" ph="SELECT * FRO... user_roles" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="all_masterfile.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/masterfile_module/all_masterfile.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-306">
+              <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+              <folding>
+                <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <marker date="1468401112285" expanded="true" signature="414:470" ph="SELECT count... masterfile" />
+                <marker date="1468401112285" expanded="true" signature="1394:1653" ph="SELECT m.*, masterfile" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="masterfile_profile.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/masterfile_module/masterfile_profile.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="86" column="34" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
+              <folding>
+                <element signature="e#6#88#0#PHP" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#h4#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <marker date="1468399852985" expanded="true" signature="227:512" ph="SELECT m.*, masterfile" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="masterfile_profile_info.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/masterfile_module/masterfile_profile_info.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+              <folding>
+                <element signature="e#171#273#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manage_addresses.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/masterfile_module/manage_addresses.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2977">
+              <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+              <folding>
+                <element signature="e#6#88#0#PHP" expanded="true" />
+                <marker date="1468400407230" expanded="true" signature="168:278" ph="SELECT a.*, address" />
+                <marker date="1468400407230" expanded="true" signature="3197:3246" ph="SELECT * Fro... county_ref" />
+                <marker date="1468400407230" expanded="true" signature="4170:4228" ph="SELECT * Fro... address_types" />
+                <marker date="1468400407230" expanded="true" signature="7378:7427" ph="SELECT * FRO... county_ref" />
+                <marker date="1468400407230" expanded="true" signature="8392:8450" ph="SELECT * FRO... address_types" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="personal_details.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/masterfile_module/personal_details.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1785">
+              <caret line="105" column="26" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="26" />
+              <folding>
+                <marker date="1468330318649" expanded="true" signature="5465:5655" ph="SELECT ucr.*... user_created_roles" />
+                <marker date="1468330318649" expanded="true" signature="6473:6529" ph="SELECT * FRO... customer_types" />
               </folding>
             </state>
           </provider>
@@ -92,22 +166,9 @@
       <file leaf-file-name="House.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/House.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+            <state relative-caret-position="68">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="personal_details.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/masterfile_module/personal_details.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="42" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="42" />
-              <folding>
-                <marker date="1467996479770" expanded="true" signature="5465:5655" ph="SELECT ucr.*... user_created_roles" />
-                <marker date="1467996479770" expanded="true" signature="6473:6529" ph="SELECT * FRO... customer_types" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -125,13 +186,22 @@
         <option value="$PROJECT_DIR$/src/models/SupportTickets.php" />
         <option value="$PROJECT_DIR$/src/masterfile_module/masterfile_processor.php" />
         <option value="$PROJECT_DIR$/src/masterfile_module/add_masterfile.php" />
-        <option value="$PROJECT_DIR$/src/models/House.php" />
         <option value="$PROJECT_DIR$/src/masterfile_module/address_details.php" />
         <option value="$PROJECT_DIR$/src/models/Library.php" />
         <option value="$PROJECT_DIR$/src/masterfile_module/personal_details.php" />
         <option value="$PROJECT_DIR$/config/yml/constants.yml" />
         <option value="$PROJECT_DIR$/src/models/Database.php" />
+        <option value="$PROJECT_DIR$/src/js/add_masterfile.js" />
         <option value="$PROJECT_DIR$/src/models/Masterfile.php" />
+        <option value="$PROJECT_DIR$/src/payment_agent_module/edit_service_bill.php" />
+        <option value="$PROJECT_DIR$/src/masterfile_module/edit_masterfile.php" />
+        <option value="$PROJECT_DIR$/src/connection/config.php" />
+        <option value="$PROJECT_DIR$/src/models/House.php" />
+        <option value="$PROJECT_DIR$/config/yml/routes.yml" />
+        <option value="$PROJECT_DIR$/src/masterfile_module/masterfile_profile.php" />
+        <option value="$PROJECT_DIR$/src/masterfile_module/masterfile_profile_info.php" />
+        <option value="$PROJECT_DIR$/src/masterfile_module/manage_addresses.php" />
+        <option value="$PROJECT_DIR$/src/masterfile_module/all_masterfile.php" />
       </list>
     </option>
   </component>
@@ -141,12 +211,31 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1370" />
     <option name="height" value="754" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Blade files</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -173,7 +262,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -220,6 +308,24 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="system_manager" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rental" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rental" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="models" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -242,45 +348,14 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rental" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rental" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rental" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rental" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yml" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/Programs/Git/bin/git.exe" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
@@ -306,6 +381,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -319,6 +400,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="fb328f81-8f07-4502-8fdb-6a91e6c7ea05" name="Default" comment="" />
@@ -327,34 +411,65 @@
       <option name="presentableId" value="Default" />
       <updated>1467980219228</updated>
       <workItem from="1467980223103" duration="17187000" />
+      <workItem from="1468340819346" duration="12896000" />
+      <workItem from="1468389016797" duration="2320000" />
+      <workItem from="1468397019109" duration="29000" />
+      <workItem from="1468397652810" duration="3835000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17187000" />
+    <option name="totallyTimeSpent" value="36267000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <frame x="-8" y="-8" width="1370" height="754" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19645494" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19645494" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -367,125 +482,212 @@
           <line>2</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/models/Masterfile.php</url>
-          <line>91</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="6" />
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/models/SupportTickets.php">
+    <entry file="file://$PROJECT_DIR$/src/system_manager/edit_menu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="1" selection-end-column="42" />
+        <state relative-caret-position="408">
+          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
           <folding>
-            <marker date="1467982864715" expanded="true" signature="183:556" ph="SELECT st.*,... support_ticket" />
-            <marker date="1467982864715" expanded="true" signature="765:921" ph="UPDATE suppo... " />
-            <marker date="1467982864715" expanded="true" signature="1194:1424" ph="..." />
-            <marker date="1467982864715" expanded="true" signature="1623:1859" ph="SELECT CONCA... customer_account" />
-            <marker date="1467982864715" expanded="true" signature="1955:2126" ph="SELECT CONCA... customer_account" />
-            <marker date="1467982864715" expanded="true" signature="2301:2403" ph="SELECT * FRO... support_ticket_assignment" />
-            <marker date="1467982864715" expanded="true" signature="2631:2737" ph="SELECT CONCA... masterfile" />
-            <marker date="1467982864715" expanded="true" signature="2900:3039" ph="SELECT m.*, masterfile" />
-            <marker date="1467982864715" expanded="true" signature="3222:3491" ph="INSERT INTO support_ticket... " />
-            <marker date="1467982864715" expanded="true" signature="3642:3831" ph="..." />
-            <marker date="1467982864715" expanded="true" signature="3968:4027" ph="SELECT email... user_login2" />
-            <marker date="1467982864715" expanded="true" signature="4771:4984" ph="INSERT INTO message... " />
-            <marker date="1467982864715" expanded="true" signature="7553:7665" ph="SELECT CONCA... masterfile" />
-            <marker date="1467982864715" expanded="true" signature="8075:8352" ph="INSERT INTO ${$table}... " />
-            <marker date="1467982864715" expanded="true" signature="8648:8800" ph="INSERT INTO support_ticket_assignment... " />
-            <marker date="1467982864715" expanded="true" signature="9081:9308" ph="..." />
-            <marker date="1467982864715" expanded="true" signature="9507:9562" ph="SELECT * FRO... referrals" />
-            <marker date="1467982864715" expanded="true" signature="9678:9861" ph="SELECT sta.*... support_ticket_assignment" />
-            <marker date="1467982864715" expanded="true" signature="9979:10038" ph="SELECT * FRO... message_type" />
-            <marker date="1467982864715" expanded="true" signature="10162:10248" ph="SELECT custo... support_ticket" />
-            <marker date="1467982864715" expanded="true" signature="10765:11009" ph="INSERT INTO message... " />
-            <marker date="1467982864715" expanded="true" signature="11302:11497" ph="..." />
-            <marker date="1467982864715" expanded="true" signature="11674:11850" ph="INSERT INTO support_tickets_messages... " />
-            <marker date="1467982864715" expanded="true" signature="12239:12345" ph="INSERT INTO customer_messages... " />
-            <marker date="1467982864715" expanded="true" signature="12498:12881" ph="SELECT st.*,... support_ticket" />
-            <marker date="1467982864715" expanded="true" signature="13034:13323" ph="SELECT stm.*... support_tickets_messages" />
-            <marker date="1467982864715" expanded="true" signature="13806:14038" ph="INSERT INTO message... " />
-            <marker date="1467982864715" expanded="true" signature="14341:14519" ph="..." />
-            <marker date="1467982864715" expanded="true" signature="14778:14948" ph="INSERT INTO support_tickets_messages... " />
-            <marker date="1467982864715" expanded="true" signature="15251:15429" ph="..." />
-            <marker date="1467982864715" expanded="true" signature="15784:15919" ph="INSERT INTO customer_messages... " />
-            <marker date="1467982864715" expanded="true" signature="16071:16149" ph="SELECT messa... message_type" />
-            <marker date="1467982864715" expanded="true" signature="16373:16449" ph="SELECT mf_id... customer_account" />
+            <marker date="1468327373226" expanded="true" signature="816:865" ph="SELECT * FRO... menu" />
+            <marker date="1468327373226" expanded="true" signature="2107:2157" ph="SELECT * FRO... sys_views" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/payment_agent_module/payment_agent_processor.php">
+    <entry file="file://$PROJECT_DIR$/src/crm_module/edit_crm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
+        <state relative-caret-position="68">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
           <folding>
-            <marker date="1467982795757" expanded="true" signature="1878:2399" ph="INSERT INTO customer_bills... " />
-            <marker date="1467982795757" expanded="true" signature="2487:3340" ph="INSERT INTO customer_bills... " />
-            <marker date="1467982795757" expanded="true" signature="3589:4373" ph="INSERT INTO journal... " />
-            <marker date="1467982795757" expanded="true" signature="4695:5649" ph="INSERT INTO journal... " />
-            <marker date="1467982795757" expanded="true" signature="5843:6013" ph="..." />
-            <marker date="1467982795757" expanded="true" signature="6554:6961" ph="INSERT INTO log_req... " />
+            <marker date="1468327362690" expanded="true" signature="100:323" ph="SELECT m.*, masterfile" />
+            <marker date="1468327362690" expanded="true" signature="912:924" ph="..." />
+            <marker date="1468327362690" expanded="true" signature="5702:5756" ph="SELECT * FRO... masterfile" />
+            <marker date="1468327362690" expanded="true" signature="7548:7595" ph="SELECT * FRO... user_roles" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/yml/include.yml">
+    <entry file="file://$PROJECT_DIR$/src/masterfile_module/all_masterfile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/masterfile_module/masterfile_processor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/masterfile_module/address_details.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="82" column="25" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
+        <state relative-caret-position="1224">
+          <caret line="72" column="63" selection-start-line="72" selection-start-column="63" selection-end-line="72" selection-end-column="63" />
           <folding>
-            <marker date="1467990480928" expanded="true" signature="446:495" ph="SELECT * Fro... county_ref" />
-            <marker date="1467990480928" expanded="true" signature="3997:4051" ph="SELECT * FRO... address_types" />
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <marker date="1468401112285" expanded="true" signature="414:470" ph="SELECT count... masterfile" />
+            <marker date="1468401112285" expanded="true" signature="1394:1653" ph="SELECT m.*, masterfile" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/Library.php">
+    <entry file="file://$PROJECT_DIR$/config/yml/routes.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="149" column="55" selection-start-line="149" selection-start-column="55" selection-end-line="149" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/masterfile_module/add_masterfile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="39" column="82" selection-start-line="39" selection-start-column="82" selection-end-line="39" selection-end-column="82" />
+        <state relative-caret-position="3468">
+          <caret line="204" column="5" selection-start-line="204" selection-start-column="5" selection-end-line="204" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/masterfile_module/personal_details.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="42" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="42" />
+        <state relative-caret-position="1785">
+          <caret line="105" column="26" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="26" />
           <folding>
-            <marker date="1467996479770" expanded="true" signature="5465:5655" ph="SELECT ucr.*... user_created_roles" />
-            <marker date="1467996479770" expanded="true" signature="6473:6529" ph="SELECT * FRO... customer_types" />
+            <marker date="1468330318649" expanded="true" signature="5465:5655" ph="SELECT ucr.*... user_created_roles" />
+            <marker date="1468330318649" expanded="true" signature="6473:6529" ph="SELECT * FRO... customer_types" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/House.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Masterfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5491">
+          <caret line="442" column="41" selection-start-line="442" selection-start-column="41" selection-end-line="442" selection-end-column="41" />
+          <folding>
+            <element signature="e#3566#5415#0#PHP" expanded="false" />
+            <element signature="n#findMasterFileByRoleName#0;n#Masterfile#0;n#!!top" expanded="false" />
+            <element signature="n#checkForExistingRevenueChannelName#0;n#Masterfile#0;n#!!top" expanded="false" />
+            <element signature="n#addAddressType#0;n#Masterfile#0;n#!!top" expanded="false" />
+            <element signature="n#editAddress#0;n#Masterfile#0;n#!!top" expanded="false" />
+            <marker date="1468355636920" expanded="true" signature="14344:14584" ph="SELECT * FRO... masterfile" />
+            <marker date="1468355636920" expanded="true" signature="14707:14983" ph="SELECT a.*, address" />
+            <marker date="1468355636920" expanded="true" signature="15110:15213" ph="SELECT * FRO... revenue_channel" />
+            <marker date="1468355636920" expanded="true" signature="15540:15661" ph="INSERT INTO address_types... " />
+            <marker date="1468355636920" expanded="true" signature="15808:16017" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="16172:16356" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="16471:16743" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="16995:17543" ph="UPDATE addre... " />
+            <marker date="1468355636920" expanded="true" signature="17724:17935" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="18092:18278" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="18393:18660" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="18787:18851" ph="DELETE FROM " />
+            <marker date="1468355636920" expanded="true" signature="18964:19104" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/masterfile_module/edit_masterfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1468395950397" expanded="true" signature="108:331" ph="SELECT m.*, masterfile" />
+            <marker date="1468395950397" expanded="true" signature="1007:1019" ph="..." />
+            <marker date="1468395950397" expanded="true" signature="6752:6806" ph="SELECT * FRO... masterfile" />
+            <marker date="1468395950397" expanded="true" signature="8739:8786" ph="SELECT * FRO... user_roles" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/crm_module/edit_crm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="244" selection-end-column="18" />
+          <folding>
+            <marker date="1468327362690" expanded="true" signature="100:323" ph="SELECT m.*, masterfile" />
+            <marker date="1468327362690" expanded="true" signature="912:924" ph="..." />
+            <marker date="1468327362690" expanded="true" signature="5702:5756" ph="SELECT * FRO... masterfile" />
+            <marker date="1468327362690" expanded="true" signature="7548:7595" ph="SELECT * FRO... user_roles" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/masterfile_module/all_masterfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <marker date="1468401112285" expanded="true" signature="414:470" ph="SELECT count... masterfile" />
+            <marker date="1468401112285" expanded="true" signature="1394:1653" ph="SELECT m.*, masterfile" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/yml/routes.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3468">
+          <caret line="204" column="5" selection-start-line="204" selection-start-column="5" selection-end-line="204" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/masterfile_module/personal_details.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="105" column="26" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="26" />
+          <folding>
+            <marker date="1468330318649" expanded="true" signature="5465:5655" ph="SELECT ucr.*... user_created_roles" />
+            <marker date="1468330318649" expanded="true" signature="6473:6529" ph="SELECT * FRO... customer_types" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/House.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Masterfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#3566#5415#0#PHP" expanded="false" />
+            <element signature="n#findMasterFileByRoleName#0;n#Masterfile#0;n#!!top" expanded="false" />
+            <element signature="n#checkForExistingRevenueChannelName#0;n#Masterfile#0;n#!!top" expanded="false" />
+            <element signature="n#addAddressType#0;n#Masterfile#0;n#!!top" expanded="false" />
+            <element signature="n#editAddress#0;n#Masterfile#0;n#!!top" expanded="false" />
+            <marker date="1468355636920" expanded="true" signature="14344:14584" ph="SELECT * FRO... masterfile" />
+            <marker date="1468355636920" expanded="true" signature="14707:14983" ph="SELECT a.*, address" />
+            <marker date="1468355636920" expanded="true" signature="15110:15213" ph="SELECT * FRO... revenue_channel" />
+            <marker date="1468355636920" expanded="true" signature="15540:15661" ph="INSERT INTO address_types... " />
+            <marker date="1468355636920" expanded="true" signature="15808:16017" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="16172:16356" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="16471:16743" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="16995:17543" ph="UPDATE addre... " />
+            <marker date="1468355636920" expanded="true" signature="17724:17935" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="18092:18278" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="18393:18660" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="18787:18851" ph="DELETE FROM " />
+            <marker date="1468355636920" expanded="true" signature="18964:19104" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/yml/constants.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6375">
+          <caret line="375" column="22" selection-start-line="375" selection-start-column="22" selection-end-line="375" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Library.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2533">
+          <caret line="149" column="55" selection-start-line="149" selection-start-column="55" selection-end-line="149" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -497,56 +699,320 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/masterfile_module/personal_details.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="42" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="42" />
+          <folding>
+            <marker date="1468330318649" expanded="true" signature="5465:5655" ph="SELECT ucr.*... user_created_roles" />
+            <marker date="1468330318649" expanded="true" signature="6473:6529" ph="SELECT * FRO... customer_types" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/payment_agent_module/payment_agent_processor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/yml/include.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/masterfile_module/masterfile_processor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/yml/constants.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
+        <state relative-caret-position="467">
           <caret line="375" column="22" selection-start-line="375" selection-start-column="22" selection-end-line="375" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/Database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
+        <state relative-caret-position="-340">
           <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Library.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="149" column="55" selection-start-line="149" selection-start-column="55" selection-end-line="149" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/add_masterfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/masterfile_module/address_details.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1137">
+          <caret line="12" column="53" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/masterfile_module/add_masterfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="80" column="40" selection-start-line="80" selection-start-column="40" selection-end-line="80" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/crm_module/all_clients.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-408">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Transactions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/masterfile_module/personal_details.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="105" column="26" selection-start-line="105" selection-start-column="26" selection-end-line="105" selection-end-column="26" />
           <folding>
-            <marker date="1467996830180" expanded="true" signature="722:786" ph="INSERT INTO ${$table}... " />
-            <marker date="1467996830180" expanded="true" signature="1244:1281" ph="UPDATE ${$ta... " />
-            <marker date="1467996830180" expanded="true" signature="1561:1584" ph="DELETE FROM " />
+            <marker date="1468330318649" expanded="true" signature="5465:5655" ph="SELECT ucr.*... user_created_roles" />
+            <marker date="1468330318649" expanded="true" signature="6473:6529" ph="SELECT * FRO... customer_types" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/crm_module/crm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="51" column="14" selection-start-line="51" selection-start-column="12" selection-end-line="54" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/device_module/active_group_apps.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="40" column="83" selection-start-line="40" selection-start-column="64" selection-end-line="40" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/crm_module/customer_details.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/crm_module/customer_insuarance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/SupportTickets.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="272" column="12" selection-start-line="272" selection-start-column="12" selection-end-line="272" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/refarrals_module/all_refarrals.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="71" column="51" selection-start-line="71" selection-start-column="51" selection-end-line="71" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/device_module/allocate_devices.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="77" column="50" selection-start-line="77" selection-start-column="50" selection-end-line="77" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/payment_agent_module/edit_service_bill.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/payment_agent_module/edit_services.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-918">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/system_manager/edit_menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+          <folding>
+            <marker date="1468327373226" expanded="true" signature="816:865" ph="SELECT * FRO... menu" />
+            <marker date="1468327373226" expanded="true" signature="2107:2157" ph="SELECT * FRO... sys_views" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/crm_module/edit_crm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <marker date="1468327362690" expanded="true" signature="100:323" ph="SELECT m.*, masterfile" />
+            <marker date="1468327362690" expanded="true" signature="912:924" ph="..." />
+            <marker date="1468327362690" expanded="true" signature="5702:5756" ph="SELECT * FRO... masterfile" />
+            <marker date="1468327362690" expanded="true" signature="7548:7595" ph="SELECT * FRO... user_roles" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/connection/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/masterfile_module/edit_masterfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-733">
+          <caret line="78" column="2" selection-start-line="78" selection-start-column="2" selection-end-line="78" selection-end-column="2" />
+          <folding>
+            <marker date="1468395950397" expanded="true" signature="108:331" ph="SELECT m.*, masterfile" />
+            <marker date="1468395950397" expanded="true" signature="1007:1019" ph="..." />
+            <marker date="1468395950397" expanded="true" signature="6752:6806" ph="SELECT * FRO... masterfile" />
+            <marker date="1468395950397" expanded="true" signature="8739:8786" ph="SELECT * FRO... user_roles" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/House.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/masterfile_module/masterfile_profile_info.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+          <folding>
+            <element signature="e#171#273#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/Masterfile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="34" />
+        <state relative-caret-position="281">
+          <caret line="348" column="41" selection-start-line="348" selection-start-column="41" selection-end-line="348" selection-end-column="41" />
           <folding>
-            <element signature="n#addTenant#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#addContractor#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#addLandlord#0;n#Masterfile#0;n#!!top" expanded="false" />
+            <element signature="e#3566#5415#0#PHP" expanded="false" />
             <element signature="n#findMasterFileByRoleName#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#getCustomerAddresses#0;n#Masterfile#0;n#!!top" expanded="false" />
             <element signature="n#checkForExistingRevenueChannelName#0;n#Masterfile#0;n#!!top" expanded="false" />
             <element signature="n#addAddressType#0;n#Masterfile#0;n#!!top" expanded="false" />
             <element signature="n#editAddress#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#deleteAddress#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <marker date="1467997396278" expanded="true" signature="13508:13748" ph="SELECT * FRO... masterfile" />
-            <marker date="1467997396278" expanded="true" signature="13871:14147" ph="SELECT a.*, address" />
-            <marker date="1467997396278" expanded="true" signature="14274:14377" ph="SELECT * FRO... revenue_channel" />
-            <marker date="1467997396278" expanded="true" signature="14704:14825" ph="INSERT INTO address_types... " />
-            <marker date="1467997396278" expanded="true" signature="14972:15181" ph="..." />
-            <marker date="1467997396278" expanded="true" signature="15336:15520" ph="..." />
-            <marker date="1467997396278" expanded="true" signature="15635:15907" ph="..." />
-            <marker date="1467997396278" expanded="true" signature="16159:16707" ph="UPDATE addre... " />
-            <marker date="1467997396278" expanded="true" signature="16888:17099" ph="..." />
-            <marker date="1467997396278" expanded="true" signature="17256:17442" ph="..." />
-            <marker date="1467997396278" expanded="true" signature="17557:17824" ph="..." />
-            <marker date="1467997396278" expanded="true" signature="17951:18015" ph="DELETE FROM " />
-            <marker date="1467997396278" expanded="true" signature="18128:18268" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="14344:14584" ph="SELECT * FRO... masterfile" />
+            <marker date="1468355636920" expanded="true" signature="14707:14983" ph="SELECT a.*, address" />
+            <marker date="1468355636920" expanded="true" signature="15110:15213" ph="SELECT * FRO... revenue_channel" />
+            <marker date="1468355636920" expanded="true" signature="15540:15661" ph="INSERT INTO address_types... " />
+            <marker date="1468355636920" expanded="true" signature="15808:16017" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="16172:16356" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="16471:16743" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="16995:17543" ph="UPDATE addre... " />
+            <marker date="1468355636920" expanded="true" signature="17724:17935" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="18092:18278" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="18393:18660" ph="..." />
+            <marker date="1468355636920" expanded="true" signature="18787:18851" ph="DELETE FROM " />
+            <marker date="1468355636920" expanded="true" signature="18964:19104" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/masterfile_module/manage_addresses.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2977">
+          <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+          <folding>
+            <element signature="e#6#88#0#PHP" expanded="true" />
+            <marker date="1468400407230" expanded="true" signature="168:278" ph="SELECT a.*, address" />
+            <marker date="1468400407230" expanded="true" signature="3197:3246" ph="SELECT * Fro... county_ref" />
+            <marker date="1468400407230" expanded="true" signature="4170:4228" ph="SELECT * Fro... address_types" />
+            <marker date="1468400407230" expanded="true" signature="7378:7427" ph="SELECT * FRO... county_ref" />
+            <marker date="1468400407230" expanded="true" signature="8392:8450" ph="SELECT * FRO... address_types" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/masterfile_module/all_masterfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-306">
+          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <marker date="1468401112285" expanded="true" signature="414:470" ph="SELECT count... masterfile" />
+            <marker date="1468401112285" expanded="true" signature="1394:1653" ph="SELECT m.*, masterfile" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/yml/routes.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="199" column="35" selection-start-line="199" selection-start-column="35" selection-end-line="199" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/masterfile_module/masterfile_profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="86" column="34" selection-start-line="86" selection-start-column="34" selection-end-line="86" selection-end-column="34" />
+          <folding>
+            <element signature="e#6#88#0#PHP" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#h4#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <marker date="1468399852985" expanded="true" signature="227:512" ph="SELECT m.*, masterfile" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

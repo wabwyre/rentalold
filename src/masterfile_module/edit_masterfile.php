@@ -1,81 +1,81 @@
 <?php
 //get the value
-    if (isset($_GET['mf_id'])){
-	$mf_id=$_GET['mf_id'];
-	
-	//get the row
-	$query="SELECT m.*, ct.customer_type_name, ul.user_role FROM masterfile m 
+if (isset($_GET['mf_id'])){
+    $mf_id=$_GET['mf_id'];
+
+    //get the row
+    $query="SELECT m.*, ct.customer_type_name, ul.user_role FROM masterfile m 
    	LEFT JOIN customer_types ct ON ct.customer_type_id = m.customer_type_id
    	LEFT JOIN user_login2 ul ON ul.mf_id = m.mf_id
 	WHERE m.mf_id = '".$mf_id."' ";
 
-	$data=run_query($query);
-	$row=get_row_data($data);
-	$surname = $row['surname'];
-	$firstname = $row['firstname'];
-	$middlename = $row['middlename'];
-	$full_name = strtoupper($surname.' '.$firstname.' '.$middlename);
+    $data=run_query($query);
+    $row=get_row_data($data);
+    $surname = $row['surname'];
+    $firstname = $row['firstname'];
+    $middlename = $row['middlename'];
+    $full_name = strtoupper($surname.' '.$firstname.' '.$middlename);
 
-	set_layout("form-layout.php", array(
-		'pageSubTitle' => 'Edit Masterfile',
-		'pageSubTitleText' => '',
-		'pageBreadcrumbs' => array (
-                    array ( 'url'=>'#', 'text'=>'Home' ),
-                    array ( 'text'=>'Masterfile' ),
-                    array ( 'url'=>'?num=801', 'text'=>'All Masterfile' ),
-                    array ( 'text'=>'edit Masterfile' )
-		),
-		'pageWidgetTitle'=>'Edit Masterfile: <span style="color:green;">'.$full_name.'</span>'
-	));
+    set_layout("form-layout.php", array(
+        'pageSubTitle' => 'Edit Masterfile',
+        'pageSubTitleText' => '',
+        'pageBreadcrumbs' => array (
+            array ( 'url'=>'#', 'text'=>'Home' ),
+            array ( 'text'=>'Masterfile' ),
+            array ( 'url'=>'?num=729', 'text'=>'All Masterfile' ),
+            array ( 'text'=>'edit Masterfile' )
+        ),
+        'pageWidgetTitle'=>'Edit Masterfile: <span style="color:green;">'.$full_name.'</span>'
+    ));
 
-	set_css(array(
-		'assets/plugins/bootstrap-fileupload/bootstrap-fileupload.css',
-		'assets/plugins/bootstrap-datepicker/css/datepicker.css'
-	));
-	set_js(array(
-		'assets/plugins/bootstrap-fileupload/bootstrap-fileupload.js',
-		'assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js',
-		'src/js/add.crm.customer.js'
-	)); 
+    set_css(array(
+        'assets/plugins/bootstrap-fileupload/bootstrap-fileupload.css',
+        'assets/plugins/bootstrap-datepicker/css/datepicker.css'
+    ));
+    set_js(array(
+        'assets/plugins/bootstrap-fileupload/bootstrap-fileupload.js',
+        'assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js',
+        'src/js/add_masterfile.js'
+    ));
 
-	if(isset($_SESSION['done-deal'])){
-		echo ($_SESSION['done-deal']);
-	    unset ($_SESSION['done-deal']);
-	}
+    if(isset($_SESSION['done-deal'])){
+        echo ($_SESSION['done-deal']);
+        unset ($_SESSION['done-deal']);
     }
+}
 
-    //the values
-	$email = $row['email'];
-	$dob = $row['dob'];
-	$regdate_stamp = $row['regdate_stamp'];
-	$id_passport = $row['id_passport'];
-	$images_path = $row['images_path'];
-	$company_name = $row['company_name'];
-	$firstname = $row['firstname'];
-	$middlename = $row['middlename'];
-	$user_role=$row['user_role'];
+//the values
+$email = $row['email'];
+$dob = $row['dob'];
+$regdate_stamp = $row['regdate_stamp'];
+$id_passport = $row['id_passport'];
+$images_path = $row['images_path'];
+$company_name = $row['company_name'];
+$firstname = $row['firstname'];
+$middlename = $row['middlename'];
+$user_role=$row['user_role'];
 
-	$gender=$row['gender'];
-	$gender1 = '';
-	$gender2 = '';
-	if($gender == 'Male'){
-		$gender1 = 'selected';
-	}else{
-		$gender2 = 'selected';
-	}
+$gender=$row['gender'];
+$gender1 = '';
+$gender2 = '';
+if($gender == 'Male'){
+    $gender1 = 'selected';
+}else{
+    $gender2 = 'selected';
+}
 
-	$b_role=$row['b_role'];
-	$select1 = '';
-	$select2 = '';
-	$select3 = '';
-	if($b_role == 'client'){
-		$select1 = 'selected';
-	}else if($b_role == 'staff'){
-		$select2 = 'selected';
-	}else if($b_role == 'client group'){
-		$select3 = 'selected';
-	}
-	// var_dump($query); exit;
+$b_role=$row['b_role'];
+$select1 = '';
+$select2 = '';
+$select3 = '';
+if($b_role == 'client'){
+    $select1 = 'selected';
+}else if($b_role == 'staff'){
+    $select2 = 'selected';
+}else if($b_role == 'client group'){
+    $select3 = 'selected';
+}
+// var_dump($query); exit;
 ?>
 
 <!-- BEGIN FORM -->
@@ -108,7 +108,7 @@
             <div class="control-group">
                 <label for="surname" id="variation" class="control-label">Surname</label>
                 <div class="controls">
-                        <input class="span12" type="text" name="surname" value="<?=$surname; ?>" required/>
+                    <input class="span12" type="text" name="surname" value="<?=$surname; ?>" required/>
                 </div>
             </div>
         </div>
@@ -116,7 +116,7 @@
             <div class="control-group">
                 <label for="regdate_stamp" class="control-label">Start Date<span class="required">*</span></label>
                 <div class="controls">
-                        <input type="text" class="date-picker span12" name="regdate_stamp" value="<?=$regdate_stamp;?>" required />
+                    <input type="text" class="date-picker span12" name="regdate_stamp" value="<?=$regdate_stamp;?>" required />
                 </div>
             </div>
         </div>
@@ -164,83 +164,82 @@
         </div>
     </div>
 
-	<div class="row-fluid">
-	    <div class="span6">
-                <div class="control-group">
-                    <label for="email" id="email" class="control-label">Email/Username:</label>
-                    <div class="controls">
-                            <input type="email" name="email" id="email2" class="span12" value="<?=$email; ?>" />
-                    </div>
-                </div>
-            </div>	
-	    <div class="span6">
-                <div class="control-group">
-                    <label for="company_name" class="control-label">Company Name:</label>
-                    <div class="controls">
-                        <select class="span12" name="company_name" id="company_name">
-                            <option value=""></option>
-                            <?php
-                            $query = run_query("SELECT * FROM masterfile WHERE b_role = 'client group'");
-
-                            if ( $query !== false )
-                            {
-                                while ( $fetch = get_row_data($query) )
-                                    {
-                            ?>
-                            <option value="<?=$fetch['mf_id']; ?>" <?=($fetch['mf_id'] == $company_name) ? 'selected': ''; ?>><?=$fetch['surname']; ?></option>
-                            <?php
-                                    }
-                                }
-                            ?>
-                        </select>					 
-                    </div>
-                </div>
-            </div>
-	</div>
-
-	<div class="row-fliud">
-	    <div class="span6">
-		<label class="control-label">IMAGE UPLOAD:</label>
-	        <div class="controls">
-                    <div class="fileupload fileupload-new" data-provides="fileupload">
-                        <div class="fileupload-new thumbnail" style="width: 100px; height: 100px;"><img src="<?=(!empty($images_path)) ? $images_path: 'assets/img/profile/photo.jpg'; ?>" /></div>
-                        <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 100px; max-height: 100px; line-height: 20px;"></div>
-                            <div>
-                                <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file" name="images_path"/></span>
-                                <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
-                            </div>
-                    </div> 
-	        </div>
-            </div>
-            <div class="span6">
-                <label for="user_role" class="control-label" id="userole">User Role</label>
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="control-group">
+                <label for="email" id="email" class="control-label">Email/Username:</label>
                 <div class="controls">
-                    <select name="user_role" class="span12 live_search" id="user_role">
-                        <option value="">--choose role--</option>
+                    <input type="email" name="email" id="email2" class="span12" value="<?=$email; ?>" />
+                </div>
+            </div>
+        </div>
+        <div class="span6">
+            <div class="control-group">
+                <label for="company_name" class="control-label">Company Name:</label>
+                <div class="controls">
+                    <select class="span12" name="company_name" id="company_name">
+                        <option value=""></option>
                         <?php
-                        $query = "SELECT * FROM user_roles ORDER BY role_name ASC";
+                        $query = run_query("SELECT * FROM masterfile WHERE b_role = 'client group'");
 
-                        if ($data = run_query($query))
+                        if ( $query !== false )
                         {
-                            while ( $fetch = get_row_data($data) )
+                            while ( $fetch = get_row_data($query) )
                             {
-                        ?>
-                        <option value="<?=$fetch['role_id']; ?>" <?php if($fetch['role_id'] === $user_role){ echo 'selected'; } ?>><?php echo $fetch['role_name']; ?></option>";
-                        <?php
+                                ?>
+                                <option value="<?=$fetch['mf_id']; ?>" <?=($fetch['mf_id'] == $company_name) ? 'selected': ''; ?>><?=$fetch['surname']; ?></option>
+                                <?php
                             }
                         }
                         ?>
                     </select>
                 </div>
-            </div>		
+            </div>
         </div>
-        <div class="clearfix"></div>
-	
-	<div class="form-actions">
-		<input type="hidden" name="action" value="edit_masterfile"/>
-		<input type="hidden" name="mf_id" value="<?php echo $_GET['mf_id']; ?>">
-            <?php viewActions($_GET['num'], $_SESSION['role_id']); ?>
-	</div>
-</form>
-<!-- END FORM --> 
+    </div>
 
+    <div class="row-fliud">
+        <div class="span6">
+            <label class="control-label">IMAGE UPLOAD:</label>
+            <div class="controls">
+                <div class="fileupload fileupload-new" data-provides="fileupload">
+                    <div class="fileupload-new thumbnail" style="width: 100px; height: 100px;"><img src="<?=(!empty($images_path)) ? $images_path: 'assets/img/profile/photo.jpg'; ?>" /></div>
+                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 100px; max-height: 100px; line-height: 20px;"></div>
+                    <div>
+                        <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file" name="images_path"/></span>
+                        <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="span6">
+            <label for="user_role" class="control-label" id="userole">User Role</label>
+            <div class="controls">
+                <select name="user_role" class="span12 live_search" id="user_role">
+                    <option value="">--choose role--</option>
+                    <?php
+                    $query = "SELECT * FROM user_roles ORDER BY role_name ASC";
+
+                    if ($data = run_query($query))
+                    {
+                        while ( $fetch = get_row_data($data) )
+                        {
+                            ?>
+                            <option value="<?=$fetch['role_id']; ?>" <?php if($fetch['role_id'] === $user_role){ echo 'selected'; } ?>><?php echo $fetch['role_name']; ?></option>";
+                            <?php
+                        }
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="form-actions">
+        <input type="hidden" name="action" value="edit_crm"/>
+        <input type="hidden" name="mf_id" value="<?php echo $_GET['mf_id']; ?>">
+        <?php viewActions($_GET['num'], $_SESSION['role_id']); ?>
+    </div>
+</form>
+<!-- END FORM -->

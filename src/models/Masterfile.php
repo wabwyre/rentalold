@@ -76,7 +76,7 @@
                             break;
 
                         case Contractor:
-                            $this->addContractor();
+                            $this->addContractor($_POST);
                             break;
 
                         case Property_Manager:
@@ -92,6 +92,7 @@
         public function addTenant($tenant_data = array()){
             extract($_POST);
             // validate
+
             $this->validate($tenant_data, array(
                 'house' => array(
                     'name' => 'House',
@@ -113,10 +114,14 @@
                 $mf_id = $this->addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email);
                 if(!empty($mf_id)){
                     if($this->attachHouseToTenant($mf_id, $house)){
-                        if($this->addAddress($phone_number, $postal_address, $town, $tenant_mf_id, $address_type_id, $ward, $street, $building, $county, $postal_address)) {
-                            $this->endTranc();
-                            $this->flashMessage('mf', 'success', 'Masterfile has been added.');
-                        }else {
+                        if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code)) {
+                            if($this->createLoginAccount($tenant_data, $mf_id)) {
+                                $this->endTranc();
+                                $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                            }else{
+                                $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                            }
+                        }else{
                             $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
                         }
                     }else{
@@ -128,8 +133,17 @@
             }
         }
 
-        public function addContractor(){
+        public function addContractor($contractor_data){
             extract($_POST);
+            // validate
+            //var_dump($contractor_data); exit;
+            $this->validate($contractor_data, array(
+                'user_role' => array(
+                    'name' => 'System User Role',
+                    'required' => true
+                )
+            ));
+
             if($this->getValidationStatus()){
                 $uniq_id = uniqid();
                 $destination = $this->_destination.$uniq_id.$_FILES['profile-pic']['name'];
@@ -145,8 +159,12 @@
                 $mf_id = $this->addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email);
                 if(!empty($mf_id)){
                     if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_address)) {
-                        $this->endTranc();
-                        $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                        if($this->createLoginAccount($contractor_data, $mf_id)) {
+                            $this->endTranc();
+                            $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                        }else{
+                            $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                        }
                     }else {
                         $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
                     }
@@ -158,7 +176,7 @@
 
         public function addLandlord($landlord_data){
             extract($_POST);
-//            var_dump($landlord_data);exit;
+            //var_dump($landlord_data);exit;
             // validate
             $this->validate($landlord_data, array(
                 'user_role' => array(
@@ -181,7 +199,7 @@
 
                 $mf_id = $this->addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email);
                 if(!empty($mf_id)){
-                    if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_address)) {
+                    if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code)) {
                         if($this->createLoginAccount($landlord_data, $mf_id)) {
                             $this->endTranc();
                             $this->flashMessage('mf', 'success', 'Masterfile has been added.');
@@ -199,7 +217,7 @@
 
         public function addPM($pm_data){
             extract($_POST);
-//            var_dump($landlord_data);exit;
+//            var_dump($pm_data);exit;
             // validate
             $this->validate($pm_data, array(
                 'user_role' => array(
@@ -222,7 +240,7 @@
 
                 $mf_id = $this->addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email);
                 if(!empty($mf_id)){
-                    if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_address)) {
+                    if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code)) {
                         if($this->createLoginAccount($pm_data, $mf_id)) {
                             $this->endTranc();
                             $this->flashMessage('mf', 'success', 'Masterfile has been added.');
@@ -238,13 +256,13 @@
             }
         }
 
-        public function addPersonalDetails($surname, $firstname, $middlename, $id_no, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email){
+        public function addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email){
             $data = $this->insertQuery('masterfile',
                 array(
                     'surname' => $surname,
                     'firstname' => $firstname,
                     'middlename' => $middlename,
-                    'id_passport' => $id_no,
+                    'id_passport' => $id_passport,
                     'gender' => $gender,
                     'images_path' => $image_path,
                     'regdate_stamp' => $regdate_stamp,
@@ -261,7 +279,7 @@
             return $data['mf_id'];
         }
 
-        public function addAddress($phone, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code, $city){
+        public function addAddress($phone, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code){
             $result = $this->insertQuery('address',
                 array(
                     'phone' => $phone,
@@ -421,6 +439,12 @@
 					</div>';
 			}
 		}
+
+        public function getAllMasterfile(){
+            $query = $this->selectQuery('all_masterfile', '*');
+//            var_dump($query); exit;
+            return $result = run_query($query);
+        }
 	}
 
 
