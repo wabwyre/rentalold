@@ -305,6 +305,8 @@ pre_message: src/broadcast_module/predefined_messages.php
 all_support: src/support_module/all_support.php
 issued_tickets: src/support_module/issued_tickets.php
 view_ticket: src/support_module/view_ticket.php
+all_voucher: src/support_module/all_vouchers.php
+man_category: src/support_module/manage_categories.php
 
 ####: Referrals
 all_referrals: src/refarrals_module/all_refarrals.php
