@@ -93,6 +93,25 @@
 			}
 		}
 
+		public function deleteQuery2($table, $conditions = array()){
+			if(!empty($table)){
+				$condition_string = ' WHERE ';
+				if(count($conditions)){
+					foreach ($conditions as $key => $val){
+						$condition_string .= " $key = '".sanitizeVariable($val)."',";
+					}
+					$condition_string = rtrim($condition_string, ',');
+				}
+				$query = "DELETE FROM ".$table." $condition_string";
+//				var_dump($query);exit;
+				if(run_query($query)){
+					return true;
+				}else{
+					return false;
+				}
+			}
+		}
+
 		public function selectQuery($table, $fields, $condition = '', $order_field = '', $order_type = ''){
 			$return = array();
 			/*

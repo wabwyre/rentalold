@@ -20,3 +20,7 @@ $('.edit_prop').on('click', function(){
         });
     }
 });
+
+$('.del_prop').on('click', function(){
+   $('#delete_id').val($(this).attr('edit-id'));
+});

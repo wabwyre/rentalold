@@ -98,6 +98,16 @@ class Plots extends Masterfile{
         }
     }
 
+    public function deletePlot($id){
+        if($this->deleteQuery2('plots', array(
+            'plot_id' => $id
+        ))){
+            $this->flashMessage('plots', 'success', 'Plot has been deleted');
+        }else{
+            $this->flashMessage('plots', 'warning', 'The Plot is being used somewhere else in the system!');
+        }
+    }
+
     public function getPlotByPlotId($id){
         $data = $this->selectQuery('plots', '*', "plot_id = '".sanitizeVariable($id)."' ");
         echo json_encode($data[0]);

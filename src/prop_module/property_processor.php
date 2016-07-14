@@ -15,9 +15,9 @@ switch($_POST['action'])
         $_SESSION['warnings'] = $prop->getWarnings();
         break;
 
-    case edit_property:
+    case delete_property:
         logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-        $prop->deletePlot($_POST);
+        $prop->deletePlot($_POST['delete_id']);
         break;
 }
 ?>

@@ -135,7 +135,7 @@ if(App::isAjaxRequest()) {
 	<div id="update_prop" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel1">Add Plot </h3>
+			<h3 id="myModalLabel1">Update Plot </h3>
 		</div>
 		<div class="modal-body">
 			<div class="row-fluid">
@@ -193,4 +193,23 @@ if(App::isAjaxRequest()) {
 		</div>
 	</div>
 </form>
+
+<form action="" method="post">
+		<div id="del_prop" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel1">Delete Plot </h3>
+			</div>
+			<div class="modal-body">
+				<p>Are you sure you want to delete the selected plot?</p>
+			</div>
+			<!-- the hidden fields -->
+			<input type="hidden" name="action" value="delete_property"/>
+			<input type="hidden" name="delete_id" id="delete_id"/>
+			<div class="modal-footer">
+				<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No653'); ?>
+				<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes654'); ?>
+			</div>
+		</div>
+	</form>
 <?php set_js(array('src/js/plots.js')); } ?>
