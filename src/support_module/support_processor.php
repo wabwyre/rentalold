@@ -77,7 +77,7 @@ switch ($_POST['action']) {
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
 		$Quotes->deleteQuote($_POST['delete_id']);
 	break;
-	
+
 }
 
 

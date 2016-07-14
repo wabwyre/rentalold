@@ -385,6 +385,8 @@ basic:
    edit_category: edit_category
    delete_category: delete_category
    add_voucher: add_voucher
+   edit_voucher: edit_voucher
+   delete_voucher: delete_voucher
 
    #### Property Module
    add_property: add_property

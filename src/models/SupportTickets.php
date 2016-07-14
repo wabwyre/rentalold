@@ -382,7 +382,7 @@ class SupportTickets extends House{
 				'unique2' => array(
 					'table' => 'maintenance_vouchers',
 					'skip_column' => 'voucher_id',
-					'skip_value' => $edit_id
+					'skip_value' => $voucher_id
 				)
 			),
 			'maintenance_name'=>array(
@@ -391,7 +391,7 @@ class SupportTickets extends House{
 				'unique2' => array(
 					'table' => 'maintenance_vouchers',
 					'skip_column' => 'voucher_id',
-					'skip_value' => $edit_id
+					'skip_value' => $voucher_id
 				)
 			)
 		);
@@ -410,7 +410,7 @@ class SupportTickets extends House{
 				    'approve_status' => $status
 				),
 				array(
-					'voucher_id' => $edit_id
+					'voucher_id' => $voucher_id
 				)
 			);
 			if($result){
@@ -423,7 +423,7 @@ class SupportTickets extends House{
 
 	public function deleteVoucher(){
 		extract($_POST);
-		$result = $this->deleteQuery('maintenance_vouchers', "voucher_id = '".$delete_id."'");
+		$result = $this->deleteQuery('maintenance_vouchers', "voucher_id = '".$voucher_id."'");
 		if($result)
 			$this->flashMessage('support', 'success', 'Voucher Category has been deleted!');
 		else

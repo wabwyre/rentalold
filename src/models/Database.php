@@ -59,13 +59,13 @@
 				$prefix = (count($conditions)) ? 'WHERE' : '';
 				if(count($fields_values)) {
 					foreach ($fields_values as $key => $fv) {
-						$fields_values_string .= " $key = '" . sanitizeVariable($fv) . "',";
+						$fields_values_string .= ($fv == 'NULL') ?  " $key = " . sanitizeVariable($fv) . "," : " $key = '".$fv."',";
 					}
 					$fields_values_string = rtrim($fields_values_string, ',');
 
 					if(count($conditions)) {
 						foreach ($conditions as $key => $cond_value) {
-							$condition_string .= " $key = '" . sanitizeVariable($cond_value) . "',";
+							$condition_string .= ($cond_value == 'NULL') ? " $key = " . sanitizeVariable($cond_value) . "," : " $key = '" . sanitizeVariable($cond_value) . "',";
 						}
 						$condition_string = rtrim($condition_string, ',');
 					}

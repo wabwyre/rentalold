@@ -164,7 +164,7 @@ set_layout("dt-layout.php", array(
         </div>
         <!-- the hidden fields -->
         <input type="hidden" name="action" value="edit_voucher"/>
-        <input type="hidden" name="voucher_id" id="vouch_id" />
+        <input type="text" name="voucher_id" id="vouch_id" />
         <div class="modal-footer">
             <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo650'); ?>
             <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav649'); ?>
@@ -186,7 +186,8 @@ set_layout("dt-layout.php", array(
         <input type="hidden" name="action" value="delete_voucher"/>
         <input type="hidden" id="voucher_id" name="voucher_id"/>
         <div class="modal-footer">
-
+            <?php createSectionButton($_SESSION['role_id'],$_GET['num'],'No651'); ?>
+            <?php createSectionButton($_SESSION['role_id'],$_GET['num'],'Yes652'); ?>
         </div>
     </div>
 </form>
@@ -201,7 +202,8 @@ set_layout("dt-layout.php", array(
         <input type="hidden" name="action" value="approve_voucher"/>
         <input type="hidden" id="app_voucher_id" name="voucher_id"/>
         <div class="modal-footer">
-
+            <?php createSectionButton($_SESSION['role_id'],$_GET['num'],'No651'); ?>
+            <?php createSectionButton($_SESSION['role_id'],$_GET['num'],'Yes652'); ?>
         </div>
     </div>
 </form>
