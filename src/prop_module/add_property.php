@@ -1,162 +1,121 @@
 <?php
-error_reporting(0);
+require_once 'src/models/plots.php';
+$prop = new Plots();
+
 set_title('Add Plot');
 /**
  * Set the page layout that will be used
  */
-set_layout("form-layout.php", array(
-	'pageSubTitle' => 'Add A Plot',
-	'pageSubTitleText' => 'allow one to add a new plot',
+set_layout("dt-layout.php", array(
+	'pageSubTitle' => 'Plot Manager',
+	'pageSubTitleText' => 'Allows one to manage plots',
 	'pageBreadcrumbs' => array (
 		array ( 'url'=>'index.php', 'text'=>'Home' ),
 		array ( 'text'=>'PLOTS' ),
-		array ( 'text'=>'Add New Plot' )
+		array ( 'text'=>'Plot Manager' )
 	),
 	'pageWidgetTitle' => 'Plot Details'
 ));
-
-set_css(array(
-	'assets/plugins/bootstrap-fileupload/bootstrap-fileupload.css',
-	'assets/plugins/bootstrap-datepicker/css/datepicker.css'
-));
-set_js(array(
-	'assets/plugins/bootstrap-fileupload/bootstrap-fileupload.js',
-	'assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js'
-)); 
-if(isset($_SESSION['done-add'])){
-    echo "<p style='color:#f00; font-size:16px;'>".$_SESSION['done-add']."</p>";
-    unset($_SESSION['done-add']);
-}
-?>    
-<!-- BEGIN FORM -->
-	<form action="" method="post" id="add_property" enctype="multipart/form-data" class="form-horizontal">
-		<div class="alert alert-error hide">
-            <button class="close" data-dismiss="alert">x</button>
-            You have some form errors. Please check below.
-        </div>
-        <div class="alert alert-success hide">
-            <button class="close" data-dismiss="alert">x</button>
-            Your form validation is successful!
-        </div> 
-        <?php if(isset($_SESSION['mes'])){ echo $_SESSION['mes']; unset($_SESSION['mes']); } ?>                           
-        <div class="row-fluid">
-			<div class="span6">
-				<div class="control-group">
-					<label for="property_name" class="control-label">Plot Name<span class="required">*</span></label>
-					<div class="controls">
-						<input type="text" name="property_name" required/>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row-fluid">
-			<div class="span6">
-				<div class="control-group">
-					<label for="units" class="control-label">Units:<span class="required">*</span></label>
-					<div class="controls">
-						<input type="number" placeholder="Enter no of units in plot" name="units" required/>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row-fluid">
-			<div class="span6">
-				<div class="control-group">
-					<label for="payment_code" class="control-label">Payment Code:</label>
-					<div class="controls">
-						<input type="text" name="payment_code" required/>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row-fluid">
-			<div class="span6">
-				<div class="control-group">
-					<label for="paybill_no" class="control-label">Paybill No:</label>
-					<div class="controls">
-						<input type="number" name="paybill_no" required/>
-					</div>
-				</div>
-			</div>
-		</div>
-        
-		<div class="row-fluid">
-			<div class="span12">
-				<div class="control-group">
-					<label for="attached_to" class="control-label">Customer:<span class="required">*</span></label>
-					<div class="controls">
-						<select name="attached_to" required>
-							<option value="">--Choose a Customer--</option>
-								<?php
-
-                                $query = run_query("SELECT * FROM customers ORDER BY surname ASC");
-
-                                if ( $query !== false )
-                                {
-                                        while ( $fetch = get_row_data($query) )
-                                        {
-                                                echo "<option value='".$fetch['customer_id']."'>".$fetch['surname']." ".$fetch['firstname']."</option>";
-                                        }
-                                }
-                                ?>
-						</select>
-					</div>
-				</div>
-			</div>
-		</div>		
-
-		<input type="hidden" name="action" value="add_property"/>
-
-		<div class="form-actions">
-			<button class="btn btn-primary" type="submit">Save</button>
-			<button class="btn" type="reset">Reset</button>
-		</div>
-	</form>
-	<!-- END FORM -->
-
- <div id="add_property_errorloc" class="error_strings">
-            </div>
-
-<!---->
-	<script language="JavaScript" type="text/javascript"
-	    xml:space="preserve">//<![CDATA[
-	//You should create the validator only after the definition of the HTML form
-	  var frmvalidator  = new Validator("add_property");
-	 frmvalidator.EnableOnPageErrorDisplaySingleBox();
-	 frmvalidator.EnableMsgsTogether();
-
-	frmvalidator.addValidation("prop_name","req","Please enter your surname");
-	frmvalidator.addValidation("prop_units","req", "Please enter the no of units");
-	
-	  
-    function DoCustomValidation()
-    {
-	var frm = document.forms["edit_prop"];
-	if(frm.firstname.value == 'Null')
-	{
-	    sfm_show_error_msg("You can't submit this form. Go away! ");
-	    return false;
-	}
-	else
-	{
-	    return true;
-	}
-    }
-	
-	frmvalidator.setAddnlValidationFunction(DoCustomValidation);
-	//]]></script>
-	<!---->
-<?php
-/**
- * Using jQuery Validator Plugin
- */
-set_css(array("assets/plugins/bootstrap-datepicker/css/datepicker.css"));
-set_js(array(
-	"assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js",
-	"assets/scripts/form-validator.js",
-	"src/js/add.crm.property.js"
-));
 ?>
+<div class="widget">
+	<div class="widget-title"><h4><i class="icon-reorder"></i> Plot Manager</h4>
+		<span class="actions">
+			<a href="#add_prop" class="btn btn-small btn-primary" data-toggle="modal"><i class="icon-plus"></i> Add</a>
+		</span>
+	</div>
+	<div class="widget-body">
+		<table id="table1" class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Plot#</th>
+					<th>Name</th>
+					<th>Units/Houses</th>
+					<th>Payment Code</th>
+					<th>Property Manager</th>
+					<th>LandLord</th>
+					<th>Update</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php
+				$plots = $prop->getAllPlots();
+				if(count($plots)){
+					foreach ($plots as $plot){
+			?>
+				<tr>
+					<td><?php echo $plot['plot_id']; ?></td>
+					<td><?php echo $plot['plot_name']; ?></td>
+					<td><?php echo $plot['units']; ?></td>
+					<td><?php echo $plot['payment_code']; ?></td>
+					<td><?php echo $prop->getFullName($plot['pm_mfid']); ?></td>
+					<td><?php echo $prop->getFullName($plot['landlord_mfid']); ?></td>
+					<td><a href="#update_prop" class="btn btn-mini btn-warning edit_prop" data-toggle="modal"><i class="icon-edit"></i> Edit</a> </td>
+					<td><a href="#del_prop" class="btn btn-mini btn-danger del_prop" data-toggle="modal"><i class="icon-trash"></i> Delete</a></td>
+				</tr>
+			<?php }} ?>
+			</tbody>
+		</table>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<!-- The Modals -->
+<form action="" method="post">
+	<div id="add_prop" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel1">Add Plot </h3>
+		</div>
+		<div class="modal-body">
+			<div class="row-fluid">
+				<label for="plot_name">Name:</label>
+				<input type="text" name="name" class="span12"/>
+			</div>
+			<div class="row-fluid">
+				<label for="units">Units/Houses:</label>
+				<input type="number" min="1" name="units" class="span12"/>
+			</div>
+			<div class="row-fluid">
+				<label for="payment_code">Payment Code:</label>
+				<input type="text" name="payment_code" class="span12"/>
+			</div>
+
+			<label for="property_manager">Property Manager:</label>
+			<div class="row-fluid" style="margin-bottom: 10px;">
+				<select name="property_manager" class="span12 live_search">
+					<option value="">--Choose PM--</option>
+					<?php
+						$pms = $prop->getAllMasterfile("b_role = '".Property_Manager."'");
+						$pms = $pms['all'];
+						if(count($pms)){
+							foreach ($pms as $pm){
+					?>
+					<option value="<?php echo $pm['mf_id']; ?>"><?php echo $pm['full_name']; ?></option>
+					<?php }} ?>
+				</select>
+			</div>
+
+			<label for="landlord">Landlord:</label>
+			<div class="row-fluid">
+				<select name="landlord" class="span12 live_search">
+					<option value="">--Choose Landlord--</option>
+					<?php
+					$pms = $prop->getAllMasterfile("b_role = '".Landlord."'");
+					$pms = $pms['all'];
+					if(count($pms)){
+						foreach ($pms as $pm){
+							?>
+							<option value="<?php echo $pm['mf_id']; ?>"><?php echo $pm['full_name']; ?></option>
+						<?php }} ?>
+				</select>
+			</div>
+		</div>
+		<!-- the hidden fields -->
+		<input type="hidden" name="action" value="add_plot"/>
+		<div class="modal-footer">
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo529'); ?>
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav528'); ?>
+		</div>
+	</div>
+</form>

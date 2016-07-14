@@ -533,6 +533,14 @@
             $data = $this->selectQuery('customer_types', '*', $condition);
             return $data;
         }
-	}
+
+        public function getFullName($mf_id){
+            if(!empty($mf_id))
+                $data = $this->selectQuery('masterfile', 'surname, firstname, middlename', "mf_id = '".sanitizeVariable($mf_id)."'");
+            else
+                $data = '';
+            return $data;
+        }
+    }
 
 
