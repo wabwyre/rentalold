@@ -239,6 +239,7 @@ class SupportTickets extends House{
 	
 	public function editCategory(){
 		extract($_POST);
+		//var_dump($_POST);exit;
 		$validate = array(
 			'category_name'=>array(
 				'name'=> 'Category Name ',
@@ -264,7 +265,14 @@ class SupportTickets extends House{
 		if ($this->getValidationStatus()){
 			//if the validation has passed, run a query to insert the details
 			//into the database
-			if($this-> editCategoryDetails($category_code, $category_name)){
+			$result = $this->updateQuery(
+				'category',
+				"category_name = '" . sanitizeVariable($category_name) . "',
+             category_code = '" . sanitizeVariable($category_code) . "'
+                ",
+				"category_id = '".$edit_id."'"
+			);
+			if($result){
 				$this->flashMessage('support', 'success', 'Voucher Category has been Updated.');
 			}else{
 				$this->flashMessage('support', 'error', 'Failed to update voucher category! ' . get_last_error());
@@ -272,16 +280,31 @@ class SupportTickets extends House{
 		}
 	}
 	
-	public function editCategoryDetails($category_code, $category_name){
-		$result = $this->updateQuery(
-			'category',
-			"category_name = '" . sanitizeVariable($category_name) . "',
-                category_code = '" . sanitizeVariable($category_code) . "'
-                ",
-			"category_id = '".$post['edit_id']."'"
-		);
-
-		return $result;
+	public function deleteCategory(){
+		extract($_POST);
+		$result = $this->deleteQuery('category', "category_id = '".$delete_id."'");
+		if($result)
+			$this->flashMessage('support', 'success', 'Voucher Category has been deleted!');
+		else
+			$this->flashMessage('support', 'error', 'Encountered an error! '.get_last_error());
 	}
+
+	public function getallComplains(){
+		$query ="SELECT mt.*, CONCAT(m.surname,' ',m.firstname,' ',m.middlename) AS customer_name FROM maintenance_ticket mt
+ 		LEFT JOIN masterfile m ON m.mf_id = mt.reported_by
+ 		";
+		$result = run_query($query);
+	}
+
+	public function getComplains(){
+		$query = "SELECT * maintenance_ticket";
+		$result = run_query($query);
+	}
+
+	public function getMaintenanceVoucher(){
+		$query ="SELECT mv.*, CONCAT(m.surname,' ',m.firstname,' ',m.middlename) AS customer_name FROM maintaince_vouchers mv
+ 		LEFT JOIN masterfile m ON m.mf_id = mv.create_user
+	}
+
 }
 ?>
