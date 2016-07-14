@@ -40,13 +40,15 @@ set_layout("dt-layout.php", array(
             </tr>
             </thead>
             <tbody>
+
                 <tr>
-                    <td><?php echo $rows['voucher_id']; ?></td>
-                    <td><?php echo $rows['complaint_id']; ?></td>
-                    <td><?php echo $rows['maintaince_name']; ?></td>
-                    <td><?php echo $rows['category_id']; ?></td>
-                    <td><?php echo $rows['create_user']; ?></td>
                     <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="#edit_voucher" class="btn btn-mini btn-inverse attach_detach"
+                           data-toggle="modal" support_ticket_id="<?=$rows['support_ticket_id']; ?>"><i class="icon-paper-clip"></i> Assign</a></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -70,16 +72,16 @@ set_layout("dt-layout.php", array(
                 <select id="select2_sample2" name="complaint_id" class="span12" >
                     <option value="">--Select Complaint--</option>
                     <?php
-                    $result = $Support->getComplains();
-                    while($rows = get_row_data($result)){
+                    $data = $Support->allMaintenanceTickets();
+                    while($rows = get_row_data($data)){
                         ?>
                         <option value="<?=$rows['maintenance_ticket_id']; ?>"><?=$rows['body']; ?></option>
                     <?php } ?>
                 </select>
             </div>
 
+            <label for="">Categories</label>
             <div class="row-fluid">
-                <label for="">Categories</label>
                 <select id="select2_sample3" name="category_id" class="span12" required>
                     <option value="">--Select Category--</option>
                     <?php
@@ -99,7 +101,8 @@ set_layout("dt-layout.php", array(
         <!-- the hidden fields -->
         <input type="hidden" name="action" value="add_voucher"/>
         <div class="modal-footer">
-
+            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo650'); ?>
+            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav649'); ?>
         </div>
     </div>
 </form>
