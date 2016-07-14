@@ -24,7 +24,7 @@ $Support = new SupportTickets;
         <?php
         $Support->splash('support');
         // display all encountered errors
-        (isset($_SESSION['support_error'])) ? $mf->displayWarnings('support_error') : '';
+        (isset($_SESSION['support_error'])) ? $Support->displayWarnings('support_error') : '';
         ?>
         <table id="table1" class="table table-bordered">
             <thead>
@@ -40,9 +40,9 @@ $Support = new SupportTickets;
                 while($rows = get_row_data($result)){
                 ?>
                 <tr>
-                    <td><?=$rows['category_id']; ?></td>
-                    <td><?=$rows['category_name']; ?></td>
-                    <td><?=$rows['category_code']; ?></td>
+                    <td><?php echo $rows['category_id']; ?></td>
+                    <td><?php echo $rows['category_name']; ?></td>
+                    <td><?php echo $rows['category_code']; ?></td>
                 </tr>
             <?php }?>
             </tbody>

@@ -376,3 +376,9 @@ basic:
    Landlord: land_lord
    Contractor: contractor
    Property_Manager: property_manager
+
+   #### Maintenance Tickets
+   add_category: add_category
+   edit_category: edit_category
+   delete_category: delete_category
+   add_voucher: add_voucher
