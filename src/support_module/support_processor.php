@@ -51,5 +51,22 @@ switch ($_POST['action']) {
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
 		$Quotes->addQuataion();
 	break;
+
+	case add_voucher:
+		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		$Support->addVoucher();
+		$_SESSION['support_error'] = $Support->getWarnings();
+		break;
+
+	case edit_voucher:
+		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		$Support->editVoucher();
+		$_SESSION['support_error'] = $Support->getWarnings();
+		break;
+
+	case delete_voucher:
+		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		$Support->deleteVoucher();
+		break;
 }
 ?>

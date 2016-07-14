@@ -263,12 +263,15 @@ class SupportTickets extends House{
 		if ($this->getValidationStatus()){
 			//if the validation has passed, run a query to insert the details
 			//into the database
-			$result = $this->updateQuery(
+			$result = $this->updateQuery2(
 				'category',
-				"category_name = '" . sanitizeVariable($category_name) . "',
-             category_code = '" . sanitizeVariable($category_code) . "'
-                ",
-				"category_id = '".$edit_id."'"
+				array(
+					'category_name' => $category_name,
+                    'category_code' => $category_code
+				),
+				array(
+					'category_id' => $edit_id
+				)
 			);
 			if($result){
 				$this->flashMessage('support', 'success', 'Voucher Category has been Updated.');
@@ -297,12 +300,134 @@ class SupportTickets extends House{
 	public function getComplains(){
 		$query = "SELECT * FROM maintenance_ticket";
 		$result = run_query($query);
+		return $result;
 	}
 
 	public function getMaintenanceVoucher(){
-		$query ="SELECT * FROM maintaince_vouchers ";
-		//var_dump($query);exit;
+		$query ="SELECT * FROM maintenancevoucher";
 		$result = run_query($query);
+        return $result;
+	}
+
+	public function addVoucher(){
+		extract($_POST);
+		$complaint =(!empty($complaint_id) ? $complaint_id : 'NULL');
+		//var_dump($complaint);exit;
+		$user = $_SESSION['mf_id'];
+		$status = '0';
+		$validate = array(
+			'category_id'=>array(
+				'name'=> 'Category Name',
+				'required'=>true
+			),
+			'maintenance_name'=>array(
+				'name'=> 'Maintenance Description',
+				'required'=>true
+			)
+		);
+		// var_dump($validate);
+		$this->validate($_POST, $validate);
+		if ($this->getValidationStatus()){
+			//if the validation has passed, run a query to insert the details
+			//into the database
+			if($this-> addvoucherDetails($category_id, $maintenance_name, $complaint, $user, $status)){
+				$this->flashMessage('support', 'success', 'Maintenance Voucher has been added.');
+			}else{
+				$this->flashMessage('support', 'error', 'Failed to create maintenance voucher! ' . get_last_error());
+			}
+		}
+
+	}
+
+	public function addvoucherDetails($category_id, $maintenance_name, $complaint, $user, $status){
+		$result = $this->insertQuery('maintenance_vouchers',
+			array(
+				'category_id' => $category_id,
+				'complaint_id' => $complaint,
+				'maintenance_name' => $maintenance_name,
+				'create_user' => $user,
+				'approve_status' => $status
+			)
+		);
+
+		return $result;
+	}
+
+	public function getCompliansName($complain){
+		if(!empty($complain)){
+			$query = "SELECT body FROM maintenance_ticket WHERE maintenance_ticket_id = '".$complain."'";
+			$result = run_query($query);
+			$rows = get_row_data($result);
+			return $rows['body'];
+		}else{
+			return false;
+		}
+	}
+
+	public function getMaintenanceDetails($id){
+		$data = $this->selectQuery('maintenance_vouchers','*'," voucher_id = '".$id."' ");
+		echo json_encode($data[0]);
+	}
+
+	public function editVoucher(){
+		extract($_POST);
+		$complaint =(!empty($complaint_id) ? $complaint_id : 'NULL');
+		//var_dump($complaint);exit;
+		$user = $_SESSION['mf_id'];
+		$status = '0';
+		$validate = array(
+			'category_id'=>array(
+				'name'=> 'Category Name ',
+				'required'=>true,
+				'unique2' => array(
+					'table' => 'maintenance_vouchers',
+					'skip_column' => 'voucher_id',
+					'skip_value' => $edit_id
+				)
+			),
+			'maintenance_name'=>array(
+				'name'=> 'Maintenance Description',
+				'required'=>true,
+				'unique2' => array(
+					'table' => 'maintenance_vouchers',
+					'skip_column' => 'voucher_id',
+					'skip_value' => $edit_id
+				)
+			)
+		);
+
+		$this->validate($_POST, $validate);
+		if ($this->getValidationStatus()){
+			//if the validation has passed, run a query to insert the details
+			//into the database
+			$result = $this->updateQuery2(
+				'maintenance_vouchers',
+				array(
+					'category_id' => $category_id,
+					'complaint_id' => $complaint,
+				    'maintenance_name' => $maintenance_name,
+				    'create_user' => $user,
+				    'approve_status' => $status
+				),
+				array(
+					'voucher_id' => $edit_id
+				)
+			);
+			if($result){
+				$this->flashMessage('support', 'success', ' Maintenance Voucher  has been Updated.');
+			}else{
+				$this->flashMessage('support', 'error', 'Failed to update maintenance voucher! ' . get_last_error());
+			}
+		}
+	}
+
+	public function deleteVoucher(){
+		extract($_POST);
+		$result = $this->deleteQuery('maintenance_vouchers', "voucher_id = '".$delete_id."'");
+		if($result)
+			$this->flashMessage('support', 'success', 'Voucher Category has been deleted!');
+		else
+			$this->flashMessage('support', 'error', 'Encountered an error! '.get_last_error());
 	}
 
 }
