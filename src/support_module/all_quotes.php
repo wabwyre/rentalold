@@ -20,6 +20,12 @@ set_layout("dt-layout.php", array(
 		</span>
 	</div>
 	<div class="widget-body form">
+	<?php 
+		if(isset($_SESSION['quotes'])){
+			echo $_SESSION['quotes'];
+			unset($_SESSION['quotes']);
+		     }
+	?>
 	
     <table id="table1" style="width: 100%" class="table table-bordered">
  		<thead>
