@@ -24,6 +24,10 @@ set_layout("dt-layout.php", array(
 		</span>
 	</div>
 	<div class="widget-body">
+		<?php
+			$prop->splash('plots');
+			(isset($_SESSION['warnings'])) ? $prop->displayWarnings('warnings') : '';
+		?>
 		<table id="table1" class="table table-bordered">
 			<thead>
 				<tr>
@@ -80,7 +84,10 @@ set_layout("dt-layout.php", array(
 				<label for="payment_code">Payment Code:</label>
 				<input type="text" name="payment_code" class="span12"/>
 			</div>
-
+			<div class="row-fluid">
+				<label for="paybill_number">Paybill Number:</label>
+				<input type="text" name="paybill_number" class="span12"/>
+			</div>
 			<label for="property_manager">Property Manager:</label>
 			<div class="row-fluid" style="margin-bottom: 10px;">
 				<select name="property_manager" class="span12 live_search">
@@ -112,10 +119,10 @@ set_layout("dt-layout.php", array(
 			</div>
 		</div>
 		<!-- the hidden fields -->
-		<input type="hidden" name="action" value="add_plot"/>
+		<input type="hidden" name="action" value="add_property"/>
 		<div class="modal-footer">
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo529'); ?>
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav528'); ?>
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo649'); ?>
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav650'); ?>
 		</div>
 	</div>
 </form>
