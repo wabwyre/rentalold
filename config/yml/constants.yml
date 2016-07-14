@@ -32,6 +32,9 @@ basic:
    add_Respond: add_Respond
    add_support: add_support
    reassign_staff: reassign_staff
+   add_quotation: add_quotation
+   delete_quotation: delete_quotation
+   edit_quotation: edit_quotation
 
    # Loan Repayment Constants
    upload_csv: upload_csv
@@ -382,3 +385,8 @@ basic:
    edit_category: edit_category
    delete_category: delete_category
    add_voucher: add_voucher
+
+   #### Property Module
+   add_property: add_property
+   edit_property: edit_property
+   delete_property: delete_property

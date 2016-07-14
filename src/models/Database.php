@@ -52,10 +52,58 @@
 			}
 		}
 
+		public function updateQuery2($table, $fields_values = array(), $conditions= array()){
+			if(!empty($table)){
+				$fields_values_string = '';
+				$condition_string = '';
+				$prefix = (count($conditions)) ? 'WHERE' : '';
+				if(count($fields_values)) {
+					foreach ($fields_values as $key => $fv) {
+						$fields_values_string .= " $key = '" . sanitizeVariable($fv) . "',";
+					}
+					$fields_values_string = rtrim($fields_values_string, ',');
+
+					if(count($conditions)) {
+						foreach ($conditions as $key => $cond_value) {
+							$condition_string .= " $key = '" . sanitizeVariable($cond_value) . "',";
+						}
+						$condition_string = rtrim($condition_string, ',');
+					}
+
+					$query = "UPDATE $table SET " . $fields_values_string . "  $prefix $condition_string";
+					//				var_dump($query);exit;
+					if (run_query($query)) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			}
+		}
+
 		public function deleteQuery($table, $condition){
 			if(!empty($table) && !empty($condition)){
 				$condition = (!empty($condition)) ? 'WHERE '.$condition : '';
 				$query = "DELETE FROM ".$table." $condition";
+				if(run_query($query)){
+					return true;
+				}else{
+					return false;
+				}
+			}
+		}
+
+		public function deleteQuery2($table, $conditions = array()){
+			if(!empty($table)){
+				$condition_string = ' WHERE ';
+				if(count($conditions)){
+					foreach ($conditions as $key => $val){
+						$condition_string .= " $key = '".sanitizeVariable($val)."',";
+					}
+					$condition_string = rtrim($condition_string, ',');
+				}
+				$query = "DELETE FROM ".$table." $condition_string";
+//				var_dump($query);exit;
 				if(run_query($query)){
 					return true;
 				}else{

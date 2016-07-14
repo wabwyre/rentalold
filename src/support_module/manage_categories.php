@@ -106,13 +106,13 @@ $Support = new SupportTickets;
 </form>
 <!-- delete modal -->
 <form action=""  method="post">
-    <div id="delete_category" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div id="delete_quotation" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel1">Delete Voucher Category</h3>
+            <h3 id="myModalLabel1">Delete Quotation</h3>
         </div>
         <div class="modal-body">
-            <p>Are you sure you want to delete the Voucher Category?</p>
+            <p>Are you sure you want to delete the Quotation?</p>
         </div>
         <!-- hidden fields -->
         <input type="hidden" name="action" value="delete_category"/>
