@@ -19,6 +19,10 @@ class Plots extends Masterfile{
                 'required' => true,
                 'unique' => 'plots'
             ),
+            'payment_code' => array(
+                'required' => true,
+                'unique' => 'plots'
+            ),
             'units' => array(
                 'name' => 'Units',
                 'required' => true
@@ -46,6 +50,7 @@ class Plots extends Masterfile{
     }
 
     public function editPlot($post){
+//        var_dump($post);exit;
         $this->validate($post, array(
             'ed_plot_name' => array(
                 'name' => 'Name',
@@ -56,7 +61,7 @@ class Plots extends Masterfile{
                     'skip_value' => $post['edit_id'],
                 )
             ),
-            'ed_payment_code' => array(
+            'payment_code' => array(
                 'name' => 'Payment Code',
                 'unique2' => array(
                     'table' => 'plots',
@@ -74,7 +79,7 @@ class Plots extends Masterfile{
             $result = $this->updateQuery2('plots',
                 array(
                     'plot_name' => $post['ed_plot_name'],
-                    'payment_code' => $post['ed_payment_code'],
+                    'payment_code' => $post['payment_code'],
                     'pm_mfid' => $post['ed_property_manager'],
                     'paybill_number' => $post['ed_paybill_number'],
                     'units' => $post['ed_units'],

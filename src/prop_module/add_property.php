@@ -148,7 +148,7 @@ if(App::isAjaxRequest()) {
 			</div>
 			<div class="row-fluid">
 				<label for="payment_code">Payment Code:</label>
-				<input type="text" name="ed_payment_code" id="payment_code" class="span12" value="<?php echo $prop->get('payment_code'); ?>"/>
+				<input type="text" name="payment_code" id="payment_code" class="span12" value="<?php echo $prop->get('payment_code'); ?>"/>
 			</div>
 			<div class="row-fluid">
 				<label for="paybill_number">Paybill Number:</label>
