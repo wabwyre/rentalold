@@ -43,6 +43,7 @@
 				$condition = (!empty($condition)) ? 'WHERE '.$condition : '';
 
 				$query = "UPDATE $table SET ".$fields_values." $condition";
+//				var_dump($query);exit;
 				if(run_query($query)){
 					return true;
 				}else{
@@ -90,6 +91,7 @@
 					$order_string = (!empty($order_field) && !empty($order_type)) ? 'ORDER BY '.$order_field.' '.$order_type : '';
 
 					$query = "SELECT ".$field_string." FROM $table $condition $order_string";
+//					var_dump($query);exit;
 					if($result = run_query($query)){
 						if(get_num_rows($result)){
 							while ($rows = get_row_data($result)) {

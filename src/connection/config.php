@@ -5,7 +5,7 @@
 $dbname="rental";
 $dbuser="postgres";
 $dbpass="postgres";
-$dbhost="localhost";
+$dbhost="127.0.0.1";
 
 /*
 $dbname="ebpp";

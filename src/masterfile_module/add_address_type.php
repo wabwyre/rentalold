@@ -30,4 +30,3 @@
         <?php viewActions($_GET['num'], $_SESSION['role_id']); ?>
     </div>
 </form>
-

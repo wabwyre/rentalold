@@ -15,7 +15,6 @@
 					$_SESSION[$sess_name] = '<div class="alert alert-'.$type.'">';
 					$_SESSION[$sess_name] .= '<button class="close" data-dismiss="alert">&times;</button>';
 					$_SESSION[$sess_name] .= '<strong>Success!</strong> '.$message.'</div>';
-					App::redirectTo('?num='.$_GET['num']);
 					break;
 
 				case 'warning':

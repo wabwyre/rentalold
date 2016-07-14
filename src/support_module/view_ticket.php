@@ -3,14 +3,14 @@
   $supp_tickets = new SupportTickets();
 
   set_layout("dt-layout.php", array(
-     'pageSubTitle' => 'View Support Ticket',
+     'pageSubTitle' => 'View Maintenance Ticket',
      'pageSubTitleText' => '',
      'pageBreadcrumbs' => array (
         array ( 'url'=>'#', 'text'=>'Home' ),
-        array ( 'text'=>'Support Tickets' ),
-        array ( 'url'=>'?num=all_support', 'text'=>'All Support Tickets' ),
+        array ( 'text'=>'Maintenance Tickets' ),
+        array ( 'url'=>'?num=all_support', 'text'=>'All Maintenance Tickets' ),
         array ( 'url'=>'?num=issued_tickets', 'text'=>'Issued Support Tickets'),
-        array ( 'text'=>'View Support Ticket' )
+        array ( 'text'=>'View Maintenance Ticket' )
      )
   ));
 

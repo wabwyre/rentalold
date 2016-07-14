@@ -163,7 +163,7 @@ dashboard: src/dashboard_module/dashboard.php
 629: src/RMC_module/imfis_head.php
 630: src/RMC_module/add_head_imfis.php
 631: src/RMC_module/edit_head_imfis.php
-632: src/RMC_module/imfis_subcode.php
+632: src/RMC_module/imfis_subcode.phpmasterfile_profile
 633: src/RMC_module/add_sub_imfis.php
 634: src/RMC_module/edit_sub_imfis.php
 635: src/RMC_module/all_attached_ifmis.php
@@ -202,6 +202,7 @@ dashboard: src/dashboard_module/dashboard.php
 726: src/masterfile_module/deleted_masterfile.php
 727: src/masterfile_module/manage_address.php
 728: src/masterfile_module/edit_address_type.php
+729: src/masterfile_module/all_masterfile.php
 import_mf: src/masterfile_module/import_masterfile.php
 import_companies: src/masterfile_module/import_client_groups.php
 
@@ -251,15 +252,6 @@ import_companies: src/masterfile_module/import_client_groups.php
 2814: src/test_modd/under-construction.php
 2815: src/test_modd/under-construction.php
 
-####: Agents Module
-3000: src/agents_module/add_agent.php
-3001: src/agents_module/edit_agent.php
-3002: src/agents_module/agents.php
-3003: src/agents_module/agent_profile.php
-3004: src/agents_module/search_agents.php
-3005: src/agents_module/add_agent_addresses.php
-3006: src/agents_module/agents_dashboard.php
-
 #### User Management Module
 add_user: src/users_module/add_user.php
 all_users: src/users_module/users.php
@@ -304,9 +296,32 @@ pre_message: src/broadcast_module/predefined_messages.php
 all_support: src/support_module/all_support.php
 issued_tickets: src/support_module/issued_tickets.php
 view_ticket: src/support_module/view_ticket.php
+all_voucher: src/support_module/all_vouchers.php
+man_category: src/support_module/manage_categories.php
 
 ####: Referrals
 all_referrals: src/refarrals_module/all_refarrals.php
-
-
 inactive_cust: src/crm_module/inactive_accounts.php
+
+#### Plot module
+3000: src/prop_module/plots.php
+3001: src/prop_module/add_property.php
+edit_plot: src/prop_module/edit_plot.php
+view_prop: src/prop_module/view_property.php
+del_plot: src/prop_module/delete_plot.php
+
+#### House Module
+all_houses: src/house_module/houses.php
+add_house: src/house_module/add_house.php
+edit_house: src/house_module/edit_house.php
+del_house: src/house_module/delete_house.php
+view_house: src/house_module/view_house.php
+in_plot: src/house_module/houses_in_plot.php
+
+#### Reports
+6000: src/payment_reports/house_payments.php
+6001: src/payment_reports/tenant_payments.php
+6002: src/payment_reports/plot_payments.php
+6003: src/payment_reports/paybill_payments.php
+6004: src/payment_reports/landlord_payments.php
+6005: src/payment_reports/landlord_houses.php

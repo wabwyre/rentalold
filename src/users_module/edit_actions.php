@@ -10,7 +10,7 @@ set_layout("form-layout.php", array(
 	'pageBreadcrumbs' => array (
 		array ( 'url'=>'index.php', 'text'=>'Home' ),
 		array ( 'text'=>'System Manager' ),
-		array ( 'text'=>'All User Roles' ),
+		array ( 'url'=> '?num=add_role', 'text'=>'All User Roles' ),
 		array ( 'text'=>'Manage Views' ),
 		array ( 'text'=>'Manage Actions' )
 	),

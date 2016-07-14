@@ -3,20 +3,20 @@ include_once('src/models/SupportTickets.php');
 $Support = new SupportTickets;
 
 set_layout("dt-layout.php", array(
-	'pageSubTitle' => 'All Support Tickets',
+	'pageSubTitle' => 'All Maintenance Tickets',
 	'pageSubTitleText' => '',
 	'pageBreadcrumbs' => array (
 		array ( 'url'=>'index.php', 'text'=>'Home' ),
-		array ( 'text'=>'Support Tickets' ),
-		array ( 'text'=>'All Support Tickets' )
+		array ( 'text'=>'Maintenance Tickets' ),
+		array ( 'text'=>'All Maintenance Tickets' )
 	)
 ));
 
 ?>
 <div class="widget">
-	<div class="widget-title"><h4><i class="icon-comments-alt"></i> All Support Tickets</h4>
+	<div class="widget-title"><h4><i class="icon-comments-alt"></i> All Maintenance Tickets</h4>
 	    <span class="actions">
-			<a href="#add_support" data-toggle="modal" class="btn btn-small btn-primary"><i class="icon-plus"></i>Add Support Ticket</a>
+			<a href="#add_support" data-toggle="modal" class="btn btn-small btn-primary"><i class="icon-plus"></i>Add Maintenance Ticket</a>
 		</span>
 	</div>
 	<div class="widget-body form">
@@ -157,7 +157,7 @@ set_layout("dt-layout.php", array(
 	<div id="add_support" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel1"><i class="icon-comments"></i> Staff Add Support Ticket</h3>
+			<h3 id="myModalLabel1"><i class="icon-comments"></i> Staff Add Maintenance Ticket</h3>
 		</div>
 		<div class="modal-body">
 	        <div class="row-fluid">
@@ -174,14 +174,13 @@ set_layout("dt-layout.php", array(
 		        </select>
 	        </div>
 	        <div class="row-fluid">
-	        	<label for="subject">Subject</label>
+	        	<label for="subject">Categories</label>
 	        	<select name="subject" class="span12" required>
-	        	<option value=" ">--Select Subject--</option>
-	              <option value="Airtime&data"> Airtime and Data</option>
-	              <option value="Billing"> Billing</option>
-	              <option value="Insurance"> Insurance</option>
-	              <option value="Damage"> Physical damage</option>
-	              <option value="Technical"> Technical Issues</option>
+	        	<option value=" ">--Select Voucher Category--</option>
+	              <option value="Plumbing"> Plumbing</option>
+	              <option value="Electrical"> Electrical</option>
+	              <option value="Carpentry"> Carpentry</option>
+	              <option value="Painting"> Painting</option>
 	              <option value="Other"> Others</option>
 	            </select>
 	        </div>
