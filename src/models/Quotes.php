@@ -63,4 +63,11 @@ class Quotes extends Library
 		return $result;
 	
 	}
+
+	public function getQuoteDataFromQuoteId($id){
+		if(!empty($id)){
+			$data = $this->selectQuery('quotes', '*', "qoute_id = '".$id."'");
+			echo json_encode($data[0]);
+		}
+	}
 }

@@ -2,15 +2,18 @@
 include_once('src/models/Quotes.php');
 $Quotes = new Quotes;
 
-set_layout("dt-layout.php", array(
-	'pageSubTitle' => 'Manage Quotations',
-	'pageSubTitleText' => '',
-	'pageBreadcrumbs' => array (
-		array ( 'url'=>'index.php', 'text'=>'Home' ),
-		array ( 'text'=>'Maintenance Tickets' ),
-		array ( 'text'=>'Manage Quotations' )
-	)
-));
+if(App::isAjaxRequest()){
+	$Quotes->getQuoteDataFromQuoteId($_POST['quote_id']);
+}else{
+	set_layout("dt-layout.php", array(
+		'pageSubTitle' => 'Manage Quotations',
+		'pageSubTitleText' => '',
+		'pageBreadcrumbs' => array (
+			array ( 'url'=>'index.php', 'text'=>'Home' ),
+			array ( 'text'=>'Maintenance Tickets' ),
+			array ( 'text'=>'Manage Quotations' )
+		)
+	));
 
 ?>
 <div class="widget">
@@ -56,8 +59,8 @@ set_layout("dt-layout.php", array(
 				<td><?php echo $rows['expire_date'] ;?></td>
 				<td><?php echo ($rows['bid_status'])? 'active':'inactive'  ;?></td>
 				<td><?php echo ($rows['bid_status'])? 'Approved':'Not Approved' ;?></td>
-				<td><a href="#edit-quotation" class="btn btn-mini btn-warning edit_quot" data-toggle="modal"><i class="icon-edit"></i> Edit</a></td>
-				<td><a href="#delete_quotaion" class="btn btn-mini btn-danger del_quot" data-toggle="modal"><i class="icon-trash"></i> Delete</a></td>
+				<td><a href="#edit-quotation" class="btn btn-mini btn-warning edit_quot" edit-id="<?php echo $rows['qoute_id']; ?>" data-toggle="modal"><i class="icon-edit"></i> Edit</a></td>
+				<td><a href="#delete_quotaion" class="btn btn-mini btn-danger del_quot" edit-id="<?php echo $rows['qoute_id']; ?>" data-toggle="modal"><i class="icon-trash"></i> Delete</a></td>
 			
 		</tr>
 		<?php
@@ -134,7 +137,7 @@ set_layout("dt-layout.php", array(
 
 	        <div class="row-fluid">
 	        <label for="maintainance" class="control-label">Maintainance</label>
-	        	 <select name="maintainance" id="add-maintanance" class="span12" required="required">
+	        	 <select name="maintainance" class="span12" required="required">
 	            	<option value="">--Select Maintainance--</option>
 	            	<?php
 	            		$result = $Quotes->getAllMaintainance();
@@ -158,22 +161,22 @@ set_layout("dt-layout.php", array(
 	<div id="edit-quotation" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel1"><i class="icon-comments"></i> Add Quotation</h3>
+			<h3 id="myModalLabel1"><i class="icon-comments"></i> Edit Quotation</h3>
 		</div>
 		<div class="modal-body">
 	        <div class="row-fluid">
-	        	Quation
+	        	Quotation
 		        
 	        </div>
 	        
 	        <div class="row-fluid">
 	        	<label for="bid_amount" class="control-label">Bid Amount</label>
-	        	<input type="number" name="bid_amount" class="span12" required="true">
+	        	<input type="number" name="bid_amount" id="bid_amount" class="span12" required="true">
 	        </div>
 
 	        <div class="row-fluid">
 	        <label for="maintainance" class="control-label">Maintainance</label>
-	        	 <select name="maintainance" id="add-maintanance" class="span12" required="required">
+	        	 <select name="maintainance" id="add-maintenance" class="span12" required="required">
 	            	<option value="">--Select Maintainance--</option>
 	            	<?php
 	            		$result = $Quotes->getAllMaintainance();
@@ -212,4 +215,4 @@ set_layout("dt-layout.php", array(
         </div>
     </div>
 </form>
-<?// set_js(array('src/js/assign_staff.js')); ?>
+<? set_js(array('src/js/quotation.js')); } ?>
