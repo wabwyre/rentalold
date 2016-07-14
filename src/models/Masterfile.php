@@ -158,29 +158,33 @@
 
                 $mf_id = $this->addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email);
                 if(!empty($mf_id)){
-                    if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_address)) {
-                        if($this->createLoginAccount($contractor_data, $mf_id)) {
-                            $this->endTranc();
-                            $this->flashMessage('mf', 'success', 'Masterfile has been added.');
-                        }else{
-                            $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                        if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_address)) {
+                            if($this->createLoginAccount($contractor_data, $mf_id)) {
+                                $this->endTranc();
+                                $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                            }else{
+                                $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                            }
+                        }else {
+                            $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
                         }
-                    }else {
-                        $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
-                    }
                 }else{
                     $this->flashMessage('mf', 'error', 'Failed to add Personal Details! '.get_last_error());
                 }
             }
         }
 
-        public function addLandlord($landlord_data){
+        public function addLandlord($landlord_data = array()){
             extract($_POST);
             //var_dump($landlord_data);exit;
             // validate
             $this->validate($landlord_data, array(
                 'user_role' => array(
                     'name' => 'System User Role',
+                    'required' => true
+                ),
+                'plot' => array(
+                    'name' => 'Plot',
                     'required' => true
                 )
             ));
@@ -199,20 +203,25 @@
 
                 $mf_id = $this->addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email);
                 if(!empty($mf_id)){
-                    if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code)) {
-                        if($this->createLoginAccount($landlord_data, $mf_id)) {
-                            $this->endTranc();
-                            $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                    if($this->attachPlotToLandlord($mf_id, $plot)){
+                        if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code)) {
+                            if($this->createLoginAccount($landlord_data, $mf_id)) {
+                                $this->endTranc();
+                                $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                            }else{
+                                $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                            }
                         }else{
-                            $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                            $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
                         }
-                    }else {
-                        $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
+                    }else{
+                        $this->flashMessage('mf', 'error', 'Failed to attach land lord to selected plot! '.get_last_error());
                     }
                 }else{
                     $this->flashMessage('mf', 'error', 'Failed to add Personal Details! '.get_last_error());
                 }
             }
+            App::redirectTo('?num=722');
         }
 
         public function addPM($pm_data){
@@ -241,6 +250,7 @@
                 $mf_id = $this->addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email);
                 if(!empty($mf_id)){
                     if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code)) {
+                        
                         if($this->createLoginAccount($pm_data, $mf_id)) {
                             $this->endTranc();
                             $this->flashMessage('mf', 'success', 'Masterfile has been added.');
@@ -401,7 +411,6 @@
 						address_type_id = '".sanitizeVariable($address_type_id)."',
 						street = '".sanitizeVariable($street)."',
 						building = '".sanitizeVariable($building)."',
-						house_no = '".sanitizeVariable($house_no)."',
 						county = '".sanitizeVariable($county)."'
                     WHERE address_id = '".$_POST['edit_id']."' ";
 
@@ -440,10 +449,89 @@
 			}
 		}
 
-        public function getAllMasterfile(){
-            $query = $this->selectQuery('all_masterfile', '*');
-//            var_dump($query); exit;
-            return $result = run_query($query);
+        public function getAllMasterfile($condition = null){
+            $condition = (!is_null($condition)) ? $condition : '';
+            $data = $this->selectQuery('all_masterfile', '*', $condition);
+            return array(
+                'all' => $data,
+                'specific' => $data[0]
+            );
+        }
+
+        public function editMf($post){
+            $this->validate($_POST, array(
+                // personal details
+                'surname' => array(
+                    'name' => 'Surname',
+                    'required' => true
+                ),
+                'firstname' => array(
+                    'name' => 'First Name',
+                    'required' => true
+                ),
+                'id_passport' => array(
+                    'name' => 'National Id/Passport',
+                    'required' => true,
+                    'unique2' => array(
+                        'table' => 'masterfile',
+                        'skip_column' => 'mf_id',
+                        'skip_value' => $post['mf_id']
+                    )
+                ),
+                'gender' => array(
+                    'name' => 'Gender',
+                    'required' => true
+                ),
+                'regdate_stamp' => array(
+                    'name' => 'Start Date',
+                    'required' => true
+                ),
+                'customer_type_id' => array(
+                    'name' => 'Masterfile Type',
+                    'required' => true
+                ),
+            ));
+            // upload the image if there is any
+            $uniq_id = uniqid();
+            $filename = $_FILES['images_path']['name'];
+            $destination = $this->_destination.$uniq_id.$filename;
+            $image_path = '';
+
+            if($filename != '') {
+                $image_path = $this->uploadImage($_FILES['images_path']['tmp_name'], $destination);
+            }
+
+            $result = $this->updateQuery(
+                'masterfile',
+                "surname = '" . sanitizeVariable($post['surname']) . "',
+                firstname = '" . sanitizeVariable($post['firstname']) . "',
+                middlename = '" . sanitizeVariable($post['middlename']) . "',
+                id_passport = '" . sanitizeVariable($post['id_passport']) . "',
+                gender = '" . sanitizeVariable($post['gender']) . "',
+                images_path = '" . sanitizeVariable($image_path) . "',
+                regdate_stamp = '" . sanitizeVariable($post['regdate_stamp']) . "',
+                b_role = '" . sanitizeVariable($post['b_role']) . "'
+                ",
+                "mf_id = '".$post['mf_id']."'"
+            );
+            if ($result) {
+                $this->flashMessage('mf', 'success', 'Masterfile has been updated!');
+            }else {
+                $this->flashMessage('mf', 'error', 'Encountered an error while updating the masterfile!');
+            }
+        }
+
+
+        public function getAllUserRoles($condition = null){
+            $condition = (!is_null($condition)) ? $condition : '';
+            $data = $this->selectQuery('user_roles', '*', $condition);
+            return $data;
+        }
+
+        public function getAllMasterfileType($condition = null){
+            $condition = (!is_null($condition)) ? $condition : '';
+            $data = $this->selectQuery('customer_types', '*', $condition);
+            return $data;
         }
 	}
 

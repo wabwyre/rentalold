@@ -32,7 +32,7 @@ $con=1;
 $total=0;
 
 $row=get_row_data($data);
-$profile_pic = $row['image_path'];
+$profile_pic = $row['images_path'];
 if($profile_pic == '' || empty($profile_pic)){
   $profile_pic = 'crm_images/photo.jpg';
 }

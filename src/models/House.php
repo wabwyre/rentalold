@@ -8,9 +8,13 @@ include_once('src/models/Library.php');
  */
 class House extends Library
 {
-    public function getAllHouses(){
-        $rows = $this->selectQuery('houses_and_plots', '*');
-        return $rows;
+    public function getAllHouses($condition = null){
+        $condition = (!is_null($condition)) ? $condition : '';
+        $rows = $this->selectQuery('houses_and_plots', '*', $condition);
+        return array(
+            'all' => $rows,
+            'specific' => $rows[0]
+        );
     }
 
     public function attachHouseToTenant($tenant_mf_id, $house_id){
@@ -23,5 +27,34 @@ class House extends Library
             return true;
         else
             return false;
+    }
+
+    public function attachPlotToLandlord($landlord_mf_id, $plot_id){
+        $result = $this->updateQuery(
+            'plots',
+            "landlord_mf_id = '".sanitizeVariable($landlord_mf_id)."'",
+            "plot_id = '".sanitizeVariable($plot_id)."'"
+        );
+        if($result)
+            return true;
+        else
+            return false;
+    }
+
+    public function attachPlotToPmManager($pm_mf_id, $plot_id){
+        $result = $this->updateQuery(
+            'plots',
+            "landlord_mf_id = '".sanitizeVariable($landlord_mf_id)."'",
+            "plot_id = '".sanitizeVariable($plot_id)."'"
+        );
+        if($result)
+            return true;
+        else
+            return false;
+    }
+
+    public function getAllPlots(){
+        $rows = $this->selectQuery('plots', '*');
+        return $rows;
     }
 }
