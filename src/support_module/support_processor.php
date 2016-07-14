@@ -52,7 +52,6 @@ switch ($_POST['action']) {
 		$Quotes->addQuataion();
 	break;
 
-<<<<<<< HEAD
 	case add_voucher:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
 		$Support->addVoucher();
@@ -69,7 +68,7 @@ switch ($_POST['action']) {
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
 		$Support->deleteVoucher();
 		break;
-=======
+
 	case edit_quotation:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
 		$Quotes->editQuote();
@@ -78,8 +77,7 @@ switch ($_POST['action']) {
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
 		$Quotes->deleteQuote($_POST['delete_id']);
 	break;
-
->>>>>>> 35229d69a91d2b9c82fe716c0f2bb28226e3b12a
+	
 }
 
 
