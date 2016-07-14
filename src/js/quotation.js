@@ -16,3 +16,8 @@ $('.edit_quot').click(function(){
 		})
 	}
 });
+
+$('.del_quot').on('click', function(){
+	var delete_id = $(this).attr('edit-id');
+	$('#delete_id').val(delete_id);
+})

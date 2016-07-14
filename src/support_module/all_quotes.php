@@ -202,14 +202,14 @@ if(App::isAjaxRequest()){
     <div id="delete_quotaion" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel1">Delete Voucher Category</h3>
+            <h3 id="myModalLabel1">Delete Quotation</h3>
         </div>
         <div class="modal-body">
             <p>Are you sure you want to delete the quotation?</p>
         </div>
         <!-- hidden fields -->
-        <input type="hidden" name="action" value="delete_quotaion"/>
-        <input type="hidden" id="delete_id" name="delete_id"/>
+        <input type="hidden" name="action" value="delete_quotation"/>
+        <input type="text" id="delete_id" name="delete_id"/>
         <div class="modal-footer">
             <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No652'); ?>
             <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes651'); ?>

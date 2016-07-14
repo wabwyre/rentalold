@@ -120,9 +120,9 @@ class Quotes extends Library
 		extract($_POST);
 		$result = $this->deleteQuery('quotes', "qoute_id = '".$delete_id."'");
 		if($result)
-			$this->flashMessage('support', 'success', 'Quotation has been deleted!');
+			$this->flashMessage('quotes', 'success', 'Quotation has been deleted!');
 		else
-			$this->flashMessage('support', 'error', 'Encountered an error! '.get_last_error());
+			$this->flashMessage('quotes', 'error', 'Encountered an error! '.get_last_error());
 
 	}
 }
