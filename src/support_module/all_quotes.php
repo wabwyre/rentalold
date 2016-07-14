@@ -57,8 +57,8 @@ if(App::isAjaxRequest()){
 				<td><?php echo $rows['bid_amount'] ; ?></td>
 				<td><?php echo $rows['contractor_mf_id'] ;?></td>
 				<td><?php echo $rows['expire_date'] ;?></td>
-				<td><?php echo ($rows['bid_status'])? 'active':'inactive'  ;?></td>
-				<td><?php echo ($rows['bid_status'])? 'Approved':'Not Approved' ;?></td>
+				<td><?php echo ($rows['bid_status'] == 't') ? 'Approved':'Pending'  ;?></td>
+				<td><?php echo $Quotes->checkIfQuoteWasApproved($rows['bid_status'], $rows['job_status']); ?></td>
 				<td><a href="#edit-quotation" class="btn btn-mini btn-warning edit_quot" edit-id="<?php echo $rows['qoute_id']; ?>" data-toggle="modal"><i class="icon-edit"></i> Edit</a></td>
 				<td><a href="#delete_quotaion" class="btn btn-mini btn-danger del_quot" edit-id="<?php echo $rows['qoute_id']; ?>" data-toggle="modal"><i class="icon-trash"></i> Delete</a></td>
 			
@@ -188,7 +188,8 @@ if(App::isAjaxRequest()){
 	        </div>
 		</div>
 		<!-- the hidden fields -->
-		<input type="hidden" name="action" value="add_quotation"/>
+		<input type="hidden" name="action" value="edit_quotation"/>
+		<input type="hidden" name="edit_id" id="edit_id"/>
 		<div class="modal-footer">
 			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo650'); ?>
 			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav649'); ?>
@@ -207,11 +208,11 @@ if(App::isAjaxRequest()){
             <p>Are you sure you want to delete the quotation?</p>
         </div>
         <!-- hidden fields -->
-        <input type="hidden" name="action" value=""/>
+        <input type="hidden" name="action" value="delete_quotaion"/>
         <input type="hidden" id="delete_id" name="delete_id"/>
         <div class="modal-footer">
-            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No648'); ?>
-            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes647'); ?>
+            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No652'); ?>
+            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes651'); ?>
         </div>
     </div>
 </form>

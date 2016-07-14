@@ -1,6 +1,7 @@
 $('.edit_quot').click(function(){
 	var quote_id = $(this).attr('edit-id');
 	var data = { 'quote_id': quote_id };
+	$('#edit_id').val(quote_id);
 
 	if(quote_id != ''){
 		$.ajax({

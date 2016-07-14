@@ -51,5 +51,17 @@ switch ($_POST['action']) {
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
 		$Quotes->addQuataion();
 	break;
+
+	case edit_quotation:
+		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		$Quotes->editQuote();
+	break;
+	case delete_quotation:
+		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		$Quotes->deleteQuote($_POST['delete_id']);
+	break;
+
 }
+
+
 ?>
