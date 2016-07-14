@@ -101,7 +101,7 @@
 <div class="row-fluid">
     <div class="span6">
         <div class="control-group">
-            <label for="email" class="control-label">Email/Username <span>*</span></label>
+            <label for="email" class="control-label">Email <span>*</span></label>
             <div class="controls">
                     <input type="email" name="email" class="span12" value="<?php echo (isset($_POST['email'])) ? $_POST['email'] : ''; ?>" placeholder="email" />
             </div>
@@ -145,6 +145,17 @@
     </div>
     <div class="span6">
         <div class="control-group">
+            <label for="occupation" class="control-label">Occupation</label>
+            <div class="controls">
+                <input type="text" name="occupation" id="occupation" class="span12" value="<?php echo (isset($_POST['occupation'])) ? $_POST['occupation'] : ''; ?>" placeholder="Occupation" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span6">
+        <div class="control-group">
             <label for="customer_type_id" class="control-label">Masterfile Type</label>
             <div class="controls">
                 <select name="customer_type_id" class="span12 live_search" id="customer_type_id">
@@ -159,7 +170,15 @@
                 </select>
             </div>
         </div>
-    </div>    
+    </div>
+    <div class="span6">
+        <div class="control-group">
+            <label for="pin" class="control-label">Pin No.</label>
+            <div class="controls">
+                <input type="text" name="pin" class="span12" value="<?php echo (isset($_POST['pin'])) ? $_POST['pin'] : ''; ?>" placeholder="Pin Number" />
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="row-fluid">
@@ -175,6 +194,14 @@
                 </div>
             </div> 
         </div>
-    </div> 		                                                               
+    </div>
+    <div class="span6">
+        <div class="control-group">
+            <label for="lr_no" class="control-label">L.R No. / Name Property.</label>
+            <div class="controls">
+                <input type="text" name="lr_no" class="span12" value="<?php echo (isset($_POST['lr_no'])) ? $_POST['lr_no'] : ''; ?>" placeholder="Land Rate Number or Property Name" />
+            </div>
+        </div>
+    </div>
 </div>
 

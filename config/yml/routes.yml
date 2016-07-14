@@ -83,6 +83,7 @@ dashboard: src/dashboard_module/dashboard.php
 168: src/payment_agent_module/all_billing_files.php
 169: src/payment_agent_module/gpay_transaction.php
 170: src/payment_agent_module/mpesa_request.php
+171: src/payment_agent_module/manage_accounts.php
 
 201: src/rate_module/select_customer.php
 202: src/rate_module/add_land_rate.php
@@ -203,6 +204,7 @@ dashboard: src/dashboard_module/dashboard.php
 727: src/masterfile_module/manage_address.php
 728: src/masterfile_module/edit_address_type.php
 729: src/masterfile_module/all_masterfile.php
+730: src/masterfile_module/restore_masterfile.php
 import_mf: src/masterfile_module/import_masterfile.php
 import_companies: src/masterfile_module/import_client_groups.php
 

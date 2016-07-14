@@ -1,18 +1,16 @@
 <?php
-include_once('src/models/Masterfile.php');
-include_once('src/models/Staff.php');
-$masterfile = new Masterfile(); 
-$staff = new Staff(); 
+	include_once('src/models/Masterfile.php');
+	$mf = new Masterfile();
 
-set_layout("dt-layout.php", array(
-	'pageSubTitle' => 'Masterfile',
-	'pageSubTitleText' => '',
-	'pageBreadcrumbs' => array (
-		array ( 'url'=>'index.php', 'text'=>'Home' ),
-		array ( 'text'=>'masterfile' ),
-		array ( 'text'=>'Deleted Masterfile' )
-	)
-));
+	set_layout("dt-layout.php", array(
+		'pageSubTitle' => 'Masterfile',
+		'pageSubTitleText' => '',
+		'pageBreadcrumbs' => array (
+			array ( 'url'=>'index.php', 'text'=>'Home' ),
+			array ( 'text'=>'masterfile' ),
+			array ( 'text'=>'Deleted Masterfile' )
+		)
+	));
 ?>
 <div class="widget">
 	<div class="widget-title"><h4><i class="icon-reorder"></i> Deleted Masterfile</h4></div>
@@ -37,49 +35,41 @@ set_layout("dt-layout.php", array(
 					<th>First Name</th>
 					<th>Customer Type</th>
 					<th>B. Role</th>
-					<th>Id</th>
 					<th>Email</th>
 					<th>Restore</th>
 					<th>Delete</th>
 				</tr>
 	 		</thead>
 		 	<tbody>
-		 	<?php
-		 	
-		   $distinctQuery = "SELECT m.*, ul.username, c.customer_type_name FROM masterfile m 
-		   LEFT JOIN user_login2 ul ON ul.mf_id = m.mf_id
-		   LEFT JOIN customer_types c ON c.customer_type_id = m.customer_type_id
-		   WHERE active IS NOT TRUE ";
-		    $resultId = run_query($distinctQuery);	
-		    $total_rows = get_num_rows($resultId);
-		    $con = 1;     
-		    $total = 0;     
-		    while($row = get_row_data($resultId))     {
-		        $mf_id = $row['mf_id'];
-		        $regdate_stamp = $row['regdate_stamp'];
-		        $surname = $row['surname'];
-		        $firstname = $row['firstname'];
-		        $customer_type_name = $row['customer_type_name'];
-		        $b_role = $row['b_role'];
-		        $Id = $row['id_passport'];
-		        $Email = $row['email'];
-		        // echo $company_name;
-			?>
-                            <tr>
-                                <td><?=$mf_id; ?></td>
-                                <td><?=$regdate_stamp; ?></td>
-                                <td><?=$surname; ?></td>
-                                <td><?=$firstname; ?></td>
-                                <td><?=$customer_type_name; ?></td>
-                                <td><?=$b_role; ?></td>	
-                                <td><?=$Id; ?></td>	
-                                <td><?=$Email; ?></td>		
-                                <td><a href="javascript:void();" class="btn btn-mini restore_masterfile" mf_id="<?=$mf_id; ?>"><i class="icon-undo"></i> Restore</a></td>
-                                <td><a href="#delete_masterfile" class="btn btn-mini btn-danger delete_masterfile" data-toggle="modal" mf_id="<?=$mf_id; ?>"><i class="icon-remove"></i> Delete Forever</a></td>
-                            </tr>
-		<?php }	?>
-		  
-		  </tbody>
+				<?php
+					$rows = $mf->getAllDelMasterfile();
+					$rows = $rows['all'];
+
+					if(count($rows)){
+						foreach ($rows as $row){
+							$mf_id = $row['mf_id'];
+							$regdate_stamp = $row['regdate_stamp'];
+							$surname = $row['surname'];
+							$firstname = $row['firstname'];
+							$customer_type_name = $row['customer_type_name'];
+							$email = $row['email'];
+							$b_role = $row['b_role'];
+							 //echo $email;
+					?>
+						<tr>
+							<td><?=$mf_id; ?></td>
+							<td><?=$regdate_stamp; ?></td>
+							<td><?=$surname; ?></td>
+							<td><?=$firstname; ?></td>
+							<td><?=$customer_type_name; ?></td>
+							<td><?=$b_role; ?></td>
+							<td><?=$email; ?></td>
+							<td><a href="javascript:void();" class="btn btn-mini restore_masterfile" mf_id="<?=$mf_id; ?>"><i class="icon-undo"></i> Restore</a></td>
+							<td><a href="#delete_masterfile" class="btn btn-mini btn-danger delete_masterfile" data-toggle="modal" mf_id="<?=$mf_id; ?>"><i class="icon-remove"></i> Delete Forever</a></td>
+						</tr>
+				<?php }} ?>
+			  
+		  	</tbody>
 		</table>
 		<div class="clearfix"></div>
 	</div>
@@ -98,10 +88,10 @@ set_layout("dt-layout.php", array(
 		<input type="hidden" name="action" value="delete_masterfile"/>
 		<input type="hidden" id="delete_id" name="delete_id" required/>
 		<div class="modal-footer">
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No628'); ?>
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes629'); ?>
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No644'); ?>
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes645'); ?>
 		</div>
 	</div>
 </form>
 
-<? set_js(array('src/js/deleted_masterfile.js')); ?>
+<?php set_js(array('src/js/deleted_masterfile.js')); ?>
