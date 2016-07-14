@@ -74,19 +74,19 @@ set_layout("dt-layout.php", array(
 		<div class="modal-body">
 			<div class="row-fluid">
 				<label for="plot_name">Name:</label>
-				<input type="text" name="name" class="span12"/>
+				<input type="text" name="plot_name" class="span12" value="<?php echo $prop->get('name'); ?>"/>
 			</div>
 			<div class="row-fluid">
 				<label for="units">Units/Houses:</label>
-				<input type="number" min="1" name="units" class="span12"/>
+				<input type="number" min="1" name="units" class="span12" value="<?php echo $prop->get('units'); ?>"/>
 			</div>
 			<div class="row-fluid">
 				<label for="payment_code">Payment Code:</label>
-				<input type="text" name="payment_code" class="span12"/>
+				<input type="text" name="payment_code" class="span12" value="<?php echo $prop->get('payment_code'); ?>"/>
 			</div>
 			<div class="row-fluid">
 				<label for="paybill_number">Paybill Number:</label>
-				<input type="text" name="paybill_number" class="span12"/>
+				<input type="text" name="paybill_number" class="span12" value="<?php echo $prop->get('paybill_number'); ?>"/>
 			</div>
 			<label for="property_manager">Property Manager:</label>
 			<div class="row-fluid" style="margin-bottom: 10px;">
@@ -98,7 +98,7 @@ set_layout("dt-layout.php", array(
 						if(count($pms)){
 							foreach ($pms as $pm){
 					?>
-					<option value="<?php echo $pm['mf_id']; ?>"><?php echo $pm['full_name']; ?></option>
+					<option value="<?php echo $pm['mf_id']; ?>" <?php echo ($pm['mf_id'] == $prop->get('property_manager')) ? 'selected' : ''; ?>><?php echo $pm['full_name']; ?></option>
 					<?php }} ?>
 				</select>
 			</div>
@@ -108,18 +108,80 @@ set_layout("dt-layout.php", array(
 				<select name="landlord" class="span12 live_search">
 					<option value="">--Choose Landlord--</option>
 					<?php
-					$pms = $prop->getAllMasterfile("b_role = '".Landlord."'");
-					$pms = $pms['all'];
-					if(count($pms)){
-						foreach ($pms as $pm){
+					$landlord = $prop->getAllMasterfile("b_role = '".Landlord."'");
+					$landlord = $landlord['all'];
+					if(count($landlord)){
+						foreach ($landlord as $landy){
 							?>
-							<option value="<?php echo $pm['mf_id']; ?>"><?php echo $pm['full_name']; ?></option>
+							<option value="<?php echo $landy['mf_id']; ?>" <?php echo ($landy['mf_id'] == $prop->get('landlord')) ? 'selected' : ''; ?>><?php echo $landy['full_name']; ?></option>
 						<?php }} ?>
 				</select>
 			</div>
 		</div>
 		<!-- the hidden fields -->
 		<input type="hidden" name="action" value="add_property"/>
+		<div class="modal-footer">
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo649'); ?>
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav650'); ?>
+		</div>
+	</div>
+</form>
+
+<form action="" method="post">
+	<div id="update_prop" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel1">Add Plot </h3>
+		</div>
+		<div class="modal-body">
+			<div class="row-fluid">
+				<label for="plot_name">Name:</label>
+				<input type="text" name="plot_name" id="plot_name" class="span12" value="<?php echo $prop->get('name'); ?>"/>
+			</div>
+			<div class="row-fluid">
+				<label for="units">Units/Houses:</label>
+				<input type="number" min="1" name="units" id="units" class="span12" value="<?php echo $prop->get('units'); ?>"/>
+			</div>
+			<div class="row-fluid">
+				<label for="payment_code">Payment Code:</label>
+				<input type="text" name="payment_code" id="payment_code" class="span12" value="<?php echo $prop->get('payment_code'); ?>"/>
+			</div>
+			<div class="row-fluid">
+				<label for="paybill_number">Paybill Number:</label>
+				<input type="text" name="paybill_number" id="paybill_number" class="span12" value="<?php echo $prop->get('paybill_number'); ?>"/>
+			</div>
+			<label for="property_manager">Property Manager:</label>
+			<div class="row-fluid" style="margin-bottom: 10px;">
+				<select name="property_manager" id="property_manager" class="span12 live_search">
+					<option value="">--Choose PM--</option>
+					<?php
+					$pms = $prop->getAllMasterfile("b_role = '".Property_Manager."'");
+					$pms = $pms['all'];
+					if(count($pms)){
+						foreach ($pms as $pm){
+							?>
+							<option value="<?php echo $pm['mf_id']; ?>" <?php echo ($pm['mf_id'] == $prop->get('property_manager')) ? 'selected' : ''; ?>><?php echo $pm['full_name']; ?></option>
+						<?php }} ?>
+				</select>
+			</div>
+
+			<label for="landlord">Landlord:</label>
+			<div class="row-fluid">
+				<select name="landlord" id="landlord" class="span12 live_search">
+					<option value="">--Choose Landlord--</option>
+					<?php
+					$landlord = $prop->getAllMasterfile("b_role = '".Landlord."'");
+					$landlord = $landlord['all'];
+					if(count($landlord)){
+						foreach ($landlord as $landy){
+							?>
+							<option value="<?php echo $landy['mf_id']; ?>" <?php echo ($landy['mf_id'] == $prop->get('landlord')) ? 'selected' : ''; ?>><?php echo $landy['full_name']; ?></option>
+						<?php }} ?>
+				</select>
+			</div>
+		</div>
+		<!-- the hidden fields -->
+		<input type="hidden" name="action" value="edit_property"/>
 		<div class="modal-footer">
 			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo649'); ?>
 			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav650'); ?>

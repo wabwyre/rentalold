@@ -13,21 +13,22 @@ class Plots extends Masterfile{
     }
 
     public function addPlot($post){
-        var_dump($post);exit;
         $this->validate($post, array(
             'plot_name' => array(
-               'required' => true,
-               'unique' => 'plots'
+                'name' => 'Name',
+                'required' => true,
+                'unique' => 'plots'
             ),
             'units' => array(
+                'name' => 'Units',
                 'required' => true
-            )
+            ),
         ));
 
         if($this->getValidationStatus()) {
             $result = $this->insertQuery('plots',
                 array(
-                    'plot_name' => $post['name'],
+                    'plot_name' => $post['plot_name'],
                     'payment_code' => $post['payment_code'],
                     'pm_mfid' => $post['property_manager'],
                     'date_created' => date('Y-m-d'),
