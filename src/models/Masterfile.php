@@ -204,18 +204,22 @@
                 $mf_id = $this->addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email);
                 if(!empty($mf_id)){
                     if($this->attachPlotToLandlord($mf_id, $plot)){
-                        if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code)) {
-                            if($this->createLoginAccount($landlord_data, $mf_id)) {
-                                $this->endTranc();
-                                $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                        if($this->attachbankToLandlord($mf_id, $bank_id, $branch_id, $account_no)){
+                            if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code)) {
+                                if($this->createLoginAccount($landlord_data, $mf_id)) {
+                                    $this->endTranc();
+                                    $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                                }else{
+                                    $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                                }
                             }else{
-                                $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                                $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
                             }
                         }else{
-                            $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
+                            $this->flashMessage('mf', 'error', 'Failed to attach Plot to selected Landlord! '.get_last_error());
                         }
                     }else{
-                        $this->flashMessage('mf', 'error', 'Failed to attach land lord to selected plot! '.get_last_error());
+                        $this->flashMessage('mf', 'error', 'Failed to attach bank to selected Landlord! '.get_last_error());
                     }
                 }else{
                     $this->flashMessage('mf', 'error', 'Failed to add Personal Details! '.get_last_error());
@@ -448,6 +452,40 @@
 					</div>';
 			}
 		}
+
+        public function getAllBank($condition = null){
+            $condition = (!is_null($condition)) ? $condition : '';
+            $data = $this->selectQuery('banks', '*', $condition);
+            return array(
+                'all' => $data,
+                'specific' => $data[0]
+            );
+        }
+
+        public function getAllBranch($condition = null){
+            $condition = (!is_null($condition)) ? $condition : '';
+            $data = $this->selectQuery('bank_and_branches', '*', $condition);
+            return array(
+                'all' => $data,
+                'specific' => $data[0]
+            );
+        }
+
+        public function attachbankToLandlord($mf_id, $bank_id, $branch_id, $account_no){
+            $result = $this->insertQuery(
+                'bank_account',
+                array(
+                    'bank_id' => $bank_id,
+                    'branch_id' => $branch_id,
+                    'account_no' => $account_no,
+                    'mf_id' => $mf_id
+                )
+            );
+            if($result)
+                return true;
+            else
+                return false;
+        }
 
         public function getAllMasterfile($condition = null){
             $condition = (!is_null($condition)) ? $condition : '';

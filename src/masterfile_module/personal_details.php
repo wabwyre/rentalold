@@ -103,7 +103,7 @@
         <div class="control-group">
             <label for="email" class="control-label">Email <span>*</span></label>
             <div class="controls">
-                    <input type="email" name="email" class="span12" value="<?php echo (isset($_POST['email'])) ? $_POST['email'] : ''; ?>" placeholder="email" />
+                <input type="email" name="email" class="span12" value="<?php echo (isset($_POST['email'])) ? $_POST['email'] : ''; ?>" placeholder="email" />
             </div>
         </div>        
     </div>
