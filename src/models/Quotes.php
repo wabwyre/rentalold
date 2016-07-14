@@ -20,6 +20,7 @@ class Quotes extends Library
 
 	public function addQuataion(){
 		extract($_POST);
+		//var_dump($_POST);die();
 		$validate = array(
 			'bid_amount'=>array(
 				'name'=> 'Bid Amount',
@@ -39,15 +40,15 @@ class Quotes extends Library
 			if($this-> addQuataionDetails($bid_amount, $maintainance)){
 				$this->flashMessage('quotes', 'success', 'The Quotation has been added.');
 			}else{
-				$this->flashMessage('quotes', 'error', 'Failed to add quatation! ' . get_last_error());
+				$this->flashMessage('quotes', 'error', 'Failed to add quotation! ' . get_last_error());
 			}
 		}
 	}
 
 	public function addQuataionDetails($bid_amount, $maintainance){
 		$contractor = $_SESSION['mf_id'];
-		$bid_status = false;
-		$job_status = false;
+		$bid_status = '0';
+		$job_status = '0';
 
 		$result = $this->insertQuery('quotes',
 			array(
@@ -61,5 +62,67 @@ class Quotes extends Library
 
 		return $result;
 	
+	}
+
+	public function getQuoteDataFromQuoteId($id){
+		if(!empty($id)){
+			$data = $this->selectQuery('quotes', '*', "qoute_id = '".$id."'");
+			echo json_encode($data[0]);
+		}
+	}
+
+	public function checkIfQuoteWasApproved($bid_status, $job_status){
+		if($bid_status == 't'){
+			return ($job_status == 't')? 'Complete': 'Incomplete';
+		}else{
+			return '';		
+		}
+	}
+	public function editQuote(){
+		extract($_POST);
+		//var_dump($_POST);die();
+		$validate = array(
+			'bid_amount'=>array(
+				'name'=> 'Bid Amount',
+				'required'=>true
+				
+			),
+			'maintainance'=>array(
+				'name'=> 'Maintainance',
+				'required'=>true
+			)
+		);
+		// var_dump($validate);
+		$this->validate($_POST, $validate);
+		if ($this->getValidationStatus()){
+			//if the validation has passed, run a query to insert the details
+			//into the database
+			if($this-> editQuotaionDetails($bid_amount, $maintainance, $edit_id)){
+				$this->flashMessage('quotes', 'success', 'The Quotation has been edited.');
+			}else{
+				$this->flashMessage('quotes', 'error', 'Failed to edit quotation! ' . get_last_error());
+			}
+		}
+	}
+	public function editQuotaionDetails($bid_amount, $maintainance, $id){
+		$result = $this->updateQuery2('quotes',
+			array(
+				'bid_amount' => $bid_amount,
+				'maintainance_id' => $maintainance
+			),
+			array('qoute_id' => $id)
+			);
+		return $result;
+	}
+
+	//function to delete a quatation
+	public function deleteQuote($delete_id){
+		extract($_POST);
+		$result = $this->deleteQuery('quotes', "qoute_id = '".$delete_id."'");
+		if($result)
+			$this->flashMessage('quotes', 'success', 'Quotation has been deleted!');
+		else
+			$this->flashMessage('quotes', 'error', 'Encountered an error! '.get_last_error());
+
 	}
 }
