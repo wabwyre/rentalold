@@ -20,8 +20,46 @@ class Quotes extends Library
 
 	public function addQuataion(){
 		extract($_POST);
-		var_dump($_POST);die();
+		$validate = array(
+			'bid_amount'=>array(
+				'name'=> 'Bid Amount',
+				'required'=>true
+				
+			),
+			'maintainance'=>array(
+				'name'=> 'Maintainance',
+				'required'=>true
+			)
+		);
+		// var_dump($validate);
+		$this->validate($_POST, $validate);
+		if ($this->getValidationStatus()){
+			//if the validation has passed, run a query to insert the details
+			//into the database
+			if($this-> addQuataionDetails($bid_amount, $maintainance)){
+				$this->flashMessage('quotes', 'success', 'The Quotation has been added.');
+			}else{
+				$this->flashMessage('quotes', 'error', 'Failed to add quatation! ' . get_last_error());
+			}
+		}
+	}
 
-		$query = "INSERT INTO quotes ";
+	public function addQuataionDetails($bid_amount, $maintainance){
+		$contractor = $_SESSION['mf_id'];
+		$bid_status = false;
+		$job_status = false;
+
+		$result = $this->insertQuery('quotes',
+			array(
+				'bid_amount' => $bid_amount,
+				'maintainance_id' => $maintainance,
+				'contractor_mf_id' => $contractor,
+				'bid_status' => $bid_status,
+				'job_status' => $job_status
+			)
+		);
+
+		return $result;
+	
 	}
 }

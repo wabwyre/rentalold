@@ -32,6 +32,7 @@ basic:
    add_Respond: add_Respond
    add_support: add_support
    reassign_staff: reassign_staff
+   add_quotation: add_quotation
 
    # Loan Repayment Constants
    upload_csv: upload_csv
