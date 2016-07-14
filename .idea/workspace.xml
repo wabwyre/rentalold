@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb328f81-8f07-4502-8fdb-6a91e6c7ea05" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/yml/routes.yml" afterPath="$PROJECT_DIR$/config/yml/routes.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/SupportTickets.php" afterPath="$PROJECT_DIR$/src/models/SupportTickets.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/support_module/support_processor.php" afterPath="$PROJECT_DIR$/src/support_module/support_processor.php" />
     </list>
     <ignored path="rental.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,8 +63,28 @@
       <file leaf-file-name="support_processor.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/support_module/support_processor.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+            <state relative-caret-position="336">
+              <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/yml/routes.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="253" column="0" selection-start-line="253" selection-start-column="0" selection-end-line="253" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manage_categories.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/support_module/manage_categories.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="423">
+              <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -73,73 +93,28 @@
       <file leaf-file-name="SupportTickets.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/SupportTickets.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="538">
-              <caret line="284" column="5" selection-start-line="284" selection-start-column="5" selection-end-line="284" selection-end-column="5" />
+            <state relative-caret-position="266">
+              <caret line="255" column="42" selection-start-line="255" selection-start-column="42" selection-end-line="255" selection-end-column="42" />
               <folding>
-                <marker date="1468484152370" expanded="true" signature="216:589" ph="SELECT st.*,... support_ticket" />
-                <marker date="1468484152370" expanded="true" signature="706:761" ph="SELECT * FRO... referrals" />
-                <marker date="1468484152370" expanded="true" signature="877:1060" ph="SELECT sta.*... support_ticket_assignment" />
-                <marker date="1468484152370" expanded="true" signature="1178:1237" ph="SELECT * FRO... message_type" />
-                <marker date="1468484152370" expanded="true" signature="1361:1447" ph="SELECT custo... support_ticket" />
-                <marker date="1468484152370" expanded="true" signature="1964:2208" ph="INSERT INTO message... " />
-                <marker date="1468484152370" expanded="true" signature="2501:2696" ph="..." />
-                <marker date="1468484152370" expanded="true" signature="2873:3049" ph="INSERT INTO support_tickets_messages... " />
-                <marker date="1468484152370" expanded="true" signature="3438:3544" ph="INSERT INTO customer_messages... " />
-                <marker date="1468484152370" expanded="true" signature="3697:4080" ph="SELECT st.*,... support_ticket" />
-                <marker date="1468484152370" expanded="true" signature="4233:4522" ph="SELECT stm.*... support_tickets_messages" />
-                <marker date="1468484152370" expanded="true" signature="5005:5237" ph="INSERT INTO message... " />
-                <marker date="1468484152370" expanded="true" signature="5540:5718" ph="..." />
-                <marker date="1468484152370" expanded="true" signature="5977:6147" ph="INSERT INTO support_tickets_messages... " />
-                <marker date="1468484152370" expanded="true" signature="6450:6628" ph="..." />
-                <marker date="1468484152370" expanded="true" signature="6983:7118" ph="INSERT INTO customer_messages... " />
-                <marker date="1468484152370" expanded="true" signature="7270:7348" ph="SELECT messa... message_type" />
-                <marker date="1468484152370" expanded="true" signature="7572:7648" ph="SELECT mf_id... customer_account" />
-                <marker date="1468484152370" expanded="true" signature="7856:7878" ph="SELECT * FRO... category" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/yml/routes.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit_masterfile.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/masterfile_module/edit_masterfile.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-71">
-              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-              <folding>
-                <marker date="1468482371898" expanded="true" signature="710:724" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="masterfile_processor.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/masterfile_module/masterfile_processor.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="House.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/House.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
-              <folding>
-                <marker date="1468482371961" expanded="true" signature="154:1632" ph="{...}" />
-                <marker date="1468482371961" expanded="true" signature="1623:1629" ph="..." />
+                <marker date="1468484909484" expanded="true" signature="216:589" ph="SELECT st.*,... support_ticket" />
+                <marker date="1468484909484" expanded="true" signature="706:761" ph="SELECT * FRO... referrals" />
+                <marker date="1468484909484" expanded="true" signature="877:1060" ph="SELECT sta.*... support_ticket_assignment" />
+                <marker date="1468484909484" expanded="true" signature="1178:1237" ph="SELECT * FRO... message_type" />
+                <marker date="1468484909484" expanded="true" signature="1361:1447" ph="SELECT custo... support_ticket" />
+                <marker date="1468484909484" expanded="true" signature="1964:2208" ph="INSERT INTO message... " />
+                <marker date="1468484909484" expanded="true" signature="2501:2696" ph="..." />
+                <marker date="1468484909484" expanded="true" signature="2873:3049" ph="INSERT INTO support_tickets_messages... " />
+                <marker date="1468484909484" expanded="true" signature="3438:3544" ph="INSERT INTO customer_messages... " />
+                <marker date="1468484909484" expanded="true" signature="3697:4080" ph="SELECT st.*,... support_ticket" />
+                <marker date="1468484909484" expanded="true" signature="4233:4522" ph="SELECT stm.*... support_tickets_messages" />
+                <marker date="1468484909484" expanded="true" signature="5005:5237" ph="INSERT INTO message... " />
+                <marker date="1468484909484" expanded="true" signature="5540:5718" ph="..." />
+                <marker date="1468484909484" expanded="true" signature="5977:6147" ph="INSERT INTO support_tickets_messages... " />
+                <marker date="1468484909484" expanded="true" signature="6450:6628" ph="..." />
+                <marker date="1468484909484" expanded="true" signature="6983:7118" ph="INSERT INTO customer_messages... " />
+                <marker date="1468484909484" expanded="true" signature="7270:7348" ph="SELECT messa... message_type" />
+                <marker date="1468484909484" expanded="true" signature="7572:7648" ph="SELECT mf_id... customer_account" />
+                <marker date="1468484909484" expanded="true" signature="7856:7878" ph="SELECT * FRO... category" />
               </folding>
             </state>
           </provider>
@@ -176,6 +151,7 @@
         <option value="$PROJECT_DIR$/src/masterfile_module/masterfile_processor.php" />
         <option value="$PROJECT_DIR$/src/masterfile_module/edit_masterfile.php" />
         <option value="$PROJECT_DIR$/src/models/SupportTickets.php" />
+        <option value="$PROJECT_DIR$/src/support_module/support_processor.php" />
         <option value="$PROJECT_DIR$/config/yml/routes.yml" />
       </list>
     </option>
@@ -192,8 +168,9 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="width" value="1361" />
-    <option name="height" value="772" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -253,6 +230,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="rental" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rental" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rental" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rental" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rental" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="support_module" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -354,18 +363,18 @@
       <workItem from="1468397019109" duration="29000" />
       <workItem from="1468397652810" duration="27710000" />
       <workItem from="1468433904170" duration="7435000" />
-      <workItem from="1468483152191" duration="1092000" />
+      <workItem from="1468483152191" duration="2030000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68669000" />
+    <option name="totallyTimeSpent" value="69607000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1361" height="772" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19405204" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19106881" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -428,13 +437,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/crm_module/edit_crm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="244" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/masterfile_module/all_masterfile.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
@@ -776,14 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/support_module/support_processor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/masterfile_module/masterfile_processor.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -800,38 +794,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/support_module/manage_categories.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/SupportTickets.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="284" column="5" selection-start-line="284" selection-start-column="5" selection-end-line="284" selection-end-column="5" />
+        <state relative-caret-position="266">
+          <caret line="255" column="42" selection-start-line="255" selection-start-column="42" selection-end-line="255" selection-end-column="42" />
           <folding>
-            <marker date="1468484152370" expanded="true" signature="216:589" ph="SELECT st.*,... support_ticket" />
-            <marker date="1468484152370" expanded="true" signature="706:761" ph="SELECT * FRO... referrals" />
-            <marker date="1468484152370" expanded="true" signature="877:1060" ph="SELECT sta.*... support_ticket_assignment" />
-            <marker date="1468484152370" expanded="true" signature="1178:1237" ph="SELECT * FRO... message_type" />
-            <marker date="1468484152370" expanded="true" signature="1361:1447" ph="SELECT custo... support_ticket" />
-            <marker date="1468484152370" expanded="true" signature="1964:2208" ph="INSERT INTO message... " />
-            <marker date="1468484152370" expanded="true" signature="2501:2696" ph="..." />
-            <marker date="1468484152370" expanded="true" signature="2873:3049" ph="INSERT INTO support_tickets_messages... " />
-            <marker date="1468484152370" expanded="true" signature="3438:3544" ph="INSERT INTO customer_messages... " />
-            <marker date="1468484152370" expanded="true" signature="3697:4080" ph="SELECT st.*,... support_ticket" />
-            <marker date="1468484152370" expanded="true" signature="4233:4522" ph="SELECT stm.*... support_tickets_messages" />
-            <marker date="1468484152370" expanded="true" signature="5005:5237" ph="INSERT INTO message... " />
-            <marker date="1468484152370" expanded="true" signature="5540:5718" ph="..." />
-            <marker date="1468484152370" expanded="true" signature="5977:6147" ph="INSERT INTO support_tickets_messages... " />
-            <marker date="1468484152370" expanded="true" signature="6450:6628" ph="..." />
-            <marker date="1468484152370" expanded="true" signature="6983:7118" ph="INSERT INTO customer_messages... " />
-            <marker date="1468484152370" expanded="true" signature="7270:7348" ph="SELECT messa... message_type" />
-            <marker date="1468484152370" expanded="true" signature="7572:7648" ph="SELECT mf_id... customer_account" />
-            <marker date="1468484152370" expanded="true" signature="7856:7878" ph="SELECT * FRO... category" />
+            <marker date="1468484909484" expanded="true" signature="216:589" ph="SELECT st.*,... support_ticket" />
+            <marker date="1468484909484" expanded="true" signature="706:761" ph="SELECT * FRO... referrals" />
+            <marker date="1468484909484" expanded="true" signature="877:1060" ph="SELECT sta.*... support_ticket_assignment" />
+            <marker date="1468484909484" expanded="true" signature="1178:1237" ph="SELECT * FRO... message_type" />
+            <marker date="1468484909484" expanded="true" signature="1361:1447" ph="SELECT custo... support_ticket" />
+            <marker date="1468484909484" expanded="true" signature="1964:2208" ph="INSERT INTO message... " />
+            <marker date="1468484909484" expanded="true" signature="2501:2696" ph="..." />
+            <marker date="1468484909484" expanded="true" signature="2873:3049" ph="INSERT INTO support_tickets_messages... " />
+            <marker date="1468484909484" expanded="true" signature="3438:3544" ph="INSERT INTO customer_messages... " />
+            <marker date="1468484909484" expanded="true" signature="3697:4080" ph="SELECT st.*,... support_ticket" />
+            <marker date="1468484909484" expanded="true" signature="4233:4522" ph="SELECT stm.*... support_tickets_messages" />
+            <marker date="1468484909484" expanded="true" signature="5005:5237" ph="INSERT INTO message... " />
+            <marker date="1468484909484" expanded="true" signature="5540:5718" ph="..." />
+            <marker date="1468484909484" expanded="true" signature="5977:6147" ph="INSERT INTO support_tickets_messages... " />
+            <marker date="1468484909484" expanded="true" signature="6450:6628" ph="..." />
+            <marker date="1468484909484" expanded="true" signature="6983:7118" ph="INSERT INTO customer_messages... " />
+            <marker date="1468484909484" expanded="true" signature="7270:7348" ph="SELECT messa... message_type" />
+            <marker date="1468484909484" expanded="true" signature="7572:7648" ph="SELECT mf_id... customer_account" />
+            <marker date="1468484909484" expanded="true" signature="7856:7878" ph="SELECT * FRO... category" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/support_module/support_processor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/yml/routes.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="302" column="0" selection-start-line="302" selection-start-column="0" selection-end-line="302" selection-end-column="0" />
+        <state relative-caret-position="323">
+          <caret line="253" column="0" selection-start-line="253" selection-start-column="0" selection-end-line="253" selection-end-column="0" />
           <folding />
         </state>
       </provider>

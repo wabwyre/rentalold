@@ -31,7 +31,7 @@ switch ($_POST['action']) {
 	case add_category:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
 		$Support->addCategory();
-		$_SESSION['support'] = $Support->getWarnings();
+		$_SESSION['support_error'] = $Support->getWarnings();
 		break;
 
 	case edit_category:

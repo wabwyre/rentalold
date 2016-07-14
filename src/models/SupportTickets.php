@@ -238,7 +238,7 @@ class SupportTickets extends House{
 	}
 	
 	public function editCategory(){
-		extact($_POST);
+		extract($_POST);
 		$validate = array(
 			'category_name'=>array(
 				'name'=> 'Category Name ',
