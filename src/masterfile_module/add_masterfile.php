@@ -52,17 +52,23 @@
                <div class="navbar-inner">
                   <ul class="row-fluid">
                      <li class="span3">
-                        <a href="#tab1" data-toggle="tab" class="step <?=(isset($_SESSION['tab1'])) ? 'active' : ''; ?>">
+                        <a href="#tab1" data-toggle="tab" class="step <?php echo (isset($_SESSION['tab1'])) ? 'active' : ''; ?>">
                         <span class="number">1</span>
                         <span class="desc"><i class="icon-ok"></i> Personal Details</span>   
                         </a>
                      </li>
                      <li class="span3">
-                        <a href="#tab2" data-toggle="tab" class="step <?=(isset($_SESSION['tab2'])) ? 'active' : ''; ?>">
+                        <a href="#tab2" data-toggle="tab" class="step <?php echo (isset($_SESSION['tab2'])) ? 'active' : ''; ?>">
                         <span class="number">2</span>
                         <span class="desc"><i class="icon-ok"></i> Address Details</span>   
                         </a>
                      </li>
+                      <li class="span3">
+                          <a href="#tab3" data-toggle="tab" class="step <?php echo (isset($_SESSION['tab3'])) ? 'active' : ''; ?>">
+                              <span class="number">3</span>
+                              <span class="desc"><i class="icon-ok"></i>Account Details</span>
+                          </a>
+                      </li>
                   </ul>
                </div>
             </div>
@@ -71,15 +77,20 @@
             </div>
             <div class="tab-content">
 
-               <div class="tab-pane <?=(isset($_SESSION['tab1'])) ? 'active' : ''; ?>" id="tab1">
+               <div class="tab-pane <?php  echo (isset($_SESSION['tab1'])) ? 'active' : ''; ?>" id="tab1">
                   <h3 class="form-section">Provide personal details</h3>
                   <?php include "personal_details.php"; ?>
                </div>
 
-               <div class="tab-pane <?=(isset($_SESSION['tab2'])) ? 'active' : ''; ?>" id="tab2">
+               <div class="tab-pane <?php echo (isset($_SESSION['tab2'])) ? 'active' : ''; ?>" id="tab2">
                   <h3 class="form-section">Provide address details</h3>
                   <?php include "address_details.php"; ?>
                </div>
+
+                <div class="tab-pane <?php echo (isset($_SESSION['tab3'])) ? 'active' : ''; ?>" id="tab3">
+                    <h3 class="form-section">Provide account details</h3>
+                    <?php include "account_details.php"; ?>
+                </div>
             </div>
 
             <div class="form-actions clearfix">
