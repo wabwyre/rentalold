@@ -300,6 +300,7 @@ issued_tickets: src/support_module/issued_tickets.php
 view_ticket: src/support_module/view_ticket.php
 all_voucher: src/support_module/all_vouchers.php
 man_category: src/support_module/manage_categories.php
+quotes: src/support_module/all_quotes.php
 
 ####: Referrals
 all_referrals: src/refarrals_module/all_refarrals.php
