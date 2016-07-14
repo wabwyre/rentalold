@@ -20,6 +20,7 @@ class Quotes extends Library
 
 	public function addQuataion(){
 		extract($_POST);
+		//var_dump($_POST);die();
 		$validate = array(
 			'bid_amount'=>array(
 				'name'=> 'Bid Amount',
@@ -39,15 +40,15 @@ class Quotes extends Library
 			if($this-> addQuataionDetails($bid_amount, $maintainance)){
 				$this->flashMessage('quotes', 'success', 'The Quotation has been added.');
 			}else{
-				$this->flashMessage('quotes', 'error', 'Failed to add quatation! ' . get_last_error());
+				$this->flashMessage('quotes', 'error', 'Failed to add quotation! ' . get_last_error());
 			}
 		}
 	}
 
 	public function addQuataionDetails($bid_amount, $maintainance){
 		$contractor = $_SESSION['mf_id'];
-		$bid_status = false;
-		$job_status = false;
+		$bid_status = '1';
+		$job_status = '1';
 
 		$result = $this->insertQuery('quotes',
 			array(
