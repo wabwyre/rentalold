@@ -2,20 +2,24 @@
 require_once 'src/models/plots.php';
 $prop = new Plots();
 
-set_title('Add Plot');
-/**
- * Set the page layout that will be used
- */
-set_layout("dt-layout.php", array(
-	'pageSubTitle' => 'Plot Manager',
-	'pageSubTitleText' => 'Allows one to manage plots',
-	'pageBreadcrumbs' => array (
-		array ( 'url'=>'index.php', 'text'=>'Home' ),
-		array ( 'text'=>'PLOTS' ),
-		array ( 'text'=>'Plot Manager' )
-	),
-	'pageWidgetTitle' => 'Plot Details'
-));
+if(App::isAjaxRequest()) {
+	$prop->getPlotByPlotId($_POST['edit_id']);
+}else{
+	set_title('Add Plot');
+	/**
+	 * Set the page layout that will be used
+	 */
+	set_layout("dt-layout.php", array(
+		'pageSubTitle' => 'Plot Manager',
+		'pageSubTitleText' => 'Allows one to manage plots',
+		'pageBreadcrumbs' => array(
+			array('url' => 'index.php', 'text' => 'Home'),
+			array('text' => 'PLOTS'),
+			array('text' => 'Plot Manager')
+		),
+		'pageWidgetTitle' => 'Plot Details'
+	));
+
 ?>
 <div class="widget">
 	<div class="widget-title"><h4><i class="icon-reorder"></i> Plot Manager</h4>
@@ -54,8 +58,8 @@ set_layout("dt-layout.php", array(
 					<td><?php echo $plot['payment_code']; ?></td>
 					<td><?php echo $prop->getFullName($plot['pm_mfid']); ?></td>
 					<td><?php echo $prop->getFullName($plot['landlord_mfid']); ?></td>
-					<td><a href="#update_prop" class="btn btn-mini btn-warning edit_prop" data-toggle="modal"><i class="icon-edit"></i> Edit</a> </td>
-					<td><a href="#del_prop" class="btn btn-mini btn-danger del_prop" data-toggle="modal"><i class="icon-trash"></i> Delete</a></td>
+					<td><a href="#update_prop" class="btn btn-mini btn-warning edit_prop" edit-id="<?php echo $plot['plot_id']; ?>" data-toggle="modal"><i class="icon-edit"></i> Edit</a> </td>
+					<td><a href="#del_prop" class="btn btn-mini btn-danger del_prop" edit-id="<?php echo $plot['plot_id']; ?>" data-toggle="modal"><i class="icon-trash"></i> Delete</a></td>
 				</tr>
 			<?php }} ?>
 			</tbody>
@@ -136,23 +140,23 @@ set_layout("dt-layout.php", array(
 		<div class="modal-body">
 			<div class="row-fluid">
 				<label for="plot_name">Name:</label>
-				<input type="text" name="plot_name" id="plot_name" class="span12" value="<?php echo $prop->get('name'); ?>"/>
+				<input type="text" name="ed_plot_name" id="plot_name" class="span12" value="<?php echo $prop->get('name'); ?>"/>
 			</div>
 			<div class="row-fluid">
 				<label for="units">Units/Houses:</label>
-				<input type="number" min="1" name="units" id="units" class="span12" value="<?php echo $prop->get('units'); ?>"/>
+				<input type="number" min="1" name="ed_units" id="units" class="span12" value="<?php echo $prop->get('units'); ?>"/>
 			</div>
 			<div class="row-fluid">
 				<label for="payment_code">Payment Code:</label>
-				<input type="text" name="payment_code" id="payment_code" class="span12" value="<?php echo $prop->get('payment_code'); ?>"/>
+				<input type="text" name="ed_payment_code" id="payment_code" class="span12" value="<?php echo $prop->get('payment_code'); ?>"/>
 			</div>
 			<div class="row-fluid">
 				<label for="paybill_number">Paybill Number:</label>
-				<input type="text" name="paybill_number" id="paybill_number" class="span12" value="<?php echo $prop->get('paybill_number'); ?>"/>
+				<input type="text" name="ed_paybill_number" id="paybill_number" class="span12" value="<?php echo $prop->get('paybill_number'); ?>"/>
 			</div>
 			<label for="property_manager">Property Manager:</label>
 			<div class="row-fluid" style="margin-bottom: 10px;">
-				<select name="property_manager" id="property_manager" class="span12 live_search">
+				<select name="ed_property_manager" id="property_manager" class="span12 live_search">
 					<option value="">--Choose PM--</option>
 					<?php
 					$pms = $prop->getAllMasterfile("b_role = '".Property_Manager."'");
@@ -167,7 +171,7 @@ set_layout("dt-layout.php", array(
 
 			<label for="landlord">Landlord:</label>
 			<div class="row-fluid">
-				<select name="landlord" id="landlord" class="span12 live_search">
+				<select name="ed_landlord" id="landlord" class="span12 live_search">
 					<option value="">--Choose Landlord--</option>
 					<?php
 					$landlord = $prop->getAllMasterfile("b_role = '".Landlord."'");
@@ -182,9 +186,11 @@ set_layout("dt-layout.php", array(
 		</div>
 		<!-- the hidden fields -->
 		<input type="hidden" name="action" value="edit_property"/>
+		<input type="hidden" name="edit_id" id="edit_id"/>
 		<div class="modal-footer">
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo649'); ?>
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav650'); ?>
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can651'); ?>
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav652'); ?>
 		</div>
 	</div>
 </form>
+<?php set_js(array('src/js/plots.js')); } ?>

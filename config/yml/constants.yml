@@ -385,3 +385,5 @@ basic:
 
    #### Property Module
    add_property: add_property
+   edit_property: edit_property
+   delete_property: delete_property

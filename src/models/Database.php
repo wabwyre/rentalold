@@ -52,6 +52,36 @@
 			}
 		}
 
+		public function updateQuery2($table, $fields_values = array(), $conditions= array()){
+			if(!empty($table)){
+				$condition = (!empty($condition)) ? 'WHERE '.$condition : '';
+
+				$fields_values_string = '';
+				$condition_string = '';
+				if(count($fields_values)) {
+					foreach ($fields_values as $key => $fv) {
+						$fields_values_string .= " $key = '" . $fv . "',";
+					}
+					$fields_values_string = rtrim($fields_values_string, ',');
+
+					if(count($conditions)) {
+						foreach ($conditions as $key => $cond_value) {
+							$condition_string .= " $key = '" . $cond_value . "',";
+						}
+						$condition_string = rtrim($condition_string, ',');
+					}
+
+					$query = "UPDATE $table SET " . $fields_values_string . " $condition";
+					//				var_dump($query);exit;
+					if (run_query($query)) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			}
+		}
+
 		public function deleteQuery($table, $condition){
 			if(!empty($table) && !empty($condition)){
 				$condition = (!empty($condition)) ? 'WHERE '.$condition : '';
