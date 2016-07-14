@@ -28,3 +28,31 @@ CREATE TABLE public.revenue_service_bill
 WITH (
   OIDS=FALSE
 );
+
+DROP VIEW all_masterfile;
+CREATE OR REPLACE VIEW all_masterfile AS
+ SELECT m.surname,
+    m.active,
+    m.mf_id,
+    m.firstname,
+    m.middlename,
+    m.id_passport,
+    m.gender,
+    m.images_path,
+    m.regdate_stamp,
+    m.b_role,
+    m.dob,
+    m.time_stamp,
+    m.customer_type_id,
+    m.email,
+    m.company_name,
+    ul.username,
+    c.customer_type_name,
+    ul.user_role,
+    concat(m.surname, ' ', m.firstname, ' ', m.middlename) AS full_name
+   FROM masterfile m
+     LEFT JOIN user_login2 ul ON ul.mf_id = m.mf_id
+     LEFT JOIN customer_types c ON c.customer_type_id = m.customer_type_id;
+
+ALTER TABLE all_masterfile
+  OWNER TO postgres;

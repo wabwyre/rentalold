@@ -254,15 +254,6 @@ import_companies: src/masterfile_module/import_client_groups.php
 2814: src/test_modd/under-construction.php
 2815: src/test_modd/under-construction.php
 
-####: Agents Module
-3000: src/agents_module/add_agent.php
-3001: src/agents_module/edit_agent.php
-3002: src/agents_module/agents.php
-3003: src/agents_module/agent_profile.php
-3004: src/agents_module/search_agents.php
-3005: src/agents_module/add_agent_addresses.php
-3006: src/agents_module/agents_dashboard.php
-
 #### User Management Module
 add_user: src/users_module/add_user.php
 all_users: src/users_module/users.php
@@ -307,6 +298,8 @@ pre_message: src/broadcast_module/predefined_messages.php
 all_support: src/support_module/all_support.php
 issued_tickets: src/support_module/issued_tickets.php
 view_ticket: src/support_module/view_ticket.php
+all_voucher: src/support_module/all_vouchers.php
+man_category: src/support_module/manage_categories.php
 
 ####: Referrals
 all_referrals: src/refarrals_module/all_refarrals.php
@@ -334,4 +327,3 @@ in_plot: src/house_module/houses_in_plot.php
 6003: src/payment_reports/paybill_payments.php
 6004: src/payment_reports/landlord_payments.php
 6005: src/payment_reports/landlord_houses.php
-

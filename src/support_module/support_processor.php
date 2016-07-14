@@ -27,5 +27,22 @@ switch ($_POST['action']) {
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
 		$Support->addComment();
 	break;
+
+	case add_category:
+		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		$Support->addCategory();
+		$_SESSION['support_error'] = $Support->getWarnings();
+		break;
+
+	case edit_category:
+		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		$Support->editCategory();
+		$_SESSION['support_error'] = $Support->getWarnings();
+		break;
+
+	case delete_category:
+		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		$Support->deleteCategory();
+		break;
 }
 ?>

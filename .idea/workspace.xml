@@ -2,16 +2,267 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb328f81-8f07-4502-8fdb-6a91e6c7ea05" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/masterfile_module/restore_masterfile.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/models/Accounts.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/payment_agent_module/manage_accounts.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/crap/rental_14th_july_2016.backup" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/js/manage_category.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/models/Plots.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/support_module/all_vouchers.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/support_module/category_details.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/support_module/manage_categories.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/SATELLITE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/AfyapoaMsps.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/TopBar.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/TopBar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/action_processor.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/add_crm.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/add_market.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/add_market_allocation.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/add_market_attendant.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/add_market_items.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/add_market_options.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/add_market_type.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/add_mkt_register.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/add_service_bill.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/business_permits.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/businesspermit_bills.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/buyservice_transactions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/cess_item.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/clamp_records.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/clamper_allocations.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/clampteamregion_allocations.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/compliance_transactions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/contacts_list.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/delete_market_attendant.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/done.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edit_market.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edit_market_allocation.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edit_market_attendant.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/edit_market_items.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/grid.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/inspector_allocations.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/issued_market_ticket.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/js_scripts.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/linker1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/market_bills.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/market_queries.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/markets_processor.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/new_house.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/new_house_estate.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/new_house_type.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parking_bills.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parking_options.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parking_queries.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parking_sessions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/paybill_transactions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ptransactions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/querybill_transactions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_business_permits.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_businesspermit_bills.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_land_rates.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_market_attendant.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_market_items.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_market_options.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_market_session.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_market_tickets.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_market_types.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_markets_allocation.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_markets_register.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_package.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_paid_bill.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_particular_payment.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_payment.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_pending_bills.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_transactions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_waiver_benchmark.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/remote_waiver_issued.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/rents.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/rents_processor.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/reports_library.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/reset_password.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/search_house_rent.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/set_inactive.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/settings.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/setup.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/streetregion_allocations.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/system_admin.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/topup.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tower_allocations.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/towing_records.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/transactions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/util.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/css/adminia-responsive.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/css/adminia.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/css/bootstrap-responsive.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/css/font-awesome.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/css/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/css/jquery.visualize.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/css/pages/dashboard.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/css/pages/faq.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/css/pages/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/css/pages/login.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/css/pages/plans.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/css/robots.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/css/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dd/src/jquery.ui.potato.menu.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dd/src/jquery.ui.potato.menu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dd/src/jquery.ui.potato.menu.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/css/demo_page.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/css/demo_table.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/css/demo_table_jui.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/css/jquery.dataTables.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/css/jquery.dataTables_themeroller.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/css/demo_page.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/css/demo_table.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/css/demo_table_jui.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/css/jquery.dataTables.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/css/jquery.dataTables_themeroller.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/js/jquery.dataTables.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/js/jquery.dataTables.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/js/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/js/jquery__________.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/as3/ZeroClipboard.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/as3/ZeroClipboardPdf.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/as3/lib/AlivePDF.swc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/css/TableTools.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/css/TableTools_JUI.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/images/background.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/images/collection.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/images/collection_hover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/images/copy.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/images/copy_hover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/images/csv.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/images/csv_hover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/images/pdf.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/images/pdf_hover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/images/print.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/images/print_hover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/images/xls.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/images/xls_hover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/js/TableTools.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/js/TableTools.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/js/TableTools.min.js.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/js/ZeroClipboard.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/swf/copy_csv_xls.swf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/d/media/swf/copy_csv_xls_pdf.swf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/js/jquery.dataTables.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/js/jquery.dataTables.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/js/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/js/jquery__________.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/as3/ZeroClipboard.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/as3/ZeroClipboardPdf.as" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/as3/lib/AlivePDF.swc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/css/TableTools.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/css/TableTools_JUI.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/images/background.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/images/collection.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/images/collection_hover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/images/copy.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/images/copy_hover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/images/csv.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/images/csv_hover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/images/pdf.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/images/pdf_hover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/images/print.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/images/print_hover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/images/xls.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/images/xls_hover.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/js/TableTools.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/js/TableTools.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/js/TableTools.min.js.gz" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/js/ZeroClipboard.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/swf/copy_csv_xls.swf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/dt/media/swf/copy_csv_xls_pdf.swf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/avatar.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/glyphicons-halflings-white.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/glyphicons-halflings.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/green_tick.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/64_due_gnome_task_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/active.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/add_doc_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/call_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/chrome.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/config_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/contacts_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/cross.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/database_backup_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/document_preview_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/due_today.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/edit.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/excel_icon_large.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/excel_icon_small.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/file_icon_large.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/file_icon_small.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/files_backup_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/files_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/firefox.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/folder_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/gmail_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/google_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/hazard.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/help_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/hour_glass_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/image_icon_large.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/image_icon_small.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/internet_explorer.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/meeting_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/opera.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/org_structure_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/pdf_icon_large.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/pdf_icon_small.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/preloader.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/preloaderx.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/preview_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/refresh_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/reports_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/safari.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/scorecard_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/settings_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/support_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/task.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/tasks_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/timer_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/todo_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/users_icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/word_icon_large.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/icons/word_icon_small.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/logox.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/red_cross.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/robots.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/small_logo.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/spacer.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/user_pics/1358617827.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/user_pics/1_1358619226.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/user_pics/abduba@porterlogics.com_1358686437.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/img/user_pics/thispatrick@gmail.com_1358642587.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/charts/area.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/charts/bar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/charts/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/charts/line.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/charts/pie.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/excanvas.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/faq.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/jquery-1.7.2.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/jquery.flot.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/jquery.flot.orderBars.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/jquery.flot.pie.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/jquery.flot.resize.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/ux/js/scripts.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/view_business.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/yml/constants.yml" afterPath="$PROJECT_DIR$/config/yml/constants.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/yml/routes.yml" afterPath="$PROJECT_DIR$/config/yml/routes.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/add_masterfile.js" afterPath="$PROJECT_DIR$/src/js/add_masterfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/masterfile_module/deleted_masterfile.php" afterPath="$PROJECT_DIR$/src/masterfile_module/deleted_masterfile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/masterfile_module/masterfile_processor.php" afterPath="$PROJECT_DIR$/src/masterfile_module/masterfile_processor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/masterfile_module/personal_details.php" afterPath="$PROJECT_DIR$/src/masterfile_module/personal_details.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crap/view.sql" afterPath="$PROJECT_DIR$/crap/view.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Masterfile.php" afterPath="$PROJECT_DIR$/src/models/Masterfile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/SupportTickets.php" afterPath="$PROJECT_DIR$/src/models/SupportTickets.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/prop_module/add_property.php" afterPath="$PROJECT_DIR$/src/prop_module/add_property.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/support_module/all_support.php" afterPath="$PROJECT_DIR$/src/support_module/all_support.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/support_module/support_processor.php" afterPath="$PROJECT_DIR$/src/support_module/support_processor.php" />
     </list>
     <ignored path="rental.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +287,8 @@
       <file leaf-file-name="routes.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/yml/routes.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="306" column="6" selection-start-line="306" selection-start-column="0" selection-end-line="306" selection-end-column="6" />
+            <state relative-caret-position="5083">
+              <caret line="299" column="6" selection-start-line="299" selection-start-column="6" selection-end-line="299" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -47,10 +298,16 @@
         <entry file="file://$PROJECT_DIR$/src/support_module/all_support.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="174">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="123" selection-end-column="7" />
+              <caret line="14" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding>
-                <element signature="e#371#2529#0#HTML" expanded="false" />
-                <element signature="e#2551#3770#0#HTML" expanded="false" />
+                <element signature="e#371#1797#0#HTML" expanded="false" />
+                <marker date="1468499242845" expanded="true" signature="222:361" ph="..." />
+                <marker date="1468499242845" expanded="true" signature="735:805" ph="..." />
+                <marker date="1468499242845" expanded="true" signature="2410:2430" ph="..." />
+                <marker date="1468499242845" expanded="true" signature="2410:2446" ph="..." />
+                <marker date="1468499242845" expanded="true" signature="2410:3179" ph="..." />
+                <marker date="1468499242845" expanded="true" signature="2410:3471" ph="..." />
+                <marker date="1468499242845" expanded="true" signature="2410:3479" ph="..." />
               </folding>
             </state>
           </provider>
@@ -78,11 +335,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Accounts.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Accounts.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/Accounts.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+            <state relative-caret-position="272">
+              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -98,42 +355,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Masterfile.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Masterfile.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/models/Masterfile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="460" column="8" selection-start-line="460" selection-start-column="8" selection-end-line="467" selection-end-column="9" />
+            <state relative-caret-position="-3861">
+              <caret line="96" column="17" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="17" />
               <folding>
-                <element signature="n#addMf#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#addTenant#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#addContractor#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#addLandlord#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#addPM#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#addPersonalDetails#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#addAddress#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#createLoginAccount#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#generatePassword#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#getCustomerAddresses#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#checkForExistingRevenueChannelName#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#addAddressType#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#editAddress#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <element signature="n#deleteAddress#0;n#Masterfile#0;n#!!top" expanded="false" />
-                <marker date="1468485577157" expanded="true" signature="14871:15111" ph="SELECT * FRO... masterfile" />
-                <marker date="1468485577157" expanded="true" signature="15234:15510" ph="SELECT a.*, address" />
-                <marker date="1468485577157" expanded="true" signature="15637:15740" ph="SELECT * FRO... revenue_channel" />
-                <marker date="1468485577157" expanded="true" signature="16067:16188" ph="INSERT INTO address_types... " />
-                <marker date="1468485577157" expanded="true" signature="16335:16544" ph="..." />
-                <marker date="1468485577157" expanded="true" signature="16699:16883" ph="..." />
-                <marker date="1468485577157" expanded="true" signature="16998:17270" ph="..." />
-                <marker date="1468485577157" expanded="true" signature="17522:18018" ph="UPDATE addre... " />
-                <marker date="1468485577157" expanded="true" signature="18199:18410" ph="..." />
-                <marker date="1468485577157" expanded="true" signature="18567:18753" ph="..." />
-                <marker date="1468485577157" expanded="true" signature="18868:19135" ph="..." />
-                <marker date="1468485577157" expanded="true" signature="19262:19326" ph="DELETE FROM " />
-                <marker date="1468485577157" expanded="true" signature="19439:19579" ph="..." />
-                <marker date="1468485577157" expanded="true" signature="23407:23488" ph="UPDATE user_... " />
-                <marker date="1468485577157" expanded="true" signature="23744:23806" ph="DELETE FROM " />
-                <marker date="1468485577157" expanded="true" signature="23926:24123" ph="..." />
+                <marker date="1468499934184" expanded="true" signature="14871:15111" ph="SELECT * FRO... masterfile" />
+                <marker date="1468499934184" expanded="true" signature="15234:15510" ph="SELECT a.*, address" />
+                <marker date="1468499934184" expanded="true" signature="15637:15740" ph="SELECT * FRO... revenue_channel" />
+                <marker date="1468499934184" expanded="true" signature="16067:16188" ph="INSERT INTO address_types... " />
+                <marker date="1468499934184" expanded="true" signature="16335:16544" ph="..." />
+                <marker date="1468499934184" expanded="true" signature="16699:16883" ph="..." />
+                <marker date="1468499934184" expanded="true" signature="16998:17270" ph="..." />
+                <marker date="1468499934184" expanded="true" signature="17522:18018" ph="UPDATE addre... " />
+                <marker date="1468499934184" expanded="false" signature="18199:18410" ph="..." />
+                <marker date="1468499934184" expanded="true" signature="18567:18753" ph="..." />
+                <marker date="1468499934184" expanded="true" signature="18868:19135" ph="..." />
+                <marker date="1468499934184" expanded="false" signature="19248:19590" ph="..." />
+                <marker date="1468499934184" expanded="true" signature="19262:19326" ph="DELETE FROM " />
+                <marker date="1468499934184" expanded="true" signature="19439:19579" ph="..." />
+                <marker date="1468499934184" expanded="true" signature="23408:23489" ph="UPDATE user_... " />
+                <marker date="1468499934184" expanded="true" signature="23745:23807" ph="DELETE FROM " />
+                <marker date="1468499934184" expanded="true" signature="23927:24124" ph="..." />
               </folding>
             </state>
           </provider>
@@ -183,35 +427,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config/yml/include.yml" />
-        <option value="$PROJECT_DIR$/src/payment_agent_module/payment_agent_processor.php" />
-        <option value="$PROJECT_DIR$/src/models/SupportTickets.php" />
-        <option value="$PROJECT_DIR$/src/masterfile_module/add_masterfile.php" />
-        <option value="$PROJECT_DIR$/src/masterfile_module/address_details.php" />
-        <option value="$PROJECT_DIR$/config/yml/constants.yml" />
-        <option value="$PROJECT_DIR$/src/payment_agent_module/edit_service_bill.php" />
-        <option value="$PROJECT_DIR$/src/connection/config.php" />
-        <option value="$PROJECT_DIR$/src/masterfile_module/masterfile_profile.php" />
-        <option value="$PROJECT_DIR$/src/masterfile_module/masterfile_profile_info.php" />
-        <option value="$PROJECT_DIR$/src/masterfile_module/manage_addresses.php" />
-        <option value="$PROJECT_DIR$/src/users_module/edit_actions.php" />
-        <option value="$PROJECT_DIR$/src/masterfile_module/all_masterfile.php" />
-        <option value="$PROJECT_DIR$/src/models/Library.php" />
-        <option value="$PROJECT_DIR$/src/models/Database.php" />
-        <option value="$PROJECT_DIR$/src/library.php" />
-        <option value="$PROJECT_DIR$/src/users_module/my_profile.php" />
-        <option value="$PROJECT_DIR$/src/masterfile_module/edit_masterfile.php" />
-        <option value="$PROJECT_DIR$/src/models/House.php" />
-        <option value="$PROJECT_DIR$/src/masterfile_module/restore_masterfile.php" />
-        <option value="$PROJECT_DIR$/src/masterfile_module/masterfile_processor.php" />
-        <option value="$PROJECT_DIR$/src/masterfile_module/deleted_masterfile.php" />
-        <option value="$PROJECT_DIR$/src/models/Masterfile.php" />
-        <option value="$PROJECT_DIR$/src/js/add_masterfile.js" />
-        <option value="$PROJECT_DIR$/src/masterfile_module/personal_details.php" />
         <option value="$PROJECT_DIR$/config/yml/routes.yml" />
-        <option value="$PROJECT_DIR$/src/payment_agent_module/manage_account.php" />
-        <option value="$PROJECT_DIR$/src/payment_agent_module/manage_accounts.php" />
-        <option value="$PROJECT_DIR$/src/models/Accounts.php" />
+        <option value="$PROJECT_DIR$/src/models/Masterfile.php" />
       </list>
     </option>
   </component>
@@ -221,30 +438,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="PhpServers">
-    <servers />
-  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="width" value="1378" />
     <option name="height" value="745" />
-  </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>Blade files</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -345,73 +543,14 @@
       <pane id="Scratches" />
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../voice_out" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\rental\src\models" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
-      <BehatRunner />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
-      <scripts />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-  </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="fb328f81-8f07-4502-8fdb-6a91e6c7ea05" name="Default" comment="" />
-      <created>1467980219228</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1467980219228</updated>
-      <workItem from="1467980223103" duration="17187000" />
-      <workItem from="1468340819346" duration="12896000" />
-      <workItem from="1468389016797" duration="2320000" />
-      <workItem from="1468397019109" duration="29000" />
-      <workItem from="1468397652810" duration="27710000" />
-      <workItem from="1468433904170" duration="20167000" />
-    </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80309000" />
+    <option name="totallyTimeSpent" value="856000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1378" height="745" extended-state="0" />
@@ -454,17 +593,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
-  </component>
-  <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <collection />
-    </option>
-    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <collection />
-    </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1019,19 +1147,17 @@
     <entry file="file://$PROJECT_DIR$/src/support_module/all_support.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="123" selection-end-column="7" />
+          <caret line="14" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
-            <element signature="e#371#2529#0#HTML" expanded="false" />
-            <element signature="e#2551#3770#0#HTML" expanded="false" />
+            <element signature="e#371#1797#0#HTML" expanded="false" />
+            <marker date="1468499242845" expanded="true" signature="222:361" ph="..." />
+            <marker date="1468499242845" expanded="true" signature="735:805" ph="..." />
+            <marker date="1468499242845" expanded="true" signature="2410:2430" ph="..." />
+            <marker date="1468499242845" expanded="true" signature="2410:2446" ph="..." />
+            <marker date="1468499242845" expanded="true" signature="2410:3179" ph="..." />
+            <marker date="1468499242845" expanded="true" signature="2410:3471" ph="..." />
+            <marker date="1468499242845" expanded="true" signature="2410:3479" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/yml/routes.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="306" column="6" selection-start-line="306" selection-start-column="0" selection-end-line="306" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1081,67 +1207,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/Masterfile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="460" column="8" selection-start-line="460" selection-start-column="8" selection-end-line="467" selection-end-column="9" />
-          <folding>
-            <element signature="n#addMf#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#addTenant#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#addContractor#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#addLandlord#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#addPM#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#addPersonalDetails#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#addAddress#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#createLoginAccount#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#generatePassword#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#getCustomerAddresses#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#checkForExistingRevenueChannelName#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#addAddressType#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#editAddress#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <element signature="n#deleteAddress#0;n#Masterfile#0;n#!!top" expanded="false" />
-            <marker date="1468485577157" expanded="true" signature="14871:15111" ph="SELECT * FRO... masterfile" />
-            <marker date="1468485577157" expanded="true" signature="15234:15510" ph="SELECT a.*, address" />
-            <marker date="1468485577157" expanded="true" signature="15637:15740" ph="SELECT * FRO... revenue_channel" />
-            <marker date="1468485577157" expanded="true" signature="16067:16188" ph="INSERT INTO address_types... " />
-            <marker date="1468485577157" expanded="true" signature="16335:16544" ph="..." />
-            <marker date="1468485577157" expanded="true" signature="16699:16883" ph="..." />
-            <marker date="1468485577157" expanded="true" signature="16998:17270" ph="..." />
-            <marker date="1468485577157" expanded="true" signature="17522:18018" ph="UPDATE addre... " />
-            <marker date="1468485577157" expanded="true" signature="18199:18410" ph="..." />
-            <marker date="1468485577157" expanded="true" signature="18567:18753" ph="..." />
-            <marker date="1468485577157" expanded="true" signature="18868:19135" ph="..." />
-            <marker date="1468485577157" expanded="true" signature="19262:19326" ph="DELETE FROM " />
-            <marker date="1468485577157" expanded="true" signature="19439:19579" ph="..." />
-            <marker date="1468485577157" expanded="true" signature="23407:23488" ph="UPDATE user_... " />
-            <marker date="1468485577157" expanded="true" signature="23744:23806" ph="DELETE FROM " />
-            <marker date="1468485577157" expanded="true" signature="23926:24123" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/Accounts.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+        <state relative-caret-position="272">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <entry file="file://$PROJECT_DIR$/config/yml/routes.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5083">
+          <caret line="299" column="6" selection-start-line="299" selection-start-column="6" selection-end-line="299" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Masterfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3861">
+          <caret line="96" column="17" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="17" />
+          <folding>
+            <marker date="1468499934184" expanded="true" signature="14871:15111" ph="SELECT * FRO... masterfile" />
+            <marker date="1468499934184" expanded="true" signature="15234:15510" ph="SELECT a.*, address" />
+            <marker date="1468499934184" expanded="true" signature="15637:15740" ph="SELECT * FRO... revenue_channel" />
+            <marker date="1468499934184" expanded="true" signature="16067:16188" ph="INSERT INTO address_types... " />
+            <marker date="1468499934184" expanded="true" signature="16335:16544" ph="..." />
+            <marker date="1468499934184" expanded="true" signature="16699:16883" ph="..." />
+            <marker date="1468499934184" expanded="true" signature="16998:17270" ph="..." />
+            <marker date="1468499934184" expanded="true" signature="17522:18018" ph="UPDATE addre... " />
+            <marker date="1468499934184" expanded="false" signature="18199:18410" ph="..." />
+            <marker date="1468499934184" expanded="true" signature="18567:18753" ph="..." />
+            <marker date="1468499934184" expanded="true" signature="18868:19135" ph="..." />
+            <marker date="1468499934184" expanded="false" signature="19248:19590" ph="..." />
+            <marker date="1468499934184" expanded="true" signature="19262:19326" ph="DELETE FROM " />
+            <marker date="1468499934184" expanded="true" signature="19439:19579" ph="..." />
+            <marker date="1468499934184" expanded="true" signature="23408:23489" ph="UPDATE user_... " />
+            <marker date="1468499934184" expanded="true" signature="23745:23807" ph="DELETE FROM " />
+            <marker date="1468499934184" expanded="true" signature="23927:24124" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

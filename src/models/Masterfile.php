@@ -543,6 +543,7 @@
             return $data;
         }
 
+
         public function blockUser($mf_id){
             $query = "UPDATE user_login2 SET user_active = '0', status = '0' WHERE mf_id = '".$mf_id."'";
             if(run_query($query)){
@@ -566,6 +567,13 @@
             }
         }
 
+        public function getFullName($mf_id){
+            if(!empty($mf_id))
+                $data = $this->selectQuery('masterfile', 'surname, firstname, middlename', "mf_id = '".sanitizeVariable($mf_id)."'");
+            else
+                $data = '';
+            return $data;
+        }
     }
 
 
