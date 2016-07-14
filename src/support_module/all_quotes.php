@@ -136,7 +136,7 @@ set_layout("dt-layout.php", array(
 	        </div>
 		</div>
 		<!-- the hidden fields -->
-		<input type="hidden" name="action" value="add_support"/>
+		<input type="hidden" name="action" value="add_quotation"/>
 		<div class="modal-footer">
 			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo650'); ?>
 			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav649'); ?>

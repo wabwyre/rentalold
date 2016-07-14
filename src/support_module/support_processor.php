@@ -1,6 +1,8 @@
 <?php
 include_once('src/models/SupportTickets.php');
+include_once('src/models/Quotes.php');
 $Support = new SupportTickets;
+$Quotes = new Quotes();
 
 switch ($_POST['action']) {
 	case assign_staff:
@@ -44,5 +46,9 @@ switch ($_POST['action']) {
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
 		$Support->deleteCategory();
 		break;
+
+	case add_quotation:
+
+	break;
 }
 ?>

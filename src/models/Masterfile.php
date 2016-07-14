@@ -458,6 +458,15 @@
             );
         }
 
+        public function getAllDelMasterfile($condition = null){
+            $condition = (!is_null($condition)) ? $condition : '';
+            $data = $this->selectQuery('deleted_masterfile', '*', $condition);
+            return array(
+                'all' => $data,
+                'specific' => $data[0]
+            );
+        }
+
         public function editMf($post){
             $this->validate($_POST, array(
                 // personal details
@@ -532,6 +541,30 @@
             $condition = (!is_null($condition)) ? $condition : '';
             $data = $this->selectQuery('customer_types', '*', $condition);
             return $data;
+        }
+
+
+        public function blockUser($mf_id){
+            $query = "UPDATE user_login2 SET user_active = '0', status = '0' WHERE mf_id = '".$mf_id."'";
+            if(run_query($query)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        public function deleteMasterfile(){
+            if(!empty($_POST['delete_id'])){
+                $query = "DELETE FROM masterfile WHERE mf_id = '".$_POST['delete_id']."'";
+                if(run_query($query)){
+                    $_SESSION['done-deal'] = '<div class="alert alert-success">
+                        <button class="close" data-dismiss="alert">×</button>
+                        <strong>Success!</strong> Masterfile has been permanently deleted!.
+                    </div>';
+                }else{
+                    var_dump(get_last_error());exit;
+                }
+            }
         }
 
         public function getFullName($mf_id){
