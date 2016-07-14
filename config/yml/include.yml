@@ -20,7 +20,8 @@ post:
    - src/system_manager/menu_processor.php
    - src/system_manager/manage_menu_processor.php
    - src/RMC_module/RMC_processor.php
-   - src/payment_agent_module/payment_agent_processor.php
+   - src/payment_agent_module/payment_agent_procesdsor.php
    - src/broadcast_module/broadcast_processor.php
    - src/support_module/support_processor.php
    - src/system_manager/maintenance_processor.php
+   - src/prop_module/property_processor.php
