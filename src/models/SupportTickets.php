@@ -4,11 +4,9 @@ include_once('src/models/Broadcast.php');
 include_once('src/models/House.php');
 
 class SupportTickets extends House{
- 	public function allSuportTickets(){
- 		$query ="SELECT st.*, ca.customer_account_id, CONCAT(m.surname,' ',m.firstname,' ',m.middlename) AS customer_name, sta.assigned_to FROM support_ticket st
- 		LEFT JOIN customer_account ca ON ca.customer_account_id = st.customer_account_id
- 		LEFT JOIN masterfile m ON m.mf_id = st.reported_by
- 		LEFT JOIN support_ticket_assignment sta ON sta.support_ticket_id = st.support_ticket_id";
+ 	public function allMaintenanceTickets(){
+ 		$query ="SELECT mt.*, CONCAT(m.surname,' ',m.firstname,' ',m.middlename) AS customer_name FROM maintenance_ticket mt
+ 		LEFT JOIN masterfile m ON m.mf_id = mt.reported_by";
  		$result = run_query($query);
 		return $result;
  	}
@@ -297,13 +295,14 @@ class SupportTickets extends House{
 	}
 
 	public function getComplains(){
-		$query = "SELECT * maintenance_ticket";
+		$query = "SELECT * FROM maintenance_ticket";
 		$result = run_query($query);
 	}
 
 	public function getMaintenanceVoucher(){
-		$query ="SELECT mv.*, CONCAT(m.surname,' ',m.firstname,' ',m.middlename) AS customer_name FROM maintaince_vouchers mv
- 		LEFT JOIN masterfile m ON m.mf_id = mv.create_user
+		$query ="SELECT * FROM maintaince_vouchers ";
+		//var_dump($query);exit;
+		$result = run_query($query);
 	}
 
 }

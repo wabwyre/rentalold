@@ -41,7 +41,7 @@ set_layout("dt-layout.php", array(
  		</thead>
  	<tbody>
 	 	<?php
-			$result = $Support->allSuportTickets();
+			$result = $Support->allMaintenanceTickets();
 			while ($rows = get_row_data($result)) {
 				$time = $rows['reported_time'];
 				$aDate = explode(" ", $time);
