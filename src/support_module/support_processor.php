@@ -48,7 +48,8 @@ switch ($_POST['action']) {
 		break;
 
 	case add_quotation:
-
+		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		$Quotes->addQuataion();
 	break;
 }
 ?>

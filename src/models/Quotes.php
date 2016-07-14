@@ -13,5 +13,15 @@ class Quotes extends Library
 		$query = "SELECT * FROM maintaince_vouchers ";
 		$results = run_query($query);
 		return $results;
+
+	}
+
+	//function to add quatation to the database
+
+	public function addQuataion(){
+		extract($_POST);
+		var_dump($_POST);die();
+
+		$query = "INSERT INTO quotes ";
 	}
 }
