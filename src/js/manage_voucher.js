@@ -26,25 +26,17 @@ $('.delete_voc').on('click', function(){
 $('.approve_voc').on('click', function(){
     var voucher_id = $(this).attr('voucher_id');
 
-    $('#app_voucher_id').val(voucher_id);
+    if(voucher_id != ''){
+        $('#app_voucher_id').val(voucher_id);
+    }
+});
 
-    $('#approve_voucher').click(function(){
-        //alert('working');
-        $('input[name="action"]').attr('value', 'approve_maintenance_voucher');
-        if(confirm('Are you sure you want to Approve The Maintenance Voucher?')){
-            return true;
-        }else{
-            return false;
-        }
-    });
+$('#approve_voucher').click(function(){
+    //alert('working');
+    $('input[name="action"]').val('approve_maintenance_voucher');
+});
 
-    $('#decline_voucher').click(function(){
-        //alert('working');
-        $('input[name="action"]').attr('value', 'decline_maintenance_voucher');
-        if(confirm('Are you sure you want to Decline The Maintenance Voucher?')){
-           return true;
-        }else{
-            return false;
-        }
-    });
+$('#decline_voucher').click(function(){
+    //alert('working');
+    $('input[name="action"]').val('decline_maintenance_voucher');
 });

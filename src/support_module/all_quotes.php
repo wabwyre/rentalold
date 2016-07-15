@@ -41,6 +41,7 @@ if(App::isAjaxRequest()){
 				<th>Job Status</th>
 				<th>Edit</th>
 				<th>Delete</th>
+				<th>Task</th>
 
 				<!-- <th>View</th> -->
 			</tr>
@@ -62,6 +63,7 @@ if(App::isAjaxRequest()){
 				<td><?php echo $Quotes->checkIfQuoteWasApproved($rows['bid_status'], $rows['job_status']); ?></td>
 				<td><a href="#edit-quotation" class="btn btn-mini btn-warning edit_quot" edit-id="<?php echo $rows['qoute_id']; ?>" data-toggle="modal"><i class="icon-edit"></i> Edit</a></td>
 				<td><a href="#delete_quotaion" class="btn btn-mini btn-danger del_quot" edit-id="<?php echo $rows['qoute_id']; ?>" data-toggle="modal"><i class="icon-trash"></i> Delete</a></td>
+				<td><?php echo ($rows['bid_status'] == 't') ? '<a href="#mark-complete" class="btn btn-mini btn-success mark-complete" edit-id="<?php  ?>" data-toggle="modal"><i class="icon-tick"></i> Mark as complete</a>':'' ;?></td>
 
 		</tr>
 		<?php
@@ -168,6 +170,27 @@ if(App::isAjaxRequest()){
         <!-- hidden fields -->
         <input type="hidden" name="action" value="delete_quotation"/>
         <input type="hidden" id="delete_id" name="delete_id"/>
+        <div class="modal-footer">
+            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No659'); ?>
+            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes660'); ?>
+        </div>
+    </div>
+</form>
+
+
+<!-- mark as complete modal -->
+<form action=""  method="post">
+    <div id="mark-complete" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel1">Mark job as complete</h3>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to mark this job as complete?</p>
+        </div>
+        <!-- hidden fields -->
+        <input type="hidden" name="action" value="mark_complete"/>
+        <input type="hidden" id="delete_id" name="mark_complete"/>
         <div class="modal-footer">
             <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No659'); ?>
             <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes660'); ?>

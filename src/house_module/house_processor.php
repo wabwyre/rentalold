@@ -1,33 +1,44 @@
 <?php
+include_once('src/models/House.php');
+$House = new House;
+
 
 switch($_POST['action'])
 {
 case add_house:
 	//get the values to add a new property
-    $house_no=$_POST['house_no'];
-    $rent_amount=$_POST['rent_amount'];
-    $tenant=$_POST['tenant'];
-    $attached_to=$_POST['plot_id'];
+	$house_no=$_POST['house_no'];
+	$rent_amount=$_POST['rent_amount'];
+	$tenant=$_POST['tenant'];
+	$attached_to=$_POST['plot_id'];
 		//validation
 		if (empty($house_no))
 		{
 		$message="You did not enter the house no";
 		} else {
-              
-        $add_house="INSERT INTO ".DATABASE.".houses(house_number,rent_amount,attached_to,tenant_id)
-                VALUES('".$house_no."','".$rent_amount."','".$attached_to."','".$tenant."') RETURNING house_id";
-        if($data=run_query($add_house)){
-            $_SESSION['mes2'] = '<div class="alert alert-success">
-            <button class="close" data-dismiss="alert">×</button>
-            Your form submitted successfully!
-        </div>'; 
-        }
-       
-        $id_data = get_row_data($data);
-        $id = $id_data['house_id'];
-        //argDump( $data);exit; 
-    }
+
+		$add_house="INSERT INTO ".DATABASE.".houses(house_number,rent_amount,attached_to,tenant_id)
+				VALUES('".$house_no."','".$rent_amount."','".$attached_to."','".$tenant."') RETURNING house_id";
+		if($data=run_query($add_house)){
+			$_SESSION['mes2'] = '<div class="alert alert-success">
+			<button class="close" data-dismiss="alert">×</button>
+			Your form submitted successfully!
+		</div>';
+		}
+
+		$id_data = get_row_data($data);
+		$id = $id_data['house_id'];
+		//argDump( $data);exit;
+}
 break;
+
+//add an attribute to a house\
+ case add_attribute:
+ 		//var_dump($_POST);exit;
+	    logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+	    $House->addAttrb();
+	    break;
+
 case edit_house:
 	if($_POST['action'] == "edit_house")
 		{
@@ -49,7 +60,8 @@ case edit_house:
 	            You updated the house information successfully.
 	        	</div>';
 		}
-	}   
+	} 
+
 
 }     
 ?>

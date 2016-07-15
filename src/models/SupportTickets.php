@@ -1,9 +1,7 @@
 <?php
-include_once('src/models/GpayWallet.php');
-include_once('src/models/Broadcast.php');
-include_once('src/models/House.php');
+include_once('src/models/Masterfile.php');;
 
-class SupportTickets extends House{
+class SupportTickets extends Masterfile{
  	public function allMaintenanceTickets(){
  		$query ="SELECT mt.*, c.category_name, CONCAT(m.surname,' ',m.firstname,' ',m.middlename) AS customer_name FROM maintenance_ticket mt
  		LEFT JOIN masterfile m ON m.mf_id = mt.reported_by
@@ -441,6 +439,7 @@ class SupportTickets extends House{
 	
 	public function approveVoucher(){
 		extract($_POST);
+
 		$status = '1';
 		$this->beginTranc();
 		$result = $this->updateQuery2(
@@ -453,18 +452,13 @@ class SupportTickets extends House{
 			)
 		);
 		if($result){
-			$this->sendContractorMessage();
+			$this->sendContractorMessage($voucher_id);
 		}else{
 			$this->flashMessage('support', 'error', 'Encountered an error! '.get_last_error());
 		}
 	}
-	
-	public function getContractor($b_role){
-		$rows = $this->selectQuery('all_masterfile', 'm.mf_id',"m.b_role = '".$b_role."'");
-		return $rows;
-	}
 
-	public  function  sendContractorMessage(){
+	public  function  sendContractorMessage($voucher_id){
 		$mess_type_code = 'EMAIL';
 		$message_type = $this->getMessageTypeId($mess_type_code);
 		$mess_code = 'PUSH_NOTIFICATION';
@@ -478,14 +472,20 @@ class SupportTickets extends House{
 		$message .= "Please Login To the system to Send Your Quotations(Bids) For The Raised Maintenance Voucher.\r\n\r\n";
 		$message .= "Thanks,\r\n";
 		$message .= "Oriems Rental Team";
-		$mf_ids= $this->getContractor('contractor');
+		$mf_ids = $this->findMasterFileByRoleName('contractor');
+		var_dump($mf_ids);exit;
 		if (count($mf_ids)) {
-			$recip_array = 'array[';
+			$mfid_list = 'array[';
+			$mf_lst = '';
 			foreach ($mf_ids as $mf_id) {
-				$recip_array .= $mf_id . ',';
+				$mfid_list .= $mf_id.',';
+				$mf_lst .= $mf_id.',';
 			}
-			$recip_array = rtrim($recip_array, ',');
-			$recip_array .= ']';
+			$mf_lst = rtrim($mf_lst, ',');
+			$mfid_list = rtrim($mfid_list, ',');
+			$mfid_list .= ']';
+			$recip_array = $mfid_list;
+			var_dump($recip_array);exit;
 		}
 		$sender = $_SESSION['mf_id'];
 		$date = date('Y-m-d H:i:s');
@@ -504,14 +504,16 @@ class SupportTickets extends House{
 
 		if($data){
 			foreach ($mf_ids as $mf_id) {
+				var_dump($mf_id);exit;
 				$this->createContractorMessage($mf_id, $data['message_id']);
-			}$this->endTranc();
+			}
 		}else{
 			$this->flashMessage('support', 'error', 'Encountered an error! '.get_last_error());
 		}
 	}
 
 	public function createContractorMessage($mf_id, $message_id){
+		var_dump($_POST);exit;
 		$result = $this->insertQuery('customer_messages',
 			array(
 				'mf_id' => $mf_id,
@@ -520,6 +522,7 @@ class SupportTickets extends House{
 		);
 		if($result){
 			$this->flashMessage('support', 'success', ' Maintenance Voucher  has been Approved.');
+			$this->endTranc();
 		}else{
 			$this->flashMessage('support', 'error', 'Failed to update maintenance voucher! ' . get_last_error());
 		}
