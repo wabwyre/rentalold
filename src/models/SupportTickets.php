@@ -436,84 +436,89 @@ class SupportTickets extends Masterfile{
 			return $rows['message_type_id'];
 		}
 	}
-	
-	public function approveVoucher(){
-		extract($_POST);
 
-		$status = '1';
+	public function approveVoucher($voucher_id){
 		$this->beginTranc();
-		$result = $this->updateQuery2(
-			'maintenance_vouchers',
-			array(
-				'approve_status' => $status
-			),
-			array(
-				'voucher_id' => $voucher_id
-			)
-		);
+		$result = $this->updateQuery2('maintenance_vouchers', array('approve_status' => '1'), array('voucher_id' => $voucher_id));
 		if($result){
-			$this->sendContractorMessage($voucher_id);
+			$data = $this->prepRecipMfids(Contractor);
+			$mfids = $data['list'];
+			$mfid_arr = $data['array'];
+
+			if(!empty($mfids)){
+				$subject = 'Voucher#: '.$voucher_id;
+				$body = "Dear Contractor, \n";
+				$body .= "A maintenance voucher has been created. \n";
+				$body .= "Please log into the system to attach a quote. \n";
+				$body .= "Thanks";
+				$mess = array(
+					'subject' => $subject,
+					'body' => $body,
+				);
+
+				if($this->createMessage(Push,$mfids,$mess, $mfid_arr)){
+					if($this->createMessage(Email,$mfids,$mess, $mfid_arr)){
+						if($this->createMessage(SMS,$mfids,$mess, $mfid_arr)){
+							$this->endTranc();
+							$this->flashMessage('support', 'success', 'Voucher has been approved');
+						}
+					}
+				}
+			}
 		}else{
-			$this->flashMessage('support', 'error', 'Encountered an error! '.get_last_error());
+			$this->flashMessage('support', 'error', 'Encountered an error!'.get_last_error());
 		}
 	}
 
-	public  function  sendContractorMessage($voucher_id){
-		$mess_type_code = 'EMAIL';
-		$message_type = $this->getMessageTypeId($mess_type_code);
-		$mess_code = 'PUSH_NOTIFICATION';
-		$mess_type = $this->getMessageTypeId($mess_code);
-		$code = 'SMS';
-		$type = $this->getMessageTypeId($code);
-		$mess = 'array['.$message_type.','.$mess_type.','.$type.']';
-		$subject = 'Maintenance Voucher#'.$voucher_id.'';
-		$message = "Dear Contractor,\r\n";
-		$message .= "A Maintenance Voucher Has Been Raised:\r\n";
-		$message .= "Please Login To the system to Send Your Quotations(Bids) For The Raised Maintenance Voucher.\r\n\r\n";
-		$message .= "Thanks,\r\n";
-		$message .= "Oriems Rental Team";
-		$mf_ids = $this->findMasterFileByRoleName('contractor');
-		var_dump($mf_ids);exit;
-		if (count($mf_ids)) {
-			$mfid_list = 'array[';
-			$mf_lst = '';
-			foreach ($mf_ids as $mf_id) {
-				$mfid_list .= $mf_id.',';
-				$mf_lst .= $mf_id.',';
+	public function prepRecipMfids($brole){
+		$data = $this->selectQuery('masterfile', 'mf_id', "b_role = '".sanitizeVariable($brole)."'");
+		$mfids = '';
+		$mfid_arr = array();
+		if(count($data)){
+			$mfids = '{';
+			foreach ($data as $row){
+				$mfids .= $row['mf_id'].',';
+				$mfid_arr[] = $row['mf_id'];
 			}
-			$mf_lst = rtrim($mf_lst, ',');
-			$mfid_list = rtrim($mfid_list, ',');
-			$mfid_list .= ']';
-			$recip_array = $mfid_list;
-			var_dump($recip_array);exit;
+			$mfids = rtrim($mfids, ',');
+			$mfids .= '}';
 		}
-		$sender = $_SESSION['mf_id'];
-		$date = date('Y-m-d H:i:s');
+		return array(
+			'list' => $mfids,
+			'array' => $mfid_arr
+		);
+	}
 
+	public function createMessage($mess_type_code, $mfids, $message_data = array(), $mfid_arr = array()){
 		$data = $this->insertQuery('message',
 			array(
-				'body' => $message,
-				'subject' => $subject,
-				'sender' => $sender,
-				'recipients' => $recip_array,
-				'created' => $date,
-				'message_type_id' => $mess
+				'body' => $message_data['body'],
+				'subject' => $message_data['subject'],
+				'sender' => $_SESSION['mf_id'],
+				'recipients' => $mfids,
+				'message_type_id' => "{".$this->getMessageTypeId($mess_type_code)."}",
+				'status' => '0'
 			),
 			'message_id'
 		);
-
-		if($data){
-			foreach ($mf_ids as $mf_id) {
-				var_dump($mf_id);exit;
-				$this->createContractorMessage($mf_id, $data['message_id']);
+		if($data['message_id']){
+			if(count($mfid_arr)) {
+				foreach ($mfid_arr as $mf_id) {
+					if ($this->createCustomerMessage($mf_id, $data['message_id'])) {
+						return true;
+					} else {
+						$this->flashMessage('support', 'error', 'Encounted an error!' . get_last_error());
+					}
+				}
 			}
 		}else{
-			$this->flashMessage('support', 'error', 'Encountered an error! '.get_last_error());
+			$this->flashMessage('support', 'error', 'Encounted an error!'.get_last_error());
+			return false;
 		}
 	}
 
-	public function createContractorMessage($mf_id, $message_id){
-		var_dump($_POST);exit;
+	public function createCustomerMessage($mf_id, $message_id){
+//		var_dump($_POST);exit;
 		$result = $this->insertQuery('customer_messages',
 			array(
 				'mf_id' => $mf_id,
@@ -521,10 +526,9 @@ class SupportTickets extends Masterfile{
 			)
 		);
 		if($result){
-			$this->flashMessage('support', 'success', ' Maintenance Voucher  has been Approved.');
-			$this->endTranc();
+			return true;
 		}else{
-			$this->flashMessage('support', 'error', 'Failed to update maintenance voucher! ' . get_last_error());
+			return false;
 		}
 	}
 
