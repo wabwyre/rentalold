@@ -2,6 +2,9 @@
     include_once('src/models/Masterfile.php');
     $mf = new Masterfile();
 
+    include_once('src/models/Accounts.php');
+    $acc = new Accounts();
+
     set_layout("wizard-layout.php", array(
       'pageSubTitle' => 'Add Masterfile',
       'pageSubTitleText' => '',

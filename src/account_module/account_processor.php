@@ -2,26 +2,26 @@
 /**
  * Created by PhpStorm.
  * User: JOEL
- * Date: 7/14/2016
- * Time: 6:37 PM
+ * Date: 7/15/2016
+ * Time: 11:20 AM
  */
-
 include_once ('src/models/Accounts.php');
-$acc = new Account();
+$acc = new Accounts();
 
 switch($_POST['action']) {
-    case add_account:
+    case add_bank:
+        var_dump($acc);
         logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-        $acc->addBankAccount();
+        $acc->addBank();
         break;
 
-    case edit_account:
+    case edit_bank:
         logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-        $acc->editBankAccount();
+        $acc->editBank();
         break;
 
     case Del575:
         logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-        $acc->deleteBankAccount();
+        $acc->deleteBank();
         break;
 }

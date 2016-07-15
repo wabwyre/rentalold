@@ -199,7 +199,7 @@
         <div class="control-group">
             <label for="lr_no" class="control-label">L.R No. / Name Property.</label>
             <div class="controls">
-                <input type="text" name="lr_no" class="span12" value="<?php echo (isset($_POST['lr_no'])) ? $_POST['lr_no'] : ''; ?>" placeholder="Land Rate Number or Property Name" />
+                <input type="text" name="lr_no" class="span12" id="lr_no" value="<?php echo (isset($_POST['lr_no'])) ? $_POST['lr_no'] : ''; ?>" placeholder="Land Rate Number or Property Name" />
             </div>
         </div>
     </div>
