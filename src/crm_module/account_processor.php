@@ -12,20 +12,24 @@ switch($_POST['action']) {
     case add_bank:
         logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
         $acc->addBank();
+        $_SESSION['warnings'] = $acc->getWarnings();
         break;
 
     case edit_bank:
         logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
         $acc->editBank();
+        $_SESSION['warnings'] = $acc->getWarnings();
         break;
 
     case Del575:
         logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
         $acc->deleteBank();
+        $_SESSION['warnings'] = $acc->getWarnings();
         break;
 
     case add_branch:
         logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
         $acc->addBranch();
+        $_SESSION['warnings'] = $acc->getWarnings();
         break;
 }

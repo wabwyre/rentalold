@@ -195,13 +195,5 @@
             </div> 
         </div>
     </div>
-    <div class="span6">
-        <div class="control-group">
-            <label for="lr_no" class="control-label">L.R No. / Name Property.</label>
-            <div class="controls">
-                <input type="text" name="lr_no" class="span12" id="lr_no" value="<?php echo $mf->get('lr_no'); ?>" placeholder="Land Rate Number or Property Name" />
-            </div>
-        </div>
-    </div>
 </div>
 

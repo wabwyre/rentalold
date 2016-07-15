@@ -27,3 +27,24 @@ $('#b_role').on('change', function(){
 		$('#branch_name').removeAttr('disabled').val('');
 	}
 });
+
+$('#bank_name').on('change', function(){
+	var bank_id = $(this).val();
+	var data = { 'bank_id': bank_id };
+
+	if(bank_id != ''){
+		$.ajax({
+			url: '?num=722',
+			type: 'POST',
+			data: data,
+			dataType: 'json',
+			success: function(data){
+				var branches = '<option value="">--Choose Branch--</option>';
+				for(var i = 0; i < data.length; i++){
+					branches += '<option value="'+data[i].branch_id+'">'+data[i].branch_name+'</option>';
+				}
+				$('#branch_name').html(branches);
+			}
+		});
+	}
+});

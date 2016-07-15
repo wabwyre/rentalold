@@ -219,8 +219,8 @@
 
                 $mf_id = $this->addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email);
                 if(!empty($mf_id)){
-                    if($this->attachPlotToLandlord($landlord_mf_id, $plot)){
-                        if($this->attachbankToLandlord($mf_id, $bank_name, $branch_name, $account_no)){
+                    if($this->attachPlotToLandlord($mf_id, $plot)){
+                        if($this->createBankAccount($mf_id, $bank_name, $branch_name, $account_no)){
                             if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code)) {
                                 if($this->createLoginAccount($landlord_data, $mf_id)) {
                                     $this->endTranc();
@@ -470,12 +470,12 @@
 			}
 		}
 
-        public function attachbankToLandlord($mf_id, $bank_name, $branch_name, $account_no){
+        public function createBankAccount($mf_id, $bank_name, $branch_name, $account_no){
             $result = $this->insertQuery(
                 'bank_account',
                 array(
-                    'bank_name' => $bank_name,
-                    'branch_name' => $branch_name,
+                    'bank_id' => $bank_name,
+                    'branch_id' => $branch_name,
                     'account_no' => $account_no,
                     'mf_id' => $mf_id
                 )
