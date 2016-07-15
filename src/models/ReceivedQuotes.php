@@ -48,6 +48,7 @@ class ReceivedQuotes extends Quotes{
     }
 
     public function awardQuote($quote_id){
+        $this->beginTranc();
         $result = $this->updateQuery2('quotes',
             array(
                 'bid_status' => '1'
@@ -71,6 +72,7 @@ class ReceivedQuotes extends Quotes{
             if($this->createMessage(Push, $contractor, $mess, array($quote_d['contractor_mf_id']))) {
                 if($this->createMessage(Email, $contractor, $mess, array($quote_d['contractor_mf_id']))) {
                     if($this->createMessage(SMS, $contractor, $mess, array($quote_d['contractor_mf_id']))) {
+                        $this->endTranc();
                         $return = array('success' => true);
                     }
                 }
@@ -91,6 +93,7 @@ class ReceivedQuotes extends Quotes{
     }
 
     public function cancelAward($quote_id){
+        $this->beginTranc();
         $result = $this->updateQuery2('quotes',
             array(
                 'bid_status' => '0'
@@ -114,6 +117,7 @@ class ReceivedQuotes extends Quotes{
             if($this->createMessage(Push, $contractor, $mess, array($quote_d['contractor_mf_id']))) {
                 if($this->createMessage(Email, $contractor, $mess, array($quote_d['contractor_mf_id']))) {
                     if($this->createMessage(SMS, $contractor, $mess, array($quote_d['contractor_mf_id']))) {
+                        $this->endTranc();
                         $return = array('success' => true);
                     }
                 }
