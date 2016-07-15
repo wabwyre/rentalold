@@ -130,6 +130,10 @@ class House extends Library
 
     public function deleteAttribute(){
         extract($_POST);
-        $this->deleteQuery();
+        $result= $this->deleteQuery('attributes', "attribute_id = '".$delete_id."'");
+        if($result)
+            $this->flashMessage('attributes', 'success', 'The Attribute has been Deleted.');
+        else
+            $this->flashMessage('attributes', 'error', 'Encountered an error! '.get_last_error());
     }
 }

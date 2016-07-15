@@ -532,24 +532,24 @@ class SupportTickets extends Masterfile{
 		}
 	}
 
-	public  function declineVoucher(){
-		extract($_POST);
-		$status = '0';
-		$result = $this->updateQuery2(
-			'maintenance_vouchers',
-			array(
-				'approve_status' => $status
-			),
-			array(
-				'voucher_id' => $voucher_id
-			)
-		);
-		if($result){
-			$this->flashMessage('support', 'success', ' Maintenance Voucher  has been Declined.');
-		}else{
-			$this->flashMessage('support', 'error', 'Failed to update maintenance voucher! ' . get_last_error());
-		}
-	}
+//	public  function declineVoucher(){
+//		extract($_POST);
+//		$status = '0';
+//		$result = $this->updateQuery2(
+//			'maintenance_vouchers',
+//			array(
+//				'approve_status' => $status
+//			),
+//			array(
+//				'voucher_id' => $voucher_id
+//			)
+//		);
+//		if($result){
+//			$this->flashMessage('support', 'success', ' Maintenance Voucher  has been Declined.');
+//		}else{
+//			$this->flashMessage('support', 'error', 'Failed to update maintenance voucher! ' . get_last_error());
+//		}
+//	}
 
 	public function addSupport(){
 		extract($_POST);
