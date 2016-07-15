@@ -178,6 +178,19 @@ ALTER TABLE plots ADD COLUMN lr_no character varying(255);
 ALTER TABLE plots
   ADD CONSTRAINT plots_lr_no_key UNIQUE(lr_no);
 
+<<<<<<< HEAD
+-- ALTER TABLE property_manager;
+ALTER TABLE property_manager ADD COLUMN created_by bigint;
+
+-- ALTER TABLE tenants;
+ALTER TABLE tenants ADD COLUMN created_by bigint;
+
+-- ALTER TABLE contractor;
+ALTER TABLE contractor ADD COLUMN created_by bigint;
+
+-- ALTER TABLE landlords;
+ALTER TABLE landlords ADD COLUMN created_by bigint;
+=======
 -- add lease table
 CREATE TABLE lease
 (
@@ -188,3 +201,4 @@ CREATE TABLE lease
   end_date date,
   CONSTRAINT lease_pkey PRIMARY KEY (lease_id)
 );
+>>>>>>> e4c7adede92222ff449ca4f7fa401a4aad303510

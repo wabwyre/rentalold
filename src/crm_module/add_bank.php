@@ -19,8 +19,8 @@ if(App::isAjaxRequest()) {
         ),
         'pageWidgetTitle' => 'Bank Details'
     ));
-
-    ?>
+    
+?>
     <div class="widget">
         <div class="widget-title"><h4><i class="icon-reorder"></i> Bank Details</h4>
 		<span class="actions">
@@ -53,7 +53,7 @@ if(App::isAjaxRequest()) {
                         <tr>
                             <td><?php echo $row['bank_id']; ?></td>
                             <td><?php echo $row['bank_name']; ?></td>
-                            <td><?php echo $row['status']; ?></td>
+                            <td><?php echo ($row['status'] == 't') ? 'Active': 'Inactive'; ?></td>
                             <td><a href="#update_bank" class="btn btn-mini btn-warning edit_bank" edit-id="<?php echo $row['bank_id']; ?>" data-toggle="modal"><i class="icon-edit"></i> Edit</a> </td>
                             <td><a href="#del_bank" class="btn btn-mini btn-danger del_bank" edit-id="<?php echo $row['bank_id']; ?>" data-toggle="modal"><i class="icon-trash"></i> Delete</a></td>
                         </tr>
@@ -83,11 +83,11 @@ if(App::isAjaxRequest()) {
                 </div>
 
                 <div class="row-fluid">
-                    <label for="created_at">Status:</label>
-                    <select for="status" class="span12">
+                    <label for="status">Status:</label>
+                    <select name="status" class="span12">
                         <option value="">--Choose Status--</option>
-                        <option value="1">Active</option>
-                        <option value="0">Inactive</option>
+                        <option value="1"<?php if(isset($_POST['status']) && $_POST['status'] == 1) echo 'selected'; ?>>Active</option>
+                        <option value="0"<?php if(isset($_POST['status']) && $_POST['status'] == 0) echo 'selected'; ?>>Inactive</option>
                     </select>
                 </div>
 
@@ -114,8 +114,17 @@ if(App::isAjaxRequest()) {
                 </div>
 
                 <div class="row-fluid">
-                    <label for="payment_code">Date Created:</label>
-                    <input type="text" name="created_at" id="created_at" class="span12" value="<?php echo $acc->get('created_at'); ?>"/>
+                    <label for="created_at">Date Created:</label>
+                    <input type="date" name="created_at" id="created_at" class="span12" value="<?php echo $acc->get('created_at'); ?>"/>
+                </div>
+
+                <div class="row-fluid">
+                    <label for="status">Status:</label>
+                    <select name="status" class="span12" id="status">
+                        <option value="">--Choose Status--</option>
+                        <option value="1"<?php if(isset($_POST['status']) && $_POST['status'] == 1) echo 'selected'; ?>>Active</option>
+                        <option value="0"<?php if(isset($_POST['status']) && $_POST['status'] == 0) echo 'selected'; ?>>Inactive</option>
+                    </select>
                 </div>
             </div>
             <!-- the hidden fields -->

@@ -1,7 +1,7 @@
 /**
  * Created by JOEL on 7/15/2016.
  */
-$('.edit_prop').on('click', function(){
+$('.edit_bank').on('click', function(){
     var edit_id = $(this).attr('edit-id');
     var data = { 'edit_id': edit_id };
     $('#edit_id').val(edit_id);
@@ -15,12 +15,16 @@ $('.edit_prop').on('click', function(){
             success: function(data){
                 $('#bank_name').val(data['bank_name']);
                 $('#created_at').val(data['created_at']);
-                $('#status').val(data['status']);
+                if(data['status'] == 't') {
+                    $('#status').val(1);
+                }else{
+                    $('#status').val(0);
+                }
             }
         });
     }
 });
 
-$('.del_branch').on('click', function(){
+$('.del_bank').on('click', function(){
     $('#delete_id').val($(this).attr('edit-id'));
 });

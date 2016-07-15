@@ -115,15 +115,19 @@
                 if(!empty($mf_id)){
                     if($this->attachHouseToTenant($mf_id, $house)){
                         if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code)) {
-                            if($this->createLoginAccount($tenant_data, $mf_id)) {
-                                $this->endTranc();
-                                $this->flashMessage('mf', 'success', 'Masterfile has been added.');
-                                App::redirectTo('?num=722');
+                            if($this->createTenantFile($mf_id, $house)){
+                                if($this->createLoginAccount($tenant_data, $mf_id)) {
+                                    $this->endTranc();
+                                    $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                                    App::redirectTo('?num=722');
+                                }else{
+                                    $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                                }
                             }else{
-                                $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                                $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
                             }
                         }else{
-                            $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
+                            $this->flashMessage('mf', 'error', 'Failed to create tenant file! ' . get_last_error());
                         }
                     }else{
                         $this->flashMessage('mf', 'error', 'Failed to attach tenant to selected house! '.get_last_error());
@@ -160,12 +164,16 @@
                 $mf_id = $this->addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email);
                 if(!empty($mf_id)){
                         if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_address)) {
-                            if($this->createLoginAccount($contractor_data, $mf_id)) {
-                                $this->endTranc();
-                                $this->flashMessage('mf', 'success', 'Masterfile has been added.');
-                                App::redirectTo('?num=722');
+                            if($this->createContractorFile($mf_id, $plot)) {
+                                if($this->createLoginAccount($contractor_data, $mf_id)) {
+                                    $this->endTranc();
+                                    $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                                    App::redirectTo('?num=722');
+                                }else{
+                                    $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                                }
                             }else{
-                                $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                                $this->flashMessage('mf', 'error', 'Failed to create contractor file! ' . get_last_error());
                             }
                         }else {
                             $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
@@ -202,6 +210,11 @@
                     'name' => 'Branch Name',
                     'unique' => 'bank_branch',
                     'required' => true
+                ),
+                'pin_no' => array(
+                    'name' => 'Pin No',
+                    'required' => true,
+                    'unique' => 'masterfile'
                 )
             ));
 
@@ -220,20 +233,25 @@
                 $mf_id = $this->addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email);
                 if(!empty($mf_id)){
                     if($this->attachPlotToLandlord($mf_id, $plot)){
-                        if($this->createBankAccount($mf_id, $bank_name, $branch_name, $account_no)){
-                            if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code)) {
-                                if($this->createLoginAccount($landlord_data, $mf_id)) {
-                                    $this->endTranc();
-                                    $this->flashMessage('mf', 'success', 'Masterfile has been added.');
-                                    App::redirectTo('?num=722');
+                        $bank_acc_id = $this->createBankAccount($mf_id, $bank_name, $branch_name, $account_no);
+                        if($bank_acc_id){
+                            if($this->createLandlordFile($mf_id, $bank_acc_id, $plot, $pin_no)){
+                                if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code)) {
+                                    if($this->createLoginAccount($landlord_data, $mf_id)) {
+                                        $this->endTranc();
+                                        $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                                        App::redirectTo('?num=722');
+                                    }else{
+                                        $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                                    }
                                 }else{
-                                    $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                                    $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
                                 }
                             }else{
-                                $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
+                                $this->flashMessage('mf', 'error', 'Failed to attach Plot to selected Landlord! '.get_last_error());
                             }
                         }else{
-                            $this->flashMessage('mf', 'error', 'Failed to attach Plot to selected Landlord! '.get_last_error());
+                            $this->flashMessage('mf', 'error', 'Failed to create Landlord File! '.get_last_error());
                         }
                     }else{
                         $this->flashMessage('mf', 'error', 'Failed to attach bank to selected Landlord! '.get_last_error());
@@ -270,13 +288,16 @@
                 $mf_id = $this->addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email);
                 if(!empty($mf_id)){
                     if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code)) {
-                        
-                        if($this->createLoginAccount($pm_data, $mf_id)) {
-                            $this->endTranc();
-                            $this->flashMessage('mf', 'success', 'Masterfile has been added.');
-                            App::redirectTo('?num=722');
+                        if($this->createPmFile($mf_id, $plot)) {
+                            if($this->createLoginAccount($pm_data, $mf_id)) {
+                                $this->endTranc();
+                                $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                                App::redirectTo('?num=722');
+                            }else{
+                                $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                            }
                         }else{
-                            $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                            $this->flashMessage('mf', 'error', 'Failed to create property manager file! ' . get_last_error());
                         }
                     }else {
                         $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
@@ -478,12 +499,80 @@
                     'branch_id' => $branch_name,
                     'account_no' => $account_no,
                     'mf_id' => $mf_id
+                ),
+                'bank_acc_id'
+            );
+            if($result) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+
+        public function createTenantFile($mf_id, $house_id){
+            $result = $this->insertQuery(
+                'tenants',
+                array(
+                    'mf_id' => $mf_id,
+                    'house_id' => $house_id,
+                    'created_by' => $_SESSION['mf_id']
                 )
             );
-            if($result)
+            if($result) {
                 return true;
-            else
+            }else {
                 return false;
+            }
+        }
+
+        public function createLandlordFile($mf_id, $bank_acc_id, $plot_id, $pin_no){
+            $result = $this->insertQuery(
+                'landlords',
+                array(
+                    'mf_id' => $mf_id,
+                    'bank_acc_id' => $bank_acc_id,
+                    'plot_id' => $plot_id,
+                    'pin_no' => $pin_no,
+                    'created_by' => $_SESSION['mf_id']
+                )
+            );
+            if($result) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+
+        public function createContractorFile($mf_id, $pm_id){
+            $result = $this->insertQuery(
+                'contractor',
+                array(
+                    'mf_id' => $mf_id,
+                    'pm_id' => $pm_id,
+                    'created_by' => $_SESSION['mf_id']
+                )
+            );
+            if($result) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+
+        public function createPmFile($mf_id, $plot_id){
+            $result = $this->insertQuery(
+                'property_manager',
+                array(
+                    'mf_id' => $mf_id,
+                    'plot_id' => $plot_id,
+                    'created_by' => $_SESSION['mf_id']
+                )
+            );
+            if($result) {
+                return true;
+            }else {
+                return false;
+            }
         }
 
         public function getAllMasterfile($condition = null){

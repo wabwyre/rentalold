@@ -21,15 +21,25 @@ switch($_POST['action']) {
         $_SESSION['warnings'] = $acc->getWarnings();
         break;
 
-    case Del575:
+    case delete_bank:
         logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
         $acc->deleteBank($_POST['delete_id']);
-        $_SESSION['warnings'] = $acc->getWarnings();
         break;
 
     case add_branch:
         logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
         $acc->addBranch($_POST);
         $_SESSION['warnings'] = $acc->getWarnings();
+        break;
+
+    case edit_branch:
+        logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+        $acc->editBranch($_POST);
+        $_SESSION['warnings'] = $acc->getWarnings();
+        break;
+
+    case delete_branch:
+        logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+        $acc->deleteBranch($_POST['delete_id']);
         break;
 }

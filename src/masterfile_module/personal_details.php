@@ -173,9 +173,9 @@
     </div>
     <div class="span6">
         <div class="control-group">
-            <label for="pin" class="control-label">Pin No.</label>
+            <label for="pin_no" class="control-label">Pin No.</label>
             <div class="controls">
-                <input type="text" name="pin" class="span12" value="<?php echo $mf->get('pin'); ?>" placeholder="Pin Number" />
+                <input type="text" name="pin_no" class="span12" id="pin_no" value="<?php echo $mf->get('pin_no'); ?>" placeholder="Pin Number" />
             </div>
         </div>
     </div>
