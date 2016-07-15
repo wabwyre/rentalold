@@ -32,7 +32,7 @@ $('.approve_voc').on('click', function(){
         //alert('working');
         $('input[name="action"]').attr('value', 'approve_maintenance_voucher');
         if(confirm('Are you sure you want to Approve The Maintenance Voucher?')){
-            $('form').submit();
+            return true;
         }else{
             return false;
         }
@@ -42,7 +42,7 @@ $('.approve_voc').on('click', function(){
         //alert('working');
         $('input[name="action"]').attr('value', 'decline_maintenance_voucher');
         if(confirm('Are you sure you want to Decline The Maintenance Voucher?')){
-            $('form').submit();
+           return true;
         }else{
             return false;
         }
