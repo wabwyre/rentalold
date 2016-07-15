@@ -3,9 +3,12 @@
     $quote = new ReceivedQuotes();
 
     if(App::isAjaxRequest()){
-        if(isset($_POST['quote_id'])){
+        if(isset($_POST['quote_id']) && !empty($_POST['quote_id'])){
             logAction('award_voucher', $_SESSION['sess_id'], $_SESSION['mf_id']);
             $quote->awardQuote($_POST['quote_id']);
+        }else if(isset($_POST['cancel_quote_id'])){
+            logAction('cancel_awarded_quote', $_SESSION['sess_id'], $_SESSION['mf_id']);
+            $quote->cancelAward($_POST['cancel_quote_id']);
         }else{
             if (isset($_GET['filter'])) {
                 if(!empty($_GET['filter'])) {
@@ -66,7 +69,7 @@
         <span class="actions">
             <button class="btn btn-small btn-success" id="refresh"><i class="icon-refresh"></i> Refresh!</button>
         </span>
-    </div>
+    </div>*
     <div class="widget-body form">
         <table id="received_quotes" class="table table-bordered">
             <thead>
@@ -78,7 +81,7 @@
                     <th>Bid Date</th>
                     <th>Bid Status</th>
                     <th>Job Status</th>
-                    <th>Award</th>
+                    <th>Action</th>
                 </tr>
             </thead>
         </table>
