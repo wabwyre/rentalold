@@ -24,9 +24,9 @@
 				<!-- <div class="percent">0%</div> -->
 			</div>
 			<div class="details">
-				<div class="title">Open Tickets</div>
+				<div class="title">Complains</div>
 				<div class="numbers">
-					<?php echo $period->countOpenTicketsRecords('support_ticket','0'); ?>
+					<?php echo $period->countOpenTicketsRecords('maintenance_ticket','0'); ?>
 				</div>
 				<div class="progress progress-warning">
 					<div class="bar" style="width: 0%"></div>
