@@ -79,7 +79,7 @@ if(App::isAjaxRequest()) {
 
                 <div class="row-fluid">
                     <label for="created_at">Date:</label>
-                    <input type="text" name="created_at" class="span12" value="<?php echo $acc->get('created_at'); ?>"/>
+                    <input type="date" name="created_at" class="span12" value="<?php echo $acc->get('created_at'); ?>"/>
                 </div>
 
                 <div class="row-fluid">
@@ -95,8 +95,8 @@ if(App::isAjaxRequest()) {
             <!-- the hidden fields -->
             <input type="hidden" name="action" value="add_bank"/>
             <div class="modal-footer">
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo650'); ?>
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav651'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo662'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav663'); ?>
             </div>
         </div>
     </form>
@@ -122,8 +122,8 @@ if(App::isAjaxRequest()) {
             <input type="hidden" name="action" value="edit_bank"/>
             <input type="hidden" name="edit_id" id="edit_id"/>
             <div class="modal-footer">
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can652'); ?>
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav653'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can664'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav665'); ?>
             </div>
         </div>
     </form>
@@ -141,8 +141,8 @@ if(App::isAjaxRequest()) {
             <input type="hidden" name="action" value="delete_bank"/>
             <input type="hidden" name="delete_id" id="delete_id"/>
             <div class="modal-footer">
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No654'); ?>
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes655'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No666'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes667'); ?>
             </div>
         </div>
     </form>
