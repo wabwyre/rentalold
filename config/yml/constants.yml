@@ -342,17 +342,11 @@ basic:
 
    ### Support processor
    add_comment: add_comment
+   decline_maintenance_voucher: decline_maintenance_voucher
+   approve_maintenance_voucher: approve_maintenance_voucher
 
    ### crm processor
-   edit_insurance_policy: edit_insurance_policy
-   add_insurance_policy: add_insurance_policy
-   delete_insurance_claim: delete_insurance_claim
-   edit_insurance_claim: edit_insurance_claim
-   insurance_claim: insurance_claim
-   platinum: GTP001
-   gold: GTG001
-   delete_masterfile: delete_masterfile   
-   process_insurance: process_insurance 
+   delete_masterfile: delete_masterfile
    
    ### Airtime processor
    upload_txt: upload_txt

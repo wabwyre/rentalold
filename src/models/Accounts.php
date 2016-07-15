@@ -36,15 +36,15 @@ class Accounts extends Masterfile{
     }
 
     public function addBank($bank_name, $created_at, $status){
-//        var_dump($result); exit;
+        var_dump($_POST); exit;
         $result = $this->insertQuery(
             'banks',
             array(
                 'bank_name' => $bank_name,
                 'created_at' => $created_at,
                 'status' => $status
-            ),
-            'bank_id'
+            )
+            //'bank_id'
         );
         $data=run_query($result);
         if ($data) {
@@ -52,7 +52,7 @@ class Accounts extends Masterfile{
         }else{
             $this->flashMessage('acc', 'error', 'Failed to add bank details! ' . get_last_error());
         }
-        return ['mf_id'];
+        //return ['mf_id'];
     }
 
     public function editBank(){
@@ -189,5 +189,10 @@ class Accounts extends Masterfile{
     public function getBankByBankId($id){
         $data = $this->selectQuery('bank_name', '*', "bank_id = '".sanitizeVariable($id)."' ");
         echo json_encode($data[0]);
+    }
+
+    public function getBankBranchesByBankId($id){
+        $data = $this->selectQuery('bank_branch', '*', "bank_id = '".$id."'");
+        echo json_encode($data);
     }
 }

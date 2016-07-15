@@ -5,19 +5,22 @@
     include_once('src/models/Accounts.php');
     $acc = new Accounts();
 
-    set_layout("wizard-layout.php", array(
-      'pageSubTitle' => 'Add Masterfile',
-      'pageSubTitleText' => '',
-      'pageBreadcrumbs' => array (
-        array ( 'url'=>'index.php', 'text'=>'Home' ),
-        array ( 'text'=>'Add masterfile' )
-      ),
-       'pageWidgetTitle'=>'Add Masterfile Record'
-    ));
-    set_js(array(
-      'src/js/submit_wizard_form.js',
-      'src/js/add_masterfile.js'
-    )); 
+    if(App::isAjaxRequest()){
+        $acc->getBankBranchesByBankId($_POST['bank_id']);
+    }else{
+        set_layout("wizard-layout.php", array(
+          'pageSubTitle' => 'Add Masterfile',
+          'pageSubTitleText' => '',
+          'pageBreadcrumbs' => array (
+            array ( 'url'=>'index.php', 'text'=>'Home' ),
+            array ( 'text'=>'Add masterfile' )
+          ),
+           'pageWidgetTitle'=>'Add Masterfile Record'
+        ));
+        set_js(array(
+          'src/js/submit_wizard_form.js',
+          'src/js/add_masterfile.js'
+        ));
 ?>
 <div class="widget box blue" id="form_wizard_1">
    <div class="widget-title">
@@ -112,3 +115,4 @@
       </form>
    </div>
 </div>
+<?php } ?>

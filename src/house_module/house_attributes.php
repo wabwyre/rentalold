@@ -3,7 +3,7 @@
     $House = new House;
 
     set_layout("dt-layout.php", array(
-        'pageSubTitle' => 'Manage Groups',
+        'pageSubTitle' => 'attributes',
         'pageSubTitleText' => '',
         'pageBreadcrumbs' => array (
             array ( 'url'=>'index.php', 'text'=>'Home' ),

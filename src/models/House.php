@@ -64,11 +64,10 @@ class House extends Library
 
     //functin to validate and to call for insert query
     public function addAttrb(){
-       extract($_POST);
-        //var_dump($_POST);die();
+       
         $validate = array(
-            'attrib_name'=>array(
-                'name'=> 'attribute Name',
+            'name'=>array(
+                'name'=> 'Attribute Name',
                 'required'=>true)
            
         );
@@ -77,7 +76,8 @@ class House extends Library
         if ($this->getValidationStatus()){
             //if the validation has passed, run a query to insert the details
             //into the database
-            if($this-> addAttrbDetails($attrib_name)){
+            $name = $_POST['name'];
+            if($this-> addAttrbDetails($name)){
                 $this->flashMessage('attributes', 'success', 'The attribute has been added.');
             }else{
                 $this->flashMessage('attributes', 'error', 'Failed to add attribute! ' . get_last_error());
@@ -87,9 +87,9 @@ class House extends Library
     // function to insert attribute details
 
     public function addAttrbDetails($attrib_name){
-        $result = $this->insertQuery('house_attributes',
+        $result = $this->insertQuery('attributes',
             array(
-                'attrib_name' => $attrib_name
+                'name' => $attrib_name
                 ));
             return $result;
     }

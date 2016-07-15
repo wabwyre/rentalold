@@ -11,6 +11,10 @@ $('#search_quotes').on('submit', function(e){
     dt.ajax.url('?num=received_quotes&filter='+voucher_id).load();
 });
 
+$('#refresh').on('click', function(){
+    dt.ajax.reload();
+});
+
 // award
 $('#received_quotes').on('click', '.award-btn', function(){
     if(confirm('Are you sure you want to award?')){
@@ -25,7 +29,7 @@ $('#received_quotes').on('click', '.award-btn', function(){
             success: function(data){
                 dt.ajax.reload();
             }
-        })
+        });
     }else{
         return false;
     }

@@ -33,7 +33,7 @@
         <div class="control-group">
             <label for="surname" class="control-label" id="variation">Surname</label>
             <div class="controls  input-icon">
-                <input type="text" name="surname" class="span12" value="<?php echo (isset($_POST['surname'])) ? $_POST['surname'] : ''; ?>" id="surname"/>
+                <input type="text" name="surname" class="span12" value="<?php $mf->get('surname'); ?>" id="surname"/>
             </div>				
         </div>
     </div>
@@ -41,7 +41,7 @@
         <div class="control-group">
             <label class="control-label" for="id_passport" id="id_pass">ID # or Passport<span>*</span></label>
             <div class="controls">
-                <input type="text" name="id_passport" value="<?php echo (isset($_POST['id_passport'])) ? $_POST['id_passport'] : ''; ?>" class="span12" />
+                <input type="text" name="id_passport" value="<?php $mf->get('id_passport'); ?>" class="span12" />
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@
         <div class="control-group">
             <label for="firstname" class="control-label">First Name</label>
             <div class="controls">
-                    <input type="text" name="firstname" class="span12" id="firstname" value="<?php echo (isset($_POST['firstname'])) ? $_POST['firstname'] : ''; ?>" placeholder="First Name"/>
+                    <input type="text" name="firstname" class="span12" id="firstname" value="<?php echo $mf->get('firstname'); ?>" placeholder="First Name"/>
             </div>
         </div>
     </div>
@@ -62,8 +62,8 @@
             <div class="controls">
                 <select name="gender" class="span12" id="gender">
                     <option value="">--Choose Gender--</option>
-                    <option value="Male" <?php if(isset($_POST['gender']) && $_POST['gender'] == 'Male') echo 'selected'; ?>>Male</option>
-                    <option value="Female" <?php if(isset($_POST['gender']) && $_POST['gender'] == 'Female') echo 'selected'; ?>>Female</option>
+                    <option value="Male" <?php echo ($mf->get('gender') == 'Male') ? 'selected': ''; ?>>Male</option>
+                    <option value="Female" <?php echo ($mf->get('gender') == 'Female') ? 'selected': ''; ?>>Female</option>
                 </select>
             </div>
         </div>
@@ -75,7 +75,7 @@
         <div class="control-group">
             <label for="middlename" class="control-label">Middle Name</label>
             <div class="controls">
-                    <input type="text" name="middlename" class="span12" id="middlename" value="<?php echo (isset($_POST['middlename'])) ? $_POST['middlename'] : ''; ?>" placeholder="Middle Name" />
+                    <input type="text" name="middlename" class="span12" id="middlename" value="<?php echo $mf->get('middlename'); ?>" placeholder="Middle Name" />
             </div>
         </div>
     </div>
@@ -86,12 +86,12 @@
                 <select name="plot" id="plot" class="span12 live_search">
                     <option value="">--Choose Plot--</option>
                     <?php
-                    $plots = $mf->getAllPlots();
-                    if(count($plots)){
-                        foreach ($plots as $plot){
-                            ?>
-                            <option value="<?php echo $plot['plot_id']; ?>"><?php echo $plot['plot_name']; ?></option>
-                        <?php }} ?>
+                        $plots = $mf->getAllPlots();
+                        if(count($plots)){
+                            foreach ($plots as $plot){
+                    ?>
+                        <option value="<?php echo $plot['plot_id']; ?>" <?php ($plot['plot_id'] == $mf->get('plot')) ? 'selected': ''; ?>><?php echo $plot['plot_name']; ?></option>
+                    <?php }} ?>
                 </select>
             </div>
         </div>
@@ -103,7 +103,7 @@
         <div class="control-group">
             <label for="email" class="control-label">Email <span>*</span></label>
             <div class="controls">
-                <input type="email" name="email" class="span12" value="<?php echo (isset($_POST['email'])) ? $_POST['email'] : ''; ?>" placeholder="email" />
+                <input type="email" name="email" class="span12" value="<?php echo $mf->get('email'); ?>" placeholder="email" />
             </div>
         </div>        
     </div>
@@ -119,7 +119,7 @@
                         if(count($houses)){
                             foreach ($houses as $house){
                     ?>
-                    <option value="<?php echo $house['house_id']; ?>"><?php echo $house['house_number'].' ('.$house['plot_name'].')'; ?></option>
+                    <option value="<?php echo $house['house_id']; ?>" <?php echo ($mf->get('house') == $house['house_id']) ? 'selected' : ''; ?>><?php echo $house['house_number'].' ('.$house['plot_name'].')'; ?></option>
                     <?php }} ?>
                 </select>
             </div>
@@ -138,7 +138,7 @@
                 if(count($us_roles)){
                     foreach ($us_roles as $us_role){
                         ?>
-                        <option value="<?php echo $us_role['role_id']; ?>"><?php echo $us_role['role_name']; ?></option>
+                        <option value="<?php echo $us_role['role_id']; ?>" <?php echo ($mf->get('user_role') == $us_role['role_id']) ? 'selected': ''; ?>><?php echo $us_role['role_name']; ?></option>
                     <?php }} ?>
             </select>
         </div>      
@@ -147,7 +147,7 @@
         <div class="control-group">
             <label for="occupation" class="control-label">Occupation</label>
             <div class="controls">
-                <input type="text" name="occupation" id="occupation" class="span12" value="<?php echo (isset($_POST['occupation'])) ? $_POST['occupation'] : ''; ?>" placeholder="Occupation" />
+                <input type="text" name="occupation" id="occupation" class="span12" value="<?php echo $mf->get('occupation'); ?>" placeholder="Occupation" />
             </div>
         </div>
     </div>
@@ -165,7 +165,7 @@
                     if(count($mf_types)){
                         foreach ($mf_types as $mf_type){
                             ?>
-                            <option value="<?php echo $mf_type['customer_type_id']; ?>"><?php echo $mf_type['customer_type_name']; ?></option>
+                            <option value="<?php echo $mf_type['customer_type_id']; ?>" <?php echo ($mf->get('customer_type_id') == $mf_type['customer_type_id']) ? 'selected': ''; ?>><?php echo $mf_type['customer_type_name']; ?></option>
                         <?php }} ?>
                 </select>
             </div>
@@ -175,7 +175,7 @@
         <div class="control-group">
             <label for="pin" class="control-label">Pin No.</label>
             <div class="controls">
-                <input type="text" name="pin" class="span12" value="<?php echo (isset($_POST['pin'])) ? $_POST['pin'] : ''; ?>" placeholder="Pin Number" />
+                <input type="text" name="pin" class="span12" value="<?php echo $mf->get('pin'); ?>" placeholder="Pin Number" />
             </div>
         </div>
     </div>
@@ -193,14 +193,6 @@
                     <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
                 </div>
             </div> 
-        </div>
-    </div>
-    <div class="span6">
-        <div class="control-group">
-            <label for="lr_no" class="control-label">L.R No. / Name Property.</label>
-            <div class="controls">
-                <input type="text" name="lr_no" class="span12" id="lr_no" value="<?php echo (isset($_POST['lr_no'])) ? $_POST['lr_no'] : ''; ?>" placeholder="Land Rate Number or Property Name" />
-            </div>
         </div>
     </div>
 </div>

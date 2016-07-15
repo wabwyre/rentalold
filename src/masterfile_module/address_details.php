@@ -12,11 +12,7 @@
                 $options = run_query($query);
                 while($row = get_row_data($options)){
               ?>
-              <option value="<?=$row['county_ref_id']; ?>" 
-              <?php 
-              if(isset($_POST['county'])) { 
-                echo ($_POST['county'] == $row['county_ref_id']) ? 'selected': ''; 
-              } ?>><?=$row['county_name']; ?></option>
+              <option value="<?=$row['county_ref_id']; ?>" <?php echo ($mf->get('county') == $row['county_ref_id']) ? 'selected': ''; ?>><?=$row['county_name']; ?></option>
 
               <?php } ?>
             </select>
@@ -27,7 +23,7 @@
         <div class="control-group">
           <label for="town" class="control-label">Town/city:<span>*</span></label>
           <div class="controls">
-            <input type="text" name="town" class="span12" value="<?=(isset($_POST['town'])) ? $_POST['town'] : ''; ?>" >
+            <input type="text" name="town" class="span12" value="<?php echo $mf->get('town'); ?>" >
           </div>
         </div>
       </div>
@@ -38,7 +34,7 @@
         <div class="control-group">
           <label for="ward" class="control-label">Ward</label>
           <div class="controls">
-              <input type="text" name="ward" class="span12" value="<?=(isset($_POST['ward'])) ? $_POST['ward'] : ''; ?>" >
+              <input type="text" name="ward" class="span12" value="<?php echo $mf->get('ward'); ?>" >
           </div>
         </div>
       </div>
@@ -46,7 +42,7 @@
         <div class="control-group">
           <label for="street" class="control-label">Street:</label>
           <div class="controls">
-              <input type="text" name="street" class="span12" value="<?=(isset($_POST['street'])) ? $_POST['street'] : ''; ?>" >
+              <input type="text" name="street" class="span12" value="<?php echo $mf->get('street'); ?>" >
           </div>
         </div>
       </div>
@@ -57,7 +53,7 @@
         <div class="control-group">
           <label for="building" class="control-label">Building:</label>
           <div class="controls">
-            <input type="text" name="building" class="span12" value="<?=(isset($_POST['building'])) ? $_POST['building'] : ''; ?>" >
+            <input type="text" name="building" class="span12" value="<?php echo $mf->get('building'); ?>" >
           </div>
         </div>
       </div>
@@ -65,7 +61,7 @@
         <div class="control-group">
           <label for="phone_number" class="control-label">Phone Number:<span>*</span></label>
           <div class="controls">
-            <input type="number" name="phone_number" class="span12" value="<?=(isset($_POST['phone_number'])) ? $_POST['phone_number'] : ''; ?>" />
+            <input type="number" name="phone_number" class="span12" value="<?php echo $mf->get('phone_number'); ?>" />
           </div>
         </div>
       </div>
@@ -76,7 +72,7 @@
         <div class="control-group">
           <label for="postal_address" class="control-label">P.O Box:<span>*</span></label>
           <div class="controls">
-            <input type="text" name="postal_address" class="span12" value="<?=(isset($_POST['postal_address'])) ? $_POST['postal_address'] : ''; ?>" />
+            <input type="text" name="postal_address" class="span12" value="<?php echo $mf->get('postal_address'); ?>" />
           </div>
         </div>
       </div>
@@ -84,7 +80,7 @@
         <div class="control-group">
           <label for="postal_code" class="control-label">Postal code:<span>*</span></label>
           <div class="controls">
-            <input type="text" name="postal_code" class="span12" value="<?=(isset($_POST['postal_code'])) ? $_POST['postal_code'] : ''; ?>" />
+            <input type="text" name="postal_code" class="span12" value="<?php echo $mf->get('postal_code'); ?>" />
           </div>
         </div>
       </div>
@@ -105,7 +101,7 @@
                       while ( $fetch = get_row_data($query) )
                             {
                     ?>
-                    <option value="<?=$fetch['address_type_id']; ?>" <?=(isset($_POST['address_type_id']) && $fetch['address_type_id'] == $_POST['address_type_id']) ? 'selected': ''; ?>><?=$fetch['address_type_name']; ?></option>
+                    <option value="<?=$fetch['address_type_id']; ?>" <?php echo ($fetch['address_type_id'] == $mf->get('address_type_id')) ? 'selected': ''; ?>><?=$fetch['address_type_name']; ?></option>
                     <?php
                     }
                         }
