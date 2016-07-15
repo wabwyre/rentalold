@@ -5,8 +5,10 @@ $('#b_role').on('change', function(){
 		// alert('working');
 		$('#house').attr('disabled', 'disabled').val('');
 		$('#occupation').attr('disabled', 'disabled').val('');
+		$('#lr_no').attr('disabled', 'disabled').val('');
 	}else if(role == 'tenant'){
 		$('#house').removeAttr('disabled').val('');
 		$('#occupation').removeAttr('disabled').val('');
+		$('#lr_no').removeAttr('disabled').val('');
 	}
 });

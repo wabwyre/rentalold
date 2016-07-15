@@ -17,7 +17,7 @@
                 <select name="bank_name" class="span12 live_search" id="bank_name">
                     <option value="">--Choose Bank--</option>
                     <?php
-                    $banks = $mf->getAllBank();
+                    $banks = $acc->getAllBank();
                     $banks = $banks['all'];
                     if(count($banks)){
                         foreach ($banks as $bank){
@@ -38,7 +38,7 @@
                 <select name="branch_name" class="span12 live_search" id="branch_name">
                     <option value="">--Choose Branches--</option>
                     <?php
-                    $branches = $mf->getAllBranch();
+                    $branches = $acc->getAllBranch();
                     $branches = $branches['all'];
                     if(count($branches)){
                         foreach ($branches as $branch){
