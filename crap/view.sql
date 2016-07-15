@@ -65,9 +65,9 @@ CREATE OR REPLACE VIEW contractors_quotes AS
     q.bid_date,
     q.bid_status,
     q.job_status,
-    concat(m.surname, ' ', m.firstname, ' ', m.middlename) AS full_name
+    concat(m.surname, ' ', m.firstname, ' ', m.middlename) AS full_name,
+    q.maintainance_id,
+    mv.maintenance_name
   FROM quotes q
-    LEFT JOIN masterfile m ON m.mf_id = q.contractor_mf_id;
-
-ALTER TABLE contractors_quotes
-  OWNER TO postgres;
+    LEFT JOIN masterfile m ON m.mf_id = q.contractor_mf_id
+    LEFT JOIN maintenance_vouchers mv ON mv.voucher_id = q.maintainance_id;
