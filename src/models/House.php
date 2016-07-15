@@ -67,7 +67,7 @@ class House extends Library
        
         $validate = array(
             'name'=>array(
-                'name'=> 'Attribute Name',
+                'attribute_name'=> 'Attribute Name',
                 'required'=>true)
            
         );
@@ -89,8 +89,51 @@ class House extends Library
     public function addAttrbDetails($attrib_name){
         $result = $this->insertQuery('attributes',
             array(
-                'name' => $attrib_name
+                'attribute_name' => $attrib_name
                 ));
             return $result;
+    }
+
+    public function editAttribute(){
+        extract($_POST);
+        //update the attribute name
+        $edit_id = $_POST['edit_id'];
+         $validate = array(
+            'name'=>array(
+                'attribute_name'=> 'Attribute Name',
+                'required'=>true)
+           
+        );
+
+
+        $this->validate($_POST, $validate);
+        if ($this->getValidationStatus()){
+            //if the validation has passed, run a query to insert the details
+            //into the database
+            if($this-> editAttributeDetails($name, $edit_id)){
+                $this->flashMessage('attributes', 'success', 'The Attribute has been edited.');
+            }else{
+                $this->flashMessage('attributes', 'error', 'Failed to edit Attribute! ' . get_last_error());
+            }
+        }
+    }
+
+    public function editAttributeDetails($name, $edit_id){
+        $result = $this->updateQuery2('attributes',
+            array(
+                'attribute_name' => $name
+            ),
+            array('attribute_id' => $edit_id)
+            );
+        return $result;
+    }
+
+    public function deleteAttribute(){
+        extract($_POST);
+        $result= $this->deleteQuery('attributes', "attribute_id = '".$delete_id."'");
+        if($result)
+            $this->flashMessage('attributes', 'success', 'The Attribute has been Deleted.');
+        else
+            $this->flashMessage('attributes', 'error', 'Encountered an error! '.get_last_error());
     }
 }

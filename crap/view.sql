@@ -1,3 +1,4 @@
+DROP VIEW service_bills_and_options;
 CREATE VIEW service_bills_and_options AS
  SELECT sb.product_id,
     sc.price AS loan_amount
@@ -119,7 +120,7 @@ CREATE TABLE tenants
 DROP TABLE IF EXISTS contractor;
 CREATE TABLE contractor
 (
-  contractor_id integer NOT NULL DEFAULT nextval('contracor_contractor_id_seq'::regclass),
+  contractor_id serial NOT NULL,
   mf_id bigint,
   ratings character varying(255),
   skills character varying(255),
@@ -137,7 +138,7 @@ CREATE TABLE contractor
 DROP TABLE IF EXISTS property_manager;
 CREATE TABLE property_manager
 (
-  pm_id integer NOT NULL DEFAULT nextval('property_mam_pm_id_seq'::regclass),
+  pm_id serial NOT NULL,
   mf_id bigint,
   plot_id bigint,
   CONSTRAINT property_manager_pkey PRIMARY KEY (pm_id),
@@ -177,6 +178,7 @@ ALTER TABLE plots ADD COLUMN lr_no character varying(255);
 ALTER TABLE plots
   ADD CONSTRAINT plots_lr_no_key UNIQUE(lr_no);
 
+<<<<<<< HEAD
 -- ALTER TABLE property_manager;
 ALTER TABLE property_manager ADD COLUMN created_by bigint;
 
@@ -188,3 +190,15 @@ ALTER TABLE contractor ADD COLUMN created_by bigint;
 
 -- ALTER TABLE landlords;
 ALTER TABLE landlords ADD COLUMN created_by bigint;
+=======
+-- add lease table
+CREATE TABLE lease
+(
+  lease_id serial NOT NULL,
+  tenant bigint,
+  house_number character varying(255),
+  start_date date,
+  end_date date,
+  CONSTRAINT lease_pkey PRIMARY KEY (lease_id)
+);
+>>>>>>> e4c7adede92222ff449ca4f7fa401a4aad303510

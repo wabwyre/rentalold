@@ -37,6 +37,7 @@ if(App::isAjaxRequest()) {
 				<tr>
 					<th>Plot#</th>
 					<th>Name</th>
+					<th>LR#</th>
 					<th>Units/Houses</th>
 					<th>Payment Code</th>
 					<th>Property Manager</th>
@@ -54,6 +55,7 @@ if(App::isAjaxRequest()) {
 				<tr>
 					<td><?php echo $plot['plot_id']; ?></td>
 					<td><?php echo $plot['plot_name']; ?></td>
+					<td><?php echo $plot['lr_no']; ?></td>
 					<td><?php echo $plot['units']; ?></td>
 					<td><?php echo $plot['payment_code']; ?></td>
 					<td><?php echo $prop->getFullName($plot['pm_mfid']); ?></td>
@@ -79,6 +81,10 @@ if(App::isAjaxRequest()) {
 			<div class="row-fluid">
 				<label for="plot_name">Name:</label>
 				<input type="text" name="plot_name" class="span12" value="<?php echo $prop->get('name'); ?>"/>
+			</div>
+			<div class="row-fluid">
+				<label for="lr_no">Land Reg. No:</label>
+				<input type="text" name="lr_no" class="span12" value="<?php echo $prop->get('name'); ?>"/>
 			</div>
 			<div class="row-fluid">
 				<label for="units">Units/Houses:</label>
@@ -125,8 +131,8 @@ if(App::isAjaxRequest()) {
 		<!-- the hidden fields -->
 		<input type="hidden" name="action" value="add_property"/>
 		<div class="modal-footer">
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo649'); ?>
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav650'); ?>
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo669'); ?>
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav668'); ?>
 		</div>
 	</div>
 </form>
@@ -141,6 +147,10 @@ if(App::isAjaxRequest()) {
 			<div class="row-fluid">
 				<label for="plot_name">Name:</label>
 				<input type="text" name="ed_plot_name" id="plot_name" class="span12" value="<?php echo $prop->get('name'); ?>"/>
+			</div>
+			<div class="row-fluid">
+				<label for="lr_no">Land Reg. No:</label>
+				<input type="text" name="lr_no" id="lr_no" class="span12" value="<?php echo $prop->get('name'); ?>"/>
 			</div>
 			<div class="row-fluid">
 				<label for="units">Units/Houses:</label>
@@ -188,8 +198,8 @@ if(App::isAjaxRequest()) {
 		<input type="hidden" name="action" value="edit_property"/>
 		<input type="hidden" name="edit_id" id="edit_id"/>
 		<div class="modal-footer">
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can651'); ?>
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav652'); ?>
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can671'); ?>
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav670'); ?>
 		</div>
 	</div>
 </form>
@@ -207,8 +217,8 @@ if(App::isAjaxRequest()) {
 			<input type="hidden" name="action" value="delete_property"/>
 			<input type="hidden" name="delete_id" id="delete_id"/>
 			<div class="modal-footer">
-				<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No653'); ?>
-				<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes654'); ?>
+				<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No673'); ?>
+				<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes672'); ?>
 			</div>
 		</div>
 	</form>

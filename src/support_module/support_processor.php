@@ -81,7 +81,7 @@ switch ($_POST['action']) {
 	case approve_maintenance_voucher:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
 		//var_dump($_POST);exit;
-		$Quotes->approveVoucher();
+		$Quotes->approveVoucher($_POST['voucher_id']);
 		$_SESSION['support_error'] = $Quotes->getWarnings();
 		break;
 

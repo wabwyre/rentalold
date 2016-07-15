@@ -212,6 +212,15 @@ import_companies: src/masterfile_module/import_client_groups.php
 805: src/crm_module/customer_profile.php
 810: src/crm_module/new_customer_profile.php
 826: src/crm_module/all_clients.php
+<<<<<<< HEAD
+=======
+829: src/crm_module/insurance_policy.php
+830: src/crm_module/insurance_claim.php
+832: src/crm_module/customer_acc_info.php
+833: src/crm_module/customer_phone_bills.php
+834: src/crm_module/lesse_agreement.php
+
+>>>>>>> e4c7adede92222ff449ca4f7fa401a4aad303510
 manage_account: src/crm_module/manage_accounts.php
 add_bank: src/crm_module/add_bank.php
 add_branch: src/crm_module/add_branch.php

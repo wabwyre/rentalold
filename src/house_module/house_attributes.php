@@ -21,14 +21,14 @@
             <a href="#delete_attribute" class="btn btn-small btn-danger" id="del_attribute_btn"><i class="icon-remove icon-white"></i> Delete</a>
         </span>
     </div>
-    </br>
-    <?
-        if(isset($_SESSION['attributes'])){
-        echo $_SESSION['attributes'];
-        unset($_SESSION['attributes']);
-     }
-    ?>
+
     <div class="widget-body form">
+        <?
+        if(isset($_SESSION['attributes'])){
+            echo $_SESSION['attributes'];
+            unset($_SESSION['attributes']);
+        }
+        ?>
         <table id="table1" class="table table-bordered">
             <thead>
                 <tr>
@@ -44,7 +44,7 @@
                 ?>
                 <tr>
                     <td><?=$row['attribute_id']; ?></td>
-                    <td><?=$row['name']; ?></td>
+                    <td><?=$row['attribute_name']; ?></td>
                 </tr>
                 <? }} ?>
             </tbody>
@@ -91,8 +91,8 @@
         <input type="hidden" name="action" value="edit_attribute"/>
         <input type="hidden" id="edit_id" name="edit_id"/>
         <div class="modal-footer">
-            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can539'); ?>
-            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav537'); ?>
+            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo664'); ?>
+            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav663'); ?>
         </div>
     </div>
 </form>
@@ -110,8 +110,8 @@
         <input type="hidden" name="action" value="delete_attribute"/>
         <input type="hidden" id="delete_id" name="delete_id"/>
         <div class="modal-footer">
-            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No540'); ?>
-            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes541'); ?>
+            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No666'); ?>
+            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes665'); ?>
         </div>
     </div>
 </form>

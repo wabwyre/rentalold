@@ -53,17 +53,28 @@ set_layout("dt-layout.php", array(
                     <td><?php echo $rows['maintenance_name']; ?></td>
                     <td><?php echo $rows['category_name']; ?></td>
                     <td><?php echo $rows['customer_name']; ?></td>
-                    <td><?php
+                    <td>
+                        <?php
+//                        var_dump($rows['approve_status']);exit;
                         if($rows['approve_status'] == 'f'){
                         ?>
                         <a href="#edit_voucher" class="btn btn-mini btn-warning edit_voc"
                            data-toggle="modal" voucher_id="<?=$rows['voucher_id']; ?>"><i class="icon-edit"></i> Edit</a>
+                        <?php } ?>
                     </td>
                     <td>
-                        <a href="#delete_voucher" class="btn btn-mini btn-danger delete_voc"
-                           data-toggle="modal" voucher_id="<?=$rows['voucher_id']; ?>"><i class="icon-trash"></i> Delete</a>
+                        <?php
+                        if($rows['approve_status'] == 'f') {
+                            ?>
+                            <a href="#delete_voucher" class="btn btn-mini btn-danger delete_voc"
+                               data-toggle="modal" voucher_id="<?= $rows['voucher_id']; ?>"><i class="icon-trash"></i>
+                                Delete</a>
+                            <?php } ?>
                     </td>
                     <td>
+                        <?php
+                        if($rows['approve_status'] == 'f'){
+                            ?>
                         <a href="#approve_voucher" class="btn btn-mini btn-success approve_voc"
                            data-toggle="modal" voucher_id="<?=$rows['voucher_id']; ?>"><i class="icon-paper-clip"></i> Approve</a>
                         <?php }?>

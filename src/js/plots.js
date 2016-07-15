@@ -16,6 +16,7 @@ $('.edit_prop').on('click', function(){
                 $('#paybill_number').val(data['paybill_number']);
                 $('#property_manager').val(data['pm_mfid']);
                 $('#landlord').val(data['landlord_mfid']);
+                $('#lr_no').val(data['lr_no']);
             }
         });
     }

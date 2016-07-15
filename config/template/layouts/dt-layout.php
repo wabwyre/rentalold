@@ -31,6 +31,10 @@
 	<link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap-datepicker/css/datepicker.css" />
 	<link rel="stylesheet" type="text/css" href="assets/plugins/jquery-tags-input/jquery.tagsinput.css" />
 	<link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+
+<!--	<link href="src/datatables/media/css/jquery.dataTables.css" rel="stylesheet"/>-->
+<!--	<link href="src/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"/>-->
+<!--	<link href="src/datatables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet"/>-->
 <?php
 	// The CSS included
 	if ($templateResource = self::getResource('css')) {
