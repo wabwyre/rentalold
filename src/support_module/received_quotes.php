@@ -3,7 +3,20 @@
     $quote = new ReceivedQuotes();
 
     if(App::isAjaxRequest()){
-        $quote->getAllQuotesInJson();
+        if (isset($_GET['filter'])) {
+            if(!empty($_GET['filter'])) {
+                $condition = "maintainance_id = '" . $_GET['filter'] . "'";
+                $quote->getAllQuotesInJson($condition);
+            }else{
+                $quote->getAllQuotesInJson();
+            }
+        } else {
+            $quote->getAllQuotesInJson();
+        }
+
+        if(isset($_POST['quote_id'])){
+            $quote->awardQuote($_POST['quote_id']);
+        }
     }else{
         set_title('Received Quotes');
         set_layout("dt-layout.php", array(
@@ -17,6 +30,37 @@
         ));
 ?>
 <div class="widget">
+    <div class="widget-title"><h4><i class="icon-filter"></i> Search Parameters</h4>
+        <span class="tools">
+            <a href="javascript::void()"><i class="icon-chevron-up"></i> </a>
+        </span>
+    </div>
+    <div class="widget-body form" style="display: none;">
+        <form id="search_quotes" action="" method="post" class="form-horizontal">
+            <div class="row-fluid">
+                <div class="span6">
+                    <label class="control-label">Maintenance Voucher</label>
+                    <div class="controls">
+                        <select class="span12 live_search" name="voucher" id="voucher_id">
+                            <option value="">All</option>
+                            <?php
+                                $rows = $quote->getAllVouchers();
+                                if(count($rows)){
+                                    foreach($rows as $row){
+                            ?>
+                            <option value="<?php echo $row['voucher_id']; ?>"><?php echo $row['maintenance_name']; ?></option>
+                            <?php }} ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <?php viewActions($_GET['num'], $_SESSION['role_id']); ?>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="widget">
     <div class="widget-title"><h4><i class="icon-reorder"></i> All Received Quotes</h4></div>
     <div class="widget-body form">
         <table id="received_quotes" class="table table-bordered">
@@ -28,6 +72,7 @@
                     <th>Bid Date</th>
                     <th>Bid Status</th>
                     <th>Job Status</th>
+                    <th>Award</th>
                 </tr>
             </thead>
         </table>

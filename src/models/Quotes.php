@@ -1,10 +1,10 @@
 <?php
-include_once('src/models/Library.php');
+include_once('src/models/SupportTickets.php');
 
-class Quotes extends Library
+class Quotes extends SupportTickets
 {
 	public function allQuotations(){
-		$query = "SELECT * FROM quotes ";
+		$query = "SELECT * FROM quotes";
 
 		$results = run_query($query);
 		return $results;
