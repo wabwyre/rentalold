@@ -5,8 +5,9 @@ include_once('src/models/House.php');
 
 class SupportTickets extends House{
  	public function allMaintenanceTickets(){
- 		$query ="SELECT mt.*, CONCAT(m.surname,' ',m.firstname,' ',m.middlename) AS customer_name FROM maintenance_ticket mt
- 		LEFT JOIN masterfile m ON m.mf_id = mt.reported_by";
+ 		$query ="SELECT mt.*, c.category_name, CONCAT(m.surname,' ',m.firstname,' ',m.middlename) AS customer_name FROM maintenance_ticket mt
+ 		LEFT JOIN masterfile m ON m.mf_id = mt.reported_by
+ 		LEFT JOIN category c ON c.category_id = mt.subject";
  		$result = run_query($query);
 		return $result;
  	}
@@ -429,6 +430,141 @@ class SupportTickets extends House{
 		else
 			$this->flashMessage('support', 'error', 'Encountered an error! '.get_last_error());
 	}
+	public function getMessageTypeId($code){
+		$query = "SELECT message_type_id FROM message_type WHERE message_type_code = '".$code."'";
+		$result = run_query($query);
+		if($result){
+			$rows = get_row_data($result);
+			return $rows['message_type_id'];
+		}
+	}
+	
+	public function approveVoucher(){
+		extract($_POST);
+		$status = '1';
+		$this->beginTranc();
+		$result = $this->updateQuery2(
+			'maintenance_vouchers',
+			array(
+				'approve_status' => $status
+			),
+			array(
+				'voucher_id' => $voucher_id
+			)
+		);
+		if($result){
+			$this->sendContractorMessage();
+		}else{
+			$this->flashMessage('support', 'error', 'Encountered an error! '.get_last_error());
+		}
+	}
+	
+	public function getContractor($b_role){
+		$rows = $this->selectQuery('all_masterfile', 'm.mf_id',"m.b_role = '".$b_role."'");
+		return $rows;
+	}
 
+	public  function  sendContractorMessage(){
+		$mess_type_code = 'EMAIL';
+		$message_type = $this->getMessageTypeId($mess_type_code);
+		$mess_code = 'PUSH_NOTIFICATION';
+		$mess_type = $this->getMessageTypeId($mess_code);
+		$code = 'SMS';
+		$type = $this->getMessageTypeId($code);
+		$mess = 'array['.$message_type.','.$mess_type.','.$type.']';
+		$subject = 'Maintenance Voucher#'.$voucher_id.'';
+		$message = "Dear Contractor,\r\n";
+		$message .= "A Maintenance Voucher Has Been Raised:\r\n";
+		$message .= "Please Login To the system to Send Your Quotations(Bids) For The Raised Maintenance Voucher.\r\n\r\n";
+		$message .= "Thanks,\r\n";
+		$message .= "Oriems Rental Team";
+		$mf_ids= $this->getContractor('contractor');
+		if (count($mf_ids)) {
+			$recip_array = 'array[';
+			foreach ($mf_ids as $mf_id) {
+				$recip_array .= $mf_id . ',';
+			}
+			$recip_array = rtrim($recip_array, ',');
+			$recip_array .= ']';
+		}
+		$sender = $_SESSION['mf_id'];
+		$date = date('Y-m-d H:i:s');
+
+		$data = $this->insertQuery('message',
+			array(
+				'body' => $message,
+				'subject' => $subject,
+				'sender' => $sender,
+				'recipients' => $recip_array,
+				'created' => $date,
+				'message_type_id' => $mess
+			),
+			'message_id'
+		);
+
+		if($data){
+			foreach ($mf_ids as $mf_id) {
+				$this->createContractorMessage($mf_id, $data['message_id']);
+			}$this->endTranc();
+		}else{
+			$this->flashMessage('support', 'error', 'Encountered an error! '.get_last_error());
+		}
+	}
+
+	public function createContractorMessage($mf_id, $message_id){
+		$result = $this->insertQuery('customer_messages',
+			array(
+				'mf_id' => $mf_id,
+				'message_id' => $message_id
+			)
+		);
+		if($result){
+			$this->flashMessage('support', 'success', ' Maintenance Voucher  has been Approved.');
+		}else{
+			$this->flashMessage('support', 'error', 'Failed to update maintenance voucher! ' . get_last_error());
+		}
+	}
+
+	public  function declineVoucher(){
+		extract($_POST);
+		$status = '0';
+		$result = $this->updateQuery2(
+			'maintenance_vouchers',
+			array(
+				'approve_status' => $status
+			),
+			array(
+				'voucher_id' => $voucher_id
+			)
+		);
+		if($result){
+			$this->flashMessage('support', 'success', ' Maintenance Voucher  has been Declined.');
+		}else{
+			$this->flashMessage('support', 'error', 'Failed to update maintenance voucher! ' . get_last_error());
+		}
+	}
+
+	public function addSupport(){
+		extract($_POST);
+		$status = '0';
+		$user = $_SESSION['mf_id'];
+
+		$result = $this->insertQuery('maintenance_ticket',
+			array(
+				'mf_id' => $user,
+				'subject' => $category_id,
+				'reported_by' => $user,
+				'status' => $status,
+				'body' => $body
+			)
+		);
+
+		if($result){
+			$this->flashMessage('support', 'success', 'The Maintenance Ticket was Recorded Successfully.');
+		}else{
+			$this->flashMessage('support', 'error', 'Failed to create Maintenance Ticket! ' . get_last_error());
+		}
+	}
 }
 ?>
+

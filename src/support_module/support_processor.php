@@ -78,6 +78,19 @@ switch ($_POST['action']) {
 		$Quotes->deleteQuote($_POST['delete_id']);
 	break;
 
+	case approve_maintenance_voucher:
+		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		$Quotes->approveVoucher();
+		$_SESSION['support_error'] = $Support->getWarnings();
+		break;
+
+	case decline_maintenance_voucher:
+		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		$Quotes->declineVoucher();
+		$_SESSION['support_error'] = $Support->getWarnings();
+		break;
+
+
 }
 
 
