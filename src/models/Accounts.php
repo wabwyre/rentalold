@@ -124,4 +124,9 @@ class Accounts extends Masterfile{
             'specific' => $data[0]
         );
     }
+
+    public function getBranchByBranchId($id){
+        $data = $this->selectQuery('branch_name', '*', "branch_id = '".sanitizeVariable($id)."' ");
+        echo json_encode($data[0]);
+    }
 }
