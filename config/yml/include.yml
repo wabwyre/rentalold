@@ -25,7 +25,7 @@ post:
    - src/support_module/support_processor.php
    - src/system_manager/maintenance_processor.php
    - src/prop_module/property_processor.php
-
+   - src/crm_module/crm_processor.php
    - src/house_module/house_processor.php
 
 

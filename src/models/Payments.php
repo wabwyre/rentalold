@@ -1,9 +1,9 @@
 <?php
-//	include_once('src/models/Houses.php');
+include_once('src/models/Masterfile.php');
 //	/**
 //	*
 //	*/
-	class Payments
+	class Payments extends Masterfile
 	{
 		
 		public function addToBillingFile($service_account, $billing_interval, $billing_amount, $billing_amount_balance, $service_bill_id){
@@ -11,8 +11,8 @@
 	        created_by, service_account, start_date, 
 	        billing_interval, billing_amount, billing_amount_balance, service_bill_id,
 	        created)
-			VALUES ('".$_SESSION['user_id']."', '".sanitizeVar($service_account)."', '".date('Y-m-d')."', 
-	        '".sanitizeVar($billing_interval)."', '".sanitizeVar($billing_amount)."', '".sanitizeVar($billing_amount_balance)."', '".sanitizeVar($service_bill_id)."',
+			VALUES ('".$_SESSION['mf_id']."', '".sanitizeVariable($service_account)."', '".date('Y-m-d')."', 
+	        '".sanitizeVariable($billing_interval)."', '".sanitizeVariable($billing_amount)."', '".sanitizeVariable($billing_amount_balance)."', '".sanitizeVariable($service_bill_id)."',
 	        '".date('Y-m-d H:i:s')."') RETURNING billing_file_id";
 	        traceActivity('Billing File: '.$query);
 	        $result = run_query($query);
@@ -31,11 +31,11 @@
 	            bill_amount_paid, bill_balance, 
 	            billing_file_id, service_account, 
 	            mf_id, service_channel_id)
-	    		VALUES ('".sanitizeVar($bill_due_date)."', '".sanitizeVar($billing_amount)."', 
-	    		'".date('Y-m-d')."', '".sanitizeVar($bill_status)."', 
-	    		'".sanitizeVar($bill_amount_paid)."', '".sanitizeVar($bill_balance)."', 
-	    		'".sanitizeVar($billing_file_id)."', '".sanitizeVar($service_account)."',
-	    		'".sanitizeVar($mf_id)."', '".sanitizeVar($service_channel_id)."')";
+	    		VALUES ('".sanitizeVariable($bill_due_date)."', '".sanitizeVariable($billing_amount)."', 
+	    		'".date('Y-m-d')."', '".sanitizeVariable($bill_status)."', 
+	    		'".sanitizeVariable($bill_amount_paid)."', '".sanitizeVariable($bill_balance)."', 
+	    		'".sanitizeVariable($billing_file_id)."', '".sanitizeVariable($service_account)."',
+	    		'".sanitizeVariable($mf_id)."', '".sanitizeVariable($service_channel_id)."')";
 	        traceActivity($ins_sql);
 	        if(run_query($ins_sql)){
 	            return true;

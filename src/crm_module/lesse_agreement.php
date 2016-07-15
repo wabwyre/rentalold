@@ -53,7 +53,7 @@ set_layout("dt-layout.php", array(
 					<td><?=$rows['house_number']; ?></td>
 					<td><?=$rows['start_date']; ?></td>
 					<td><?=$rows['end_date']; ?></td>	
-					<td><a href="?num=view_statement&tenant_id=<?php echo $tenant_id; ?>" class="btn btn-mini"><i class="icon-eye-open"></i> View</td>				
+					<td><a href="?num=view_statement&tenant_id=<?php echo $rows['tenant']; ?>" class="btn btn-mini"><i class="icon-eye-open"></i> View</td>
 				</tr>
 				<? }} ?>
 			</tbody>
@@ -75,11 +75,11 @@ set_layout("dt-layout.php", array(
 	            <select name="tenant" class="span12 live_search" required>
 	               	<option value="">--Choose Tenant--</option>
 	            	<?php
-	            		$tenants = $lease->getAllTenants();
+	            		$tenants = $lease->getMfByBrole(Tenant);
 	            		if(count($tenants)){
 	            			foreach ($tenants as $tenant) {
 	            	?>
-	            	<option value="<?php echo $tenant['mf_id']; ?>"><?php echo $tenant['tenant']; ?></option>
+	            	<option value="<?php echo $tenant['mf_id']; ?>"><?php echo $tenant['surname'].' '.$tenant['firstname'].' '.$tenant['middlename'].' ('.$tenant['id_passport'].')'; ?></option>
 	            	<?php }} ?>
 	            </select>     
 	        </div>
@@ -92,7 +92,7 @@ set_layout("dt-layout.php", array(
 					$house=run_query("SELECT * from houses_and_plots");
 					while ($fetch=get_row_data($house))
 					{?>
-						<option value=\"<?php echo $fetch['house_id']; ?>\"><?php echo $fetch['house_number'].' - '.$fetch['plot_name']; ?></option>
+						<option value="<?php echo $fetch['house_id']; ?>"><?php echo $fetch['house_number'].' - '.$fetch['plot_name']; ?></option>
 
 	            	<?php }?>
 	            </select>     

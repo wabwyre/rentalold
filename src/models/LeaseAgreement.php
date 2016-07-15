@@ -11,8 +11,8 @@ class LeaseAgreement extends Payments
 // 		var_dump($_POST);exit;
 		if(!empty($tenant) && !empty($house) && !empty($start_date) && !empty($end_date)){
 			$query = "BEGIN TRANSACTION;";
-			$query .= "INSERT INTO lease(tenant_id, house_id, start_date, end_date) 
-			VALUES('".sanitizeVar($tenant)."', '".sanitizeVar($house)."', '".sanitizeVar($start_date)."', '".sanitizeVar($end_date)."')";
+			$query .= "INSERT INTO lease(tenant, house_id, start_date, end_date) 
+			VALUES('".sanitizeVariable($tenant)."', '".sanitizeVariable($house)."', '".sanitizeVariable($start_date)."', '".sanitizeVariable($end_date)."')";
 			if(run_query($query)){
 				traceActivity('1 Created  Lease Agreement');
 				$service_account = $this->getHouseNo($house);
@@ -29,7 +29,7 @@ class LeaseAgreement extends Payments
 						traceActivity('2 Created Billing File');
 						$billing_file = get_row_data($result);
 						if($billing_file['billing_file_id']){
-							$bill_result = $this->createBill(	$bill_details['bill_due_time'], $bill_details['amount'], date('Y-m-d'), 0, $bill_details['amount'], 0, $billing_file['billing_file_id'], 
+							$bill_result = $this->createBill($bill_details['bill_due_time'], $bill_details['amount'], date('Y-m-d'), 0, $bill_details['amount'], 0, $billing_file['billing_file_id'],
 								$service_account, 
 								$tenant, 
 								$bill_details['service_channel_id']);
@@ -56,8 +56,9 @@ class LeaseAgreement extends Payments
 	public function getAllLeaseAgreements(){
 		$return = array();
 
-		$query = "SELECT lg.*, CONCAT(t.surname,' ',t.firstname,' ',t.middlename) AS tenant,  t.mf_id FROM lease lg
+		$query = "SELECT lg.*, CONCAT(t.surname,' ',t.firstname,' ',t.middlename) AS tenant, t.mf_id, h.house_number FROM lease lg
 		LEFT JOIN masterfile t ON t.mf_id = lg.tenant
+		LEFT JOIN houses h ON h.house_id = lg.house_id
 		";
 		if($result = run_query($query)){
 			if(get_num_rows($result)){
@@ -83,12 +84,12 @@ class LeaseAgreement extends Payments
 	}
 
 	public function getHouses(){
-		$result= "SELECT * FROM houses_and_plots";
+		$result= run_query("SELECT * FROM houses_and_plots");
 		return $result;
 	}
 
 	public function getHouseNo($number){
-		$result= "SELECT * FROM houses_and_plots WHERE house_id = '".$number."'";
+		$result= run_query("SELECT * FROM houses_and_plots WHERE house_id = '".$number."'");
 		return $result;
 	}
 }

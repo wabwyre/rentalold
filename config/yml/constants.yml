@@ -401,3 +401,6 @@ basic:
    Push: PUSH_NOTIFICATION
    SMS: SMS
    Email: EMAIL
+
+   #### CRM
+   add_lease_agreement: add_lease_agreement
