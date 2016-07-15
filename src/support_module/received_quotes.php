@@ -3,19 +3,20 @@
     $quote = new ReceivedQuotes();
 
     if(App::isAjaxRequest()){
-        if (isset($_GET['filter'])) {
-            if(!empty($_GET['filter'])) {
-                $condition = "maintainance_id = '" . $_GET['filter'] . "'";
-                $quote->getAllQuotesInJson($condition);
-            }else{
+        if(isset($_POST['quote_id'])){
+            logAction('award_voucher', $_SESSION['sess_id'], $_SESSION['mf_id']);
+            $quote->awardQuote($_POST['quote_id']);
+        }else{
+            if (isset($_GET['filter'])) {
+                if(!empty($_GET['filter'])) {
+                    $condition = "maintainance_id = '" . $_GET['filter'] . "'";
+                    $quote->getAllQuotesInJson($condition);
+                }else{
+                    $quote->getAllQuotesInJson();
+                }
+            } else {
                 $quote->getAllQuotesInJson();
             }
-        } else {
-            $quote->getAllQuotesInJson();
-        }
-
-        if(isset($_POST['quote_id'])){
-            $quote->awardQuote($_POST['quote_id']);
         }
     }else{
         set_title('Received Quotes');
@@ -61,12 +62,17 @@
     </div>
 </div>
 <div class="widget">
-    <div class="widget-title"><h4><i class="icon-reorder"></i> All Received Quotes</h4></div>
+    <div class="widget-title"><h4><i class="icon-reorder"></i> All Received Quotes</h4>
+        <span class="actions">
+            <button class="btn btn-small btn-success" id="refresh"><i class="icon-refresh"></i> Refresh!</button>
+        </span>
+    </div>
     <div class="widget-body form">
         <table id="received_quotes" class="table table-bordered">
             <thead>
                 <tr>
                     <th>Quote#</th>
+                    <th>Voucher</th>
                     <th>Contractor</th>
                     <th>Bid Amount</th>
                     <th>Bid Date</th>

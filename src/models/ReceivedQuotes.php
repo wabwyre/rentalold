@@ -14,14 +14,21 @@ class ReceivedQuotes extends Quotes{
         if(count($data)){
             foreach ($data as $row){
                 $quote_id = $row['qoute_id'];
+                $voucher_id = $row['maintainance_id'];
+
+                $approve_btn = '';
+                if(!$this->checkIfVoucherHasBeenWon($voucher_id)) {
+                    $approve_btn = '<button class="btn btn-mini btn-success award-btn" quote-id="' . $quote_id . '"><i class="icon-paper-clip"></i> Award</button>';
+                }
                 $rows[] = array(
                     $row['qoute_id'],
+                    $row['maintenance_name'],
                     $row['full_name'],
                     $row['bid_amount'],
                     $row['bid_date'],
                     ($row['bid_status'] == 't') ? '<span class="label label-success">Approved</span>': '<span class="label label-default">Pending</span>',
-                    ($row['job_status'] == 't') ? '<span class="label label-success">Complete</span>': '<span class="label label-default">Incomplete</span>',
-                    ($row['bid_status'] == 'f') ? '<button class="btn btn-mini btn-success award-btn" quote-id="'.$quote_id.'"><i class="icon-paper-clip"></i> Award</button>' : ''
+                    ($row['job_status'] == 't') ? '<span class="label label-success">Complete</span>' : '<span class="label label-default">Incomplete</span>',
+                    $approve_btn
                 );
                 $return['data'] = $rows;
             }
@@ -55,5 +62,14 @@ class ReceivedQuotes extends Quotes{
             );
         }
         echo json_encode($return);
+    }
+
+    public function checkIfVoucherHasBeenWon($voucher_id){
+        $data = $this->selectQuery('quotes', '*', "maintainance_id   = '".sanitizeVariable($voucher_id)."' AND bid_status IS TRUE");
+        if(count($data)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
