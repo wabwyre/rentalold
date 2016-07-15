@@ -21,10 +21,12 @@ $('#b_role').on('change', function(){
 		$('#account_no').attr('disabled', 'disabled').val('');
 		$('#bank_name').attr('disabled', 'disabled').val('');
 		$('#branch_name').attr('disabled', 'disabled').val('');
+		$('#pin_no').attr('disabled', 'disabled').val('');
 	}else if(role == 'land_lord'){
 		$('#account_no').removeAttr('disabled').val('');
 		$('#bank_name').removeAttr('disabled').val('');
 		$('#branch_name').removeAttr('disabled').val('');
+		$('#pin_no').removeAttr('disabled').val('');
 	}
 });
 

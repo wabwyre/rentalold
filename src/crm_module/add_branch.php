@@ -45,20 +45,20 @@
                 </thead>
                 <tbody>
                 <?php
-                $rows = $acc->getAllBranch();
+                $rows = $acc->getAllBranches();
                 $rows = $rows['all'];
 
                 if(count($rows)){
                     foreach ($rows as $row){;
                 ?>
-                        <tr>
-                            <td><?php echo $row['branch_id']; ?></td>
-                            <td><?php echo $row['branch_name']; ?></td>
-                            <td><?php echo $row['branch_code']; ?></td>
-                            <td><?php echo $row['status']; ?></td>
-                            <td><a href="#update_branch" class="btn btn-mini btn-warning edit_branch" edit-id="<?php echo $row['branch_id']; ?>" data-toggle="modal"><i class="icon-edit"></i> Edit</a> </td>
-                            <td><a href="#del_branch" class="btn btn-mini btn-danger del_branch" edit-id="<?php echo $row['branch_id']; ?>" data-toggle="modal"><i class="icon-trash"></i> Delete</a></td>
-                        </tr>
+                    <tr>
+                        <td><?php echo $row['branch_id']; ?></td>
+                        <td><?php echo $row['branch_name']; ?></td>
+                        <td><?php echo $row['branch_code']; ?></td>
+                        <td><?php echo ($row['status'] == 't') ? 'Active': 'Inactive'; ?></td>
+                        <td><a href="#update_branch" class="btn btn-mini btn-warning edit_branch" edit-id="<?php echo $row['branch_id']; ?>" data-toggle="modal"><i class="icon-edit"></i> Edit</a> </td>
+                        <td><a href="#del_branch" class="btn btn-mini btn-danger del_branch" edit-id="<?php echo $row['branch_id']; ?>" data-toggle="modal"><i class="icon-trash"></i> Delete</a></td>
+                    </tr>
                     <?php }} ?>
                 </tbody>
             </table>
@@ -81,7 +81,7 @@
 
                 <div class="row-fluid">
                     <label for="branch_code">Branch Code:</label>
-                    <input type="text" name="payment_code" class="span12" value="<?php echo $acc->get('branch-code'); ?>"/>
+                    <input type="text" name="branch_code" class="span12" value="<?php echo $acc->get('branch_code'); ?>"/>
                 </div>
 
                 <div class="row-fluid">
@@ -90,11 +90,11 @@
                 </div>
 
                 <div class="row-fluid">
-                    <label for="created_at">Status:</label>
-                    <select for="status" class="span12">
+                    <label for="status">Status:</label>
+                    <select name="status" class="span12">
                         <option value="">--Choose Status--</option>
-                        <option value="1">Active</option>
-                        <option value="0">Inactive</option>
+                        <option value="1"<?php if(isset($_POST['status']) && $_POST['status'] == 1) echo 'selected'; ?>>Active</option>
+                        <option value="0"<?php if(isset($_POST['status']) && $_POST['status'] == 0) echo 'selected'; ?>>Inactive</option>
                     </select>
                 </div>
             </div>
@@ -119,12 +119,21 @@
                     <input type="text" name="branch_name" id="branch_name" class="span12" value="<?php echo $acc->get('branch_name'); ?>"/>
                 </div>
                 <div class="row-fluid">
-                    <label for="units">Branch Code:</label>
+                    <label for="branch_code">Branch Code:</label>
                     <input type="text" name="branch_code" id="branch_code" class="span12" value="<?php echo $acc->get('branch_code'); ?>"/>
                 </div>
                 <div class="row-fluid">
-                    <label for="payment_code">Date Created:</label>
-                    <input type="text" name="created_at" id="created_at" class="span12" value="<?php echo $acc->get('created_at'); ?>"/>
+                    <label for="created_at">Date Created:</label>
+                    <input type="date" name="created_at" id="created_at" class="span12" value="<?php echo $acc->get('created_at'); ?>"/>
+                </div>
+
+                <div class="row-fluid">
+                    <label for="status">Status:</label>
+                    <select name="status" class="span12" id="status">
+                        <option value="">--Choose Status--</option>
+                        <option value="1"<?php if(isset($_POST['status']) && $_POST['status'] == 1) echo 'selected'; ?>>Active</option>
+                        <option value="0"<?php if(isset($_POST['status']) && $_POST['status'] == 0) echo 'selected'; ?>>Inactive</option>
+                    </select>
                 </div>
             </div>
             <!-- the hidden fields -->
