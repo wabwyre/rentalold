@@ -1,18 +1,18 @@
 <?php
-set_layout("dt-layout.php", array(
-	'pageSubTitle' => 'All Clients',
-	'pageSubTitleText' => '',
-	'pageBreadcrumbs' => array (
-		array ( 'url'=>'index.php', 'text'=>'Home' ),
-		array ( 'text'=>'CRM' ),
-		array ( 'text'=>'All Clients' )
-	)
-	
-));
+	set_layout("dt-layout.php", array(
+		'pageSubTitle' => 'All Tenants',
+		'pageSubTitleText' => '',
+		'pageBreadcrumbs' => array (
+			array ( 'url'=>'index.php', 'text'=>'Home' ),
+			array ( 'text'=>'CRM' ),
+			array ( 'text'=>'All Tenats' )
+		)
+
+	));
 
 ?>
 <div class="widget">
-	<div class="widget-title"><h4><i class="icon-reorder"></i> All Clients</h4></div>
+	<div class="widget-title"><h4><i class="icon-reorder"></i> All Tenants</h4></div>
 	<div class="widget-body form">
     <table id="table1" style="width: 100%" class="table table-bordered">
  		<thead>

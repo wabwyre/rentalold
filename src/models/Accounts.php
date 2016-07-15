@@ -9,77 +9,101 @@
 include_once ('src/models/Masterfile.php');
 
 class Accounts extends Masterfile{
-    
-    public function addBankAccount(){
-        extract($_POST);
-            $check = array(
-                // bank details
-                'bank_name' => array(
-                    'name' => 'Bank Name',
-                    'required' => true,
-                    'unique' => 'banks'
-                )
-            );
-        $this->validate($_POST, $check);
-        if($this->getValidationStatus()) {
-            $this->beginTranc();
-            $this->addBank();
-        }
-        if(!empty($bank_id)){
-            if($this->addBranch($branch_name, $branch_code)){
-                $this->endTranc();
-               $this->flashMessage('acc', 'success', 'Branch was succesfully added!');
-            }
-        }else{
-            $this->flashMessage('acc', 'error', 'Failed to branch! '.get_last_error());
-        }
-    }
 
     public function addBank($post){
-        //var_dump($_POST); exit;
-        $result = $this->insertQuery(
-            'banks',
-            array(
-                'bank_name' => $bank_name,
-                'created_at' => $created_at,
-                'status' => $status
+        //var_dump($_POST);exit;
+        $this->validate($post, array(
+            'bank_name' => array(
+                'name' => 'Name',
+                'required' => true,
+                'unique' => 'banks'
+            ),
+            'created_at' => array(
+                'name' => 'Date',
+                'required' => true
+            ),
+            'status' => array(
+                'name' => 'Status',
+                'required' => true
             )
-            //'bank_id'
-        );
-        var_dump($result);exit;
-        $data=run_query($result);
-        if ($data) {
-            $this->flashMessage('acc', 'success', 'Bank information added successfully..');
-        }else{
-            $this->flashMessage('acc', 'error', 'Failed to add bank details! ' . get_last_error());
+        ));
+
+        if($this->getValidationStatus()) {
+            $result = $this->insertQuery('banks',
+                array(
+                    'bank_name' => $post['bank_name'],
+                    'created_at' => $post['created_at'],
+                    'status' => $post['status']
+                )
+            );
+            //var_dump($result);exit;
+            if($result){
+                $this->flashMessage('acc', 'success', 'A Bank has been added!');
+            }else{
+                $this->flashMessage('acc', 'error', 'Encountered an error!');
+            }
         }
-        //return ['mf_id'];
     }
 
-    public function editBank(){
-        if($_POST['action'] == "edit_Bank")
-        {
-            $bank_name=$_POST['bank_name'];
-            $created_at=$_POST['created_at'];
-            $status=$_POST['status'];
+    public function editBank($post){
+        //var_dump($post);exit;
+        $this->validate($post, array(
+            'bank_name' => array(
+                'name' => 'Name',
+                'required' => true,
+                'unique2' => array(
+                    'table' => 'banks',
+                    'skip_column' => 'bank_id',
+                    'skip_value' => $post['edit_id'],
+                )
+            ),
+            'created_at' => array(
+                'name' => 'Date',
+                'required' => true,
+                'unique2' => array(
+                    'table' => 'banks',
+                    'skip_column' => 'bank_id',
+                    'skip_value' => $post['edit_id']
+                )
+            ),
+            'status' => array(
+                'name' => 'Status',
+                'required' => true
+            ),
+        ));
 
-            //update the banks
-            $query="UPDATE ".DATABASE.".banks SET 
-                bank_name='$bank_name', 
-                created_at='$created_at', 
-                status='$status' 
-                WHERE bank_id = '$bank_id'";
-
-            $data=run_query($query);
-            if ($data) {
-                $this->flashMessage('acc', 'success', 'You updated the bank information successfully..');
+        if($this->getValidationStatus()) {
+            $result = $this->updateQuery2('banks',
+                array(
+                    'bank_name' => $post['bank_name'],
+                    'created_at' => $post['created_at'],
+                    'status' => $post['status']
+                ),
+                array(
+                    'bank_id' => $post['edit_id']
+                )
+            );
+            //var_dump($result);exit;
+            if($result){
+                $this->flashMessage('acc', 'success', 'Bank has been updated!');
             }else{
-                $this->flashMessage('acc', 'error', 'Failed to update bank details! ' . get_last_error());
+                $this->flashMessage('acc', 'error', 'Encountered an error!');
             }
+        }
+    }
+
+    public function deleteBank($id){
+        if($this->deleteQuery2('banks', array(
+            'bank_id' => $id
+        ))){
+            $this->flashMessage('acc', 'success', 'Bank has been deleted');
+        }else{
+            $this->flashMessage('acc', 'warning', 'The Bank details is being used somewhere else in the system!');
         }
     }
 
     public function addBranch($post){
+        //var_dump($_POST);exit;
         $this->validate($post, array(
             'branch_name' => array(
                 'name' => 'Name',
@@ -89,6 +113,14 @@ class Accounts extends Masterfile{
             'branch_code' => array(
                 'required' => true,
                 'unique' => 'bank_branch'
+            ),
+            'created_at' => array(
+                'name' => 'Date',
+                'required' => true
+            ),
+            'status' => array(
+                'name' => 'Status',
+                'required' => true
             )
         ));
 
@@ -154,7 +186,7 @@ class Accounts extends Masterfile{
     }
 
     public function deleteBranch($id){
-        if($this->deleteQuery2('plots', array(
+        if($this->deleteQuery2('bank_branch', array(
             'branch_id' => $id
         ))){
             $this->flashMessage('acc', 'success', 'Branch has been deleted');
@@ -182,13 +214,22 @@ class Accounts extends Masterfile{
         );
     }
 
+    public function getAllBranches($condition = null){
+        $condition = (!is_null($condition)) ? $condition : '';
+        $data = $this->selectQuery('bank_branch', '*', $condition);
+        return array(
+            'all' => $data,
+            'specific' => $data[0]
+        );
+    }
+
     public function getBranchByBranchId($id){
-        $data = $this->selectQuery('branch_name', '*', "branch_id = '".sanitizeVariable($id)."' ");
+        $data = $this->selectQuery('bank_branch', '*', "branch_id = '".sanitizeVariable($id)."' ");
         echo json_encode($data[0]);
     }
 
     public function getBankByBankId($id){
-        $data = $this->selectQuery('bank_name', '*', "bank_id = '".sanitizeVariable($id)."' ");
+        $data = $this->selectQuery('banks', '*', "bank_id = '".sanitizeVariable($id)."' ");
         echo json_encode($data[0]);
     }
 

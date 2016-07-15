@@ -64,8 +64,8 @@ if($status == '1'){
 				<label for="status" class="control-label">Status<span class="required">*</span></label>
 				<div class="controls">
 					<select class="span12" id="status" name="status" required>
-						<option value="1" <?=$check1?> >Active</option>
-                        <option value="0" <?=$check2?> >Inactive</option>
+						<option value="1" <?php echo $check1?> >Active</option>
+                        <option value="0" <?php echo $check2?> >Inactive</option>
 					</select>
 				</div>
 			</div>

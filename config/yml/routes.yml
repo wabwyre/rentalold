@@ -208,32 +208,10 @@ import_mf: src/masterfile_module/import_masterfile.php
 import_companies: src/masterfile_module/import_client_groups.php
 
 ## CRM MODULE
-801: src/crm_module/crm.php
-802: src/crm_module/edit_crm.php
-803: src/crm_module/add_crm.php
 804: src/crm_module/search_crm.php
 805: src/crm_module/customer_profile.php
 810: src/crm_module/new_customer_profile.php
-811: src/crm_module/agents.php
-812: src/crm_module/ros.php
-813: src/crm_module/champs.php
-814: src/crm_module/assocs.php
-815: src/crm_module/superchamps.php
-816: src/crm_module/msp.php
-817: src/crm_module/agents_profile.php
-818: src/crm_module/ro_profile.php
-819: src/crm_module/champ_profile.php
-820: src/crm_module/super_champ_profile.php
-821: src/crm_module/msp_profile.php
-822: src/crm_module/edit_agent.php
-823: src/crm_module/add_new_policy.php
-824: src/crm_module/assoc_profile.php
 826: src/crm_module/all_clients.php
-829: src/crm_module/insurance_policy.php
-830: src/crm_module/insurance_claim.php
-832: src/crm_module/customer_acc_info.php
-833: src/crm_module/customer_phone_bills.php
-
 manage_account: src/crm_module/manage_accounts.php
 add_bank: src/crm_module/add_bank.php
 add_branch: src/crm_module/add_branch.php

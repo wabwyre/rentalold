@@ -176,3 +176,15 @@ CREATE OR REPLACE VIEW bank_and_branches AS
 ALTER TABLE plots ADD COLUMN lr_no character varying(255);
 ALTER TABLE plots
   ADD CONSTRAINT plots_lr_no_key UNIQUE(lr_no);
+
+-- ALTER TABLE property_manager;
+ALTER TABLE property_manager ADD COLUMN created_by bigint;
+
+-- ALTER TABLE tenants;
+ALTER TABLE tenants ADD COLUMN created_by bigint;
+
+-- ALTER TABLE contractor;
+ALTER TABLE contractor ADD COLUMN created_by bigint;
+
+-- ALTER TABLE landlords;
+ALTER TABLE landlords ADD COLUMN created_by bigint;
