@@ -31,15 +31,13 @@ $('#table1').on('click', 'tr', function() {
     //get account details and place then on the edit modal
     $.ajax({
         type: 'POST',
-        url: 'src/payment_agent_module/account_details.php',
+        url: 'src/account_module/bank_details.php',
         data: the_data,
         dataType: 'json',
         success: function(data){
             $('#bank_name').val(data['bank_name']);
-            $('#branch_name').val(data['branch_name']);
-            $('#branch_code').val(data['branch_code']);
-            $('#bank').val(data['bank_name']);
-            $('#branch').val(data['branch_name']);
+            $('#created_at').val(data['created_at']);
+            $('#status').val(data['status']);
 
         }
     });

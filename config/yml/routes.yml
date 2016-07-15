@@ -83,7 +83,6 @@ dashboard: src/dashboard_module/dashboard.php
 168: src/payment_agent_module/all_billing_files.php
 169: src/payment_agent_module/gpay_transaction.php
 170: src/payment_agent_module/mpesa_request.php
-171: src/payment_agent_module/manage_accounts.php
 
 201: src/rate_module/select_customer.php
 202: src/rate_module/add_land_rate.php
@@ -320,6 +319,13 @@ edit_house: src/house_module/edit_house.php
 del_house: src/house_module/delete_house.php
 view_house: src/house_module/view_house.php
 in_plot: src/house_module/houses_in_plot.php
+house_attrbs: src/house_module/house_attributes.php
+
+
+### Account Module
+manage_account: src/account_module/manage_accounts.php
+add_bank: src/account_module/add_bank.php
+add_branch: src/account_module/add_branch.php
 
 #### Reports
 6000: src/payment_reports/house_payments.php

@@ -35,7 +35,7 @@ if(App::isAjaxRequest()){
 			<tr>
 			  	<th>ID#</th>
 				<th>Bid Amount</th>
-				<th>Contractor Id</th>
+
 				<th>Bid Date</th>
 				<th>Status</th>
 				<th>Job Status</th>
@@ -47,7 +47,8 @@ if(App::isAjaxRequest()){
  		</thead>
  	<tbody>
 	 		<?php
-	 		$result = $Quotes->allQuotations();
+
+	 		$result = $Quotes->allQuotations($_SESSION['mf_id']);
 
 	 		while ($rows = get_row_data($result)) {
 
@@ -55,7 +56,7 @@ if(App::isAjaxRequest()){
 		<tr>
 				<td><?php echo $rows['qoute_id'] ;?></td>
 				<td><?php echo $rows['bid_amount'] ; ?></td>
-				<td><?php echo $rows['contractor_mf_id'] ;?></td>
+
 				<td><?php echo $rows['expire_date'] ;?></td>
 				<td><?php echo ($rows['bid_status'] == 't') ? 'Approved':'Pending'  ;?></td>
 				<td><?php echo $Quotes->checkIfQuoteWasApproved($rows['bid_status'], $rows['job_status']); ?></td>
@@ -143,7 +144,7 @@ if(App::isAjaxRequest()){
 	            		$result = $Quotes->getAllMaintainance();
 	            		while($rows = get_row_data($result)){
 	            	?>
-	            	<option value="<?=$rows['voucher_id']; ?>"><?=$rows['maintainance_name']; ?></option>
+	            	<option value="<?=$rows['voucher_id']; ?>"><?=$rows['maintenance_name']; ?></option>
 	            	<?php } ?>
 	            </select> 
 	        </div>
@@ -151,8 +152,8 @@ if(App::isAjaxRequest()){
 		<!-- the hidden fields -->
 		<input type="hidden" name="action" value="add_quotation"/>
 		<div class="modal-footer">
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo650'); ?>
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav649'); ?>
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo656'); ?>
+			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav655'); ?>
 		</div>
 	</div>
 </form>
@@ -182,7 +183,7 @@ if(App::isAjaxRequest()){
 	            		$result = $Quotes->getAllMaintainance();
 	            		while($rows = get_row_data($result)){
 	            	?>
-	            	<option value="<?=$rows['voucher_id']; ?>"><?=$rows['maintainance_name']; ?></option>
+	            	<option value="<?=$rows['voucher_id']; ?>"><?=$rows['maintenance_name']; ?></option>
 	            	<?php } ?>
 	            </select> 
 	        </div>
