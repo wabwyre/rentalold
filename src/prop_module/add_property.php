@@ -37,6 +37,7 @@ if(App::isAjaxRequest()) {
 				<tr>
 					<th>Plot#</th>
 					<th>Name</th>
+					<th>LR#</th>
 					<th>Units/Houses</th>
 					<th>Payment Code</th>
 					<th>Property Manager</th>
@@ -54,6 +55,7 @@ if(App::isAjaxRequest()) {
 				<tr>
 					<td><?php echo $plot['plot_id']; ?></td>
 					<td><?php echo $plot['plot_name']; ?></td>
+					<td><?php echo $plot['lr_no']; ?></td>
 					<td><?php echo $plot['units']; ?></td>
 					<td><?php echo $plot['payment_code']; ?></td>
 					<td><?php echo $prop->getFullName($plot['pm_mfid']); ?></td>
@@ -79,6 +81,10 @@ if(App::isAjaxRequest()) {
 			<div class="row-fluid">
 				<label for="plot_name">Name:</label>
 				<input type="text" name="plot_name" class="span12" value="<?php echo $prop->get('name'); ?>"/>
+			</div>
+			<div class="row-fluid">
+				<label for="lr_no">Land Reg. No:</label>
+				<input type="text" name="lr_no" class="span12" value="<?php echo $prop->get('name'); ?>"/>
 			</div>
 			<div class="row-fluid">
 				<label for="units">Units/Houses:</label>
@@ -141,6 +147,10 @@ if(App::isAjaxRequest()) {
 			<div class="row-fluid">
 				<label for="plot_name">Name:</label>
 				<input type="text" name="ed_plot_name" id="plot_name" class="span12" value="<?php echo $prop->get('name'); ?>"/>
+			</div>
+			<div class="row-fluid">
+				<label for="lr_no">Land Reg. No:</label>
+				<input type="text" name="lr_no" id="lr_no" class="span12" value="<?php echo $prop->get('name'); ?>"/>
 			</div>
 			<div class="row-fluid">
 				<label for="units">Units/Houses:</label>

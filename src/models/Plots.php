@@ -19,6 +19,11 @@ class Plots extends Masterfile{
                 'required' => true,
                 'unique' => 'plots'
             ),
+            'lr_no' => array(
+                'name' => 'Land Reg. No',
+                'required' => true,
+                'unique' => 'plots'
+            ),
             'payment_code' => array(
                 'required' => true,
                 'unique' => 'plots'
@@ -38,7 +43,8 @@ class Plots extends Masterfile{
                     'date_created' => date('Y-m-d'),
                     'paybill_number' => $post['paybill_number'],
                     'units' => $post['units'],
-                    'landlord_mfid' => $post['landlord']
+                    'landlord_mfid' => $post['landlord'],
+                    'lr_no' => $post['lr_no']
                 )
             );
             if($result){
@@ -63,6 +69,15 @@ class Plots extends Masterfile{
             ),
             'payment_code' => array(
                 'name' => 'Payment Code',
+                'unique2' => array(
+                    'table' => 'plots',
+                    'skip_column' => 'plot_id',
+                    'skip_value' => $post['edit_id']
+                )
+            ),
+            'lr_no' => array(
+                'name' => 'Land Reg. No',
+                'required' => true,
                 'unique2' => array(
                     'table' => 'plots',
                     'skip_column' => 'plot_id',
