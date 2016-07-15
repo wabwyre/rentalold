@@ -44,7 +44,7 @@ class House extends Library
     public function attachPlotToPmManager($pm_mf_id, $plot_id){
         $result = $this->updateQuery(
             'plots',
-            "landlord_mf_id = '".sanitizeVariable($landlord_mf_id)."'",
+            "pm_mf_id = '".sanitizeVariable($pm_mf_id)."'",
             "plot_id = '".sanitizeVariable($plot_id)."'"
         );
         if($result)

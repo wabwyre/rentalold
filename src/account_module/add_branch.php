@@ -3,7 +3,7 @@
     $acc = new Accounts();
 
     if(App::isAjaxRequest()) {
-        $prop->getBranchByBranchId($_POST['edit_id']);
+        $acc->getBranchByBranchId($_POST['edit_id']);
     }else{
         set_title('Add Bank Branch');
         /**
@@ -24,20 +24,20 @@
     <div class="widget">
         <div class="widget-title"><h4><i class="icon-reorder"></i> Bank Branches</h4>
 		<span class="actions">
-			<a href="#add_branch" class="btn btn-small btn-primary" data-toggle="modal"><i class="icon-plus"></i> Add Bank</a>
+			<a href="#add_branch" class="btn btn-small btn-primary" data-toggle="modal"><i class="icon-plus"></i> Add Branch</a>
 		</span>
         </div>
         <div class="widget-body">
             <?php
             $acc->splash('acc');
-            (isset($_SESSION['warnings'])) ? $prop->displayWarnings('warnings') : '';
+            (isset($_SESSION['warnings'])) ? $acc->displayWarnings('warnings') : '';
             ?>
             <table id="table1" class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Branch#</th>
                         <th>Branch Name</th>
-                        <th>Date Created</th>
+                        <th>Branch Code</th>
                         <th>Status</th>
                         <th>Update</th>
                         <th>Delete</th>
@@ -45,17 +45,19 @@
                 </thead>
                 <tbody>
                 <?php
-                $acc = $acc->getAllBranch();
-                if(count($branches)){
-                    foreach ($branches as $branch){
-                        ?>
+                $rows = $acc->getAllBranch();
+                $rows = $rows['all'];
+
+                if(count($rows)){
+                    foreach ($rows as $row){;
+                ?>
                         <tr>
-                            <td><?php echo $branch['branch_id']; ?></td>
-                            <td><?php echo $branch['branch_name']; ?></td>
-                            <td><?php echo $branch['branch_code']; ?></td>
-                            <td><?php echo $branch['status']; ?></td>
-                            <td><a href="#update_branch" class="btn btn-mini btn-warning edit_branch" edit-id="<?php echo $branch['branch_id']; ?>" data-toggle="modal"><i class="icon-edit"></i> Edit</a> </td>
-                            <td><a href="#del_prop" class="btn btn-mini btn-danger del_prop" edit-id="<?php echo $branch['branch_id']; ?>" data-toggle="modal"><i class="icon-trash"></i> Delete</a></td>
+                            <td><?php echo $row['branch_id']; ?></td>
+                            <td><?php echo $row['branch_name']; ?></td>
+                            <td><?php echo $row['branch_code']; ?></td>
+                            <td><?php echo $row['status']; ?></td>
+                            <td><a href="#update_branch" class="btn btn-mini btn-warning edit_branch" edit-id="<?php echo $row['branch_id']; ?>" data-toggle="modal"><i class="icon-edit"></i> Edit</a> </td>
+                            <td><a href="#del_branch" class="btn btn-mini btn-danger del_branch" edit-id="<?php echo $row['branch_id']; ?>" data-toggle="modal"><i class="icon-trash"></i> Delete</a></td>
                         </tr>
                     <?php }} ?>
                 </tbody>
@@ -74,24 +76,27 @@
             <div class="modal-body">
                 <div class="row-fluid">
                     <label for="branch_name">Name:</label>
-                    <input type="text" name="branch_name" class="span12" value="<?php echo $branch->get('branch_name'); ?>"/>
+                    <input type="text" name="branch_name" class="span12" value="<?php echo $acc->get('branch_name'); ?>"/>
                 </div>
 
                 <div class="row-fluid">
                     <label for="branch_code">Branch Code:</label>
-                    <input type="text" name="payment_code" class="span12" value="<?php echo $prop->get('branch-code'); ?>"/>
-                </div>
-                <div class="row-fluid">
-                    <label for="created_at">Date:</label>
-                    <input type="text" name="created_at" class="span12" value="<?php
-                            if(isset($_POST['created_at'])){
-                                echo $_POST['created_at'];
-                            }else{
-                                echo date('m/d/Y');
-                            }
-                            ?>"/>
+                    <input type="text" name="payment_code" class="span12" value="<?php echo $acc->get('branch-code'); ?>"/>
                 </div>
 
+                <div class="row-fluid">
+                    <label for="created_at">Date:</label>
+                    <input type="date" name="created_at" class="span12" value="<?php echo $acc->get('created_at'); ?>/>
+                </div>
+
+                <div class="row-fluid">
+                    <label for="created_at">Status:</label>
+                    <select for="status" class="span12">
+                        <option value="">--Choose Status--</option>
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
+                </div>
             </div>
             <!-- the hidden fields -->
             <input type="hidden" name="action" value="add_branch"/>
@@ -111,23 +116,23 @@
             <div class="modal-body">
                 <div class="row-fluid">
                     <label for="branch_name">Branch Name:</label>
-                    <input type="text" name="ed_plot_name" id="branch_name" class="span12" value="<?php echo $prop->get('branch_name'); ?>"/>
+                    <input type="text" name="branch_name" id="branch_name" class="span12" value="<?php echo $acc->get('branch_name'); ?>"/>
                 </div>
                 <div class="row-fluid">
                     <label for="units">Branch Code:</label>
-                    <input type="text" name="branch_code" id="branch_code" class="span12" value="<?php echo $prop->get('branch_code'); ?>"/>
+                    <input type="text" name="branch_code" id="branch_code" class="span12" value="<?php echo $acc->get('branch_code'); ?>"/>
                 </div>
                 <div class="row-fluid">
                     <label for="payment_code">Date Created:</label>
-                    <input type="text" name="created_at" id="created_at" class="span12" value="<?php echo $prop->get('created_at'); ?>"/>
+                    <input type="text" name="created_at" id="created_at" class="span12" value="<?php echo $acc->get('created_at'); ?>"/>
                 </div>
             </div>
             <!-- the hidden fields -->
             <input type="hidden" name="action" value="edit_branch"/>
             <input type="hidden" name="edit_id" id="edit_id"/>
             <div class="modal-footer">
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can651'); ?>
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav652'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can648'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav649'); ?>
             </div>
         </div>
     </form>
