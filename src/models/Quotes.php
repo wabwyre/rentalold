@@ -1,11 +1,10 @@
 <?php
-include_once('src/models/Library.php');
+include_once('src/models/SupportTickets.php');
 
-class Quotes extends Library
+class Quotes extends SupportTickets
 {
 	public function allQuotations($mf_id){
 		$query = "SELECT * FROM quotes WHERE contractor_mf_id = '".$mf_id."'";
-
 		$results = run_query($query);
 		return $results;
 	}
