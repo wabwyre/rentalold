@@ -86,4 +86,9 @@ class LeaseAgreement extends Payments
 		$result= "SELECT * FROM houses_and_plots";
 		return $result;
 	}
+
+	public function getHouseNo($number){
+		$result= "SELECT * FROM houses_and_plots WHERE house_id = '".$number."'";
+		return $result;
+	}
 }
