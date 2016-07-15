@@ -69,7 +69,7 @@
         <span class="actions">
             <button class="btn btn-small btn-success" id="refresh"><i class="icon-refresh"></i> Refresh!</button>
         </span>
-    </div>*
+    </div>
     <div class="widget-body form">
         <table id="received_quotes" class="table table-bordered">
             <thead>
