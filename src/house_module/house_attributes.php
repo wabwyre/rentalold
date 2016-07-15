@@ -91,8 +91,8 @@
         <input type="hidden" name="action" value="edit_attribute"/>
         <input type="hidden" id="edit_id" name="edit_id"/>
         <div class="modal-footer">
-            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can539'); ?>
-            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav537'); ?>
+            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo664'); ?>
+            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav663'); ?>
         </div>
     </div>
 </form>
@@ -110,8 +110,8 @@
         <input type="hidden" name="action" value="delete_attribute"/>
         <input type="hidden" id="delete_id" name="delete_id"/>
         <div class="modal-footer">
-            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No540'); ?>
-            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes541'); ?>
+            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No666'); ?>
+            <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes665'); ?>
         </div>
     </div>
 </form>
