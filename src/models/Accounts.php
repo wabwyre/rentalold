@@ -35,8 +35,8 @@ class Accounts extends Masterfile{
         }
     }
 
-    public function addBank($bank_name, $created_at, $status){
-        var_dump($_POST); exit;
+    public function addBank($post){
+        //var_dump($_POST); exit;
         $result = $this->insertQuery(
             'banks',
             array(
@@ -46,6 +46,7 @@ class Accounts extends Masterfile{
             )
             //'bank_id'
         );
+        var_dump($result);exit;
         $data=run_query($result);
         if ($data) {
             $this->flashMessage('acc', 'success', 'Bank information added successfully..');

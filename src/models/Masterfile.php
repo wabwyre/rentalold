@@ -613,4 +613,9 @@
             }
             return $data;
         }
+
+        public function getMfByBrole($brole){
+            $data = $this->selectQuery('masterfile', 'mf_id', "b_role = '".sanitizeVariable($brole)."'");
+            return $data;
+        }
     }
