@@ -44,7 +44,7 @@
                 ?>
                 <tr>
                     <td><?=$row['attribute_id']; ?></td>
-                    <td><?=$row['name']; ?></td>
+                    <td><?=$row['attribute_name']; ?></td>
                 </tr>
                 <? }} ?>
             </tbody>

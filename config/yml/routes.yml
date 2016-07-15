@@ -233,6 +233,7 @@ import_companies: src/masterfile_module/import_client_groups.php
 830: src/crm_module/insurance_claim.php
 832: src/crm_module/customer_acc_info.php
 833: src/crm_module/customer_phone_bills.php
+834: src/crm_module/lesse_agreement.php
 
 manage_account: src/crm_module/manage_accounts.php
 add_bank: src/crm_module/add_bank.php

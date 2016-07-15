@@ -67,7 +67,7 @@ class House extends Library
        
         $validate = array(
             'name'=>array(
-                'name'=> 'Attribute Name',
+                'attribute_name'=> 'Attribute Name',
                 'required'=>true)
            
         );
@@ -89,7 +89,7 @@ class House extends Library
     public function addAttrbDetails($attrib_name){
         $result = $this->insertQuery('attributes',
             array(
-                'name' => $attrib_name
+                'attribute_name' => $attrib_name
                 ));
             return $result;
     }
@@ -100,7 +100,7 @@ class House extends Library
         $edit_id = $_POST['edit_id'];
          $validate = array(
             'name'=>array(
-                'name'=> 'Attribute Name',
+                'attribute_name'=> 'Attribute Name',
                 'required'=>true)
            
         );
@@ -121,7 +121,7 @@ class House extends Library
     public function editAttributeDetails($name, $edit_id){
         $result = $this->updateQuery2('attributes',
             array(
-                'name' => $name
+                'attribute_name' => $name
             ),
             array('attribute_id' => $edit_id)
             );
