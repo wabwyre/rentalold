@@ -16,7 +16,7 @@ class Quotes extends Library
 
 	}
 
-	//function to add quatation to the database
+	//function to add quotation to the database
 
 	public function addQuataion(){
 		extract($_POST);

@@ -41,7 +41,7 @@ if(App::isAjaxRequest()){
 				<th>Job Status</th>
 				<th>Edit</th>
 				<th>Delete</th>
-				
+
 				<!-- <th>View</th> -->
 			</tr>
  		</thead>
@@ -61,7 +61,7 @@ if(App::isAjaxRequest()){
 				<td><?php echo $Quotes->checkIfQuoteWasApproved($rows['bid_status'], $rows['job_status']); ?></td>
 				<td><a href="#edit-quotation" class="btn btn-mini btn-warning edit_quot" edit-id="<?php echo $rows['qoute_id']; ?>" data-toggle="modal"><i class="icon-edit"></i> Edit</a></td>
 				<td><a href="#delete_quotaion" class="btn btn-mini btn-danger del_quot" edit-id="<?php echo $rows['qoute_id']; ?>" data-toggle="modal"><i class="icon-trash"></i> Delete</a></td>
-			
+
 		</tr>
 		<?php
 			}
@@ -83,7 +83,7 @@ if(App::isAjaxRequest()){
 		</div>
 		<div class="modal-body">
 			<div class="row-fluid">
-	               
+
 	        </div>
 	    </div>
 		<!-- the hidden fields -->
@@ -104,7 +104,7 @@ if(App::isAjaxRequest()){
 		</div>
 		<div class="modal-body">
 			<div class="row-fluid">
-	               
+
 	        </div>
 	    </div>
 		<!-- the hidden fields -->
@@ -127,9 +127,9 @@ if(App::isAjaxRequest()){
 		<div class="modal-body">
 	        <div class="row-fluid">
 	        	Quation
-		        
+
 	        </div>
-	        
+
 	        <div class="row-fluid">
 	        	<label for="bid_amount" class="control-label">Bid Amount</label>
 	        	<input type="number" name="bid_amount" class="span12" required="true">
@@ -145,7 +145,7 @@ if(App::isAjaxRequest()){
 	            	?>
 	            	<option value="<?=$rows['voucher_id']; ?>"><?=$rows['maintainance_name']; ?></option>
 	            	<?php } ?>
-	            </select> 
+	            </select>
 	        </div>
 		</div>
 		<!-- the hidden fields -->
@@ -166,9 +166,9 @@ if(App::isAjaxRequest()){
 		<div class="modal-body">
 	        <div class="row-fluid">
 	        	Quotation
-		        
+
 	        </div>
-	        
+
 	        <div class="row-fluid">
 	        	<label for="bid_amount" class="control-label">Bid Amount</label>
 	        	<input type="number" name="bid_amount" id="bid_amount" class="span12" required="true">
@@ -184,7 +184,7 @@ if(App::isAjaxRequest()){
 	            	?>
 	            	<option value="<?=$rows['voucher_id']; ?>"><?=$rows['maintainance_name']; ?></option>
 	            	<?php } ?>
-	            </select> 
+	            </select>
 	        </div>
 		</div>
 		<!-- the hidden fields -->
