@@ -12,3 +12,18 @@ $('#b_role').on('change', function(){
 		$('#lr_no').removeAttr('disabled').val('');
 	}
 });
+
+$('#b_role').on('change', function(){
+	var role = $(this).val();
+
+	if(role == 'tenant' || role == 'contractor' || role == 'property_manager'){
+		// alert('working');
+		$('#account_no').attr('disabled', 'disabled').val('');
+		$('#bank_name').attr('disabled', 'disabled').val('');
+		$('#branch_name').attr('disabled', 'disabled').val('');
+	}else if(role == 'land_lord'){
+		$('#account_no').removeAttr('disabled').val('');
+		$('#bank_name').removeAttr('disabled').val('');
+		$('#branch_name').removeAttr('disabled').val('');
+	}
+});

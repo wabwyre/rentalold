@@ -3,7 +3,7 @@
         <div class="control-group">
             <label for="account_no" class="control-label">Account No</label>
             <div class="controls">
-                <input type="text" name="account_no" class="span12" value="<?php echo (isset($_POST['account_no'])) ? $_POST['account_no'] : ''; ?>" placeholder="Account No" />
+                <input type="text" name="account_no" class="span12" id="account_no" value="<?php echo (isset($_POST['account_no'])) ? $_POST['account_no'] : ''; ?>" placeholder="Account No" />
             </div>
         </div>
     </div>

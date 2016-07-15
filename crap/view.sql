@@ -71,3 +71,103 @@ CREATE OR REPLACE VIEW contractors_quotes AS
   FROM quotes q
     LEFT JOIN masterfile m ON m.mf_id = q.contractor_mf_id
     LEFT JOIN maintenance_vouchers mv ON mv.voucher_id = q.maintainance_id;
+
+-- create the following user roles
+INSERT INTO user_roles(role_name, role_status) VALUES('Property Manager(Client Admin)', '1');
+INSERT INTO user_roles(role_name, role_status) VALUES('Tenant', '1');
+INSERT INTO user_roles(role_name, role_status) VALUES('Landlord', '1');
+INSERT INTO user_roles(role_name, role_status) VALUES('Contractor', '1');
+
+-- landlord file
+DROP TABLE IF EXISTS landlords;
+CREATE TABLE landlords
+(
+  landlord_id serial NOT NULL,
+  mf_id bigint,
+  bank_acc_id bigint,
+  plot_id bigint,
+  pin_no character varying(255),
+  CONSTRAINT landlords_pkey PRIMARY KEY (landlord_id),
+  CONSTRAINT landlords_account_id_fkey FOREIGN KEY (bank_acc_id)
+  REFERENCES bank_account (bank_acc_id) MATCH SIMPLE
+  ON UPDATE CASCADE ON DELETE NO ACTION,
+  CONSTRAINT landlords_mf_id_fkey FOREIGN KEY (mf_id)
+  REFERENCES masterfile (mf_id) MATCH SIMPLE
+  ON UPDATE CASCADE ON DELETE NO ACTION,
+  CONSTRAINT landlords_plot_id_fkey FOREIGN KEY (plot_id)
+  REFERENCES plots (plot_id) MATCH SIMPLE
+  ON UPDATE CASCADE ON DELETE NO ACTION
+);
+
+-- tenant file
+DROP TABLE IF EXISTS tenants;
+CREATE TABLE tenants
+(
+  tenant_id serial NOT NULL,
+  mf_id bigint,
+  house_id bigint,
+  CONSTRAINT tenants_pkey PRIMARY KEY (tenant_id),
+  CONSTRAINT tenants_house_id_fkey FOREIGN KEY (house_id)
+  REFERENCES houses (house_id) MATCH SIMPLE
+  ON UPDATE CASCADE ON DELETE NO ACTION,
+  CONSTRAINT tenants_mf_id_fkey FOREIGN KEY (mf_id)
+  REFERENCES masterfile (mf_id) MATCH SIMPLE
+  ON UPDATE CASCADE ON DELETE NO ACTION
+);
+
+-- contractor file
+DROP TABLE IF EXISTS contractor;
+CREATE TABLE contractor
+(
+  contractor_id integer NOT NULL DEFAULT nextval('contracor_contractor_id_seq'::regclass),
+  mf_id bigint,
+  ratings character varying(255),
+  skills character varying(255),
+  pm_id bigint,
+  CONSTRAINT contracor_pkey PRIMARY KEY (contractor_id),
+  CONSTRAINT contracor_mf_id_fkey FOREIGN KEY (mf_id)
+  REFERENCES masterfile (mf_id) MATCH SIMPLE
+  ON UPDATE CASCADE ON DELETE NO ACTION,
+  CONSTRAINT contractor_pm_id_fkey FOREIGN KEY (pm_id)
+  REFERENCES property_manager (pm_id) MATCH SIMPLE
+  ON UPDATE CASCADE ON DELETE NO ACTION
+);
+
+-- pm
+DROP TABLE IF EXISTS property_manager;
+CREATE TABLE property_manager
+(
+  pm_id integer NOT NULL DEFAULT nextval('property_mam_pm_id_seq'::regclass),
+  mf_id bigint,
+  plot_id bigint,
+  CONSTRAINT property_manager_pkey PRIMARY KEY (pm_id),
+  CONSTRAINT property_manager_mf_id_fkey FOREIGN KEY (mf_id)
+  REFERENCES masterfile (mf_id) MATCH SIMPLE
+  ON UPDATE CASCADE ON DELETE NO ACTION,
+  CONSTRAINT property_manager_plot_id_fkey FOREIGN KEY (plot_id)
+  REFERENCES plots (plot_id) MATCH SIMPLE
+  ON UPDATE CASCADE ON DELETE NO ACTION
+);
+
+-- views
+DROP VIEW IF EXISTS houses_and_plots;
+CREATE OR REPLACE VIEW houses_and_plots AS
+  SELECT p.plot_name,
+    h.house_id,
+    h.house_number,
+    h.tenant_mf_id,
+    p.plot_id
+  FROM houses h
+    LEFT JOIN plots p ON p.plot_id = h.plot_id;
+
+
+DROP VIEW IF EXISTS bank_and_branches;
+CREATE OR REPLACE VIEW bank_and_branches AS
+  SELECT b.bank_name,
+    br.branch_name,
+    b.bank_id,
+    br.branch_id,
+    br.branch_code,
+    br.status
+  FROM banks b
+    LEFT JOIN bank_branch br ON br.bank_id = b.bank_id;
