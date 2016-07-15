@@ -77,52 +77,6 @@ if(App::isAjaxRequest()){
 
 <!-- The Modals -->
 <form action="" method="post">
-<<<<<<< HEAD
-=======
-	<div id="add-support" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel1">Add Quotation</h3>
-		</div>
-		<div class="modal-body">
-			<div class="row-fluid">
-
-	        </div>
-	    </div>
-		<!-- the hidden fields -->
-		<input type="hidden" name="" id="support_ticket_id"/>
-		<input type="hidden" name="action" value="assign_staff">
-		<div class="modal-footer">
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can584'); ?>
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav583'); ?>
-		</div>
-	</div>
-</form>
-
-<form action="" method="post">
-	<div id="reassing_staff" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel1">Reassign Staff</h3>
-		</div>
-		<div class="modal-body">
-			<div class="row-fluid">
-
-	        </div>
-	    </div>
-		<!-- the hidden fields -->
-		<input type="hidden" name="origin_staff" id="origin_staff"/>
-		<input type="hidden" name="support_ticket_id" id="supp_ticket_id" />
-		<input type="hidden" name="action" value="">
-		<div class="modal-footer">
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can584'); ?>
-			<?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav583'); ?>
-		</div>
-	</div>
-</form>
-
-<form action="" method="post">
->>>>>>> cc5bb14908481070d1f9f02f825c4e849432b649
 	<div id="add-quotation" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
