@@ -364,7 +364,7 @@
 			$query = "SELECT * FROM masterfile mf INNER JOIN user_login2 ul ON "
 					."mf.mf_Id = ul.mf_id INNER JOIN user_roles ur ON "
 					."ul.user_role = ur.role_id WHERE ur.role_status is true "
-					."AND mf.active is TRUE AND ur.role_name = '$role_name'";			
+					."AND mf.active is TRUE AND ur.role_name = '$role_name'";
 			$result = run_query($query);
 			return $result;
 		}
@@ -611,5 +611,3 @@
             return $data;
         }
     }
-
-

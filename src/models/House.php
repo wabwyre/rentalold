@@ -58,7 +58,39 @@ class House extends Library
         return $rows;
     }
     public function getAllAttributes(){
-        $rows = $this-> selectQuery('house_attributes', '*');
+        $rows = $this-> selectQuery('attributes', '*');
         return $rows;
+    }
+
+    //functin to validate and to call for insert query
+    public function addAttrb(){
+       extract($_POST);
+        //var_dump($_POST);die();
+        $validate = array(
+            'attrib_name'=>array(
+                'name'=> 'attribute Name',
+                'required'=>true)
+           
+        );
+        // var_dump($validate);
+        $this->validate($_POST, $validate);
+        if ($this->getValidationStatus()){
+            //if the validation has passed, run a query to insert the details
+            //into the database
+            if($this-> addAttrbDetails($attrib_name)){
+                $this->flashMessage('attributes', 'success', 'The attribute has been added.');
+            }else{
+                $this->flashMessage('attributes', 'error', 'Failed to add attribute! ' . get_last_error());
+            }
+        }
+    }
+    // function to insert attribute details
+
+    public function addAttrbDetails($attrib_name){
+        $result = $this->insertQuery('house_attributes',
+            array(
+                'attrib_name' => $attrib_name
+                ));
+            return $result;
     }
 }

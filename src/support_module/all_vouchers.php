@@ -198,9 +198,13 @@ set_layout("dt-layout.php", array(
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h3 id="myModalLabel1">Approve Maintenance Vouchers</h3>
         </div>
+        <div class="modal-body">
+            <p>Are you sure you want to approve?</p>
+        </div>
         <!-- hidden fields -->
 <!--        <input type="hidden" name="action" value="approve_voucher"/>-->
         <input type="hidden" id="app_voucher_id" name="voucher_id"/>
+        <input type="hidden" name="action"/>
         <div class="modal-footer">
             <?php createSectionButton($_SESSION['role_id'],$_GET['num'],'Dec654'); ?>
             <?php createSectionButton($_SESSION['role_id'],$_GET['num'],'App653'); ?>

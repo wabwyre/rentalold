@@ -1,50 +1,50 @@
 <?php
-include_once('src/models/SupportTickets.php');
+//include_once('src/models/SupportTickets.php');
 include_once('src/models/Quotes.php');
-$Support = new SupportTickets;
+//$Support = new SupportTickets;
 $Quotes = new Quotes();
 
 switch ($_POST['action']) {
 	case assign_staff:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-		$Support->assignStaff();
+		$Quotes->assignStaff();
 		break;
 
 	case add_Respond:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-		$Support->respondToSupportIssue();
+		$Quotes->respondToSupportIssue();
 		break;
 
 	case add_support:
        	logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-		$Support->addSupport();
+		$Quotes->addSupport();
 	    break;
 
 	case reassign_staff:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-		$Support->reassignStaff();
+		$Quotes->reassignStaff();
 		break;
 
 	case add_comment:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-		$Support->addComment();
+		$Quotes->addComment();
 	break;
 
 	case add_category:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-		$Support->addCategory();
-		$_SESSION['support_error'] = $Support->getWarnings();
+		$Quotes->addCategory();
+		$_SESSION['support_error'] = $Quotes->getWarnings();
 		break;
 
 	case edit_category:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-		$Support->editCategory();
-		$_SESSION['support_error'] = $Support->getWarnings();
+		$Quotes->editCategory();
+		$_SESSION['support_error'] = $Quotes->getWarnings();
 		break;
 
 	case delete_category:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-		$Support->deleteCategory();
+		$Quotes->deleteCategory();
 		break;
 
 	case add_quotation:
@@ -54,19 +54,19 @@ switch ($_POST['action']) {
 
 	case add_voucher:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-		$Support->addVoucher();
-		$_SESSION['support_error'] = $Support->getWarnings();
+		$Quotes->addVoucher();
+		$_SESSION['support_error'] = $Quotes->getWarnings();
 		break;
 
 	case edit_voucher:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-		$Support->editVoucher();
-		$_SESSION['support_error'] = $Support->getWarnings();
+		$Quotes->editVoucher();
+		$_SESSION['support_error'] = $Quotes->getWarnings();
 		break;
 
 	case delete_voucher:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
-		$Support->deleteVoucher();
+		$Quotes->deleteVoucher();
 		break;
 
 	case edit_quotation:
@@ -80,18 +80,18 @@ switch ($_POST['action']) {
 
 	case approve_maintenance_voucher:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		//var_dump($_POST);exit;
 		$Quotes->approveVoucher();
-		$_SESSION['support_error'] = $Support->getWarnings();
+		$_SESSION['support_error'] = $Quotes->getWarnings();
 		break;
 
 	case decline_maintenance_voucher:
 		logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		//var_dump($_POST);exit;
 		$Quotes->declineVoucher();
-		$_SESSION['support_error'] = $Support->getWarnings();
+		$_SESSION['support_error'] = $Quotes->getWarnings();
 		break;
 
 
 }
-
-
 ?>
