@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb328f81-8f07-4502-8fdb-6a91e6c7ea05" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/account_module/account_processor.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/account_module/add_bank.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/account_module/add_branch.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/account_module/bank_details.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/payment_agent_module/account_processor.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/payment_agent_module/manage_accounts.php" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/js/branch.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/yml/routes.yml" afterPath="$PROJECT_DIR$/config/yml/routes.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/add_masterfile.js" afterPath="$PROJECT_DIR$/src/js/add_masterfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/manage_account.js" afterPath="$PROJECT_DIR$/src/js/manage_account.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/masterfile_module/account_details.php" afterPath="$PROJECT_DIR$/src/masterfile_module/account_details.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/masterfile_module/add_masterfile.php" afterPath="$PROJECT_DIR$/src/masterfile_module/add_masterfile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/masterfile_module/personal_details.php" afterPath="$PROJECT_DIR$/src/masterfile_module/personal_details.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/account_module/add_branch.php" afterPath="$PROJECT_DIR$/src/account_module/add_branch.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Accounts.php" afterPath="$PROJECT_DIR$/src/models/Accounts.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/Masterfile.php" afterPath="$PROJECT_DIR$/src/models/Masterfile.php" />
     </list>
     <ignored path="rental.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -110,30 +99,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manage_account.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/manage_account.js">
+      <file leaf-file-name="routes.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/yml/routes.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
+            <state relative-caret-position="144">
+              <caret line="308" column="3" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bank_details.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/account_module/bank_details.php">
+      <file leaf-file-name="add_branch.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/account_module/add_branch.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding>
-                <element signature="e#6#93#0#PHP" expanded="true" />
-                <marker date="1468576670476" expanded="true" signature="142:201" ph="SELECT * FRO... banks" />
-              </folding>
+            <state relative-caret-position="85">
+              <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="account_processor.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Plots.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/Plots.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1870">
+              <caret line="110" column="4" selection-start-line="110" selection-start-column="4" selection-end-line="113" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="branch.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/js/branch.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="14" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="account_processor.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/account_module/account_processor.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
@@ -146,17 +152,23 @@
       <file leaf-file-name="Accounts.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/Accounts.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="45" column="57" selection-start-line="45" selection-start-column="57" selection-end-line="45" selection-end-column="57" />
+            <state relative-caret-position="505">
+              <caret line="127" column="39" selection-start-line="127" selection-start-column="20" selection-end-line="127" selection-end-column="39" />
               <folding>
                 <element signature="n#addBankAccount#0;n#Accounts#0;n#!!top" expanded="false" />
-                <element signature="n#getAllBranch#0;n#Accounts#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -180,8 +192,10 @@
         <option value="$PROJECT_DIR$/src/js/manage_account.js" />
         <option value="$PROJECT_DIR$/src/account_module/bank_details.php" />
         <option value="$PROJECT_DIR$/src/account_module/add_bank.php" />
-        <option value="$PROJECT_DIR$/src/models/Accounts.php" />
         <option value="$PROJECT_DIR$/src/account_module/account_processor.php" />
+        <option value="$PROJECT_DIR$/src/js/branch.js" />
+        <option value="$PROJECT_DIR$/src/models/Accounts.php" />
+        <option value="$PROJECT_DIR$/src/account_module/add_branch.php" />
       </list>
     </option>
   </component>
@@ -270,7 +284,43 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="house_module" />
+              <option name="myItemId" value="prop_module" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rental" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rental" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rental" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rental" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="account_module" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -327,12 +377,12 @@
       <workItem from="1468521631208" duration="1859000" />
       <workItem from="1468563777459" duration="603000" />
       <workItem from="1468569326856" duration="575000" />
-      <workItem from="1468570535809" duration="7669000" />
+      <workItem from="1468570535809" duration="10554000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10774000" />
+    <option name="totallyTimeSpent" value="13659000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -386,48 +436,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/payment_agent_module/edit_service_bill.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/payment_agent_module/edit_services.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-918">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/system_manager/edit_menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/crm_module/edit_crm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/connection/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/masterfile_module/masterfile_profile_info.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/masterfile_module/manage_addresses.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2977">
@@ -591,27 +599,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/yml/routes.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5508">
-          <caret line="324" column="37" selection-start-line="324" selection-start-column="29" selection-end-line="324" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/payment_agent_module/manage_accounts.php" />
     <entry file="file://$PROJECT_DIR$/src/payment_agent_module/account_processor.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/account_module/add_branch.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -783,21 +775,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/Accounts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="45" column="57" selection-start-line="45" selection-start-column="57" selection-end-line="45" selection-end-column="57" />
-          <folding>
-            <element signature="n#addBankAccount#0;n#Accounts#0;n#!!top" expanded="false" />
-            <element signature="n#getAllBranch#0;n#Accounts#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/account_module/account_processor.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/house_module/add_house.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+          <folding>
+            <marker date="1468479923579" expanded="true" signature="763:790" ph="..." />
+            <marker date="1468479923579" expanded="true" signature="2147:2189" ph="SELECT * FRO... plots" />
+            <marker date="1468479923579" expanded="true" signature="3338:3359" ph="SELECT * FRO... tenants" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/prop_module/add_property.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-952">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="214" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/crm_module/personal_details.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="34" column="27" selection-start-line="28" selection-start-column="94" selection-end-line="34" selection-end-column="27" />
+          <folding>
+            <marker date="1468327362990" expanded="true" signature="3946:4014" ph="SELECT * FRO... masterfile" />
+            <marker date="1468327362990" expanded="true" signature="4694:4866" ph="SELECT ucr.*... user_created_roles" />
+            <marker date="1468327362990" expanded="true" signature="5579:5635" ph="SELECT * FRO... customer_types" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/plots.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="25" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/yml/routes.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="308" column="3" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/branch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="14" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Plots.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1870">
+          <caret line="110" column="4" selection-start-line="110" selection-start-column="4" selection-end-line="113" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/Accounts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="127" column="39" selection-start-line="127" selection-start-column="20" selection-end-line="127" selection-end-column="39" />
+          <folding>
+            <element signature="n#addBankAccount#0;n#Accounts#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/account_module/add_branch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
           <folding />
         </state>
       </provider>
