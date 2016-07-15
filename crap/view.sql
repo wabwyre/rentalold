@@ -177,3 +177,14 @@ CREATE OR REPLACE VIEW bank_and_branches AS
 ALTER TABLE plots ADD COLUMN lr_no character varying(255);
 ALTER TABLE plots
   ADD CONSTRAINT plots_lr_no_key UNIQUE(lr_no);
+
+-- add lease table
+CREATE TABLE lease
+(
+  lease_id serial NOT NULL,
+  tenant bigint,
+  house_number character varying(255),
+  start_date date,
+  end_date date,
+  CONSTRAINT lease_pkey PRIMARY KEY (lease_id)
+);
