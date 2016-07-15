@@ -3,20 +3,20 @@ include_once('src/models/Library.php');
 
 class Quotes extends Library
 {
-	public function allQuotations(){
-		$query = "SELECT * FROM quotes ";
+	public function allQuotations($mf_id){
+		$query = "SELECT * FROM quotes WHERE contractor_mf_id = '".$mf_id."'";
 
 		$results = run_query($query);
 		return $results;
 	}
 	public function getAllMaintainance(){
-		$query = "SELECT * FROM maintaince_vouchers ";
+		$query = "SELECT * FROM maintenance_vouchers ";
 		$results = run_query($query);
 		return $results;
 
 	}
 
-	//function to add quatation to the database
+	//function to add quotation to the database
 
 	public function addQuataion(){
 		extract($_POST);
