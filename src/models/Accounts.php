@@ -36,7 +36,7 @@ class Accounts extends Masterfile{
     }
 
     public function addBank($bank_name, $created_at, $status){
-        var_dump($result); exit;
+        var_dump($_POST); exit;
         $result = $this->insertQuery(
             'banks',
             array(

@@ -10,7 +10,6 @@ $acc = new Accounts();
 
 switch($_POST['action']) {
     case add_bank:
-        var_dump($acc);
         logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
         $acc->addBank();
         break;
