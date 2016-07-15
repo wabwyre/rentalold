@@ -395,3 +395,9 @@ basic:
    attrib_name: attrib_name
    add_house: add_house
    edit_house: edit_house
+
+
+   #### Message Types
+   Push: PUSH_NOTIFICATION
+   SMS: SMS
+   Email: EMAIL

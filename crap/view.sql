@@ -1,3 +1,4 @@
+DROP VIEW service_bills_and_options;
 CREATE VIEW service_bills_and_options AS
  SELECT sb.product_id,
     sc.price AS loan_amount
@@ -119,7 +120,7 @@ CREATE TABLE tenants
 DROP TABLE IF EXISTS contractor;
 CREATE TABLE contractor
 (
-  contractor_id integer NOT NULL DEFAULT nextval('contracor_contractor_id_seq'::regclass),
+  contractor_id serial NOT NULL,
   mf_id bigint,
   ratings character varying(255),
   skills character varying(255),
@@ -137,7 +138,7 @@ CREATE TABLE contractor
 DROP TABLE IF EXISTS property_manager;
 CREATE TABLE property_manager
 (
-  pm_id integer NOT NULL DEFAULT nextval('property_mam_pm_id_seq'::regclass),
+  pm_id serial NOT NULL,
   mf_id bigint,
   plot_id bigint,
   CONSTRAINT property_manager_pkey PRIMARY KEY (pm_id),

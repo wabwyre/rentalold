@@ -29,17 +29,26 @@ case add_house:
 		$id_data = get_row_data($data);
 		$id = $id_data['house_id'];
 		//argDump( $data);exit;
-}
-break;
+		}
+		break;
 
-//add an attribute to a house\
- case add_attribute:
+	//add an attribute to a house\
+	 case add_attribute:
  		//var_dump($_POST);exit;
 	    logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
 	    $House->addAttrb();
 	    break;
+	case edit_attribute:
+	    logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		$House->editAttribute();
+	    break;
 
-case edit_house:
+	case delete_attribute:
+	    logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+		$House->deleteAttribute();
+	    break;
+
+	case edit_house:
 	if($_POST['action'] == "edit_house")
 		{
 		$house_id=$_POST['house_id']; 
