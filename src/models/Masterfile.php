@@ -118,6 +118,7 @@
                             if($this->createLoginAccount($tenant_data, $mf_id)) {
                                 $this->endTranc();
                                 $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                                App::redirectTo('?num=722');
                             }else{
                                 $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
                             }
@@ -162,6 +163,7 @@
                             if($this->createLoginAccount($contractor_data, $mf_id)) {
                                 $this->endTranc();
                                 $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                                App::redirectTo('?num=722');
                             }else{
                                 $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
                             }
@@ -223,6 +225,7 @@
                                 if($this->createLoginAccount($landlord_data, $mf_id)) {
                                     $this->endTranc();
                                     $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                                    App::redirectTo('?num=722');
                                 }else{
                                     $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
                                 }
@@ -239,7 +242,6 @@
                     $this->flashMessage('mf', 'error', 'Failed to add Personal Details! '.get_last_error());
                 }
             }
-            App::redirectTo('?num=722');
         }
 
         public function addPM($pm_data){
@@ -272,6 +274,7 @@
                         if($this->createLoginAccount($pm_data, $mf_id)) {
                             $this->endTranc();
                             $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                            App::redirectTo('?num=722');
                         }else{
                             $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
                         }

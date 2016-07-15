@@ -171,3 +171,8 @@ CREATE OR REPLACE VIEW bank_and_branches AS
     br.status
   FROM banks b
     LEFT JOIN bank_branch br ON br.bank_id = b.bank_id;
+
+-- plot database changes
+ALTER TABLE plots ADD COLUMN lr_no character varying(255);
+ALTER TABLE plots
+  ADD CONSTRAINT plots_lr_no_key UNIQUE(lr_no);
