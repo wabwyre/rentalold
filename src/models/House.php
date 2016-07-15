@@ -57,4 +57,8 @@ class House extends Library
         $rows = $this->selectQuery('plots', '*');
         return $rows;
     }
+    public function getAllAttributes(){
+        $rows = $this-> selectQuery('house_attributes', '*');
+        return $rows;
+    }
 }
