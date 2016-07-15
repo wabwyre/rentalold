@@ -45,7 +45,7 @@
                         <select class="span12 live_search" name="voucher" id="voucher_id">
                             <option value="">All</option>
                             <?php
-                                $rows = $quote->getAllVouchers();
+                                $rows = $quote->getApprovedVouchers();
                                 if(count($rows)){
                                     foreach($rows as $row){
                             ?>

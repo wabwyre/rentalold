@@ -38,8 +38,8 @@ class ReceivedQuotes extends Quotes{
         echo json_encode($return);
     }
 
-    public function getAllVouchers(){
-        $data = $this->selectQuery('maintenance_vouchers', '*');
+    public function getApprovedVouchers(){
+        $data = $this->selectQuery('maintenance_vouchers', '*', "approved_status IS TRUE");
         return $data;
     }
 

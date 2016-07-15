@@ -9,7 +9,7 @@ class Quotes extends SupportTickets
 		return $results;
 	}
 	public function getAllMaintainance(){
-		$query = "SELECT * FROM maintenance_vouchers ";
+		$query = "SELECT * FROM maintenance_vouchers WHERE approve_status IS TRUE";
 		$results = run_query($query);
 		return $results;
 
