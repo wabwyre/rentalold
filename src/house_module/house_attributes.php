@@ -21,14 +21,14 @@
             <a href="#delete_attribute" class="btn btn-small btn-danger" id="del_attribute_btn"><i class="icon-remove icon-white"></i> Delete</a>
         </span>
     </div>
-    </br>
-    <?
-        if(isset($_SESSION['attributes'])){
-        echo $_SESSION['attributes'];
-        unset($_SESSION['attributes']);
-     }
-    ?>
+
     <div class="widget-body form">
+        <?
+        if(isset($_SESSION['attributes'])){
+            echo $_SESSION['attributes'];
+            unset($_SESSION['attributes']);
+        }
+        ?>
         <table id="table1" class="table table-bordered">
             <thead>
                 <tr>
