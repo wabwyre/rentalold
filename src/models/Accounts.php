@@ -9,15 +9,7 @@
 include_once ('src/models/Masterfile.php');
 
 class Accounts extends Masterfile{
-    public function getAllBankDetails($condition = null){
-        $condition = (!is_null($condition)) ? $condition : '';
-        $data = $this->selectQuery('account_details', '*', $condition);
-        return array(
-            'all' => $data,
-            'specific' => $data[0]
-        );
-    }
-
+    
     public function addBankAccount(){
         extract($_POST);
             $check = array(
@@ -85,25 +77,89 @@ class Accounts extends Masterfile{
             }
         }
     }
-    
-    public function addBranch($branch_data = array()){
-        extract($_POST);
 
-        // validate
-        $this->validate($branch_data, array(
+    public function addBranch($post){
+        $this->validate($post, array(
             'branch_name' => array(
-                'name' => 'Branch Name',
+                'name' => 'Name',
+                'required' => true,
+                'unique' => 'bank_branch'
+            ),
+            'branch_code' => array(
                 'required' => true,
                 'unique' => 'bank_branch'
             )
         ));
-        $data = $this->insertQuery('bank_branch',
-            array(
-                'branch_name' => $branch_name,
-                'branch_code' => $branch_code
+
+        if($this->getValidationStatus()) {
+            $result = $this->insertQuery('bank_branch',
+                array(
+                    'branch_name' => $post['branch_name'],
+                    'branch_code' => $post['branch_code'],
+                    'created_at' => $post['created_at'],
+                    'status' => $post['status']
+                )
+            );
+            if($result){
+                $this->flashMessage('acc', 'success', 'A new branch has been added!');
+            }else{
+                $this->flashMessage('acc', 'error', 'Encountered an error!');
+            }
+        }
+    }
+
+    public function editBranch($post){
+//        var_dump($post);exit;
+        $this->validate($post, array(
+            'branch_name' => array(
+                'name' => 'Name',
+                'required' => true,
+                'unique2' => array(
+                    'table' => 'bank_branch',
+                    'skip_column' => 'branch_id',
+                    'skip_value' => $post['edit_id'],
+                )
+            ),
+            'branch_code' => array(
+                'name' => 'Branch Code',
+                'required' => true,
+                'unique2' => array(
+                    'table' => 'bank_branch',
+                    'skip_column' => 'branch_id',
+                    'skip_value' => $post['edit_id']
+                )
             )
-        );
-        return $data;
+        ));
+
+        if($this->getValidationStatus()) {
+            $result = $this->updateQuery2('bank_branch',
+                array(
+                    'branch_name' => $post['branch_name'],
+                    'branch_code' => $post['branch_code'],
+                    'created_at' => $post['created_at'],
+                    'status' => $post['status']
+                ),
+                array(
+                    'branch_id' => $post['edit_id']
+                )
+            );
+
+            if($result){
+                $this->flashMessage('acc', 'success', 'Branch has been updated!');
+            }else{
+                $this->flashMessage('acc', 'error', 'Encountered an error!');
+            }
+        }
+    }
+
+    public function deleteBranch($id){
+        if($this->deleteQuery2('plots', array(
+            'branch_id' => $id
+        ))){
+            $this->flashMessage('acc', 'success', 'Branch has been deleted');
+        }else{
+            $this->flashMessage('acc', 'warning', 'The Branch is being used somewhere else in the system!');
+        }
     }
 
     public function getAllBank($condition = null){
@@ -123,5 +179,15 @@ class Accounts extends Masterfile{
             'all' => $data,
             'specific' => $data[0]
         );
+    }
+
+    public function getBranchByBranchId($id){
+        $data = $this->selectQuery('branch_name', '*', "branch_id = '".sanitizeVariable($id)."' ");
+        echo json_encode($data[0]);
+    }
+
+    public function getBankByBankId($id){
+        $data = $this->selectQuery('bank_name', '*', "bank_id = '".sanitizeVariable($id)."' ");
+        echo json_encode($data[0]);
     }
 }

@@ -7,7 +7,7 @@ set_layout("dt-layout.php", array(
 	'pageSubTitleText' => '',
 	'pageBreadcrumbs' => array (
 		array ( 'url'=>'index.php', 'text'=>'Home' ),
-		array ( 'text'=>'Maintenance Tickets' ),
+		array ( 'text'=>'Maintenance' ),
 		array ( 'text'=>'All Maintenance Tickets' )
 	)
 ));
@@ -20,23 +20,20 @@ set_layout("dt-layout.php", array(
 		</span>
 	</div>
 	<div class="widget-body form">
-	<?
-			if(isset($_SESSION['support'])){
-			echo $_SESSION['support'];
-			unset($_SESSION['support']);
-		     }
+		<?php
+		$Support->splash('support');
+		// display all encountered errors
+		(isset($_SESSION['support_error'])) ? $Support->displayWarnings('support_error') : '';
 		?>
     <table id="table1" style="width: 100%" class="table table-bordered">
  		<thead>
 			<tr>
 			  	<th>ID#</th>
-				<th>Customer Account</th>
-				<th>Subject</th>
+				<th>Category</th>
+				<th>Complaint</th>
 				<th>Reported By</th>
 				<th>Status</th>
 				<th>reported time</th>
-				<th>Assigned To</th>
-
 			</tr>
  		</thead>
  	<tbody>
@@ -46,13 +43,12 @@ set_layout("dt-layout.php", array(
 				$time = $rows['reported_time'];
 				$aDate = explode(" ", $time);
                     $date = $aDate[0];
-               $cust = $rows['customer_account_id'];
 
 		?>
 		<tr>
-			<td><?=$rows['support_ticket_id']; ?></td>
-			<td><?=$data; ?></td>
-			<td><?=$rows['subject']; ?></td>
+			<td><?=$rows['maintenance_ticket_id']; ?></td>
+			<td><?=$rows['category_name']; ?></td>
+			<td><?=$rows['body']; ?></td>
 			<td><?=$rows['customer_name']; ?></td>
 			<td>
 			<?php
@@ -63,9 +59,7 @@ set_layout("dt-layout.php", array(
 		      }
 			 ?>
 			 </td>
-			<td><?=$date; ?></td>	
-			<td></td>
-			
+			<td><?=$date; ?></td>
 		</tr>
 <?php
  
@@ -84,26 +78,22 @@ set_layout("dt-layout.php", array(
 	<div id="add_support" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel1"><i class="icon-comments"></i> Staff Add Maintenance Ticket</h3>
+			<h3 id="myModalLabel1"><i class="icon-comments"></i> Add Maintenance Ticket (Complains)</h3>
 		</div>
 		<div class="modal-body">
-	        <div class="row-fluid">
-	        	Customer Account
-		        <select id="select2_sample2" name="customer" class="span12" >
-		           <option>--Select Customer Account--</option>
-		        </select>
-	        </div>
-	        <div class="row-fluid">
-	        	<label for="subject">Categories</label>
-	        	<select name="subject" class="span12" required>
-	        	<option value=" ">--Select Voucher Category--</option>
-	              <option value="Plumbing"> Plumbing</option>
-	              <option value="Electrical"> Electrical</option>
-	              <option value="Carpentry"> Carpentry</option>
-	              <option value="Painting"> Painting</option>
-	              <option value="Other"> Others</option>
-	            </select>
-	        </div>
+			<label for="">Categories</label>
+			<div class="row-fluid">
+				<select id="select2_sample3" name="category_id" class="span12" required>
+					<option value="">--Select Category--</option>
+					<?php
+					$data = $Support->getVoucherCategories();
+					while($rows = get_row_data($data)){
+						?>
+						<option value="<?=$rows['category_id']; ?>"><?=$rows['category_name']; ?></option>
+					<?php } ?>
+				</select>
+			</div>
+
 	        <div class="row-fluid">
 	        	<label for="body" class="control-label">Message</label>
 	        	<textarea name="body" class="span12" required></textarea>
@@ -117,4 +107,3 @@ set_layout("dt-layout.php", array(
 		</div>
 	</div>
 </form>
-<? set_js(array('src/js/assign_staff.js')); ?>

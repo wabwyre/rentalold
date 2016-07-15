@@ -320,6 +320,8 @@ edit_house: src/house_module/edit_house.php
 del_house: src/house_module/delete_house.php
 view_house: src/house_module/view_house.php
 in_plot: src/house_module/houses_in_plot.php
+house_attrbs: src/house_module/house_attributes.php
+
 
 ### Account Module
 manage_account: src/account_module/manage_accounts.php

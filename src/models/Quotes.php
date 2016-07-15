@@ -3,14 +3,13 @@ include_once('src/models/SupportTickets.php');
 
 class Quotes extends SupportTickets
 {
-	public function allQuotations(){
-		$query = "SELECT * FROM quotes";
-
+	public function allQuotations($mf_id){
+		$query = "SELECT * FROM quotes WHERE contractor_mf_id = '".$mf_id."'";
 		$results = run_query($query);
 		return $results;
 	}
 	public function getAllMaintainance(){
-		$query = "SELECT * FROM maintaince_vouchers ";
+		$query = "SELECT * FROM maintenance_vouchers ";
 		$results = run_query($query);
 		return $results;
 

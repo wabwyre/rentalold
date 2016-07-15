@@ -164,7 +164,7 @@ set_layout("dt-layout.php", array(
         </div>
         <!-- the hidden fields -->
         <input type="hidden" name="action" value="edit_voucher"/>
-        <input type="text" name="voucher_id" id="vouch_id" />
+        <input type="hidden" name="voucher_id" id="vouch_id" />
         <div class="modal-footer">
             <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo650'); ?>
             <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav649'); ?>
@@ -199,11 +199,11 @@ set_layout("dt-layout.php", array(
             <h3 id="myModalLabel1">Approve Maintenance Vouchers</h3>
         </div>
         <!-- hidden fields -->
-        <input type="hidden" name="action" value="approve_voucher"/>
+<!--        <input type="hidden" name="action" value="approve_voucher"/>-->
         <input type="hidden" id="app_voucher_id" name="voucher_id"/>
         <div class="modal-footer">
-            <?php createSectionButton($_SESSION['role_id'],$_GET['num'],'No651'); ?>
-            <?php createSectionButton($_SESSION['role_id'],$_GET['num'],'Yes652'); ?>
+            <?php createSectionButton($_SESSION['role_id'],$_GET['num'],'Dec654'); ?>
+            <?php createSectionButton($_SESSION['role_id'],$_GET['num'],'App653'); ?>
         </div>
     </div>
 </form>

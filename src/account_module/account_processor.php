@@ -24,4 +24,9 @@ switch($_POST['action']) {
         logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
         $acc->deleteBank();
         break;
+
+    case add_branch:
+        logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+        $acc->addBranch();
+        break;
 }
