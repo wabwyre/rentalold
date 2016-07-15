@@ -101,8 +101,8 @@
             <!-- the hidden fields -->
             <input type="hidden" name="action" value="add_branch"/>
             <div class="modal-footer">
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo649'); ?>
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav650'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo657'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav656'); ?>
             </div>
         </div>
     </form>
@@ -131,8 +131,8 @@
             <input type="hidden" name="action" value="edit_branch"/>
             <input type="hidden" name="edit_id" id="edit_id"/>
             <div class="modal-footer">
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can648'); ?>
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav649'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can659'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav658'); ?>
             </div>
         </div>
     </form>
@@ -150,8 +150,8 @@
             <input type="hidden" name="action" value="delete_branch"/>
             <input type="hidden" name="delete_id" id="delete_id"/>
             <div class="modal-footer">
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No653'); ?>
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes654'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No660'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes661'); ?>
             </div>
         </div>
     </form>

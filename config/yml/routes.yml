@@ -234,24 +234,9 @@ import_companies: src/masterfile_module/import_client_groups.php
 832: src/crm_module/customer_acc_info.php
 833: src/crm_module/customer_phone_bills.php
 
-#### Modules under development
-2910: src/test_modd/under-construction.php
-2911: src/test_modd/under-construction.php
-2801: src/test_modd/under-construction.php
-2802: src/test_modd/under-construction.php
-2803: src/test_modd/under-construction.php
-2804: src/test_modd/under-construction.php
-2805: src/test_modd/under-construction.php
-2806: src/test_modd/under-construction.php
-2807: src/test_modd/under-construction.php
-2808: src/test_modd/under-construction.php
-2809: src/test_modd/under-construction.php
-2810: src/test_modd/under-construction.php
-2811: src/test_modd/under-construction.php
-2812: src/test_modd/under-construction.php
-2813: src/test_modd/under-construction.php
-2814: src/test_modd/under-construction.php
-2815: src/test_modd/under-construction.php
+manage_account: src/crm_module/manage_accounts.php
+add_bank: src/crm_module/add_bank.php
+add_branch: src/crm_module/add_branch.php
 
 #### User Management Module
 add_user: src/users_module/add_user.php
@@ -320,12 +305,6 @@ del_house: src/house_module/delete_house.php
 view_house: src/house_module/view_house.php
 in_plot: src/house_module/houses_in_plot.php
 house_attrbs: src/house_module/house_attributes.php
-
-
-### Account Module
-manage_account: src/account_module/manage_accounts.php
-add_bank: src/account_module/add_bank.php
-add_branch: src/account_module/add_branch.php
 
 #### Reports
 6000: src/payment_reports/house_payments.php
