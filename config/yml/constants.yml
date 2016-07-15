@@ -347,6 +347,8 @@ basic:
 
    ### crm processor
    delete_masterfile: delete_masterfile
+   add_bank: add_bank
+   add_branch: add_branch
    
    ### Airtime processor
    upload_txt: upload_txt
