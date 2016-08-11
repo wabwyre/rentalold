@@ -1,5 +1,5 @@
 
-<div class="span2"><img src="<?=$profile_pic; ?>" alt="" /> <!-- <a target="_blank" href="?num=802&mf_id=<?=$mf_id; ?>" class="profile-edit">edit</a> --></div>
+<div class="span2"><img src="<?php echo $profile_pic; ?>" alt="" /> <!-- <a target="_blank" href="?num=802&mf_id=<?php echo $mf_id; ?>" class="profile-edit">edit</a> --></div>
 <?php
     /**
      * Created by PhpStorm.
@@ -9,14 +9,12 @@
      */
 ?>
 <ul class="unstyled span10">
-    <li><span>Full Name: </span><?=$row['surname'].' '.$row['firstname'].' '.$row['middlename']; ?></li>
-    <li><span>Masterfile Type: </span><?=$row['customer_type_name']; ?></li>
-    <li><span>Gender: </span><?=$row['gender']; ?></li>
-    <li><span>Start Date: </span><?=(date('Y-m-d', $row['time_stamp'])); ?></li>
-    <li><span>Business Role: </span><?=$row['b_role']; ?></li>
-    <li><span>Email address: </span><?=$row['email']; ?></li>
-    <li><span>ID No/Passport: </span><?=$row['id_passport']; ?></li>
-    <li><span>Phone No: </span><?=$phone; ?></li>
-    <li><span>House No.: </span><?=$house; ?></li>
-<!--    <li><span>Plot: </span>--><?//=$house; ?><!--</li>   -->
+    <li><span>Full Name: </span><?php echo $row['surname'].' '.$row['firstname'].' '.$row['middlename']; ?></li>
+    <li><span>Masterfile Type: </span><?php echo $row['customer_type_name']; ?></li>
+    <li><span>Gender: </span><?php echo $row['gender']; ?></li>
+    <li><span>Start Date: </span><?php echo (date('Y-m-d', $row['time_stamp'])); ?></li>
+    <li><span>Business Role: </span><?php echo $row['b_role']; ?></li>
+    <li><span>Email address: </span><?php echo $row['email']; ?></li>
+    <li><span>ID No/Passport: </span><?php echo $row['id_passport']; ?></li>
+    <li><span>Phone No: </span><?php echo $phone; ?></li>
 </ul>

@@ -1,52 +1,55 @@
 <?php
+	include_once ('src/models/Masterfile.php');
+	$mf = new Masterfile();
 
-set_layout("form-layout.php", array(
-	'pageSubTitle' => 'Edit Address Type',
-	'pageSubTitleText' => '',
-	'pageBreadcrumbs' => array (
-		array ( 'url'=>'#', 'text'=>'Home' ),
-		array ( 'text'=>'MASTERFILE' ),
-		array ( 'url'=>'?num=727', 'text'=>'Manage Address Types' ),
-		array ( 'text'=>'Edit Address Type' )
-	),
-	
-	'pageWidgetTitle'=>'&nbspEdit Address Type'
-));
+	set_title('Edit Address');
+	set_layout("form-layout.php", array(
+		'pageSubTitle' => 'Edit Address Type',
+		'pageSubTitleText' => '',
+		'pageBreadcrumbs' => array (
+			array ( 'url'=>'#', 'text'=>'Home' ),
+			array ( 'text'=>'MASTERFILE' ),
+			array ( 'url'=>'?num=727', 'text'=>'Manage Address Types' ),
+			array ( 'text'=>'Edit Address Type' )
+		),
 
-set_css(array(
-	'assets/plugins/bootstrap-fileupload/bootstrap-fileupload.css'
-));
-set_js(array(
-	'assets/plugins/bootstrap-fileupload/bootstrap-fileupload.js'
-)); 	
-if(isset($_SESSION['done-edits'])){
-    echo "<p style='color:#f00; font-size:16px;'>".$_SESSION['done-edits']."</p>";
-    unset($_SESSION['done-edits']);
-}
+		'pageWidgetTitle'=>'&nbspEdit Address Type'
+	));
 
-//get the value
-if (isset($_GET['address_type_id'])){
-$address=$_GET['address_type_id'];
-$query="SELECT * FROM address_types WHERE address_type_id='".$address."'";
-$data=run_query($query);
-$total_rows=get_num_rows($data);
-}
-$con=1;
-$total=0;
+	set_css(array(
+		'assets/plugins/bootstrap-fileupload/bootstrap-fileupload.css'
+	));
+	set_js(array(
+		'assets/plugins/bootstrap-fileupload/bootstrap-fileupload.js'
+	));
 
-$row=get_row_data($data);
+	$mf->splash('mf');
+	// display all encountered errors
+	(isset($_SESSION['mf_warnings'])) ? $mf->displayWarnings('mf_warnings') : '';
 
-//the values
-$address_type_name = $row['address_type_name'];
-$address_type_id = $row['address_type_id'];
-$status = $row['status'];
-$check1 = '';
-$check2 = '';
-if($status == '1'){
-	$check1 = 'selected';
-}else{
-	$check2 = '0';
-}
+	//get the value
+	if (isset($_GET['address_type_id'])){
+	$address=$_GET['address_type_id'];
+	$query="SELECT * FROM address_types WHERE address_type_id='".$address."'";
+	$data=run_query($query);
+	$total_rows=get_num_rows($data);
+	}
+	$con=1;
+	$total=0;
+
+	$row=get_row_data($data);
+
+	//the values
+	$address_type_name = $row['address_type_name'];
+	$address_type_id = $row['address_type_id'];
+	$status = $row['status'];
+	$check1 = '';
+	$check2 = '';
+	if($status == '1'){
+		$check1 = 'selected';
+	}else{
+		$check2 = '0';
+	}
 ?>
 <!-- BEGIN FORM -->
 <form action="" id="edit_crm" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -55,7 +58,7 @@ if($status == '1'){
 			<div class="control-group">
 				<label for="address_type_name" class="control-label">Address Type Name:</label>
 				<div class="controls">
-					<input type="text" name="address_type_name" value="<?=$address_type_name; ?>"/>
+					<input type="text" name="address_type_name" value="<?php echo $address_type_name; ?>"/>
 				</div>
 			</div>
 		</div>
@@ -73,7 +76,7 @@ if($status == '1'){
 	</div>
 	<div class="form-actions">
 		<input type="hidden" name="action" value="edit_address_type"/>
-		<input type="hidden" name="address_type_id" value="<?=$_GET['address_type_id']; ?>"/>
+		<input type="hidden" name="address_type_id" value="<?php echo $address; ?>"/>
         <?php ViewActions($_GET['num'], $_SESSION['role_id']); ?>  
 	</div>			
 </form>

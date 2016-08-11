@@ -21,7 +21,7 @@
                 if(isset($_POST['regdate_stamp'])){
                     echo $_POST['regdate_stamp'];
                 }else{
-                    echo date('m/d/Y');
+                    echo date('m-d-Y');
                 }
                 ?>" />
             </div>
@@ -33,7 +33,8 @@
         <div class="control-group">
             <label for="surname" class="control-label" id="variation">Surname</label>
             <div class="controls  input-icon">
-                <input type="text" name="surname" class="span12" value="<?php $mf->get('surname'); ?>" id="surname"/>
+                <input type="text" name="surname" class="span12" value="<?php $mf->get('surname'); ?>"
+                       id="surname" placeholder="Surname"/>
             </div>				
         </div>
     </div>
@@ -103,9 +104,12 @@
         <div class="control-group">
             <label for="email" class="control-label">Email <span>*</span></label>
             <div class="controls">
-                <input type="email" name="email" class="span12" value="<?php echo $mf->get('email'); ?>" placeholder="email" />
+                <div class="input-icon left">
+                    <i class="icon-envelope"></i>
+                    <input type="email" name="email" class="span12" value="<?php echo $mf->get('email'); ?>" placeholder="email" />
+                </div>
             </div>
-        </div>        
+        </div>
     </div>
     <div class="span6">
         <div class="control-group">
@@ -183,6 +187,39 @@
 
 <div class="row-fluid">
     <div class="span6">
+        <div class="control-group">
+            <label for="skill_id" class="control-label">Core Activity</label>
+            <div class="controls">
+                <select name="skill_name" class="span12 chosen" id="skill_id" multiple="multiple"
+                        tabindex="6" data-placeholder="Core Activities"><?php echo $mf->get('skill_name'); ?>
+                    <option value="">--Choose Core Activities--</option>
+                    <?php
+                        $skills = $mf->getAllSkills();
+                        $skills = $skills['all'];
+                        if(count($skills)){
+                            foreach ($skills as $skill){
+                                ?>
+                                <option value="<?php echo $skill['skill_id']; ?>"
+                                    <?php echo ($mf->get('skill_id') == $skill['skill_id']) ? 'selected': ''; ?>>
+                                    <?php echo $skill['skill_name']; ?>
+                                </option>
+                    <?php } } ?>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="span6">
+        <div class="control-group">
+            <label for="skills" class="control-label">Skills</label>
+            <div class="controls">
+                <textarea name="skills" id="skills" class="span12 m-wrap" rows="3" placeholder="Contractor Skills"><?php echo $mf->get('skills'); ?></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span6">
         <label class="control-label">Profile Pic</label>
         <div class="controls">
             <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -192,7 +229,7 @@
                     <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input class="span12" type="file" name="profile-pic"/></span>
                     <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </div>

@@ -14,7 +14,7 @@ $('#table1 > tbody > tr').live('click', function(event){
 });
 
 //get the address id
-$('#table1').on('click', 'tr', function() {
+$('.live_table').on('click', 'tr', function() {
 	edit_id = $(this).children('td:first').text();
 	$('#edit_id').val(edit_id);
 	$('#delete_id').val(edit_id);
@@ -28,7 +28,7 @@ $('#table1').on('click', 'tr', function() {
 	//get address details and place then on the edit modal
 	$.ajax({
 		type: 'POST',
-		url: 'src/crm_module/addr_details.php',
+		url: 'src/masterfile_module/addressDetails.php',
 		data: the_data,
 		dataType: 'json',
 		success: function(data){
@@ -40,7 +40,7 @@ $('#table1').on('click', 'tr', function() {
 			$('#street').val(data['street']);
 			$('#building').val(data['building']);
 			$('#house_no').val(data['house_no']);
-			$('#phone_no').val(data['phone']);
+			$('#phone').val(data['phone']);
 			$('#postal_addr').text(data['postal_address']);
 
 		}
@@ -61,3 +61,4 @@ $('#del_btn').click(function(){
 		alert('Please select a record first');
 	}
 });
+

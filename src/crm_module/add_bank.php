@@ -95,8 +95,8 @@ if(App::isAjaxRequest()) {
             <!-- the hidden fields -->
             <input type="hidden" name="action" value="add_bank"/>
             <div class="modal-footer">
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo662'); ?>
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav663'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo674'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav675'); ?>
             </div>
         </div>
     </form>
@@ -131,8 +131,8 @@ if(App::isAjaxRequest()) {
             <input type="hidden" name="action" value="edit_bank"/>
             <input type="hidden" name="edit_id" id="edit_id"/>
             <div class="modal-footer">
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can664'); ?>
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav665'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can676'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav677'); ?>
             </div>
         </div>
     </form>
@@ -150,8 +150,8 @@ if(App::isAjaxRequest()) {
             <input type="hidden" name="action" value="delete_bank"/>
             <input type="hidden" name="delete_id" id="delete_id"/>
             <div class="modal-footer">
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No666'); ?>
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes667'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No678'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes679'); ?>
             </div>
         </div>
     </form>

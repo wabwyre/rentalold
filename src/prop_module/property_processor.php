@@ -19,5 +19,44 @@ switch($_POST['action'])
         logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
         $prop->deletePlot($_POST['delete_id']);
         break;
+    case add_attribute:
+        //var_dump($_POST);exit;
+        logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+        $prop->addAttrb();
+        break;
+
+    case edit_attribute:
+        logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+        $prop->editAttribute();
+        break;
+
+    case delete_attribute:
+        //var_dump($_POST);die;
+        logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+        $prop->deleteAttribute();
+        $_SESSION['warnings'] = $prop->getWarnings();
+        break;
+
+
+    case attch_prop_attr:
+        //var_dump($_POST);die;
+        logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+        $prop->attachPropertyAttribute();
+        $_SESSION['warnings'] = $prop->getWarnings();
+        break;
+    case edit_house_prop_attr:
+        extract($_POST);
+        //var_dump($_POST);exit();
+        logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+        $prop->editPropAttribute();
+        $_SESSION['warnings'] = $prop->getWarnings();
+        break;
+
+    case delete_prop_attr:
+        extract($_POST);
+        //var_dump($_POST);exit();
+        logAction($_POST['action'], $_SESSION['sess_id'], $_SESSION['mf_id']);
+        $prop->detachPropAttribute();
+        break;
 }
 ?>

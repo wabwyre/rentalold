@@ -74,10 +74,10 @@
                 <label for="b_role" class="control-label">Business Role<span class="required">*</span></label>
                 <div class="controls">
                     <select class="span12" id="b_role" name="b_role" required>
-                        <option value="tenant" <?=$select1?> >Tenant</option>
-                        <option value="contractor" <?=$select2?> >Contractor</option>
-                        <option value="land_lord" <?=$select3?> >Land Lord</option>
-                        <option value="property_manager" <?=$select3?> >Property Manager</option>
+                        <option value="tenant" <?php echo $select1?> >Tenant</option>
+                        <option value="contractor" <?php echo $select2?> >Contractor</option>
+                        <option value="land_lord" <?php echo $select3?> >Land Lord</option>
+                        <option value="property_manager" <?php echo $select3?> >Property Manager</option>
                     </select>
                 </div>
             </div>
@@ -137,8 +137,8 @@
                 <div class="controls">
                     <select class="span12" id="gender" name="gender" required>
                         <option value="">--choose gender--</option>
-                        <option value="Male" <?=$gender1?> >Male</option>
-                        <option value="Female" <?=$gender2?> >Female</option>
+                        <option value="Male" <?php echo $gender1?> >Male</option>
+                        <option value="Female" <?php echo $gender2?> >Female</option>
                     </select>
                 </div>
             </div>

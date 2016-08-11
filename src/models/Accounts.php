@@ -103,8 +103,12 @@ class Accounts extends Masterfile{
     }
 
     public function addBranch($post){
-        //var_dump($_POST);exit;
+//        var_dump($_POST);exit;
         $this->validate($post, array(
+            'bank_id' => array(
+                'name' => 'Bank Name',
+                'required' => true
+            ),
             'branch_name' => array(
                 'name' => 'Name',
                 'required' => true,
@@ -127,6 +131,7 @@ class Accounts extends Masterfile{
         if($this->getValidationStatus()) {
             $result = $this->insertQuery('bank_branch',
                 array(
+                    'bank_id' => $post['bank_id'],
                     'branch_name' => $post['branch_name'],
                     'branch_code' => $post['branch_code'],
                     'created_at' => $post['created_at'],
@@ -153,6 +158,15 @@ class Accounts extends Masterfile{
                     'skip_value' => $post['edit_id'],
                 )
             ),
+            'bank_id' => array(
+                'name' => 'Bank Name',
+                'required' => true,
+                'unique2' => array(
+                    'table' => 'bank_branch',
+                    'skip_column' => 'branch_id',
+                    'skip_value' => $post['edit_id'],
+                )
+            ),
             'branch_code' => array(
                 'name' => 'Branch Code',
                 'required' => true,
@@ -167,6 +181,7 @@ class Accounts extends Masterfile{
         if($this->getValidationStatus()) {
             $result = $this->updateQuery2('bank_branch',
                 array(
+                    'bank_id' => $post['bank_id'],
                     'branch_name' => $post['branch_name'],
                     'branch_code' => $post['branch_code'],
                     'created_at' => $post['created_at'],

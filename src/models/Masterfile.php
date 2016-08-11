@@ -164,16 +164,21 @@
                 $mf_id = $this->addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email);
                 if(!empty($mf_id)){
                         if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_address)) {
-                            if($this->createContractorFile($mf_id, $plot)) {
-                                if($this->createLoginAccount($contractor_data, $mf_id)) {
-                                    $this->endTranc();
-                                    $this->flashMessage('mf', 'success', 'Masterfile has been added.');
-                                    App::redirectTo('?num=722');
-                                }else{
-                                    $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                            $bank_acc_id = $this->createBankAccount($mf_id, $bank_name, $branch_name, $account_no);
+                            if($bank_acc_id) {
+                                if ($this->createContractorFile($mf_id, $skills, $core_activity)) {
+                                    if ($this->createLoginAccount($contractor_data, $mf_id)) {
+                                        $this->endTranc();
+                                        $this->flashMessage('mf', 'success', 'Masterfile has been added.');
+                                        App::redirectTo('?num=722');
+                                    } else {
+                                        $this->flashMessage('mf', 'error', 'Failed to create login account! ' . get_last_error());
+                                    }
+                                } else {
+                                    $this->flashMessage('mf', 'error', 'Failed to create contractor file! ' . get_last_error());
                                 }
                             }else{
-                                $this->flashMessage('mf', 'error', 'Failed to create contractor file! ' . get_last_error());
+                                $this->flashMessage('mf', 'error', 'Failed to create bank a/c for Contractor! '.get_last_error());
                             }
                         }else {
                             $this->flashMessage('mf', 'error', 'Failed to create address! ' . get_last_error());
@@ -228,17 +233,17 @@
                     $image_path = '';
                 }
 
-                $this->beginTranc();
+                //$this->beginTranc();
 
                 $mf_id = $this->addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email);
                 if(!empty($mf_id)){
                     if($this->attachPlotToLandlord($mf_id, $plot)){
                         $bank_acc_id = $this->createBankAccount($mf_id, $bank_name, $branch_name, $account_no);
                         if($bank_acc_id){
-                            if($this->createLandlordFile($mf_id, $bank_acc_id, $plot, $pin_no)){
+                            if($this->createLandlordFile($mf_id, $account_no, $plot, $pin_no)){
                                 if($this->addAddress($phone_number, $postal_address, $town, $mf_id, $address_type_id, $ward, $street, $building, $county, $postal_code)) {
                                     if($this->createLoginAccount($landlord_data, $mf_id)) {
-                                        $this->endTranc();
+                                        //$this->endTranc();
                                         $this->flashMessage('mf', 'success', 'Masterfile has been added.');
                                         App::redirectTo('?num=722');
                                     }else{
@@ -254,7 +259,7 @@
                             $this->flashMessage('mf', 'error', 'Failed to create Landlord File! '.get_last_error());
                         }
                     }else{
-                        $this->flashMessage('mf', 'error', 'Failed to attach bank to selected Landlord! '.get_last_error());
+                        $this->flashMessage('mf', 'error', 'Failed to create bank a/c for Landlord! '.get_last_error());
                     }
                 }else{
                     $this->flashMessage('mf', 'error', 'Failed to add Personal Details! '.get_last_error());
@@ -264,7 +269,7 @@
 
         public function addPM($pm_data){
             extract($_POST);
-//            var_dump($pm_data);exit;
+            //var_dump($pm_data);exit;
             // validate
             $this->validate($pm_data, array(
                 'user_role' => array(
@@ -309,6 +314,7 @@
         }
 
         public function addPersonalDetails($surname, $firstname, $middlename, $id_passport, $gender, $image_path, $regdate_stamp, $b_role, $customer_type_id, $email){
+            $regdate_stamp = date('d-m-Y');
             $data = $this->insertQuery('masterfile',
                 array(
                     'surname' => $surname,
@@ -327,7 +333,7 @@
                 ),
                 'mf_id'
             );
-
+            //var_dump($data);exit;
             return $data['mf_id'];
         }
 
@@ -346,7 +352,7 @@
                     'postal_code' => $postal_code
                 )
             );
-
+            //var_dump($result);exit;
             return $result;
         }
 
@@ -371,7 +377,8 @@
                 $body .= "Thank you for registering! Your login credentials are as follows;\n\n";
                 $body .= "Username: $email\n";
                 $body .= "Password: ".$pass_data['plain_pass'];
-                return ($this->sendEmail($email, $subject, $body)) ? true : false;
+                $this->sendEmail($email, $subject, $body);
+                return true;
             }
         }
 
@@ -383,8 +390,7 @@
             );
         }
 		
-		public static function findMasterFileByRoleName($role_name)
-		{
+		public static function findMasterFileByRoleName($role_name){
 			$query = "SELECT * FROM masterfile mf INNER JOIN user_login2 ul ON "
 					."mf.mf_Id = ul.mf_id INNER JOIN user_roles ur ON "
 					."ul.user_role = ur.role_id WHERE ur.role_status is true "
@@ -402,6 +408,127 @@
 			return run_query($query);
 		}
 
+        public function addCustomerAddress($post){
+            extract($_POST);
+            $this->validate($post, array(
+                'county' => array(
+                    'name' => 'County',
+                    'required' => true,
+                    'unique' => 'address'
+                ),
+                'town' => array(
+                    'name' => 'Town',
+                    'required' => true,
+                    'unique' => 'town'
+                ),
+                'phone' => array(
+                    'name' => 'Phone',
+                    'required' => true
+                ),
+                'postal_address' => array(
+                    'name' => 'Postal Address',
+                    'required' => true,
+                    'unique' => 'address'
+                ),
+                'postal_code' => array(
+                    'name' => 'Postal Code',
+                    'required' => true,
+                    'unique' => 'address'
+                )
+            ));
+
+            if($this->getValidationStatus()) {
+                $result = $this->insertQuery('address',
+                    array(
+                        'phone' => $post['phone'],
+                        'postal_address' => $post['postal_address'],
+                        'town' => $post['town'],
+                        'mf_id' => $post['mf_id'],
+                        'address_type_id' => $post['address_type_id'],
+                        'ward' => $post['ward'],
+                        'street' => $post['street'],
+                        'building' => $post['building'],
+                        'county' => $post['county'],
+                        'postal_code' => $post['postal_code']
+                    )
+                );
+                //var_dump($result);exit;
+                if($result){
+                    $this->flashMessage('mf', 'success', 'A new Address has been added!');
+                }else{
+                    $this->flashMessage('mf', 'error', 'Encountered an error!');
+                }
+            }
+        }
+
+        public function editCustomerAddress($post){
+            extract($_POST);
+            //var_dump($post);exit;
+            $this->validate($_POST, array(
+                'county' => array(
+                    'name' => 'County',
+                    'required' => true
+                ),
+                'town' => array(
+                    'name' => 'Town',
+                    'required' => true
+                ),
+                'postal_address' => array(
+                    'name' => 'Postal Address',
+                    'required' => true,
+                    'unique2' => array(
+                        'table' => 'address',
+                        'skip_column' => 'address_id',
+                        'skip_value' => $post['address_id']
+                    )
+                ),
+                'address_type_id' => array(
+                    'name' => 'Address Type',
+                    'required' => true
+                ),
+                'phone' => array(
+                    'name' => 'Phone No.',
+                    'required' => true
+                ),
+                'postal_code' => array(
+                    'name' => 'Postal Code',
+                    'required' => true
+                )
+            ));
+            $result = $this->updateQuery2('address',
+                array(
+                    'phone' => $post['phone'],
+                    'postal_address' => $post['postal_address'],
+                    'town' => $post['town'],
+                    'address_type_id' => $post['address_type_id'],
+                    'ward' => $post['ward'],
+                    'street' => $post['street'],
+                    'building' => $post['building'],
+                    'county' => $post['county'],
+                    'postal_code' => $post['postal_code']
+                ),
+                array(
+                    'address_id' => $post['address_id']
+                )
+            );
+            //var_dump($result);exit;
+            if ($result) {
+                $this->flashMessage('mf', 'success', 'Address Type has been updated!');
+            }else {
+                $this->flashMessage('mf', 'error', 'Encountered an error while updating the Address Type!');
+            }
+        }
+
+        public function deleteCustomerAddress($id){
+            if($this->deleteQuery2('address', array(
+                'address_id' => $id
+            ))){
+                $this->flashMessage('mf', 'success', 'Address has been deleted');
+            }else{
+                $this->flashMessage('mf', 'warning', 'The Address details is being used somewhere else in the system!');
+            }
+        }
+
 		public function checkForExistingRevenueChannelName($revenue_name, $mf_id){
 			$query = "SELECT * FROM revenue_channel WHERE revenue_channel_name = '".$revenue_name."' AND mf_id = '".$mf_id."'";
 			$result = run_query($query);
@@ -413,34 +540,85 @@
 			}
 		}
 
-		public function addAddressType(){
-			extract($_POST);
-		   if(!checkForExistingEntry('address_types', 'address_type_name', $address_type_name)){
-	            $distinctQuery = "INSERT INTO address_types(address_type_name, status) 
-	                    VALUES('".$address_type_name."','".$status."')";
-	            $result = run_query($distinctQuery);
+        public function getAllAddressType($condition = null){
+            $condition = (!is_null($condition)) ? $condition : '';
+            $data = $this->selectQuery('address_types', '*', $condition);
+            return array(
+                'all' => $data,
+                'specific' => $data[0]
+            );
+        }
 
-	            if (!$result) {
-	                $errormessage = '<div class="alert alert-error">
-	                                    <button class="close" data-dismiss="alert">×</button>
-	                                    <strong>Error!</strong> Entry not added.
-	                                </div>'; 
-	                $_SESSION['done-add'] = $errormessage;
-	              }else{
-	              $_SESSION['done-add'] = '<div class="alert alert-success">
-	                        <button class="close" data-dismiss="alert">×</button>
-	                        <strong>Success!</strong> Entry added successfully.
-	                    </div>';
-	                }
-	        } 
-	          else{
-	             $errormessage = '<div class="alert alert-warning">
-	                                     <button class="close" data-dismiss="alert">×</button>
-	                                     <strong>Warning!</strong> The Address Type Name('.$address_type_name.') already exists. Try another!
-	                                 </div>'; 
-	                 $_SESSION['done-add'] = $errormessage;
-	        }
-		}
+        public function addAddressType($post){
+            $this->validate($post, array(
+                'address_type_name' => array(
+                    'name' => 'Address Type Name',
+                    'required' => true,
+                    'unique' => 'address_types'
+                )
+            ));
+
+            if($this->getValidationStatus()) {
+                $result = $this->insertQuery('address_types',
+                    array(
+                        'address_type_name' => $post['address_type_name'],
+                        'status' => $post['status']
+                    )
+                );
+                if($result){
+                    $this->flashMessage('mf', 'success', 'A new address type has been added!');
+                }else{
+                    $this->flashMessage('mf', 'error', 'Encountered an error!');
+                }
+            }
+        }
+
+        public function editAddressType($post){
+            extract($_POST);
+            //var_dump($post);exit;
+            $this->validate($_POST, array(
+                'address_type_name' => array(
+                    'name' => 'Address Type Name',
+                    'required' => true,
+                    'unique2' => array(
+                        'table' => 'address_types',
+                        'skip_column' => 'address_type_id',
+                        'skip_value' => $post['address_type_id']
+                    )
+                )
+            ));
+            $result = $this->updateQuery2('address_types',
+                array(
+                    'address_type_name' => $post['address_type_name'],
+                    'status' => $post['status']
+                ),
+                array(
+                    'address_type_id' => $post['address_type_id']
+                )
+            );
+            //var_dump($result);exit;
+            if ($result) {
+                $this->flashMessage('mf', 'success', 'Address Type has been updated!');
+            }else {
+                $this->flashMessage('mf', 'error', 'Encountered an error while updating the Address Type!');
+            }
+        }
+
+        public function deleteAddressType(){
+            extract($_POST);
+            if($this->deleteQuery2('address_types', array(
+                'address_type_id' => $address_type_id
+            ))){
+                $this->flashMessage('mf', 'success', 'Address type has been deleted');
+            }else{
+                $this->flashMessage('mf', 'warning', 'The Address type is being used somewhere else in the system!');
+            }
+        }
+
+        public function getAddressTypeByAddressTypeId($id){
+            $data = $this->selectQuery('address_types', '*', "address_type_id = '".sanitizeVariable($id)."' ");
+            echo json_encode($data[0]);
+        }
 
 		public function editAddress(){
 			extract($_POST);
@@ -502,6 +680,7 @@
                 ),
                 'bank_acc_id'
             );
+            //var_dump($result);exit;
             if($result) {
                 return true;
             }else {
@@ -525,17 +704,18 @@
             }
         }
 
-        public function createLandlordFile($mf_id, $bank_acc_id, $plot_id, $pin_no){
+        public function createLandlordFile($mf_id, $account_no, $plot_id, $pin_no){
             $result = $this->insertQuery(
                 'landlords',
                 array(
                     'mf_id' => $mf_id,
-                    'bank_acc_id' => $bank_acc_id,
+                    'account_no' => $account_no,
                     'plot_id' => $plot_id,
                     'pin_no' => $pin_no,
                     'created_by' => $_SESSION['mf_id']
                 )
             );
+            //var_dump($result);exit;
             if($result) {
                 return true;
             }else {
@@ -543,15 +723,19 @@
             }
         }
 
-        public function createContractorFile($mf_id, $pm_id){
+        public function createContractorFile($mf_id, $skills, $core_activity){
+            extract($_POST);
+            var_dump($_POST);exit;
             $result = $this->insertQuery(
                 'contractor',
                 array(
                     'mf_id' => $mf_id,
-                    'pm_id' => $pm_id,
+                    'skills' => $skills,
+                    'core_activity' => $core_activity,
                     'created_by' => $_SESSION['mf_id']
                 )
             );
+            //var_dump($result);exit;
             if($result) {
                 return true;
             }else {
@@ -568,6 +752,7 @@
                     'created_by' => $_SESSION['mf_id']
                 )
             );
+            //var_dump($result);exit;
             if($result) {
                 return true;
             }else {
@@ -580,16 +765,29 @@
             $data = $this->selectQuery('all_masterfile', '*', $condition);
             return array(
                 'all' => $data,
-                'specific' => $data[0]
+                'specific' => $data['0']
             );
         }
 
-        public function getAllDelMasterfile($condition = null){
-            $condition = (!is_null($condition)) ? $condition : '';
-            $data = $this->selectQuery('deleted_masterfile', '*', $condition);
+        public function getAllActiveMasterfile(){
+            $data = $this->selectQuery('allActiveMasterfile', '*');
+            return $data;
+        }
+
+        public function getAllTenants(){
+            $data = $this->selectQuery('all_tenants', '*');
+            return $data;
+        }
+        
+        public function getProfileInfo(){
+            $query="SELECT m.*, ct.customer_type_name, ul.email, m.email FROM masterfile m 
+                LEFT JOIN customer_types ct ON ct.customer_type_id = m.customer_type_id
+                LEFT JOIN user_login2 ul ON ul.mf_id = m.mf_id
+                WHERE m.mf_id = '".$mf_id."' ";
+            $result = run_query($query);
             return array(
-                'all' => $data,
-                'specific' => $data[0]
+                'all' => $result,
+                'specific' => $result[0]
             );
         }
 
@@ -656,7 +854,6 @@
             }
         }
 
-
         public function getAllUserRoles($condition = null){
             $condition = (!is_null($condition)) ? $condition : '';
             $data = $this->selectQuery('user_roles', '*', $condition);
@@ -669,13 +866,27 @@
             return $data;
         }
 
-
         public function blockUser($mf_id){
             $query = "UPDATE user_login2 SET user_active = '0', status = '0' WHERE mf_id = '".$mf_id."'";
             if(run_query($query)){
+                //var_dump($query);exit;
                 return true;
             }else{
                 return false;
+            }
+        }
+
+        public function softDelete(){
+        extract($_POST);
+        //var_dump($_POST);exit;
+        $query1 = "UPDATE masterfile SET active = '0' WHERE mf_id = '".$mf_id."'";
+        if(run_query($query1)){
+            $this->blockUser($mf_id);
+                $this->flashMessage('mf', 'success', 'Masterfile '.$surname.' '.$firstname.' has been deleted');
+                App::redirectTo('index.php?num=729&mf_id='.$mf_id);
+            }else{
+                $this->flashMessage('mf', 'warning', 'Masterfile details are being used somewhere else in the 
+                system!'.get_last_error().'');
             }
         }
 
@@ -683,14 +894,20 @@
             if(!empty($_POST['delete_id'])){
                 $query = "DELETE FROM masterfile WHERE mf_id = '".$_POST['delete_id']."'";
                 if(run_query($query)){
-                    $_SESSION['done-deal'] = '<div class="alert alert-success">
-                        <button class="close" data-dismiss="alert">×</button>
-                        <strong>Success!</strong> Masterfile has been permanently deleted!.
-                    </div>';
+                    $this->flashMessage('mf', 'success', 'Masterfile has been permanently deleted');
                 }else{
                     var_dump(get_last_error());exit;
                 }
             }
+        }
+
+        public function getAllDelMasterfile($condition = null){
+            $condition = (!is_null($condition)) ? $condition : '';
+            $data = $this->selectQuery('deleted_masterfile', '*', $condition);
+            return array(
+                'all' => $data,
+                'specific' => $data[0]
+            );
         }
 
         public function getFullName($mf_id){
@@ -706,5 +923,95 @@
         public function getMfByBrole($brole){
             $data = $this->selectQuery('masterfile', '*', "b_role = '".sanitizeVariable($brole)."'");
             return $data;
+        }
+
+        public function getAllSkills($condition = null){
+            $condition = (!is_null($condition)) ? $condition : '';
+            $data = $this->selectQuery('skill_types', '*', $condition);
+            return array(
+                'all' => $data,
+                'specific' => $data[0]
+            );
+        }
+
+        public function getSkillBySkillId($id){
+            $data = $this->selectQuery('skill_types', '*', "skill_id = '".sanitizeVariable($id)."' ");
+            echo json_encode($data[0]);
+        }
+
+        public function addSkill($post){
+//        var_dump($_POST);exit;
+            $this->validate($post, array(
+                'skill_name' => array(
+                    'name' => 'Name',
+                    'required' => true,
+                    'unique' => 'skill_types'
+                ),
+                'status' => array(
+                    'name' => 'Status',
+                    'required' => true
+                )
+            ));
+
+            if($this->getValidationStatus()) {
+                $result = $this->insertQuery('skill_types',
+                    array(
+                        'skill_name' => $post['skill_name'],
+                        'status' => $post['status']
+                    )
+                );
+                if($result){
+                    $this->flashMessage('mf', 'success', 'A New Skill has Been Added!');
+                }else{
+                    $this->flashMessage('mf', 'error', 'Encountered an error!');
+                }
+            }
+        }
+
+        public function editSkill($post){
+//        var_dump($post);exit;
+            $this->validate($post, array(
+                'skill_name' => array(
+                    'name' => 'Skill Name',
+                    'required' => true,
+                    'unique2' => array(
+                        'table' => 'skill_types',
+                        'skip_column' => 'skill_name',
+                        'skip_value' => $post['edit_id'],
+                    )
+                ),
+                'status' => array(
+                    'name' => 'Skill Status',
+                    'required' => true
+                )
+            ));
+
+            if($this->getValidationStatus()) {
+                $result = $this->updateQuery2('skill_types',
+                    array(
+                        'skill_name' => $post['skill_name'],
+                        'status' => $post['status']
+                    ),
+                    array(
+                        'skill_id' => $post['edit_id']
+                    )
+                );
+
+                if($result){
+                    $this->flashMessage('mf', 'success', 'Skill has been updated!');
+                }else{
+                    $this->flashMessage('mf', 'error', 'Encountered an error!');
+                }
+            }
+        }
+
+        public function deleteSkill($id){
+            if($this->deleteQuery2('skill_types', array(
+                'skill_id' => $id
+            ))){
+                $this->flashMessage('mf', 'success', 'Skill has been deleted');
+            }else{
+                $this->flashMessage('mf', 'warning', 'The Skill Detail is being used somewhere else in the system!');
+            }
         }
     }

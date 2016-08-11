@@ -27,7 +27,7 @@ case add_role:
                                     Your form submitted successfully!
                                 </div>';
                 }
-               
+              //var_dump($query);exit;
                 $id_data = get_row_data($data);
                 $id = $id_data['role_id'];
                 //argDump( $data);exit; 

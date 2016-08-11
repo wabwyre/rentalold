@@ -206,8 +206,12 @@ dashboard: src/dashboard_module/dashboard.php
 730: src/masterfile_module/restore_masterfile.php
 import_mf: src/masterfile_module/import_masterfile.php
 import_companies: src/masterfile_module/import_client_groups.php
+address_details: src/masterfile_module/addressDetails.php
 
 ## CRM MODULE
+801: src/crm_module/my_tenants.php
+802: src/crm_module/my_landlords.php
+803: src/crm_module/my_contractors.php
 804: src/crm_module/search_crm.php
 805: src/crm_module/customer_profile.php
 810: src/crm_module/new_customer_profile.php
@@ -222,6 +226,7 @@ import_companies: src/masterfile_module/import_client_groups.php
 manage_account: src/crm_module/manage_accounts.php
 add_bank: src/crm_module/add_bank.php
 add_branch: src/crm_module/add_branch.php
+my_properties: src/crm_module/my_properties.php
 
 #### User Management Module
 add_user: src/users_module/add_user.php
@@ -282,6 +287,10 @@ inactive_cust: src/crm_module/inactive_accounts.php
 edit_plot: src/prop_module/edit_plot.php
 view_prop: src/prop_module/view_property.php
 del_plot: src/prop_module/delete_plot.php
+prop_attr: src/prop_module/property_attributes.php
+pro_attr_alloc: src/prop_module/allocate_prop_attr.php
+prop_alloc: src/prop_module/prop_alloc.php
+add_prop: src/prop_module/add_prop.php
 
 #### House Module
 all_houses: src/house_module/houses.php
@@ -291,6 +300,9 @@ del_house: src/house_module/delete_house.php
 view_house: src/house_module/view_house.php
 in_plot: src/house_module/houses_in_plot.php
 house_attrbs: src/house_module/house_attributes.php
+view_houses: src/house_module/view_houses.php
+house_alloc: src/house_module/house_alloc.php
+900: src/house_module/house_profile.php
 
 #### Reports
 6000: src/payment_reports/house_payments.php

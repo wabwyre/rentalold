@@ -7,7 +7,7 @@
 				<!-- <div class="percent">0%</div> -->
 			</div>
 			<div class="details">
-				<div class="title">Total Referals</div>
+				<div class="title">Total Plots</div>
 				<div class="numbers">
 					<?php echo $period->countReferalRecords('referrals'); ?>
 				</div>
@@ -24,7 +24,7 @@
 				<!-- <div class="percent">0%</div> -->
 			</div>
 			<div class="details">
-				<div class="title">Complains</div>
+				<div class="title">Totals No. of Landlords</div>
 				<div class="numbers">
 					<?php echo $period->countOpenTicketsRecords('maintenance_ticket','0'); ?>
 				</div>
@@ -41,7 +41,7 @@
 				<!-- <div class="percent">0%</div> -->
 			</div>
 			<div class="details">
-				<div class="title">Active Insurance</div>
+				<div class="title">Totals No. of Tenants</div>
 				<div class="numbers">
 					<!-- <?//php echo $period->countActiveInsuranceRecords('gtel_insurance','TRUE'); ?> -->
 				</div>
@@ -60,7 +60,7 @@
 				<!-- <div class="percent">0%</div> -->
 			</div>
 			<div class="details">
-				<div class="title">Total No of Clients</div>
+				<div class="title">Active Contractors</div>
 				<div class="numbers">
 					<?php echo $period->countCustomerRecords('masterfile','client'); ?>
 				</div>
@@ -77,7 +77,7 @@
 				<!-- <div class="percent">0%</div> -->
 			</div>
 			<div class="details">
-				<div class="title">Active Customer Accounts</div>
+				<div class="title">Total No. of Property Managers</div>
 				<div class="numbers">
 					<?php echo $period->countActiveCustomerRecords('customer_account','TRUE'); ?>
 				</div>

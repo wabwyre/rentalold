@@ -7,12 +7,14 @@ require_once 'src/models/Masterfile.php';
  * Time: 11:45 AM
  */
 class Plots extends Masterfile{
+
     public function getAllPlots(){
         $data = $this->selectQuery('plots', '*');
         return $data;
     }
 
     public function addPlot($post){
+        //var_dump($_POST);exit;
         $this->validate($post, array(
             'plot_name' => array(
                 'name' => 'Name',
@@ -32,6 +34,19 @@ class Plots extends Masterfile{
                 'name' => 'Units',
                 'required' => true
             ),
+            'property_type' => array(
+                'name' => 'Property Type',
+                'required' => true
+            ),
+            'option_type'=> array(
+                'name' => 'Option Type',
+                'required' => true
+            ),
+            'location'=> array(
+                'name'=> 'Location',
+                'required'=> true
+            )
+
         ));
 
         if($this->getValidationStatus()) {
@@ -43,8 +58,12 @@ class Plots extends Masterfile{
                     'date_created' => date('Y-m-d'),
                     'paybill_number' => $post['paybill_number'],
                     'units' => $post['units'],
-                    'landlord_mfid' => $post['landlord'],
-                    'lr_no' => $post['lr_no']
+                    'landlord_mf_id' => $post['landlord'],
+                    'lr_no' => $post['lr_no'],
+                    'prop_type'=> $post['property_type'],
+                    'option_type'=> $post['option_type'],
+                    'location' => $post['location'],
+                    'created_by'=>$post['created_by']
                 )
             );
             if($result){
@@ -98,7 +117,10 @@ class Plots extends Masterfile{
                     'pm_mfid' => $post['ed_property_manager'],
                     'paybill_number' => $post['ed_paybill_number'],
                     'units' => $post['ed_units'],
-                    'landlord_mfid' => $post['ed_landlord']
+                    'landlord_mfid' => $post['ed_landlord'],
+                    'prop_type'=> $post['property_type'],
+                    'option_type'=> $post['option_type'],
+                    'location' => $post['location']
                 ),
                 array(
                     'plot_id' => $post['edit_id']
@@ -127,4 +149,305 @@ class Plots extends Masterfile{
         $data = $this->selectQuery('plots', '*', "plot_id = '".sanitizeVariable($id)."' ");
         echo json_encode($data[0]);
     }
+
+    //function to fetch for the property type either commercial or residentioal
+    public function getPlotType(){
+        $result = $this->selectQuery('property_type','*');
+        return $result;
+    }
+
+    //function to call ajax for option data
+    public function getOptionDataById($id){
+        $results = $this->selectQuery('plot_type_options','*',"plot_type_id = '".sanitizeVariable($id)."' ");
+        echo json_encode($results);
+    }
+    //function to return an option name given the id
+    public function getOptionName($id){
+        $result = $this->selectQuery('plot_type_options','option_name',"option_id = '".sanitizeVariable($id)."' ");
+        return $result[0][0];
+    }
+    //function to return the name of the propert
+    public function getName($id){
+        $result = $this->selectQuery('property_type','plot_type_name',"plot_type_id = '".sanitizeVariable($id)."' ");
+        return $result[0][0];
+    }
+    //method to get all attributes
+    public function getAllAttributes(){
+        $rows = $this-> selectQuery('property_attributes', '*');
+        return $rows;
+    }
+
+    public function addAttrb(){
+
+        $validate = array(
+            'name'=>array(
+                'attribute_name'=> 'Attribute Name',
+                'required'=>true)
+
+        );
+        // var_dump($validate);
+        $this->validate($_POST, $validate);
+        if ($this->getValidationStatus()){
+            //if the validation has passed, run a query to insert the details
+            //into the database
+            $name = $_POST['name'];
+            if($this-> addAttrbDetails($name)){
+                $this->flashMessage('attributes', 'success', 'The attribute has been added.');
+            }else{
+                $this->flashMessage('attributes', 'error', 'Failed to add attribute! ' . get_last_error());
+            }
+        }
+    }
+    // function to insert attribute details
+
+    public function addAttrbDetails($attrib_name){
+        $result = $this->insertQuery('property_attributes',
+            array(
+                'prop_attr_name' => $attrib_name
+            ));
+        return $result;
+    }
+
+    public function editAttribute(){
+        extract($_POST);
+        //update the attribute name
+        $edit_id = $_POST['edit_id'];
+        $validate = array(
+            'name'=>array(
+                'prop_attr_name'=> 'Attribute Name',
+                'required'=>true)
+
+        );
+
+
+        $this->validate($_POST, $validate);
+        if ($this->getValidationStatus()){
+            //if the validation has passed, run a query to insert the details
+            //into the database
+            if($this-> editAttributeDetails($name, $edit_id)){
+                $this->flashMessage('attributes', 'success', 'The Attribute has been edited.');
+            }else{
+                $this->flashMessage('attributes', 'error', 'Failed to edit Attribute! ' . get_last_error());
+            }
+        }
+    }
+
+    public function editAttributeDetails($name, $edit_id){
+        $result = $this->updateQuery2('property_attributes',
+            array(
+                'prop_attr_name' => $name
+            ),
+            array('prop_attr_id' => $edit_id)
+        );
+        return $result;
+    }
+
+    public function deleteAttribute(){
+        extract($_POST);
+        //var_dump($_POST);die;
+        $result = $this->deleteQuery('property_attributes', "prop_attr_id = '".$delete_id."'");
+        if($result)
+            $this->flashMessage('attributes', 'success', 'The Attribute has been Deleted.');
+        else
+            $this->flashMessage('attributes', 'error', 'Encountered an error! '.get_last_error());
+    }
+    public function getAllocDetails($id){
+        $id;
+        $results = $this->selectQuery('property_attr_alloc','*'," plot_id = '".$id."' ");
+        //var_dump($results);die;
+        return $results;
+    }
+
+    public function listAllAttributes(){
+        $rows = $this->selectQuery('property_attributes', '*');
+        return $rows;
+    }
+    public function checkIfHouseAttributeisAttached($house,$attribute){
+        $query = "SELECT * FROM property_attr_alloc 
+		WHERE house_id = '".sanitizeVariable($house)."' AND attribute_id = '".sanitizeVariable($attribute)."' 
+		";
+        $result = run_query($query);
+        $num_rows = get_num_rows($result);
+        if($num_rows == 1){
+            return true;
+        }
+    }
+
+    public function attachPropertyAttribute(){
+        extract($_POST);
+        //var_dump($_POST);die();
+        $validate = array(
+            'prop_id'=>array(
+                'name'=> 'Property Name ',
+                'required'=>true
+            ),
+            'attribute_id'=>array(
+                'name'=> 'Attribute name',
+                'required'=>true
+                //'unique'=>'house_attr_allocations'
+            ),
+            'attribute_value'=>array(
+                'name'=> 'Specifications Value',
+                'required'=>true
+            )
+        );
+        //var_dump($validate);die();
+        $this->validate($_POST, $validate);
+        if ($this->getValidationStatus()){
+            //var_dump($this->getValidationStatus());exit;
+            //if the validation has passed, run a query to insert the details
+            //into the database
+            if($this-> addHousattrd($prop_id,$attribute_id,$attribute_value )){
+                //var_dump($this->addHousattrd());exit();
+                $this->flashMessage('house', 'success', 'The Property Attribute has been Attached.');
+            }else{
+                $this->flashMessage('house', 'error', 'Failed to Attach Property Attribute! ' . get_last_error());
+            }
+        }
+
+    }
+    public function addHousattrd($prop_id,$attribute_id,$attribute_value ){
+        $result = $this->insertQuery('property_attr_alloc',
+            array(
+                'plot_id' => $prop_id,
+                'prop_attr_id' => $attribute_id,
+                'value' => $attribute_value
+            )
+        );
+        return $result;
+    }
+
+    public function editPropAttribute(){
+        extract($_POST);
+       // var_dump($_POST);exit;
+        $validate = array(
+                    'attribute_value'=>array(
+                    'name'=> 'Attribute Value',
+                    'required'=>true
+                )
+            );
+
+        $this->validate($_POST, $validate);
+        if ($this->getValidationStatus()){
+            //if the validation has passed, run a query to insert the details
+            //into the database
+            $result = $this->updateQuery2(
+                'property_attr_alloc',
+                array('value' => $attribute_value
+                ),
+                array(
+                    'unit_alloc_id' => $edit_id
+                )
+            );
+            if($result){
+                $this->flashMessage('house', 'success', 'Property Attribute has been Updated.');
+            }else{
+                $this->flashMessage('house', 'error', 'Failed to update Property Attribute! ' . get_last_error());
+            }
+        }
+    }
+
+    //function to detach a property attribute
+    public function detachPropAttribute($delete_id){
+        extract($_POST);
+        $result= $this->deleteQuery('property_attr_alloc', "unit_alloc_id = '".$delete_id."'");
+        if($result)
+            $this->flashMessage('house', 'success', 'The Property Attribute has been Detached.');
+        else
+            $this->flashMessage('house', 'error', 'Encountered an error! '.get_last_error());
+    }
+
+    //function to get property name
+    public function getAttrNameByID($id){
+        $result = $this->selectQuery('property_attributes','prop_attr_name',"prop_attr_id = '".$id."'");
+        return $result[0][0];
+    }
+
+    //function to get properties for the property manager who created them
+
+    public function getPropertiesByRole($table, $id){
+        $results = $this->selectQuery( $table ,'*'," created_by = '".$id."' ");
+        return $results;
+    }
+    //method to check the user role
+    public function checkRole($mf){
+        $result = $this->selectQuery('user_login2', '*', "mf_id =  '" . $mf . "'");
+
+        return $result[0]['user_role'];
+    }
+
+    public function getPropertyDataByRole(){
+        //check whether user is a property manager or a tenant
+
+        $role = $this->checkRole($_SESSION['mf_id']);
+        if ($role == 66) {
+            //user is a property manager
+            $result =  $this->selectQuery('plots','*', " pm_mfid=  '" . $_SESSION['mf_id']. "' ");
+        } else if ($role == 68) {
+            //user is a landlord
+            $result =  $this->selectQuery('plots','*', " landlord_mf_id=  '" . $_SESSION['mf_id']. "' ");
+        } else if ($role == 3){
+            $result = $this->selectQuery('plots', '*');
+        }
+        //var_dump($result);die;
+
+        return $result;
+    }
+    //function to attach services to a house when checkbox is clicked
+    public function attachPropertyService($service_id, $prop_id){
+        $return  = array();
+        $rows = $this->selectQuery('property_services', 'COUNT(*) AS count',
+            "plot_id = '".sanitizeVariable($prop_id)."' AND service_channel_id = '".sanitizeVariable($service_id)."'");
+        $count = $rows[0]['count'];
+
+        if($count > 0){
+            $this->setWarning('House is already attached to the selected service!');
+        }
+        if(count($this->getWarnings()) == 0){
+            $this->setPassed(true);
+        }
+        $valid = $this->getValidationStatus();
+        if($valid) {
+            $result = $this->insertQuery('property_services', array(
+                'service_channel_id' => $service_id,
+                'plot_id' => $prop_id
+            ));
+            if ($result) {
+                $return = array(
+                    'success' => true
+                );
+            } else {
+                $return = array(
+                    'success' => false
+                );
+            }
+        }else{
+            $return = array(
+                'success' => false,
+                'warnings' => $this->getWarnings()
+            );
+        }
+        return $return;
+    }
+    //function to detach a house service on un check
+    public function detachPropertyService($service_channel_id,$plot_id){
+        $query = "delete from property_services where plot_id = '$plot_id' and service_channel_id = '$service_channel_id'";
+        $result = run_query($query);
+//        $result =$this->deleteQuery2('house_services',array(
+//            'house_service_id' => $s_id,
+//            'house_id' => $h_id
+//        ));
+        if($result){
+            $return = array(
+                'success' => true
+            );
+        }else{
+            $return = array(
+                'success' => false
+            );
+        }
+        return $return;
+    }
+
+
 }

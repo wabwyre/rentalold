@@ -315,6 +315,10 @@ basic:
    edit_county: edit_county
    edit_requests: edit_requests
    edit_sub_county: edit_sub_county
+   edit_skill: edit_skill
+   delete_skill: delete_skill
+   add_skill: add_skill
+   Del735: Del735
 
    ### device module
    delete_attribute: delete_attribute
@@ -380,6 +384,12 @@ basic:
    Landlord: land_lord
    Contractor: contractor
    Property_Manager: property_manager
+   delete_address_type: delete_address_type
+   Del700: Del700
+   add_customer_address: add_customer_address
+   edit_customer_address: edit_customer_address
+   delete_customer_address: delete_customer_address
+   Del693: Del693
 
    #### Maintenance Tickets
    add_category: add_category
@@ -395,6 +405,9 @@ basic:
    add_property: add_property
    edit_property: edit_property
    delete_property: delete_property
+   landlord_mfid: landlord_mfid
+   attch_prop_attr: attch_prop_attr
+   detach_prop_attr: detach_prop_attr
 
    #### house module
    attrib_name: attrib_name
@@ -402,7 +415,16 @@ basic:
    add_house: add_house
    add_house: add_house
    edit_house: edit_house
-
+   delete_house: delete_house
+   delete_house_spec: delete_house_spec
+   edit_house: edit_house
+   edit_house_spec: edit_house_spec
+   add_house_specs: add_house_specs
+   edit_house_prop_attr: edit_house_prop_attr
+   delete_prop_attr: delete_prop_attr
+   house_number: house_number
+   Leaf_Service: Leaf 
+   Leaf_Service: Leaf
 
    #### Message Types
    Push: PUSH_NOTIFICATION

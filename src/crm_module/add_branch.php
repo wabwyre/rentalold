@@ -2,6 +2,9 @@
     require_once 'src/models/Accounts.php';
     $acc = new Accounts();
 
+    require_once 'src/models/Masterfile.php';
+    $mf = new Masterfile();
+
     if(App::isAjaxRequest()) {
         $acc->getBranchByBranchId($_POST['edit_id']);
     }else{
@@ -75,6 +78,21 @@
             </div>
             <div class="modal-body">
                 <div class="row-fluid">
+                    <label for="bank_name">Bank:</label>
+                    <select name="bank_id" class="span12 live_search" id="bank_name">
+                        <option value="">--Choose Bank--</option>
+                        <?php
+                        $banks = $acc->getAllBank();
+                        $banks = $banks['all'];
+                        if(count($banks)){
+                            foreach ($banks as $bank){
+                                ?>
+                                <option value="<?php echo $bank['bank_id']; ?>" <?php echo ($mf->get('bank_name') == $bank['bank_id']) ? 'selected': ''; ?>><?php echo $bank['bank_name']; ?></option>
+                            <?php }} ?>
+                    </select>
+                </div>
+                
+                <div class="row-fluid">
                     <label for="branch_name">Name:</label>
                     <input type="text" name="branch_name" class="span12" value="<?php echo $acc->get('branch_name'); ?>"/>
                 </div>
@@ -101,8 +119,8 @@
             <!-- the hidden fields -->
             <input type="hidden" name="action" value="add_branch"/>
             <div class="modal-footer">
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo657'); ?>
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav656'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Clo680'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav681'); ?>
             </div>
         </div>
     </form>
@@ -114,6 +132,21 @@
                 <h3 id="myModalLabel1">Update Branch </h3>
             </div>
             <div class="modal-body">
+                <div class="row-fluid">
+                    <label for="bank_name">Bank:</label>
+                    <select name="bank_id" class="span12 live_search" id="bank_name">
+                        <option value="">--Choose Bank--</option>
+                        <?php
+                        $banks = $acc->getAllBank();
+                        $banks = $banks['all'];
+                        if(count($banks)){
+                            foreach ($banks as $bank){
+                                ?>
+                                <option value="<?php echo $bank['bank_id']; ?>" <?php echo ($mf->get('bank_name') == $bank['bank_id']) ? 'selected': ''; ?>><?php echo $bank['bank_name']; ?></option>
+                            <?php }} ?>
+                    </select>
+                </div>
+
                 <div class="row-fluid">
                     <label for="branch_name">Branch Name:</label>
                     <input type="text" name="branch_name" id="branch_name" class="span12" value="<?php echo $acc->get('branch_name'); ?>"/>
@@ -140,8 +173,8 @@
             <input type="hidden" name="action" value="edit_branch"/>
             <input type="hidden" name="edit_id" id="edit_id"/>
             <div class="modal-footer">
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can659'); ?>
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav658'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Can682'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Sav683'); ?>
             </div>
         </div>
     </form>
@@ -159,8 +192,8 @@
             <input type="hidden" name="action" value="delete_branch"/>
             <input type="hidden" name="delete_id" id="delete_id"/>
             <div class="modal-footer">
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No660'); ?>
-                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes661'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'No684'); ?>
+                <?php createSectionButton($_SESSION['role_id'], $_GET['num'], 'Yes685'); ?>
             </div>
         </div>
     </form>

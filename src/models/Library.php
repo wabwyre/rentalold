@@ -85,10 +85,15 @@
 					}
 				}
 
-				if(empty($this->getWarnings())){
+				$warnings_count = count($this->getWarnings());
+				if($warnings_count == 0){
 					$this->_passed = true;
 				}
 			}
+		}
+
+		public function setPassed($boolean){
+			$this->_passed = $boolean;
 		}
 
 		public function getErrors(){
@@ -97,6 +102,10 @@
 
 		public function getWarnings(){
 			return $this->_warning;
+		}
+
+		public function setWarning($warning){
+			$this->_warning[] = $warning;
 		}
 
 		public function getValidationStatus(){
@@ -136,7 +145,7 @@
 			
 		public function validateImage($filename){
 			if(!empty($filename)){
-				$allowed_extensions = ['jpg', 'jpeg', 'png', 'webp'];
+				$allowed_extensions = array('jpg', 'jpeg', 'png', 'webp');
 				$file_data = explode('.', $filename);
 //				var_dump($file_data);exit;
 				if(in_array($file_data[1], $allowed_extensions))
